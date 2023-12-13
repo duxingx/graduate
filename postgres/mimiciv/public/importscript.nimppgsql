@@ -1,0 +1,199 @@
+{
+  "Version": 1.0,
+  "General": {
+    "AccessDBPassword": "",
+    "AccessLogonName": "",
+    "AccessLogonPassword": "",
+    "AccessSystemDBFile": "",
+    "BinaryDataEncoding": "Base64",
+    "BreakLines": "",
+    "Catalog": "mimiciv",
+    "ContinueOnError": true,
+    "CreateAutoInc": false,
+    "DateDelimiter": "/",
+    "DateOrder": "DMY",
+    "DateTimeOrder": "DateTime",
+    "DecimalSymbol": ".",
+    "Encoding": 65001,
+    "FieldDelimiter": "Tab",
+    "FieldNameRow": 1,
+    "FieldSeparationType": "Delimited",
+    "FirstDataRow": 2,
+    "FourDigitYears": true,
+    "IgnoreForeignKeyConstraint": false,
+    "ImportDeletedRecords": false,
+    "ImportMode": "Copy",
+    "ImportType": "Excel",
+    "IncludeTagAttributesAsTableField": false,
+    "IncludeUniqueIndexFKey": false,
+    "JsonTagIdentifierObj": {
+      "JsonTagName": "",
+      "JsonParentTagName": "",
+      "JsonTagLevel": 0,
+      "JsonTagType": "Object"
+    },
+    "LastDataRow": 0,
+    "Project": "",
+    "ProjectOwnerNavicatID": "",
+    "RecordDelimiter": "CRLF",
+    "RunMultipleQueriesInEachExecution": true,
+    "Schema": "public",
+    "Server": "postgresql_databases",
+    "TextQualifier": "\"",
+    "ThousandSeparator": ",",
+    "TimeDelimiter": ":",
+    "UseEmptyStringAsNull": false,
+    "XMLTagIdentifier": ""
+  },
+  "ImportSources": [
+    {
+      "SourceFile": "D:\\Desktop\\dict_all .xlsx",
+      "SourceQueries": []
+    }
+  ],
+  "TableMappings": [
+    {
+      "ConditionalQuery": "",
+      "IsNewTable": true,
+      "IsUserDefinedQuery": false,
+      "SourceFile": "D:\\Desktop\\dict_all .xlsx",
+      "SourceSchema": "",
+      "SourceTableName": "dict_all",
+      "TargetTableName": "dict_all",
+      "FieldMappings": [
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": true,
+          "IsSelected": true,
+          "SourceFieldName": "RawDataColumns1",
+          "TargetFieldName": "RawDataColumns1"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "RawDataColumns2",
+          "TargetFieldName": "RawDataColumns2"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "Abbreviation",
+          "TargetFieldName": "Abbreviation"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "EnglishLabel",
+          "TargetFieldName": "EnglishLabel"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "ChineseLabel2",
+          "TargetFieldName": "ChineseLabel2"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 7,
+          "FieldScale": 0,
+          "FieldType": "int8",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "CategoryCD",
+          "TargetFieldName": "CategoryCD"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "VariableType",
+          "TargetFieldName": "VariableType"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "Category",
+          "TargetFieldName": "Category"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "Category2",
+          "TargetFieldName": "Category2"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "ICUFlag",
+          "TargetFieldName": "ICUFlag"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "ValueFlag",
+          "TargetFieldName": "ValueFlag"
+        },
+        {
+          "FieldAutoIncrement": false,
+          "FieldIsNullable": true,
+          "FieldLength": 255,
+          "FieldScale": 0,
+          "FieldType": "varchar",
+          "IsKey": false,
+          "IsSelected": true,
+          "SourceFieldName": "Unitname",
+          "TargetFieldName": "Unitname"
+        }
+      ]
+    }
+  ]
+}
