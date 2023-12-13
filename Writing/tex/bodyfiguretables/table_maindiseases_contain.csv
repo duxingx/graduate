@@ -1,0 +1,26 @@
+﻿,icd_code,icd_version,long_title
+0,5845   ,9,Acute kidney failure with lesion of tubular necrosis
+1,5846   ,9,Acute kidney failure with lesion of renal cortical necrosis
+2,5847   ,9,Acute kidney failure with lesion of renal medullary [papillary] necrosis
+3,5848   ,9,Acute kidney failure with other specified pathological lesion in kidney
+4,5849   ,9,"Acute kidney failure, unspecified"
+5,586    ,9,"Renal failure, unspecified"
+6,6393   ,9,Kidney failure following abortion and ectopic and molar pregnancies
+7,66930  ,9,"Acute kidney failure following labor and delivery, unspecified as to episode of care or not applicable"
+8,66932  ,9,"Acute kidney failure following labor and delivery, delivered, with mention of postpartum complication"
+9,66934  ,9,"Acute kidney failure following labor and delivery, postpartum condition or complication"
+10,N17    ,10,Acute kidney failure
+11,N170   ,10,Acute kidney failure with tubular necrosis
+12,N171   ,10,Acute kidney failure with acute cortical necrosis
+13,N172   ,10,Acute kidney failure with medullary necrosis
+14,N178   ,10,Other acute kidney failure
+15,N179   ,10,"Acute kidney failure, unspecified"
+16,N19    ,10,Unspecified kidney failure
+17,N990   ,10,Postprocedural (acute) (chronic) kidney failure
+18,O0332  ,10,Renal failure following incomplete spontaneous abortion
+19,O0382  ,10,Renal failure following complete or unspecified spontaneous abortion
+20,O0482  ,10,Renal failure following (induced) termination of pregnancy
+21,O0732  ,10,Renal failure following failed attempted termination of pregnancy
+22,O084   ,10,Renal failure following ectopic and molar pregnancy
+23,O904   ,10,Postpartum acute kidney failure
+24,P960   ,10,Congenital renal failure

@@ -1,0 +1,335 @@
+\chapter{数据处理核心Python代码}\label{pythoncodes1}
+
+\begin{verbatim}
+
+    
+
+  def dataframe_from_pgsql(schema, tablename):
+  """
+  从pgsql数据库载入数据
+  :param schema: 模式
+  :param tablename: 表名
+  :return: dataframe
+  """
+  pg_conn = psycopg2.connect(host=HOST, port=PORT, dbname=DATABASE_NAME, 
+  user=USER_NAME, password=PASSWORD)
+  print("Opened database successfully")
+
+  cur = pg_conn.cursor()
+
+  query = "set search_path to {};SELECT * FROM {};".format(schema, tablename)
+  df = pd.read_sql_query(query, pg_conn, index_col=None)
+
+  cur.close()
+  pg_conn.close()
+  return df
+
+
+def check_variabletype(df=None, dictdat=None, count=20,
+                       exstr=['_max', '_min', '_mean']):
+  """
+  检查数据集变量类型:离散变量/连续变量
+  :param dictdat:是否存在元数据
+  :param df:数据集名
+  :param count:设置变量的分类数,默认分类数最大为20,若大于则为连续变量
+  :param exstr:设置需要排除的连续变量变量名所包含的字符串
+  :return:
+  """
+  if dictdat is not None:
+      continvari = list(
+          dictdat.loc[(dictdat.VariableType == "Continue") &
+           (dictdat.CategoryCD != 0), "RawDataColumns1"].values)
+      discvari = list(
+          dictdat.loc[(dictdat.VariableType == "Discrate") & 
+           (dictdat.CategoryCD != 0), "RawDataColumns1"].values)
+  else:
+      freq_list, discvari = [], []
+      for col in df.columns:
+          x = df.loc[:, col].value_counts().shape[0]
+          if x <= count:
+              freq_list.append(col)
+
+              if all([col.find(_) < 0 for _ in exstr]):
+                  discvari.append(col)
+      continvari = list(set(df.columns).difference(set(discvari)))
+  print("查找到的连续变量总数:", len(continvari))
+  print("查找到的离散变量总数:", len(discvari))
+
+  return continvari, discvari
+
+
+def calc_missrate(df):
+  """
+  计算变量的缺失率
+  :param df:数据
+  :return:返回每个变量的缺失率
+  """
+  missrate = (df.isnull().sum() / df.shape[0])
+
+  return missrate
+
+
+def varible_classfi(dictdata, missrate, threshodmin, threshodmax, cls):
+  """
+  用于变量分类:重要变量,不重要变量,缺失率高的变量,缺失率低的变量
+  :param threshodmin:缺失率阈值的下限
+  :param threshodmax:缺失率阈值的上限
+  :param missrate:各个变量缺失率的序列
+  :param cls:能够标识变量Category的列表
+  :param dictdata:元数据,能够索引到变量的重要性
+  :return:同时满足缺失率要求和重要性要求的变量交集
+  """
+
+  varicls = dict()
+  # 缺失率筛选
+  varicls["mr"] = list(missrate[(missrate < threshodmax) & 
+  (missrate > threshodmin)].index)
+  # 重要性筛选
+  varicls["imp"] = list(dictdata.loc[dictdata.Category.isin(cls), 
+  "RawDataColumns1"].values)
+
+  cls_res = set(varicls["mr"]).intersection(set(varicls["imp"]))
+  return list(cls_res)
+
+
+def impute_missdeal(df, varis):
+  """
+  插值填充缺失值
+  :param df:数据
+  :param varis:需要填补的变量
+  :return:指定变量填补后的数据
+  """
+  tempdat = df.sort_values("admitcustime")
+  # tempdat = tempdat.loc[:, varis + idcols]
+  for f in varis:
+      tempdat[f] = tempdat[f].interpolate()
+      tempdat[f] = tempdat[f].fillna(method="ffill")
+      tempdat[f] = tempdat[f].fillna(method="bfill")
+  res = tempdat
+  return res
+
+
+def cutbox_missdeal(df, varis):
+  """
+  用分箱来处理缺失值
+  :param df:数据
+  :param varis:需要填补的变量
+  :return:指定变量填补后的数据
+  """
+  tempdat = df.sort_values("admitcustime")
+  # tempdat = tempdat.loc[:, varis + idcols]
+
+  group_names = ['Low', 'Lower', 'Medium', 'Higher', 'High']
+  for f in varis:
+      tempdat[f] = pd.cut(tempdat[f], 5, labels=group_names)
+      tempdat[f] = tempdat[f].cat.add_categories(['Missing']).fillna("Missing")
+  res = tempdat
+
+  return res
+
+
+def unif_test(seri, seed=123):
+  """
+  简化的均匀分布检验
+  :param seri:series数据
+  :param seed:随机种子号
+  :return:
+  """
+  # 随机数据中随机抽取数据，并且保证下次抽取时与此次抽取结果一样
+  sam1 = seri.dropna().sample(n=1000, random_state=seed, axis=0)
+  sam2 = seri.dropna().sample(n=1000, random_state=seed * 2, axis=0)
+
+  cus1 = 0
+  for i in sam1.index:
+      mindis = abs(sam1.drop(i) - sam1[i]).min()
+      cus1 += mindis
+
+  cus2 = 0
+  for i in sam2.index:
+      mindis = abs(sam2.drop(i) - sam2[i]).min()
+      cus2 += mindis
+
+  testval = cus1 / (cus1 + cus2 + 0.0001)
+
+  return (testval - 0.5) <= 0.05
+
+
+def samply_missdeal(df, varis):
+  """
+  数据符合均匀分布用均值,数据存在倾斜分布用中位数
+  :return:
+  """
+  tempdat = df.sort_values("admitcustime")
+  # tempdat = tempdat.loc[:, varis + idcols]
+  for f in varis:
+      if unif_test(tempdat[f]):
+          tempdat[f] = tempdat[f].fillna(tempdat[f].mean())
+          print(f, ":均匀分布用均值")
+      else:
+          tempdat[f] = tempdat[f].fillna(tempdat[f].median())
+          print(f, ":倾斜分布用中位数")
+
+  res = tempdat
+  return res
+
+
+def delete_missdeal(df, varis):
+  """
+  直接删除变量
+  :param df:数据
+  :param varis:需要填补的变量
+  :return:指定变量填补后的数据
+  """
+  tempdat = df.sort_values("admitcustime")
+  # tempdat = tempdat.loc[:, varis + idcols]
+
+  tempdat = tempdat.drop(varis, axis=1)
+  res = tempdat
+
+  return res
+
+
+def median_missdeal(df, varis):
+  """
+  数据符合均匀分布用均值,数据存在倾斜分布用中位数
+  :return:
+  """
+  tempdat = df.sort_values("admitcustime")
+  # tempdat = tempdat.loc[:, varis + idcols]
+  for f in varis:
+      tempdat[f] = tempdat[f].fillna(tempdat[f].median())
+
+  res = tempdat
+  return res
+
+
+def conbine_missdeal(df, varis, conbi_flag):
+  """
+  替换为Missing并入最低频数的类别
+  :param df:数据
+  :param varis:需要填补的变量
+  :return:指定变量填补后的数据
+  """
+  tempdat = df.sort_values("admitcustime")
+
+  for f in varis:
+      tempdat[f] = tempdat[f].fillna("Missing")
+      vc = tempdat[f].value_counts()
+      if conbi_flag:
+          oldval = vc[vc < 10].index + ["Missing"]
+      else:
+          oldval = vc[vc < 10].index
+
+      tempdat[f] = tempdat[f].replace(oldval, "Other")
+  res = tempdat
+  return res
+
+
+def check_oultier_3sigma(var):
+  """
+  3 sigma 准则查找异常值
+  :param var:
+  :return: 如果存在异常值,返回True,并返回上下限; 不存在返回False;
+  """
+  mean1 = var.quantile(q=0.25)
+  mean2 = var.quantile(q=0.75)
+  mean3 = mean2 - mean1
+  topnum2 = mean2 + 3 * mean3
+  bottomnum2 = mean2 - 3 * mean3
+
+  top_flag = any(var > topnum2)
+  bot_flag = any(var < bottomnum2)
+  return (top_flag or bot_flag), bottomnum2, topnum2
+
+
+def check_oultier_mad(rawdata):
+  pass
+
+
+def deal_oultier(df, varis, method):
+  tempdat = df.copy()
+  for f in varis:
+      if (tempdat[f].dtypes == "int64") or (tempdat[f].dtypes == "float64"):
+          oult_flag, bottomnum, topnum = check_oultier_3sigma(tempdat[f])
+          if oult_flag:
+              print(f, "\tbottom value:", bottomnum, "\tbottom value:", topnum)
+              if method == "median":
+                  replace_value = tempdat[f][(tempdat[f] > topnum) & 
+                  (tempdat[f] < bottomnum)].max()
+                  tempdat.loc[(tempdat[f] > topnum) & 
+                  (tempdat[f] < bottomnum), f] = replace_value
+              else:
+                  replace_value1 = tempdat[f][tempdat[f] <= topnum].max()
+                  tempdat.loc[tempdat[f] > topnum, f] = replace_value1
+                  replace_value2 = tempdat[f][tempdat[f] >= bottomnum].min()
+                  tempdat.loc[tempdat[f] < bottomnum, f] = replace_value2
+
+  return tempdat
+
+
+def order_code(df, varis, mapcode):
+  """
+  等级变量编码
+  :param df:
+  :param varis:
+  :param mapcode:
+  :return:
+  """
+  tempdat = df.copy()
+  for f in varis:
+      tempdat[f] = tempdat[f].map(mapcode)
+
+  res = tempdat
+  return res
+
+
+def save_variable(v, filename):
+  f = open(filename, 'wb')
+  pickle.dump(v, f)
+  f.close()
+  print(v, "存储至:", filename)
+  return filename
+
+
+def load_variavle(filename):
+  f = open(filename, 'rb')
+  r = pickle.load(f)
+  f.close()
+  return r
+
+def find_nearest(array, value):
+  array = np.asarray(array)
+  idx = (np.abs(array - value)).argmin()
+  return array[idx]
+
+
+def generate_label(data, time):
+  label_list = []
+  for i in range(len(data)):
+      if data['event'].iloc[i] == 0:
+          label = 0
+      else:
+          if data['duration'].iloc[i] > time:
+              label = 0
+          else:
+              label = 1
+      label_list.append(label)
+  return label_list
+
+
+def log_print(*kwargs):
+  LOG_FILE = open(os.path.join(OUTPUT_FILE,"LOG.txt"),'a',encoding='utf-8')
+  print("【",datetime.now(),"】：：：",kwargs,file=LOG_FILE)
+  LOG_FILE.close()
+  
+def return_array_survdata(stepfundat):
+  surv_net00 = dict()
+  i = 0
+  for fn in surv_net0:
+      surv_net00[i] = fn(fn.x)
+      i+=1
+  return surv_net00
+
+\end{verbatim}
+
+

@@ -1,0 +1,18 @@
+此模板在我院包小敏教授的模板基础上稍加修改完成。版权属于包小敏教授。
+
+使用按毕业论文填写顺序进行说明：
+
+1. 封面coverfiles: 由两个文件构成，即coverPage.tex和informationInput.tex， 根据要求填写。coverfigures文件夹内的内容勿动。
+
+2. 申明declaration: 含declare.tex文件，按规定填写。
+
+3. 摘要abstract: 由Enabstract.tex和Chabstract.tex构成。
+
+4. 正文body：由body.tex构成
+
+5. 附录appendix: 由发表的论文和R等程序构成。
+
+6.最后为致谢thanks.tex构成。
+
+
+2021-03-18

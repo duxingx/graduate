@@ -1,0 +1,70 @@
+%\newpage                                    %
+%\thispagestyle{plain}                       %
+%\addcontentsline{toc}{chapter}{ABSTRACT}
+\begin{center}
+{\zihao{2}\enbiaoti}
+\vspace{1cm}
+
+%{\zihao{3}
+
+\begin{tabular}{c}
+  \englishname \\
+  % Major:      & \researcharea   \\
+  Directed by \advisor \\
+\end{tabular}
+%}
+\vspace{1.5cm}
+
+{\huge\bf ABSTRACT}
+\end{center}
+\vspace{.6cm}
+
+% ÇëÌîÈëÓ¢ÎÄÕªÒª£º
+
+
+It is a significant research work to accurately predict the mortality of patients with severe 
+renal failure. It can make early assessment of patients' disease and preliminary prediction 
+of clinical outcomes, allowing clinicians to carry out early intervention in severe patients 
+according to the expected outcome and reasonable care for patients to avoid their disease 
+progression. In addition, it also plays an important role in reducing the risk of death 
+and allocating medical resources reasonably. Survival analysis is a statistical method 
+that studies the timing of events, including death, disease recurrence, customer loss, 
+and so on. It has a wide range of applications in biomedical, engineering, and finance. 
+At present, many survival analysis models have been developed, but the comparison of these 
+survival analysis models in the data of patients with severe renal failure has not been 
+well applied. At present, the evaluation method of survival analysis results is relatively 
+simple, and few studies have carried out comprehensive evaluation.
+
+
+
+In view of the above problems, this paper has carried on the in-depth research. Firstly, 
+by comprehensively considering missing values and outliers in the data of patients with 
+severe renal failure, different processing methods were used for variables of different 
+types, different missing rates and different importance, so as to reduce the influence of 
+data quality on experimental results. Then, six survival statistical models, including 
+Cox-ElasticNet, RSF, DeepSurv, Cox-CC, Cox-Time and LogisitcHazard, were applied to the 
+clinical data of patients with severe renal failure to predict and analyze the mortality of 
+patients. Different survival analysis statistical models were compared and evaluated in all 
+aspects by C index, $C^{td}$, BS, IBS and ROC-Time. For the proportional risk 
+model, this paper uses consistency index to evaluate the differentiation of the model, and 
+for the non-proportional risk model, this paper uses $C^{td}$index to evaluate. ROC-Time was 
+used to evaluate the prediction accuracy and stability of the model, and BS and IBS were used 
+to evaluate the calibration degree of the model. Finally, the main risk factors and protective 
+factors of renal failure patients were discussed.
+
+The results of this paper show that for the six models studied, the model with the best prediction 
+distinction is Cox-CC model, followed by Cox-Time model. The model with the best prediction accuracy 
+is Cox-ElasticNet model, and the model with the best stability is Cox-CC model. The RSF model performs 
+best in terms of the calibration degree of the model, and the Cox-CC model performs best in terms of 
+the long-term prediction accuracy and stability, while the RSF model performs best in terms of the 
+medium and short term prediction accuracy. Finally, the Cox-ElasticNet model was used to calculate 
+the risk factors and protective factors of patients with severe renal failure. The most important risk 
+factors were: minimum blood urea nitrogen within 24 hours after admission to ICU; The most important 
+protective factor was the minimum oxygenation index within 24 hours of admission to the ICU. The establishment 
+of such an optimal survival analysis statistical model is expected to provide necessary reference for 
+clinical medical staff to develop a more scientific and reasonable prognostic diagnosis method, so as 
+to play a positive impact on the rehabilitation of patients with severe renal failure.
+
+\vspace{0.2cm}
+
+\noindent{\zihao{-4}{\bf Key words:} Deep learning;\; Renal failure;\; ICU}
