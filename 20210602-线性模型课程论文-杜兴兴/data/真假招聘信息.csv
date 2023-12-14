@@ -1,0 +1,895 @@
+department,salary,description,requirements,benefits,telecommuting,logo,type,experience,education,industry,country,fraudulent
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+sales,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,computer,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,Unspecified,health,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Full-time,Not Applicable,UNKNOWN,0other,US,0
+0other,less-5000,positive,positive,unknown,0,0,Other,Entry level,High School or equivalent,accounting,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+service,less-5000,positive,positive,positive,1,1,Full-time,Entry level,High School or equivalent,real,US,1
+unknown,UNKNOWN,positive,negative,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,media,US,0
+0other,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,unknown,unknown,1,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,UNKNOWN,accounting,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,negative,unknown,0,0,Contract,Not Applicable,High School or equivalent,0other,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,0other,GB,1
+unknown,less-5000,negative,negative,unknown,0,0,Part-time,Mid-Senior level,Master's Degree,media,0other,1
+unknown,less-5000,positive,neutral,unknown,0,0,Full-time,Entry level,High School or equivalent,telecommunications,US,1
+sales,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+sales,UNKNOWN,positive,unknown,unknown,0,1,Full-time,Not Applicable,High School or equivalent,0other,US,1
+sales,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,neutral,positive,unknown,1,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+marketing,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,positive,positive,unknown,1,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,Bachelor's Degree,oil,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,marketing,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Other,Not Applicable,Unspecified,0other,US,1
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,internet,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Associate,High School or equivalent,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,UNKNOWN,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,0other,internet,US,0
+clerical,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,0other,GB,1
+clerical,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,0other,GB,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,oil,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Other,UNKNOWN,Unspecified,marketing,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,marketing,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,marketing,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Other,Not Applicable,Unspecified,marketing,US,1
+marketing,UNKNOWN,positive,positive,unknown,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,0other,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Contract,Mid-Senior level,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,computer,US,1
+unknown,more-50000,negative,neutral,positive,0,1,Full-time,Entry level,UNKNOWN,services,US,0
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,Not Applicable,Unspecified,marketing,GB,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Master's Degree,internet,US,0
+marketing,UNKNOWN,positive,positive,neutral,0,1,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+0other,more-50000,positive,positive,positive,0,1,Contract,Associate,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,negative,positive,unknown,0,0,Contract,UNKNOWN,UNKNOWN,real,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Contract,UNKNOWN,UNKNOWN,real,US,1
+engineering,UNKNOWN,positive,neutral,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,internet,0other,0
+unknown,UNKNOWN,positive,unknown,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+unknown,UNKNOWN,negative,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,US,1
+unknown,UNKNOWN,positive,positive,positive,1,1,Part-time,Associate,Bachelor's Degree,computer,UNKNOWN,0
+0other,UNKNOWN,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,0other,GR,0
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Internship,Bachelor's Degree,marketing,GB,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,more-50000,negative,neutral,unknown,0,0,Full-time,Entry level,Unspecified,0other,US,1
+unknown,more-50000,positive,unknown,unknown,0,0,Full-time,Entry level,High School or equivalent,services,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+sales,UNKNOWN,positive,unknown,unknown,0,1,Full-time,Associate,Bachelor's Degree,0other,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,less-5000,positive,positive,negative,0,1,Contract,Associate,UNKNOWN,0other,0other,0
+unknown,UNKNOWN,positive,positive,unknown,1,0,Full-time,Not Applicable,Bachelor's Degree,marketing,UNKNOWN,0
+unknown,UNKNOWN,positive,neutral,positive,0,1,UNKNOWN,Entry level,UNKNOWN,oil,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,neutral,positive,0,1,Full-time,Entry level,High School or equivalent,health,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,0
+0other,less-5000,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,0other,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+sales,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Unspecified,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,marketing,0other,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,GB,0
+unknown,UNKNOWN,positive,positive,positive,1,1,Part-time,Entry level,High School or equivalent,internet,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,0
+unknown,UNKNOWN,positive,positive,negative,0,1,UNKNOWN,UNKNOWN,UNKNOWN,health,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,High School or equivalent,0other,GB,0
+unknown,less-5000,positive,positive,neutral,1,1,Full-time,Mid-Senior level,Unspecified,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,internet,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Contract,Associate,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,services,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,NZ,0
+sales,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,0other,DE,0
+0other,UNKNOWN,positive,neutral,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+sales,5000-50000,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,leisure,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,services,NZ,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,health,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Unspecified,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,services,US,0
+0other,UNKNOWN,positive,unknown,negative,0,1,Full-time,Associate,Bachelor's Degree,services,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,marketing,GB,0
+service,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Not Applicable,High School or equivalent,telecommunications,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,services,DE,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+marketing,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,0other,DE,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,services,US,0
+unknown,UNKNOWN,negative,positive,positive,0,1,Part-time,UNKNOWN,UNKNOWN,unknown,GB,0
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,GB,0
+unknown,less-5000,positive,positive,unknown,0,1,Full-time,Entry level,Bachelor's Degree,unknown,GB,0
+unknown,UNKNOWN,positive,neutral,unknown,0,1,Full-time,Associate,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Associate,Bachelor's Degree,computer,US,0
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Mid-Senior level,UNKNOWN,services,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,0other,0
+sales,UNKNOWN,negative,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Contract,Mid-Senior level,Unspecified,services,US,0
+unknown,UNKNOWN,positive,positive,negative,0,1,Full-time,Associate,UNKNOWN,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,UNKNOWN,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,0other,health,US,0
+unknown,less-5000,positive,neutral,positive,0,1,Full-time,Associate,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Part-time,Entry level,High School or equivalent,services,US,0
+unknown,UNKNOWN,positive,unknown,neutral,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,Unspecified,health,GB,0
+marketing,UNKNOWN,positive,positive,neutral,0,1,Full-time,Internship,UNKNOWN,0other,DE,0
+0other,5000-50000,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,computer,DE,0
+unknown,less-5000,positive,neutral,positive,0,1,Full-time,Entry level,High School or equivalent,telecommunications,US,0
+sales,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,marketing,US,0
+engineering,UNKNOWN,positive,positive,unknown,0,0,Full-time,Associate,Bachelor's Degree,internet,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Unspecified,real,US,0
+marketing,less-5000,positive,positive,positive,0,1,Full-time,Entry level,Unspecified,computer,DE,0
+unknown,more-50000,positive,positive,unknown,0,1,Full-time,Mid-Senior level,Bachelor's Degree,leisure,GB,0
+service,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,more-50000,positive,neutral,unknown,0,0,Full-time,Not Applicable,Unspecified,0other,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,services,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,5000-50000,positive,unknown,positive,0,1,Full-time,Entry level,UNKNOWN,services,US,0
+unknown,less-5000,positive,neutral,positive,0,0,Full-time,Mid-Senior level,0other,0other,GB,0
+unknown,UNKNOWN,positive,positive,unknown,0,1,Contract,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,0other,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,Not Applicable,High School or equivalent,0other,GB,0
+engineering,UNKNOWN,positive,positive,neutral,1,1,Full-time,Mid-Senior level,Bachelor's Degree,internet,US,0
+0other,UNKNOWN,negative,positive,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Part-time,Entry level,High School or equivalent,services,US,0
+unknown,UNKNOWN,positive,positive,neutral,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,Not Applicable,High School or equivalent,unknown,GB,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Entry level,Unspecified,computer,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Unspecified,computer,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+0other,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+unknown,UNKNOWN,positive,unknown,positive,0,0,Contract,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Part-time,UNKNOWN,UNKNOWN,unknown,UNKNOWN,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,GR,0
+0other,UNKNOWN,neutral,positive,neutral,0,1,Full-time,Entry level,UNKNOWN,services,US,0
+unknown,UNKNOWN,negative,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,unknown,unknown,1,0,Contract,UNKNOWN,UNKNOWN,internet,GB,0
+engineering,more-50000,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+unknown,less-5000,positive,positive,unknown,0,0,Contract,Associate,Bachelor's Degree,computer,US,0
+0other,UNKNOWN,positive,positive,neutral,0,1,Full-time,Entry level,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Full-time,Entry level,UNKNOWN,computer,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+sales,UNKNOWN,positive,positive,neutral,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,neutral,positive,positive,0,1,Full-time,Director,Master's Degree,computer,GB,0
+unknown,UNKNOWN,positive,positive,negative,0,1,Full-time,Not Applicable,UNKNOWN,services,US,0
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Associate,Bachelor's Degree,real,US,0
+0other,UNKNOWN,neutral,positive,positive,0,0,Full-time,Mid-Senior level,UNKNOWN,services,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,marketing,US,0
+0other,less-5000,positive,positive,positive,0,1,Full-time,Internship,Bachelor's Degree,0other,GR,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Associate,Unspecified,services,US,0
+unknown,UNKNOWN,negative,positive,positive,0,1,Contract,UNKNOWN,Bachelor's Degree,0other,US,0
+0other,UNKNOWN,positive,neutral,positive,0,1,Full-time,Mid-Senior level,Unspecified,internet,GB,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Associate,Bachelor's Degree,health,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,computer,NZ,0
+unknown,UNKNOWN,positive,negative,positive,0,1,Full-time,Internship,High School or equivalent,unknown,GB,0
+unknown,less-5000,positive,positive,positive,1,1,Full-time,Mid-Senior level,0other,internet,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,health,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,internet,US,0
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,0other,DE,0
+unknown,less-5000,positive,positive,positive,1,1,Full-time,Entry level,High School or equivalent,telecommunications,US,0
+sales,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,0other,GB,0
+unknown,UNKNOWN,positive,positive,positive,1,1,Part-time,Mid-Senior level,Bachelor's Degree,internet,GB,0
+unknown,UNKNOWN,positive,neutral,positive,1,1,Contract,Mid-Senior level,Bachelor's Degree,services,US,0
+unknown,less-5000,positive,positive,positive,1,1,Full-time,Entry level,High School or equivalent,telecommunications,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,positive,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,neutral,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+0other,more-50000,positive,positive,positive,0,0,Full-time,Director,Master's Degree,health,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,computer,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,oil,US,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,unknown,neutral,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+sales,UNKNOWN,positive,neutral,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,Full-time,Not Applicable,Unspecified,health,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,High School or equivalent,0other,GB,0
+0other,less-5000,neutral,positive,neutral,0,1,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,Not Applicable,High School or equivalent,unknown,GB,0
+sales,UNKNOWN,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,0other,GR,0
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,0other,GB,0
+unknown,UNKNOWN,positive,unknown,positive,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Unspecified,services,0other,0
+marketing,UNKNOWN,positive,positive,neutral,0,1,Full-time,Internship,UNKNOWN,computer,GB,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+unknown,less-5000,neutral,positive,positive,0,1,Full-time,UNKNOWN,Bachelor's Degree,services,GB,0
+unknown,more-50000,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+unknown,more-50000,positive,positive,unknown,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,internet,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,marketing,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,health,US,0
+unknown,more-50000,positive,unknown,positive,0,1,Full-time,Associate,UNKNOWN,0other,AU,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+sales,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Unspecified,services,US,0
+sales,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,Unspecified,services,GB,0
+0other,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,Bachelor's Degree,marketing,GR,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,0other,GB,0
+0other,more-50000,positive,positive,positive,0,1,Full-time,Not Applicable,Bachelor's Degree,services,NZ,0
+unknown,UNKNOWN,positive,positive,unknown,1,0,Part-time,Mid-Senior level,UNKNOWN,internet,US,0
+0other,more-50000,positive,unknown,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,computer,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,Full-time,Entry level,Unspecified,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,marketing,US,0
+unknown,UNKNOWN,positive,neutral,positive,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,0other,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Full-time,Not Applicable,Bachelor's Degree,0other,US,0
+0other,UNKNOWN,neutral,positive,negative,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+unknown,UNKNOWN,positive,positive,positive,1,1,Full-time,Mid-Senior level,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,0other,US,0
+0other,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,services,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,0other,health,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Unspecified,services,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,accounting,GR,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,UNKNOWN,computer,GB,0
+service,UNKNOWN,neutral,neutral,positive,0,1,Full-time,Associate,Bachelor's Degree,services,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,Full-time,UNKNOWN,Bachelor's Degree,0other,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+marketing,more-50000,positive,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,internet,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,internet,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,1,1,Contract,Mid-Senior level,Bachelor's Degree,internet,US,0
+0other,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+sales,more-50000,positive,positive,positive,0,1,Full-time,Not Applicable,High School or equivalent,0other,US,0
+sales,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,High School or equivalent,marketing,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,media,GR,0
+0other,UNKNOWN,positive,neutral,positive,0,1,Full-time,Associate,UNKNOWN,marketing,0other,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Full-time,UNKNOWN,Unspecified,computer,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Temporary,Internship,UNKNOWN,0other,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,media,DE,0
+0other,UNKNOWN,negative,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,GR,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Contract,UNKNOWN,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Temporary,Not Applicable,Unspecified,0other,GB,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Mid-Senior level,Unspecified,media,GB,0
+unknown,less-5000,positive,positive,unknown,0,1,Full-time,Mid-Senior level,Unspecified,services,0other,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Part-time,Associate,0other,health,US,0
+unknown,UNKNOWN,positive,neutral,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,0other,0other,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,internet,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,Part-time,Entry level,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Executive,UNKNOWN,health,US,0
+marketing,UNKNOWN,positive,neutral,unknown,0,1,Full-time,Not Applicable,Unspecified,services,DE,0
+unknown,UNKNOWN,positive,positive,unknown,0,1,Full-time,Associate,Unspecified,marketing,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,unknown,neutral,0,1,Full-time,Associate,High School or equivalent,health,US,0
+unknown,UNKNOWN,neutral,positive,neutral,0,1,Full-time,Mid-Senior level,UNKNOWN,health,0other,0
+unknown,UNKNOWN,positive,neutral,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Director,UNKNOWN,internet,GB,0
+sales,more-50000,positive,positive,positive,0,1,Full-time,UNKNOWN,Bachelor's Degree,marketing,US,0
+marketing,UNKNOWN,positive,positive,positive,0,1,Part-time,Internship,0other,computer,US,0
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,GR,0
+unknown,less-5000,positive,positive,unknown,0,0,Contract,Not Applicable,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,negative,positive,0,1,UNKNOWN,Not Applicable,High School or equivalent,unknown,GB,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,UNKNOWN,0other,US,0
+0other,5000-50000,positive,positive,neutral,0,1,Full-time,Associate,Bachelor's Degree,internet,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,UNKNOWN,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Master's Degree,computer,GB,0
+service,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+service,more-50000,positive,positive,positive,0,1,Full-time,Not Applicable,Bachelor's Degree,services,NZ,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Part-time,UNKNOWN,UNKNOWN,health,US,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,computer,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Part-time,Not Applicable,Unspecified,0other,GB,0
+marketing,UNKNOWN,positive,positive,positive,0,1,Other,Entry level,Bachelor's Degree,marketing,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Executive,Bachelor's Degree,0other,US,0
+0other,UNKNOWN,positive,positive,unknown,0,1,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Other,Entry level,Unspecified,0other,DE,0
+0other,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,UNKNOWN,services,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,High School or equivalent,0other,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,computer,US,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Associate,0other,0other,US,0
+marketing,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,unknown,DE,0
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,unknown,US,1
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Director,UNKNOWN,marketing,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,0other,health,US,0
+unknown,less-5000,positive,positive,positive,0,1,Part-time,Internship,0other,0other,NZ,0
+0other,less-5000,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,internet,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,0other,US,0
+unknown,UNKNOWN,positive,positive,neutral,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,positive,unknown,0,1,Full-time,Entry level,UNKNOWN,0other,0other,0
+marketing,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,NZ,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,health,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Unspecified,marketing,GB,0
+0other,UNKNOWN,neutral,neutral,positive,0,1,Full-time,Mid-Senior level,Master's Degree,services,US,0
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,services,GB,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,US,0
+0other,UNKNOWN,positive,neutral,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Contract,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,less-5000,positive,neutral,positive,0,1,Full-time,Associate,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,marketing,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Part-time,Associate,High School or equivalent,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,High School or equivalent,real,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,0other,unknown,US,0
+sales,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,telecommunications,0other,0
+service,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,oil,US,0
+unknown,UNKNOWN,positive,unknown,neutral,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,DE,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,neutral,positive,negative,0,1,Full-time,Associate,Bachelor's Degree,media,US,0
+unknown,less-5000,positive,unknown,neutral,0,1,Part-time,UNKNOWN,Unspecified,marketing,US,0
+engineering,UNKNOWN,positive,unknown,unknown,0,1,Full-time,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,negative,negative,positive,0,1,Contract,UNKNOWN,UNKNOWN,services,US,0
+0other,UNKNOWN,positive,positive,unknown,0,1,Full-time,Not Applicable,Unspecified,0other,GR,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+sales,UNKNOWN,positive,positive,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,Unspecified,media,AU,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Contract,Mid-Senior level,UNKNOWN,services,US,0
+sales,less-5000,positive,positive,unknown,0,0,Full-time,Associate,High School or equivalent,computer,US,0
+0other,UNKNOWN,positive,positive,positive,1,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,UNKNOWN,services,DE,0
+0other,UNKNOWN,positive,positive,neutral,0,1,Full-time,Mid-Senior level,UNKNOWN,internet,GB,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,unknown,positive,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,neutral,positive,0,1,Contract,Mid-Senior level,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,Not Applicable,High School or equivalent,0other,GB,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Unspecified,marketing,GR,0
+0other,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,Director,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,neutral,0,1,Full-time,UNKNOWN,UNKNOWN,services,GB,0
+0other,UNKNOWN,neutral,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Full-time,Entry level,UNKNOWN,0other,US,0
+0other,UNKNOWN,neutral,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,leisure,UNKNOWN,0
+0other,less-5000,positive,positive,positive,0,1,Full-time,Associate,UNKNOWN,0other,GB,0
+unknown,less-5000,positive,unknown,unknown,0,0,Full-time,Entry level,Bachelor's Degree,computer,US,0
+engineering,UNKNOWN,positive,positive,neutral,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Full-time,Associate,UNKNOWN,0other,US,0
+0other,UNKNOWN,positive,positive,neutral,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,UNKNOWN,unknown,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Master's Degree,telecommunications,0other,0
+0other,UNKNOWN,positive,positive,neutral,0,1,Full-time,Associate,Bachelor's Degree,0other,GB,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Mid-Senior level,UNKNOWN,services,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Unspecified,0other,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Unspecified,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,marketing,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,services,0other,0
+unknown,UNKNOWN,neutral,unknown,positive,0,1,Full-time,Associate,UNKNOWN,0other,US,0
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,internet,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,computer,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,UNKNOWN,services,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+unknown,more-50000,positive,positive,positive,0,1,Full-time,Not Applicable,UNKNOWN,internet,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,real,US,0
+unknown,UNKNOWN,positive,neutral,negative,0,1,Full-time,UNKNOWN,UNKNOWN,services,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Contract,UNKNOWN,UNKNOWN,services,US,0
+0other,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Contract,Mid-Senior level,Unspecified,computer,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,0other,GR,0
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Director,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,more-50000,positive,positive,positive,0,1,Part-time,Associate,Bachelor's Degree,leisure,GR,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,Unspecified,leisure,GB,0
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,neutral,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,UNKNOWN,accounting,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,0other,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,High School or equivalent,accounting,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Full-time,Entry level,0other,0other,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,Unspecified,0other,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,UNKNOWN,accounting,US,1
+0other,less-5000,positive,positive,unknown,0,0,Other,Entry level,High School or equivalent,accounting,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Full-time,Not Applicable,UNKNOWN,0other,0other,1
+sales,UNKNOWN,neutral,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Part-time,Not Applicable,Unspecified,marketing,AU,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+sales,more-50000,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Unspecified,accounting,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,1,0,Full-time,Entry level,Unspecified,accounting,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,0other,US,1
+unknown,less-5000,neutral,positive,unknown,1,0,Full-time,Entry level,High School or equivalent,0other,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+service,UNKNOWN,positive,unknown,negative,0,1,Contract,Not Applicable,Unspecified,telecommunications,US,1
+0other,UNKNOWN,positive,positive,unknown,0,0,Full-time,Mid-Senior level,0other,0other,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,positive,positive,positive,1,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+service,UNKNOWN,neutral,unknown,unknown,0,0,Full-time,Not Applicable,Unspecified,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,neutral,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,neutral,unknown,0,0,Part-time,Not Applicable,Unspecified,0other,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+service,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,0other,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,0other,AU,1
+0other,UNKNOWN,neutral,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,health,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+service,UNKNOWN,negative,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,neutral,neutral,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,0other,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,1
+sales,UNKNOWN,positive,neutral,positive,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,High School or equivalent,0other,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Other,Not Applicable,Unspecified,marketing,US,1
+sales,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,oil,US,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,Bachelor's Degree,telecommunications,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,accounting,AU,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,marketing,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,accounting,US,1
+unknown,less-5000,positive,neutral,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,telecommunications,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+0other,less-5000,neutral,negative,unknown,0,0,Full-time,Entry level,High School or equivalent,0other,0other,1
+0other,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Contract,UNKNOWN,UNKNOWN,real,US,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,Associate,0other,services,US,1
+unknown,less-5000,positive,unknown,unknown,0,0,Full-time,Director,Bachelor's Degree,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,services,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+0other,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Contract,UNKNOWN,UNKNOWN,real,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,services,GB,1
+sales,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+0other,less-5000,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,neutral,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+0other,UNKNOWN,positive,positive,positive,1,1,Part-time,UNKNOWN,High School or equivalent,telecommunications,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+unknown,less-5000,neutral,positive,unknown,0,0,Part-time,Not Applicable,Unspecified,marketing,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,less-5000,negative,neutral,unknown,0,0,Contract,Internship,UNKNOWN,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,5000-50000,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+0other,UNKNOWN,neutral,positive,positive,0,1,Full-time,Mid-Senior level,0other,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,accounting,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,positive,negative,unknown,0,0,Full-time,Entry level,High School or equivalent,telecommunications,US,1
+0other,less-5000,positive,neutral,unknown,0,0,Part-time,Entry level,Unspecified,services,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Associate,0other,0other,GB,1
+sales,less-5000,positive,neutral,positive,1,1,Full-time,Entry level,High School or equivalent,real,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,less-5000,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,services,US,1
+0other,UNKNOWN,neutral,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,less-5000,positive,neutral,unknown,0,0,Full-time,Entry level,0other,oil,GB,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,marketing,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,accounting,AU,1
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,neutral,negative,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,more-50000,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Master's Degree,0other,US,1
+0other,UNKNOWN,positive,positive,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,accounting,US,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,accounting,US,1
+unknown,UNKNOWN,positive,positive,positive,0,0,Contract,Entry level,Unspecified,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,0other,US,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,Unspecified,accounting,US,1
+0other,less-5000,neutral,positive,unknown,0,0,Full-time,Entry level,Unspecified,accounting,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,UNKNOWN,unknown,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Other,UNKNOWN,Unspecified,marketing,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,1,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+sales,more-50000,positive,positive,unknown,0,0,Contract,Associate,High School or equivalent,marketing,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Contract,UNKNOWN,UNKNOWN,real,US,1
+0other,less-5000,positive,positive,unknown,0,0,Other,Entry level,High School or equivalent,accounting,US,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,UNKNOWN,Unspecified,accounting,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,1,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,0,0,Full-time,Entry level,High School or equivalent,accounting,US,1
+0other,less-5000,neutral,negative,unknown,1,0,Full-time,Executive,Master's Degree,services,US,1
+0other,UNKNOWN,positive,positive,unknown,0,1,Other,Internship,High School or equivalent,0other,US,1
+sales,UNKNOWN,positive,unknown,unknown,0,1,Full-time,Not Applicable,High School or equivalent,0other,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,services,US,1
+service,less-5000,positive,positive,positive,1,1,Full-time,Entry level,High School or equivalent,real,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,accounting,US,1
+service,UNKNOWN,positive,unknown,negative,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,1,Other,Internship,High School or equivalent,0other,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Part-time,UNKNOWN,High School or equivalent,accounting,AU,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Part-time,Not Applicable,High School or equivalent,marketing,US,1
+0other,less-5000,positive,positive,unknown,0,0,Part-time,Entry level,High School or equivalent,real,US,1
+0other,UNKNOWN,positive,positive,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,Unspecified,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,leisure,US,1
+0other,UNKNOWN,positive,positive,unknown,1,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,marketing,US,1
+unknown,more-50000,positive,positive,positive,0,0,Full-time,Entry level,High School or equivalent,0other,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,accounting,US,1
+clerical,UNKNOWN,positive,unknown,unknown,0,0,Temporary,Entry level,Unspecified,telecommunications,US,1
+service,less-5000,positive,positive,positive,1,1,Full-time,Entry level,High School or equivalent,real,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,telecommunications,US,1
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,accounting,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,Not Applicable,UNKNOWN,unknown,US,1
+unknown,more-50000,positive,positive,positive,0,1,Full-time,Entry level,High School or equivalent,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Other,Not Applicable,Unspecified,marketing,AU,1
+unknown,less-5000,positive,unknown,unknown,0,0,Full-time,Entry level,0other,accounting,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,computer,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Unspecified,media,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+0other,UNKNOWN,neutral,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,0other,0other,1
+unknown,less-5000,positive,positive,unknown,0,0,Part-time,Entry level,0other,accounting,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,accounting,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Not Applicable,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,neutral,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,oil,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Associate,UNKNOWN,accounting,US,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Associate,Bachelor's Degree,oil,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+0other,UNKNOWN,neutral,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+unknown,more-50000,positive,positive,unknown,0,0,Contract,Executive,UNKNOWN,0other,0other,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,less-5000,positive,positive,unknown,1,0,Contract,Entry level,High School or equivalent,services,AU,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,0other,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+sales,UNKNOWN,positive,positive,unknown,0,0,Part-time,UNKNOWN,High School or equivalent,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,0other,GB,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,0other,US,1
+unknown,less-5000,neutral,positive,unknown,0,1,Full-time,Entry level,High School or equivalent,services,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,health,US,1
+unknown,UNKNOWN,positive,unknown,unknown,1,0,Full-time,Entry level,Unspecified,telecommunications,UNKNOWN,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+unknown,less-5000,positive,unknown,unknown,0,0,Full-time,Mid-Senior level,UNKNOWN,services,US,1
+service,less-5000,positive,positive,positive,1,1,Full-time,Entry level,High School or equivalent,real,US,1
+unknown,UNKNOWN,positive,neutral,unknown,0,0,Full-time,Entry level,UNKNOWN,0other,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,computer,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Part-time,Entry level,UNKNOWN,media,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,Unspecified,health,US,1
+unknown,less-5000,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,0other,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+unknown,less-5000,positive,positive,unknown,0,0,Other,Not Applicable,Unspecified,0other,GB,1
+unknown,UNKNOWN,positive,neutral,unknown,0,0,UNKNOWN,Entry level,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,1
+unknown,UNKNOWN,neutral,neutral,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,0other,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,negative,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,media,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+0other,less-5000,positive,unknown,unknown,0,0,Part-time,Not Applicable,Unspecified,accounting,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,1,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,neutral,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,health,UNKNOWN,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,Bachelor's Degree,telecommunications,US,1
+0other,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,unknown,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Internship,High School or equivalent,accounting,US,1
+unknown,less-5000,positive,negative,unknown,0,0,Full-time,Entry level,High School or equivalent,telecommunications,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Part-time,Entry level,Master's Degree,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,neutral,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,0other,US,0
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+0other,less-5000,positive,positive,unknown,1,1,Full-time,UNKNOWN,Bachelor's Degree,oil,US,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,marketing,US,0
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,negative,positive,0,1,Full-time,Internship,High School or equivalent,0other,GB,0
+unknown,more-50000,positive,positive,positive,0,1,Full-time,Associate,Unspecified,services,AU,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Other,Mid-Senior level,Bachelor's Degree,0other,GR,0
+service,UNKNOWN,positive,positive,positive,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,AU,0
+unknown,UNKNOWN,negative,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,services,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,0other,GB,0
+0other,UNKNOWN,neutral,positive,positive,0,1,Full-time,Internship,Bachelor's Degree,0other,GB,0
+unknown,UNKNOWN,negative,positive,unknown,0,0,Part-time,Internship,High School or equivalent,marketing,US,1
+unknown,more-50000,positive,positive,positive,0,1,Full-time,UNKNOWN,Bachelor's Degree,unknown,0other,0
+sales,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+unknown,UNKNOWN,positive,negative,positive,0,1,UNKNOWN,Not Applicable,High School or equivalent,unknown,GB,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Temporary,UNKNOWN,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,High School or equivalent,marketing,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,UNKNOWN,telecommunications,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,less-5000,neutral,positive,positive,0,1,Full-time,Entry level,High School or equivalent,health,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,computer,0other,0
+unknown,UNKNOWN,neutral,positive,negative,0,1,Full-time,UNKNOWN,Bachelor's Degree,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,High School or equivalent,unknown,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,services,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+0other,UNKNOWN,positive,positive,positive,0,1,Other,Internship,UNKNOWN,0other,GB,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Temporary,UNKNOWN,UNKNOWN,services,0other,0
+unknown,UNKNOWN,positive,unknown,positive,0,0,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+0other,UNKNOWN,neutral,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Part-time,Entry level,High School or equivalent,services,US,0
+0other,more-50000,positive,positive,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,real,US,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Executive,Master's Degree,health,US,0
+unknown,more-50000,positive,unknown,unknown,0,0,Full-time,Entry level,High School or equivalent,services,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,internet,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,0other,NZ,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,High School or equivalent,unknown,GB,0
+unknown,UNKNOWN,positive,neutral,positive,0,1,Full-time,UNKNOWN,0other,health,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Part-time,Internship,Unspecified,internet,US,0
+unknown,more-50000,negative,positive,unknown,0,0,Full-time,Associate,0other,0other,US,0
+unknown,more-50000,positive,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,0other,US,0
+sales,less-5000,positive,positive,positive,0,1,Full-time,Not Applicable,UNKNOWN,0other,US,0
+unknown,UNKNOWN,negative,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Internship,Bachelor's Degree,internet,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,0other,0
+0other,UNKNOWN,positive,positive,positive,0,1,Part-time,Not Applicable,High School or equivalent,0other,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Director,UNKNOWN,internet,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Unspecified,0other,US,0
+unknown,less-5000,positive,positive,unknown,0,1,Full-time,Mid-Senior level,Bachelor's Degree,services,0other,0
+unknown,UNKNOWN,positive,positive,neutral,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,positive,neutral,unknown,0,0,Full-time,Mid-Senior level,Bachelor's Degree,computer,US,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Entry level,0other,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,0
+unknown,more-50000,negative,positive,positive,0,0,Full-time,Mid-Senior level,Bachelor's Degree,services,NZ,0
+0other,more-50000,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,telecommunications,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,UNKNOWN,UNKNOWN,oil,US,0
+unknown,UNKNOWN,positive,positive,neutral,0,1,Temporary,Mid-Senior level,UNKNOWN,unknown,NZ,0
+unknown,UNKNOWN,positive,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Associate,Unspecified,services,US,0
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,positive,neutral,0,1,Contract,Entry level,Unspecified,0other,0other,0
+unknown,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,Bachelor's Degree,0other,US,0
+unknown,less-5000,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,media,GB,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Not Applicable,Unspecified,services,GR,0
+0other,UNKNOWN,negative,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,oil,US,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,0other,0
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,Entry level,UNKNOWN,accounting,US,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Bachelor's Degree,computer,0other,0
+unknown,UNKNOWN,positive,unknown,positive,0,1,Part-time,UNKNOWN,UNKNOWN,unknown,US,0
+0other,UNKNOWN,positive,unknown,positive,0,1,Temporary,Internship,UNKNOWN,0other,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,UNKNOWN,0other,US,0
+unknown,less-5000,positive,positive,neutral,0,0,Full-time,Mid-Senior level,Bachelor's Degree,0other,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,UNKNOWN,oil,US,0
+0other,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Unspecified,computer,US,0
+unknown,UNKNOWN,neutral,positive,positive,0,1,Full-time,Associate,Bachelor's Degree,health,US,0
+0other,UNKNOWN,neutral,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GR,0
+unknown,UNKNOWN,positive,positive,neutral,0,1,Full-time,Mid-Senior level,Bachelor's Degree,0other,US,0
+unknown,UNKNOWN,positive,neutral,positive,0,1,Full-time,Associate,Unspecified,marketing,US,0
+0other,less-5000,positive,positive,positive,0,1,Contract,Mid-Senior level,Bachelor's Degree,0other,NZ,0
+0other,UNKNOWN,neutral,positive,positive,0,1,Full-time,UNKNOWN,Bachelor's Degree,computer,0other,0
+unknown,UNKNOWN,positive,positive,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,0
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Mid-Senior level,Master's Degree,unknown,0other,0
+sales,UNKNOWN,positive,positive,positive,0,1,Full-time,Entry level,Bachelor's Degree,computer,US,0
+unknown,UNKNOWN,positive,positive,positive,1,1,Full-time,Associate,Bachelor's Degree,services,US,0
+unknown,UNKNOWN,positive,neutral,positive,0,1,Contract,Mid-Senior level,UNKNOWN,unknown,US,0
+sales,UNKNOWN,positive,positive,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+0other,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,less-5000,positive,positive,positive,0,0,Full-time,Entry level,High School or equivalent,health,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+0other,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,Master's Degree,computer,0other,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,less-5000,positive,negative,unknown,0,0,Full-time,Not Applicable,Unspecified,0other,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,accounting,US,1
+unknown,less-5000,neutral,positive,unknown,0,1,Full-time,Entry level,High School or equivalent,services,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,positive,positive,positive,0,1,Full-time,Associate,High School or equivalent,services,US,1
+0other,UNKNOWN,neutral,positive,unknown,0,0,Full-time,Associate,High School or equivalent,services,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,neutral,negative,unknown,0,0,Full-time,UNKNOWN,Bachelor's Degree,unknown,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,services,AU,1
+clerical,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,accounting,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,AU,1
+marketing,UNKNOWN,neutral,positive,unknown,0,0,Full-time,Not Applicable,UNKNOWN,marketing,US,1
+0other,less-5000,positive,positive,unknown,0,0,Full-time,Entry level,Bachelor's Degree,telecommunications,US,1
+0other,UNKNOWN,positive,positive,unknown,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,negative,positive,unknown,0,1,Full-time,Entry level,High School or equivalent,services,US,1
+clerical,UNKNOWN,neutral,neutral,unknown,1,0,Other,Entry level,High School or equivalent,computer,US,1
+unknown,UNKNOWN,positive,neutral,unknown,0,0,Contract,Mid-Senior level,UNKNOWN,services,US,1
+unknown,UNKNOWN,negative,unknown,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,negative,unknown,1,0,UNKNOWN,Entry level,Some High School Coursework,unknown,US,1
+engineering,UNKNOWN,positive,positive,positive,0,1,Full-time,Director,Master's Degree,0other,US,1
+unknown,UNKNOWN,neutral,positive,unknown,0,0,Part-time,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,positive,positive,unknown,1,0,Part-time,Entry level,0other,accounting,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,leisure,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,GB,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,services,GB,1
+service,UNKNOWN,positive,unknown,positive,0,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Part-time,Not Applicable,UNKNOWN,services,AU,1
+service,UNKNOWN,positive,unknown,negative,0,1,Contract,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,Full-time,UNKNOWN,UNKNOWN,health,US,1
+unknown,UNKNOWN,positive,negative,unknown,0,0,Other,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,more-50000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,marketing,US,1
+0other,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,UNKNOWN,accounting,US,1
+unknown,less-5000,positive,positive,unknown,0,0,Full-time,Not Applicable,Unspecified,0other,US,1
+unknown,more-50000,positive,positive,positive,0,0,Full-time,Entry level,High School or equivalent,0other,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,positive,positive,positive,0,0,Full-time,Entry level,High School or equivalent,services,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,UNKNOWN,1
+clerical,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+unknown,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,accounting,US,1
+unknown,UNKNOWN,negative,positive,unknown,0,0,Part-time,Entry level,High School or equivalent,marketing,US,1
+unknown,UNKNOWN,positive,unknown,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,negative,positive,positive,1,1,UNKNOWN,UNKNOWN,UNKNOWN,unknown,US,1
+0other,UNKNOWN,positive,positive,unknown,0,0,Full-time,Entry level,High School or equivalent,health,US,1
+sales,UNKNOWN,positive,positive,unknown,0,0,UNKNOWN,UNKNOWN,UNKNOWN,unknown,AU,1

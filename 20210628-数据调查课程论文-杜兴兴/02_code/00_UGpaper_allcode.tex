@@ -1,0 +1,1353 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\author{}
+\date{}
+
+\begin{document}
+
+导入包、模块
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 基础}
+\ImportTok{import}\NormalTok{ os}
+\ImportTok{import}\NormalTok{ zipfile}
+\ImportTok{import}\NormalTok{ numpy }\ImportTok{as}\NormalTok{ np}
+\ImportTok{import}\NormalTok{ pandas }\ImportTok{as}\NormalTok{ pd}
+\CommentTok{\# 画图}
+\ImportTok{import}\NormalTok{ seaborn }\ImportTok{as}\NormalTok{ sns}
+\ImportTok{import}\NormalTok{ matplotlib.pyplot }\ImportTok{as}\NormalTok{ plt}
+\ImportTok{from}\NormalTok{ matplotlib }\ImportTok{import}\NormalTok{ font\_manager }\ImportTok{as}\NormalTok{ fm}
+\ImportTok{from}\NormalTok{ matplotlib }\ImportTok{import}\NormalTok{ cm}
+\OperatorTok{\%}\NormalTok{ matplotlib inline}
+\NormalTok{plt.style.use(}\StringTok{\textquotesingle{}ggplot\textquotesingle{}}\NormalTok{)}
+\CommentTok{\# 中文图输出}
+\ImportTok{from}\NormalTok{ pylab }\ImportTok{import}\NormalTok{ mpl}
+\NormalTok{mpl.rcParams[}\StringTok{\textquotesingle{}font.sans{-}serif\textquotesingle{}}\NormalTok{] }\OperatorTok{=}\NormalTok{ [}\StringTok{\textquotesingle{}STZhongsong\textquotesingle{}}\NormalTok{]    }\CommentTok{\# 指定默认字体：解决plot不能显示中文问题}
+\NormalTok{mpl.rcParams[}\StringTok{\textquotesingle{}axes.unicode\_minus\textquotesingle{}}\NormalTok{] }\OperatorTok{=} \VariableTok{False}           \CommentTok{\# 解决保存图像是负号\textquotesingle{}{-}\textquotesingle{}显示为方块的问题}
+\CommentTok{\# 数据集归一化}
+\ImportTok{from}\NormalTok{ sklearn }\ImportTok{import}\NormalTok{ datasets}
+\ImportTok{from}\NormalTok{ sklearn }\ImportTok{import}\NormalTok{ preprocessing}
+\CommentTok{\#切割训练数据和样本数据}
+\ImportTok{from}\NormalTok{ sklearn.model\_selection }\ImportTok{import}\NormalTok{ train\_test\_split}
+\ImportTok{from}\NormalTok{ sklearn.model\_selection }\ImportTok{import}\NormalTok{ cross\_val\_score}
+\ImportTok{from}\NormalTok{ sklearn.model\_selection }\ImportTok{import}\NormalTok{ StratifiedKFold,cross\_val\_score}
+\CommentTok{\# 模型}
+\ImportTok{from}\NormalTok{ sklearn.neighbors }\ImportTok{import}\NormalTok{ KNeighborsClassifier}
+\ImportTok{from}\NormalTok{ sklearn.neural\_network }\ImportTok{import}\NormalTok{ MLPClassifier}
+\ImportTok{from}\NormalTok{ sklearn.ensemble }\ImportTok{import}\NormalTok{ RandomForestClassifier}
+\ImportTok{from}\NormalTok{ sklearn.svm }\ImportTok{import}\NormalTok{ SVC}
+\ImportTok{from}\NormalTok{ sklearn.tree }\ImportTok{import}\NormalTok{ DecisionTreeClassifier}
+\ImportTok{from}\NormalTok{ sklearn.linear\_model }\ImportTok{import}\NormalTok{ LogisticRegression}
+\CommentTok{\# from sklearn.metrics import mean\_squared\_error}
+\ImportTok{from}\NormalTok{ sklearn.metrics }\ImportTok{import} \OperatorTok{*}
+\CommentTok{\# 导出决策树}
+\ImportTok{import}\NormalTok{ graphviz}
+\ImportTok{import}\NormalTok{ pydotplus}
+\ImportTok{from}\NormalTok{ sklearn.tree }\ImportTok{import}\NormalTok{ export\_graphviz}
+\ImportTok{from}\NormalTok{ sklearn.externals.six }\ImportTok{import}\NormalTok{ StringIO}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n194}{%
+\subsubsection{定义全局函数}\label{header-n194}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 定义一个路径引用的函数}
+\KeywordTok{def}\NormalTok{ file\_path(dir\_path,dir\_name):}
+\NormalTok{    con\_path }\OperatorTok{=} \StringTok{"D:}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{onedrive}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{02\_work}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{01\_ScienceResearch}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{01\_undergraduate\_thesis}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{01\_data}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{"}
+\NormalTok{    path }\OperatorTok{=}\NormalTok{ os.path.join(con\_path,dir\_path,dir\_name)}
+    \ControlFlowTok{return}\NormalTok{ path}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n197}{%
+\subsection{导入原始数据}\label{header-n197}}
+
+\hypertarget{header-n198}{%
+\subsubsection{对2010-2016年经济指标文件解压}\label{header-n198}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 对2010{-}2016年经济指标文件解压}
+\KeywordTok{def}\NormalTok{ unzip\_file(path,zip\_name):}
+    \ControlFlowTok{for} \BuiltInTok{file} \KeywordTok{in}\NormalTok{ os.listdir(path):}
+\NormalTok{        file\_path}\OperatorTok{=}\NormalTok{os.path.join(path,}\BuiltInTok{file}\NormalTok{)}
+        \ControlFlowTok{if}\NormalTok{ os.path.splitext(file\_path)[}\DecValTok{1}\NormalTok{]}\OperatorTok{==}\NormalTok{zip\_name:}
+\NormalTok{            fz}\OperatorTok{=}\NormalTok{zipfile.ZipFile(file\_path,}\StringTok{\textquotesingle{}r\textquotesingle{}}\NormalTok{)}
+            \ControlFlowTok{for}\NormalTok{ zip\_file }\KeywordTok{in}\NormalTok{ fz.namelist():}
+\NormalTok{                fz.extract(zip\_file,path)}
+\NormalTok{unzip\_file(}\StringTok{"D:}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{onedrive}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{02\_work}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{01\_ScienceResearch}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{01\_undergraduate\_thesis}\CharTok{\textbackslash{}\textbackslash{}}\StringTok{01\_data"}\NormalTok{,}\StringTok{".zip"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n201}{%
+\subsubsection{读入数据}\label{header-n201}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 去掉各个变量的标签}
+\NormalTok{pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_10\_5YR\_DP02\_with\_ann.csv"}\NormalTok{))[}\DecValTok{1}\NormalTok{:].to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_10\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_11\_5YR\_DP02\_with\_ann.csv"}\NormalTok{))[}\DecValTok{1}\NormalTok{:].to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_11\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_12\_5YR\_DP02\_with\_ann.csv"}\NormalTok{))[}\DecValTok{1}\NormalTok{:].to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_12\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_13\_5YR\_DP02\_with\_ann.csv"}\NormalTok{))[}\DecValTok{1}\NormalTok{:].to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_13\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_14\_5YR\_DP02\_with\_ann.csv"}\NormalTok{))[}\DecValTok{1}\NormalTok{:].to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_14\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_15\_5YR\_DP02\_with\_ann.csv"}\NormalTok{))[}\DecValTok{1}\NormalTok{:].to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_15\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_16\_5YR\_DP02\_with\_ann.csv"}\NormalTok{))[}\DecValTok{1}\NormalTok{:].to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_16\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\CommentTok{\# 读入2010{-}2016年经济指标数据}
+\NormalTok{ACS\_10\_5YR\_DP02\_with\_ann }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_10\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),na\_values}\OperatorTok{=}\NormalTok{[}\StringTok{"(X)"}\NormalTok{,}\StringTok{"*****"}\NormalTok{,}\StringTok{"***"}\NormalTok{,}\StringTok{"**"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{,}\StringTok{"+"}\NormalTok{,}\StringTok{"N"}\NormalTok{])}
+\NormalTok{ACS\_11\_5YR\_DP02\_with\_ann }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_11\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),na\_values}\OperatorTok{=}\NormalTok{[}\StringTok{"(X)"}\NormalTok{,}\StringTok{"*****"}\NormalTok{,}\StringTok{"***"}\NormalTok{,}\StringTok{"**"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{,}\StringTok{"+"}\NormalTok{,}\StringTok{"N"}\NormalTok{])}
+\NormalTok{ACS\_12\_5YR\_DP02\_with\_ann }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_12\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),na\_values}\OperatorTok{=}\NormalTok{[}\StringTok{"(X)"}\NormalTok{,}\StringTok{"*****"}\NormalTok{,}\StringTok{"***"}\NormalTok{,}\StringTok{"**"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{,}\StringTok{"+"}\NormalTok{,}\StringTok{"N"}\NormalTok{])}
+\NormalTok{ACS\_13\_5YR\_DP02\_with\_ann }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_13\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),na\_values}\OperatorTok{=}\NormalTok{[}\StringTok{"(X)"}\NormalTok{,}\StringTok{"*****"}\NormalTok{,}\StringTok{"***"}\NormalTok{,}\StringTok{"**"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{,}\StringTok{"+"}\NormalTok{,}\StringTok{"N"}\NormalTok{])}
+\NormalTok{ACS\_14\_5YR\_DP02\_with\_ann }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_14\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),na\_values}\OperatorTok{=}\NormalTok{[}\StringTok{"(X)"}\NormalTok{,}\StringTok{"*****"}\NormalTok{,}\StringTok{"***"}\NormalTok{,}\StringTok{"**"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{,}\StringTok{"+"}\NormalTok{,}\StringTok{"N"}\NormalTok{])}
+\NormalTok{ACS\_15\_5YR\_DP02\_with\_ann }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_15\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),na\_values}\OperatorTok{=}\NormalTok{[}\StringTok{"(X)"}\NormalTok{,}\StringTok{"*****"}\NormalTok{,}\StringTok{"***"}\NormalTok{,}\StringTok{"**"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{,}\StringTok{"+"}\NormalTok{,}\StringTok{"N"}\NormalTok{])}
+\NormalTok{ACS\_16\_5YR\_DP02\_with\_ann }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_16\_5YR\_DP02\_with\_ann.csv"}\NormalTok{),na\_values}\OperatorTok{=}\NormalTok{[}\StringTok{"(X)"}\NormalTok{,}\StringTok{"*****"}\NormalTok{,}\StringTok{"***"}\NormalTok{,}\StringTok{"**"}\NormalTok{,}\StringTok{"{-}"}\NormalTok{,}\StringTok{"+"}\NormalTok{,}\StringTok{"N"}\NormalTok{])}
+\CommentTok{\# \# 读入各个地区阿片类使用量数据}
+\NormalTok{MCM\_NFLIS\_Data}\OperatorTok{=}\NormalTok{pd.read\_excel(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"MCM\_NFLIS\_Data.xlsx"}\NormalTok{),sheet\_name}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# \# 读入药物具体分类数据}
+\NormalTok{MCM\_NFLIS\_Medication}\OperatorTok{=}\NormalTok{pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"class\_medication.csv"}\NormalTok{))}
+\CommentTok{\# 读入变量标签数据}
+\NormalTok{ACS\_10\_5YR\_DP02\_metadata }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_10\_5YR\_DP02\_metadata.csv"}\NormalTok{),header}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+\NormalTok{ACS\_11\_5YR\_DP02\_metadata }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_11\_5YR\_DP02\_metadata.csv"}\NormalTok{),header}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+\NormalTok{ACS\_12\_5YR\_DP02\_metadata }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_12\_5YR\_DP02\_metadata.csv"}\NormalTok{),header}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+\NormalTok{ACS\_13\_5YR\_DP02\_metadata }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_13\_5YR\_DP02\_metadata.csv"}\NormalTok{),header}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+\NormalTok{ACS\_14\_5YR\_DP02\_metadata }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_14\_5YR\_DP02\_metadata.csv"}\NormalTok{),header}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+\NormalTok{ACS\_15\_5YR\_DP02\_metadata }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_15\_5YR\_DP02\_metadata.csv"}\NormalTok{),header}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+\NormalTok{ACS\_16\_5YR\_DP02\_metadata }\OperatorTok{=}\NormalTok{ pd.read\_csv(file\_path(}\StringTok{"01\_rawdata"}\NormalTok{,}\StringTok{"ACS\_16\_5YR\_DP02\_metadata.csv"}\NormalTok{),header}\OperatorTok{=}\VariableTok{None}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n204}{%
+\subsection{数据处理}\label{header-n204}}
+
+\hypertarget{header-n205}{%
+\subsubsection{\texorpdfstring{整理ACS\emph{ALL}5YR\_DP02数据}{整理ACSALL5YR\_DP02数据}}\label{header-n205}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\#  处理无效数据}
+\CommentTok{\# 2010}
+\CommentTok{\# 删除类型异常的变量（NaN、（x））}
+\NormalTok{typedata }\OperatorTok{=}\NormalTok{ ACS\_10\_5YR\_DP02\_with\_ann.dtypes.reset\_index()}
+\NormalTok{nonnormal\_var }\OperatorTok{=}\NormalTok{ typedata.loc[typedata.ix[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{==} \StringTok{"object"}\NormalTok{][}\StringTok{"index"}\NormalTok{][}\DecValTok{2}\NormalTok{:].tolist()}
+\NormalTok{ACS\_10\_5YR\_DP02\_DropNorm }\OperatorTok{=}\NormalTok{ ACS\_10\_5YR\_DP02\_with\_ann.drop(nonnormal\_var,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 删除全为空的变量（列）}
+\NormalTok{ACS\_10\_5YR\_DP02\_DropColumn}\OperatorTok{=}\NormalTok{ACS\_10\_5YR\_DP02\_DropNorm.dropna(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,how}\OperatorTok{=}\StringTok{"all"}\NormalTok{)}
+\CommentTok{\# 用列均值填补缺失数据}
+\ControlFlowTok{for}\NormalTok{ column }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(ACS\_10\_5YR\_DP02\_DropColumn.columns[ACS\_10\_5YR\_DP02\_DropColumn.isnull().}\BuiltInTok{sum}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{]):}
+\NormalTok{    mean\_val }\OperatorTok{=}\NormalTok{ ACS\_10\_5YR\_DP02\_DropColumn[column].mean()}
+\NormalTok{    ACS\_10\_5YR\_DP02\_DropColumn[column].fillna(mean\_val, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# 2011}
+\CommentTok{\# 删除类型异常的变量（NaN、（x））}
+\NormalTok{typedata }\OperatorTok{=}\NormalTok{ ACS\_11\_5YR\_DP02\_with\_ann.dtypes.reset\_index()}
+\NormalTok{nonnormal\_var }\OperatorTok{=}\NormalTok{ typedata.loc[typedata.ix[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{==} \StringTok{"object"}\NormalTok{][}\StringTok{"index"}\NormalTok{][}\DecValTok{2}\NormalTok{:].tolist()}
+\NormalTok{ACS\_11\_5YR\_DP02\_DropNorm }\OperatorTok{=}\NormalTok{ ACS\_11\_5YR\_DP02\_with\_ann.drop(nonnormal\_var,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 删除全为空的变量（列）}
+\NormalTok{ACS\_11\_5YR\_DP02\_DropColumn}\OperatorTok{=}\NormalTok{ACS\_11\_5YR\_DP02\_DropNorm.dropna(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,how}\OperatorTok{=}\StringTok{"all"}\NormalTok{)}
+\CommentTok{\# 用列均值填补缺失数据}
+\ControlFlowTok{for}\NormalTok{ column }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(ACS\_11\_5YR\_DP02\_DropColumn.columns[ACS\_11\_5YR\_DP02\_DropColumn.isnull().}\BuiltInTok{sum}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{]):}
+\NormalTok{    mean\_val }\OperatorTok{=}\NormalTok{ ACS\_11\_5YR\_DP02\_DropColumn[column].mean()}
+\NormalTok{    ACS\_11\_5YR\_DP02\_DropColumn[column].fillna(mean\_val, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# 2012}
+\CommentTok{\# 删除类型异常的变量（NaN、（x））}
+\NormalTok{typedata }\OperatorTok{=}\NormalTok{ ACS\_12\_5YR\_DP02\_with\_ann.dtypes.reset\_index()}
+\NormalTok{nonnormal\_var }\OperatorTok{=}\NormalTok{ typedata.loc[typedata.ix[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{==} \StringTok{"object"}\NormalTok{][}\StringTok{"index"}\NormalTok{][}\DecValTok{2}\NormalTok{:].tolist()}
+\NormalTok{ACS\_12\_5YR\_DP02\_DropNorm }\OperatorTok{=}\NormalTok{ ACS\_12\_5YR\_DP02\_with\_ann.drop(nonnormal\_var,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 删除全为空的变量（列）}
+\NormalTok{ACS\_12\_5YR\_DP02\_DropColumn}\OperatorTok{=}\NormalTok{ACS\_12\_5YR\_DP02\_DropNorm.dropna(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,how}\OperatorTok{=}\StringTok{"all"}\NormalTok{)}
+\CommentTok{\# 用列均值填补缺失数据}
+\ControlFlowTok{for}\NormalTok{ column }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(ACS\_12\_5YR\_DP02\_DropColumn.columns[ACS\_12\_5YR\_DP02\_DropColumn.isnull().}\BuiltInTok{sum}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{]):}
+\NormalTok{    mean\_val }\OperatorTok{=}\NormalTok{ ACS\_12\_5YR\_DP02\_DropColumn[column].mean()}
+\NormalTok{    ACS\_12\_5YR\_DP02\_DropColumn[column].fillna(mean\_val, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# 2013}
+\CommentTok{\# 删除类型异常的变量（NaN、（x））}
+\NormalTok{typedata }\OperatorTok{=}\NormalTok{ ACS\_13\_5YR\_DP02\_with\_ann.dtypes.reset\_index()}
+\NormalTok{nonnormal\_var }\OperatorTok{=}\NormalTok{ typedata.loc[typedata.ix[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{==} \StringTok{"object"}\NormalTok{][}\StringTok{"index"}\NormalTok{][}\DecValTok{2}\NormalTok{:].tolist()}
+\NormalTok{ACS\_13\_5YR\_DP02\_DropNorm }\OperatorTok{=}\NormalTok{ ACS\_13\_5YR\_DP02\_with\_ann.drop(nonnormal\_var,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 删除全为空的变量（列）}
+\NormalTok{ACS\_13\_5YR\_DP02\_DropColumn}\OperatorTok{=}\NormalTok{ACS\_13\_5YR\_DP02\_DropNorm.dropna(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,how}\OperatorTok{=}\StringTok{"all"}\NormalTok{)}
+\CommentTok{\# 用列均值填补缺失数据}
+\ControlFlowTok{for}\NormalTok{ column }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(ACS\_13\_5YR\_DP02\_DropColumn.columns[ACS\_13\_5YR\_DP02\_DropColumn.isnull().}\BuiltInTok{sum}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{]):}
+\NormalTok{    mean\_val }\OperatorTok{=}\NormalTok{ ACS\_13\_5YR\_DP02\_DropColumn[column].mean()}
+\NormalTok{    ACS\_13\_5YR\_DP02\_DropColumn[column].fillna(mean\_val, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# 2013}
+\CommentTok{\# 删除类型异常的变量（NaN、（x））}
+\NormalTok{typedata }\OperatorTok{=}\NormalTok{ ACS\_14\_5YR\_DP02\_with\_ann.dtypes.reset\_index()}
+\NormalTok{nonnormal\_var }\OperatorTok{=}\NormalTok{ typedata.loc[typedata.ix[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{==} \StringTok{"object"}\NormalTok{][}\StringTok{"index"}\NormalTok{][}\DecValTok{2}\NormalTok{:].tolist()}
+\NormalTok{ACS\_14\_5YR\_DP02\_DropNorm }\OperatorTok{=}\NormalTok{ ACS\_14\_5YR\_DP02\_with\_ann.drop(nonnormal\_var,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 删除全为空的变量（列）}
+\NormalTok{ACS\_14\_5YR\_DP02\_DropColumn}\OperatorTok{=}\NormalTok{ACS\_14\_5YR\_DP02\_DropNorm.dropna(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,how}\OperatorTok{=}\StringTok{"all"}\NormalTok{)}
+\CommentTok{\# 用列均值填补缺失数据}
+\ControlFlowTok{for}\NormalTok{ column }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(ACS\_14\_5YR\_DP02\_DropColumn.columns[ACS\_14\_5YR\_DP02\_DropColumn.isnull().}\BuiltInTok{sum}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{]):}
+\NormalTok{    mean\_val }\OperatorTok{=}\NormalTok{ ACS\_14\_5YR\_DP02\_DropColumn[column].mean()}
+\NormalTok{    ACS\_14\_5YR\_DP02\_DropColumn[column].fillna(mean\_val, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+    
+\CommentTok{\# 2015}
+\CommentTok{\# 删除类型异常的变量（NaN、（x））}
+\NormalTok{typedata }\OperatorTok{=}\NormalTok{ ACS\_15\_5YR\_DP02\_with\_ann.dtypes.reset\_index()}
+\NormalTok{nonnormal\_var }\OperatorTok{=}\NormalTok{ typedata.loc[typedata.ix[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{==} \StringTok{"object"}\NormalTok{][}\StringTok{"index"}\NormalTok{][}\DecValTok{2}\NormalTok{:].tolist()}
+\NormalTok{ACS\_15\_5YR\_DP02\_DropNorm }\OperatorTok{=}\NormalTok{ ACS\_15\_5YR\_DP02\_with\_ann.drop(nonnormal\_var,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 删除全为空的变量（列）}
+\NormalTok{ACS\_15\_5YR\_DP02\_DropColumn}\OperatorTok{=}\NormalTok{ACS\_15\_5YR\_DP02\_DropNorm.dropna(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,how}\OperatorTok{=}\StringTok{"all"}\NormalTok{)}
+\CommentTok{\# 用列均值填补缺失数据}
+\ControlFlowTok{for}\NormalTok{ column }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(ACS\_15\_5YR\_DP02\_DropColumn.columns[ACS\_15\_5YR\_DP02\_DropColumn.isnull().}\BuiltInTok{sum}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{]):}
+\NormalTok{    mean\_val }\OperatorTok{=}\NormalTok{ ACS\_15\_5YR\_DP02\_DropColumn[column].mean()}
+\NormalTok{    ACS\_15\_5YR\_DP02\_DropColumn[column].fillna(mean\_val, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# 2016}
+\CommentTok{\# 删除类型异常的变量（NaN、（x））}
+\NormalTok{typedata }\OperatorTok{=}\NormalTok{ ACS\_16\_5YR\_DP02\_with\_ann.dtypes.reset\_index()}
+\NormalTok{nonnormal\_var }\OperatorTok{=}\NormalTok{ typedata.loc[typedata.ix[:,}\DecValTok{1}\NormalTok{] }\OperatorTok{==} \StringTok{"object"}\NormalTok{][}\StringTok{"index"}\NormalTok{][}\DecValTok{2}\NormalTok{:].tolist()}
+\NormalTok{ACS\_16\_5YR\_DP02\_DropNorm }\OperatorTok{=}\NormalTok{ ACS\_16\_5YR\_DP02\_with\_ann.drop(nonnormal\_var,axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 删除全为空的变量（列）}
+\NormalTok{ACS\_16\_5YR\_DP02\_DropColumn}\OperatorTok{=}\NormalTok{ACS\_16\_5YR\_DP02\_DropNorm.dropna(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,how}\OperatorTok{=}\StringTok{"all"}\NormalTok{)}
+\CommentTok{\# 用列均值填补缺失数据}
+\ControlFlowTok{for}\NormalTok{ column }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(ACS\_16\_5YR\_DP02\_DropColumn.columns[ACS\_16\_5YR\_DP02\_DropColumn.isnull().}\BuiltInTok{sum}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{]):}
+\NormalTok{    mean\_val }\OperatorTok{=}\NormalTok{ ACS\_16\_5YR\_DP02\_DropColumn[column].mean()}
+\NormalTok{    ACS\_16\_5YR\_DP02\_DropColumn[column].fillna(mean\_val, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+
+\CommentTok{\# 纵向合并2010{-}2016年的数据到一个数据框中、\# 删除第一行数据（变量标签）}
+\NormalTok{ACS\_ALL\_5YR\_DP02}\OperatorTok{=}\NormalTok{pd.concat([ACS\_10\_5YR\_DP02\_DropColumn,}
+\NormalTok{                           ACS\_11\_5YR\_DP02\_DropColumn,}
+\NormalTok{                           ACS\_12\_5YR\_DP02\_DropColumn,}
+\NormalTok{                           ACS\_13\_5YR\_DP02\_DropColumn,}
+\NormalTok{                           ACS\_14\_5YR\_DP02\_DropColumn,}
+\NormalTok{                           ACS\_15\_5YR\_DP02\_DropColumn,}
+\NormalTok{                           ACS\_16\_5YR\_DP02\_DropColumn],axis}\OperatorTok{=}\DecValTok{0}\NormalTok{,join}\OperatorTok{=}\StringTok{"outer"}\NormalTok{,keys}\OperatorTok{=}\NormalTok{[}\DecValTok{2010}\NormalTok{,}\DecValTok{2011}\NormalTok{,}\DecValTok{2012}\NormalTok{,}\DecValTok{2013}\NormalTok{,}\DecValTok{2014}\NormalTok{,}\DecValTok{2015}\NormalTok{,}\DecValTok{2016}\NormalTok{]).reset\_index().convert\_objects(convert\_numeric}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\CommentTok{\# 用列均值填补缺失数据(合并各年份数据之后)}
+\ControlFlowTok{for}\NormalTok{ column }\KeywordTok{in} \BuiltInTok{list}\NormalTok{(ACS\_ALL\_5YR\_DP02.columns[ACS\_ALL\_5YR\_DP02.isnull().}\BuiltInTok{sum}\NormalTok{() }\OperatorTok{\textgreater{}} \DecValTok{0}\NormalTok{]):}
+\NormalTok{    mean\_val }\OperatorTok{=}\NormalTok{ ACS\_ALL\_5YR\_DP02[column].mean()}
+\NormalTok{    ACS\_ALL\_5YR\_DP02[column].fillna(mean\_val, inplace}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\CommentTok{\# 删除无效的变量(索引，中间产生变量、地理位置),重命名年份变量}
+\NormalTok{ACS\_ALL\_5YR\_DP02\_Clear }\OperatorTok{=}\NormalTok{ ACS\_ALL\_5YR\_DP02.ix[:,:}\OperatorTok{{-}}\DecValTok{2}\NormalTok{].drop([}\StringTok{"GEO.display{-}label"}\NormalTok{,}\StringTok{"level\_1"}\NormalTok{,}\StringTok{"GEO.id"}\NormalTok{],axis}\OperatorTok{=}\DecValTok{1}\NormalTok{).rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"level\_0"}\NormalTok{:}\StringTok{"YYYY"}\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n210}{%
+\subsubsection{\texorpdfstring{整理MCM\emph{NFLIS}Data数据}{整理MCMNFLISData数据}}\label{header-n210}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 对阿片类药物使用情况数据键值重命名}
+\NormalTok{MCM\_NFLIS\_Data\_Rename}\OperatorTok{=}\NormalTok{MCM\_NFLIS\_Data.rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"FIPS\_Combined"}\NormalTok{:}\StringTok{"GEO.id2"}\NormalTok{\})}
+\CommentTok{\# 删除2017相关数据}
+\NormalTok{MCM\_NFLIS\_Data\_Drop17}\OperatorTok{=}\NormalTok{MCM\_NFLIS\_Data\_Rename.loc[MCM\_NFLIS\_Data\_Rename[}\StringTok{"YYYY"}\NormalTok{] }\OperatorTok{!=} \DecValTok{2017}\NormalTok{]}
+\CommentTok{\# 匹配药物分类数据}
+\NormalTok{MCM\_NFLIS\_Class}\OperatorTok{=}\NormalTok{pd.merge(MCM\_NFLIS\_Data\_Drop17,MCM\_NFLIS\_Medication,how}\OperatorTok{=}\StringTok{"left"}\NormalTok{,on}\OperatorTok{=}\NormalTok{[}\StringTok{"SubstanceName"}\NormalTok{,}\StringTok{"YYYY"}\NormalTok{])}
+\CommentTok{\# 删除一些无效变量}
+\NormalTok{MCM\_NFLIS\_Class\_Clear\_Drop}\OperatorTok{=}\NormalTok{MCM\_NFLIS\_Class.drop([}\StringTok{"FIPS\_State"}\NormalTok{,}\StringTok{"FIPS\_County"}\NormalTok{,}\StringTok{"SubstanceName"}\NormalTok{,}\StringTok{"code"}\NormalTok{],axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 按照中文名药物分类求和}
+\NormalTok{MCM\_NFLIS\_Class\_Clear }\OperatorTok{=}\NormalTok{ MCM\_NFLIS\_Class\_Clear\_Drop.groupby([}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"GEO.id2"}\NormalTok{,}\StringTok{"State"}\NormalTok{,}\StringTok{"COUNTY"}\NormalTok{,}\StringTok{"SubstanceClass"}\NormalTok{,}
+                                                        \StringTok{"SubstanceName\_c"}\NormalTok{])[}\StringTok{"DrugReports"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{().reset\_index()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n213}{%
+\subsubsection{\texorpdfstring{整理ACS\emph{All}5YR\emph{DP02}metadata数据}{整理ACSAll5YRDP02metadata数据}}\label{header-n213}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 纵向合并2010{-}2016年的数据到一个数据框中、\# 删除第一行数据（变量标签）}
+\NormalTok{ACS\_All\_5YR\_DP02\_metadata}\OperatorTok{=}\NormalTok{pd.concat([ACS\_10\_5YR\_DP02\_metadata,}
+\NormalTok{                           ACS\_11\_5YR\_DP02\_metadata,}
+\NormalTok{                           ACS\_12\_5YR\_DP02\_metadata,}
+\NormalTok{                           ACS\_13\_5YR\_DP02\_metadata,}
+\NormalTok{                           ACS\_14\_5YR\_DP02\_metadata,}
+\NormalTok{                           ACS\_15\_5YR\_DP02\_metadata,}
+\NormalTok{                           ACS\_16\_5YR\_DP02\_metadata],axis}\OperatorTok{=}\DecValTok{0}\NormalTok{,join}\OperatorTok{=}\StringTok{"outer"}\NormalTok{,)}
+\CommentTok{\# 删除重复值}
+\NormalTok{ACS\_All\_5YR\_DP02\_metadata\_Dup }\OperatorTok{=}\NormalTok{ ACS\_All\_5YR\_DP02\_metadata.drop\_duplicates(}\BuiltInTok{list}\NormalTok{(ACS\_All\_5YR\_DP02\_metadata.columns)[}\DecValTok{0}\NormalTok{],keep}\OperatorTok{=}\StringTok{"first"}\NormalTok{)}
+\NormalTok{ACS\_All\_5YR\_DP02\_metadata\_Dup.columns }\OperatorTok{=}\NormalTok{ [}\StringTok{"Var"}\NormalTok{,}\StringTok{"Var\_label"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n216}{%
+\subsubsection{匹配阿片类药物使用情况}\label{header-n216}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 合并阿片类使用情况与相关经济指标}
+\NormalTok{NFLIS\_and\_ACS\_ALL}\OperatorTok{=}\NormalTok{pd.merge(ACS\_ALL\_5YR\_DP02\_Clear,MCM\_NFLIS\_Class\_Clear,how}\OperatorTok{=}\StringTok{"right"}\NormalTok{,on}\OperatorTok{=}\NormalTok{[}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"GEO.id2"}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n219}{%
+\subsubsection{按照三类药物数据透视}\label{header-n219}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 分类计数}
+\NormalTok{NFLIS\_and\_ACS\_ALL\_ClassSum }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL.groupby([}\StringTok{"GEO.id2"}\NormalTok{,}\StringTok{"State"}\NormalTok{,}\StringTok{"COUNTY"}\NormalTok{,}
+                                                        \StringTok{"SubstanceClass"}\NormalTok{,}\StringTok{"YYYY"}\NormalTok{])[}\StringTok{"DrugReports"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{().reset\_index()}
+\CommentTok{\# 数据透视表}
+\NormalTok{NFLIS\_and\_ACS\_ALL\_Pivot }\OperatorTok{=}\NormalTok{ pd.pivot\_table(data}\OperatorTok{=}\NormalTok{NFLIS\_and\_ACS\_ALL\_ClassSum,}
+\NormalTok{                                         index}\OperatorTok{=}\NormalTok{[}\StringTok{"GEO.id2"}\NormalTok{,}\StringTok{"State"}\NormalTok{,}\StringTok{"SubstanceClass"}\NormalTok{,}\StringTok{"COUNTY"}\NormalTok{],}
+\NormalTok{                                         columns}\OperatorTok{=}\NormalTok{[}\StringTok{"YYYY"}\NormalTok{],values}\OperatorTok{=}\NormalTok{[}\StringTok{"DrugReports"}\NormalTok{])}
+\CommentTok{\# 缺失值填补、转置}
+\NormalTok{NFLIS\_and\_ACS\_ALL\_Clear }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Pivot[}\DecValTok{2}\NormalTok{:].fillna(}\DecValTok{0}\NormalTok{).stack().reset\_index()}
+ \CommentTok{\# 合并}
+\NormalTok{NFLIS\_and\_ACS\_ALL\_Out }\OperatorTok{=}\NormalTok{ pd.merge(NFLIS\_and\_ACS\_ALL\_Clear,}
+\NormalTok{                                 ACS\_ALL\_5YR\_DP02\_Clear,}
+\NormalTok{                                 on}\OperatorTok{=}\NormalTok{[}\StringTok{"GEO.id2"}\NormalTok{,}\StringTok{"YYYY"}\NormalTok{],how}\OperatorTok{=}\StringTok{"left"}\NormalTok{)}
+\CommentTok{\# 根据药物量分层}
+\NormalTok{NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"DrugReportsclass"}\NormalTok{] }\OperatorTok{=}\NormalTok{ np.where(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"DrugReports"}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{5000}\NormalTok{,}\StringTok{"7、5000人以上"}\NormalTok{,}
+\NormalTok{                                             np.where(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"DrugReports"}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{1000}\NormalTok{,}\StringTok{"6、1000{-}4999人"}\NormalTok{,}
+\NormalTok{                                                      np.where(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"DrugReports"}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{500}\NormalTok{,}\StringTok{"5、500{-}999人"}\NormalTok{,}
+\NormalTok{                                                               np.where(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"DrugReports"}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{100}\NormalTok{,}\StringTok{"4、100{-}499人"}\NormalTok{, }
+\NormalTok{                                                                        np.where(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"DrugReports"}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{10}\NormalTok{,}\StringTok{"3、10{-}99人"}\NormalTok{,}
+\NormalTok{                                                                               np.where(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"DrugReports"}\NormalTok{] }\OperatorTok{\textgreater{}=} \DecValTok{1}\NormalTok{,}\StringTok{"2、1{-}9人"}\NormalTok{,}\StringTok{"1、0人"}\NormalTok{))))))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n222}{%
+\subsection{统计描述}\label{header-n222}}
+
+\hypertarget{header-n223}{%
+\subsubsection{图1：所有类阿片类药物构成饼图}\label{header-n223}}
+
+\hypertarget{header-n224}{%
+\paragraph{整理数据为直接可用}\label{header-n224}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 提取画图数据"YYYY","SubstanceName","DrugReports","State"}
+\NormalTok{NFLIS\_Figure1\_Data }\OperatorTok{=}\NormalTok{ MCM\_NFLIS\_Class\_Clear.groupby([}\StringTok{"SubstanceName\_c"}\NormalTok{])[}\StringTok{"DrugReports"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{().reset\_index().sort\_values(by}\OperatorTok{=}\StringTok{"DrugReports"}\NormalTok{,ascending}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\CommentTok{\# 添加列：每种药物的百分占比}
+\NormalTok{NFLIS\_Figure1\_Data[}\StringTok{"Percent"}\NormalTok{] }\OperatorTok{=}\NormalTok{ NFLIS\_Figure1\_Data[}\StringTok{"DrugReports"}\NormalTok{]}\OperatorTok{/}\NormalTok{(NFLIS\_Figure1\_Data[}\StringTok{"DrugReports"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{())}
+\NormalTok{NFLIS\_Figure1\_Data[}\StringTok{"Label"}\NormalTok{] }\OperatorTok{=}\NormalTok{ NFLIS\_Figure1\_Data[}\StringTok{"SubstanceName\_c"}\NormalTok{] }\OperatorTok{+\textbackslash{}}
+                                \CommentTok{\textquotesingle{}          \textquotesingle{}} \OperatorTok{+} \OperatorTok{\textbackslash{}}
+\NormalTok{                                NFLIS\_Figure1\_Data[}\StringTok{"Percent"}\NormalTok{].}\BuiltInTok{apply}\NormalTok{(}\KeywordTok{lambda}\NormalTok{ x: }\BuiltInTok{format}\NormalTok{(x, }\StringTok{\textquotesingle{}.2\%\textquotesingle{}}\NormalTok{))}
+\CommentTok{\# 画图所用的数据}
+\NormalTok{Figure1\_labels }\OperatorTok{=}\NormalTok{ NFLIS\_Figure1\_Data[}\StringTok{"Label"}\NormalTok{]}
+\NormalTok{Figure1\_sizes }\OperatorTok{=}\NormalTok{ NFLIS\_Figure1\_Data[}\StringTok{"DrugReports"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n227}{%
+\paragraph{饼图}\label{header-n227}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 设置画布和子图}
+\NormalTok{Figure1,axes }\OperatorTok{=}\NormalTok{ plt.subplots(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{15}\NormalTok{),ncols}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure1\_ax1,Figure1\_ax2 }\OperatorTok{=}\NormalTok{ axes.ravel()}
+\CommentTok{\# 设置参数：颜色盘{-}colormap；间隙{-}与labels一一对应，数值越大离中心区越远}
+\NormalTok{explode }\OperatorTok{=}\NormalTok{ [x }\OperatorTok{*} \FloatTok{0.00325} \ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(}\BuiltInTok{len}\NormalTok{(NFLIS\_Figure1\_Data))]  }
+\NormalTok{colors}\OperatorTok{=}\NormalTok{cm.rainbow(np.arange(}\BuiltInTok{len}\NormalTok{(Figure1\_sizes))}\OperatorTok{/}\BuiltInTok{len}\NormalTok{(Figure1\_sizes))}
+\CommentTok{\# 画饼图：类别太多取消标签labels；每个类别离中心的距离；}
+\NormalTok{patches,texts }\OperatorTok{=}\NormalTok{ Figure1\_ax1.pie(Figure1\_sizes,labels}\OperatorTok{=}\VariableTok{None}\NormalTok{,shadow}\OperatorTok{=}\VariableTok{False}\NormalTok{,explode}\OperatorTok{=}\NormalTok{explode,startangle}\OperatorTok{=}\DecValTok{0}\NormalTok{,colors}\OperatorTok{=}\NormalTok{colors)}
+\CommentTok{\# 子图：ax1{-}饼图、ax2{-}图例}
+\NormalTok{Figure1\_ax1.axis(}\StringTok{\textquotesingle{}equal\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure1\_ax2.axis(}\StringTok{\textquotesingle{}off\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure1\_ax2.legend(patches,Figure1\_labels,loc}\OperatorTok{=}\StringTok{"center left"}\NormalTok{,fontsize}\OperatorTok{=}\StringTok{"xx{-}large"}\NormalTok{)}
+\CommentTok{\# 调整大小、读取图片}
+\NormalTok{plt.tight\_layout()}
+\NormalTok{Figure1 }\OperatorTok{=}\NormalTok{ plt.gcf()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n232}{%
+\subsubsection{图2：所有类阿片类药物数量条图}\label{header-n232}}
+
+\hypertarget{header-n233}{%
+\paragraph{整理数据为直接可用}\label{header-n233}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 提取画图数据"YYYY","SubstanceName","DrugReports","State"；排序；}
+\NormalTok{NFLIS\_Figure2\_Data }\OperatorTok{=}\NormalTok{ MCM\_NFLIS\_Class\_Clear.groupby([}\StringTok{"SubstanceName\_c"}\NormalTok{])[}\StringTok{"DrugReports"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{().reset\_index().sort\_values(by}\OperatorTok{=}\StringTok{"DrugReports"}\NormalTok{,ascending}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n236}{%
+\paragraph{条图}\label{header-n236}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 设置画布}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{16}\NormalTok{,}\DecValTok{10}\NormalTok{))}
+\CommentTok{\# 设置参数：颜色盘{-}colormap}
+\NormalTok{color}\OperatorTok{=}\NormalTok{cm.rainbow(np.arange(}\BuiltInTok{len}\NormalTok{(NFLIS\_Figure2\_Data))}\OperatorTok{/}\BuiltInTok{len}\NormalTok{(NFLIS\_Figure2\_Data))}
+\CommentTok{\# 从高到低排列，改变y轴刻度的排列顺序}
+\NormalTok{plt.yticks(np.arange(}\BuiltInTok{len}\NormalTok{(NFLIS\_Figure2\_Data[}\StringTok{\textquotesingle{}SubstanceName\_c\textquotesingle{}}\NormalTok{])), NFLIS\_Figure2\_Data[}\StringTok{\textquotesingle{}SubstanceName\_c\textquotesingle{}}\NormalTok{])}
+\CommentTok{\# 水平条图}
+\NormalTok{plt.barh(np.arange(}\BuiltInTok{len}\NormalTok{(NFLIS\_Figure2\_Data[}\StringTok{\textquotesingle{}SubstanceName\_c\textquotesingle{}}\NormalTok{])), NFLIS\_Figure2\_Data[}\StringTok{\textquotesingle{}DrugReports\textquotesingle{}}\NormalTok{], color}\OperatorTok{=}\NormalTok{color)}
+\CommentTok{\# 坐标轴标签}
+\NormalTok{plt.ylabel(}\StringTok{"阿片类药物名"}\NormalTok{)}
+\NormalTok{plt.xlabel(}\StringTok{"报告量"}\NormalTok{)}
+\CommentTok{\# 格式整理导出}
+\NormalTok{plt.tight\_layout()}
+\NormalTok{Figure2 }\OperatorTok{=}\NormalTok{ plt.gcf()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n241}{%
+\subsubsection{图3：五个州阿片类药物数量热力图}\label{header-n241}}
+
+\hypertarget{header-n242}{%
+\paragraph{整理数据为直接可用}\label{header-n242}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 提取画图数据"YYYY","SubstanceName","DrugReports","State"}
+\NormalTok{NFLIS\_Figure3\_Clear1 }\OperatorTok{=}\NormalTok{ MCM\_NFLIS\_Class\_Clear.groupby([}\StringTok{"State"}\NormalTok{,}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"SubstanceName\_c"}\NormalTok{])[}\StringTok{"DrugReports"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{().reset\_index()}
+\CommentTok{\# 提取各个州的数据}
+\NormalTok{NFLIS\_Figure3\_KY }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_Clear1.loc[(NFLIS\_Figure3\_Clear1[}\StringTok{"State"}\NormalTok{] }\OperatorTok{==} \StringTok{"KY"}\NormalTok{)]}
+\NormalTok{NFLIS\_Figure3\_OH }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_Clear1.loc[(NFLIS\_Figure3\_Clear1[}\StringTok{"State"}\NormalTok{] }\OperatorTok{==} \StringTok{"OH"}\NormalTok{)]}
+\NormalTok{NFLIS\_Figure3\_PA }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_Clear1.loc[(NFLIS\_Figure3\_Clear1[}\StringTok{"State"}\NormalTok{] }\OperatorTok{==} \StringTok{"PA"}\NormalTok{)]}
+\NormalTok{NFLIS\_Figure3\_VA }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_Clear1.loc[(NFLIS\_Figure3\_Clear1[}\StringTok{"State"}\NormalTok{] }\OperatorTok{==} \StringTok{"VA"}\NormalTok{)]}
+\NormalTok{NFLIS\_Figure3\_WV }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_Clear1.loc[(NFLIS\_Figure3\_Clear1[}\StringTok{"State"}\NormalTok{] }\OperatorTok{==} \StringTok{"WV"}\NormalTok{)]}
+\CommentTok{\# 匹配每种药物（解决某年可能没有某种药）}
+\NormalTok{NFLIS\_Figure3\_KY\_merge }\OperatorTok{=}\NormalTok{ pd.merge(NFLIS\_Figure3\_KY,MCM\_NFLIS\_Medication,how }\OperatorTok{=} \StringTok{"right"}\NormalTok{,on }\OperatorTok{=}\NormalTok{ [}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"SubstanceName\_c"}\NormalTok{])}
+\NormalTok{NFLIS\_Figure3\_OH\_merge }\OperatorTok{=}\NormalTok{ pd.merge(NFLIS\_Figure3\_OH,MCM\_NFLIS\_Medication,how }\OperatorTok{=} \StringTok{"right"}\NormalTok{,on }\OperatorTok{=}\NormalTok{ [}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"SubstanceName\_c"}\NormalTok{])}
+\NormalTok{NFLIS\_Figure3\_PA\_merge }\OperatorTok{=}\NormalTok{ pd.merge(NFLIS\_Figure3\_PA,MCM\_NFLIS\_Medication,how }\OperatorTok{=} \StringTok{"right"}\NormalTok{,on }\OperatorTok{=}\NormalTok{ [}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"SubstanceName\_c"}\NormalTok{])}
+\NormalTok{NFLIS\_Figure3\_VA\_merge }\OperatorTok{=}\NormalTok{ pd.merge(NFLIS\_Figure3\_VA,MCM\_NFLIS\_Medication,how }\OperatorTok{=} \StringTok{"right"}\NormalTok{,on }\OperatorTok{=}\NormalTok{ [}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"SubstanceName\_c"}\NormalTok{])}
+\NormalTok{NFLIS\_Figure3\_WV\_merge }\OperatorTok{=}\NormalTok{ pd.merge(NFLIS\_Figure3\_WV,MCM\_NFLIS\_Medication,how }\OperatorTok{=} \StringTok{"right"}\NormalTok{,on }\OperatorTok{=}\NormalTok{ [}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"SubstanceName\_c"}\NormalTok{])}
+\CommentTok{\# 将数据转置为dataframe矩阵}
+\NormalTok{NFLIS\_Figure3\_pivot\_KY }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_KY\_merge.pivot\_table(index }\OperatorTok{=} \StringTok{"SubstanceName\_c"}\NormalTok{,columns }\OperatorTok{=} \StringTok{"YYYY"}\NormalTok{,values }\OperatorTok{=} \StringTok{"DrugReports"}\NormalTok{)}
+\NormalTok{NFLIS\_Figure3\_pivot\_OH }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_OH\_merge.pivot\_table(index }\OperatorTok{=} \StringTok{"SubstanceName\_c"}\NormalTok{,columns }\OperatorTok{=} \StringTok{"YYYY"}\NormalTok{,values }\OperatorTok{=} \StringTok{"DrugReports"}\NormalTok{)}
+\NormalTok{NFLIS\_Figure3\_pivot\_PA }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_PA\_merge.pivot\_table(index }\OperatorTok{=} \StringTok{"SubstanceName\_c"}\NormalTok{,columns }\OperatorTok{=} \StringTok{"YYYY"}\NormalTok{,values }\OperatorTok{=} \StringTok{"DrugReports"}\NormalTok{)}
+\NormalTok{NFLIS\_Figure3\_pivot\_VA }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_VA\_merge.pivot\_table(index }\OperatorTok{=} \StringTok{"SubstanceName\_c"}\NormalTok{,columns }\OperatorTok{=} \StringTok{"YYYY"}\NormalTok{,values }\OperatorTok{=} \StringTok{"DrugReports"}\NormalTok{)}
+\NormalTok{NFLIS\_Figure3\_pivot\_WV }\OperatorTok{=}\NormalTok{ NFLIS\_Figure3\_WV\_merge.pivot\_table(index }\OperatorTok{=} \StringTok{"SubstanceName\_c"}\NormalTok{,columns }\OperatorTok{=} \StringTok{"YYYY"}\NormalTok{,values }\OperatorTok{=} \StringTok{"DrugReports"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n245}{%
+\paragraph{热力图}\label{header-n245}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 设置画布大小}
+\NormalTok{f,(Figure3\_ax1,Figure3\_ax2,Figure3\_ax3,Figure3\_ax4,Figure3\_ax5) }\OperatorTok{=}\NormalTok{ plt.subplots(ncols}\OperatorTok{=}\DecValTok{5}\NormalTok{,figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{30}\NormalTok{,}\DecValTok{10}\NormalTok{))}
+\CommentTok{\# 设置连续调色板cubehelix\_palette,as\_camp传入matplotlib}
+\NormalTok{cmap}\OperatorTok{=}\NormalTok{sns.cubehelix\_palette(start}\OperatorTok{=}\DecValTok{1}\NormalTok{,rot}\OperatorTok{=}\DecValTok{3}\NormalTok{,gamma}\OperatorTok{=}\FloatTok{0.8}\NormalTok{,as\_cmap}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\CommentTok{\# KY州}
+\NormalTok{sns.heatmap(NFLIS\_Figure3\_pivot\_KY,cmap}\OperatorTok{=}\NormalTok{cmap,linewidths}\OperatorTok{=}\FloatTok{0.05}\NormalTok{,ax}\OperatorTok{=}\NormalTok{Figure3\_ax1,cbar}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{Figure3\_ax1.set\_title(}\StringTok{"肯塔基州"}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
+\NormalTok{Figure3\_ax1.set\_xlabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure3\_ax1.set\_ylabel(}\StringTok{\textquotesingle{}阿片类药物名\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{35}\NormalTok{)}
+\CommentTok{\# OH州}
+\NormalTok{sns.heatmap(NFLIS\_Figure3\_pivot\_OH,cmap}\OperatorTok{=}\NormalTok{cmap,linewidths}\OperatorTok{=}\FloatTok{0.05}\NormalTok{,ax}\OperatorTok{=}\NormalTok{Figure3\_ax2,cbar}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{Figure3\_ax2.set\_title(}\StringTok{"俄亥俄州"}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
+\NormalTok{Figure3\_ax2.set\_xlabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure3\_ax2.set\_ylabel(}\StringTok{\textquotesingle{} \textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure3\_ax2.set\_yticklabels([])}
+\CommentTok{\# PA州}
+\NormalTok{sns.heatmap(NFLIS\_Figure3\_pivot\_PA,cmap}\OperatorTok{=}\NormalTok{cmap,linewidths}\OperatorTok{=}\FloatTok{0.05}\NormalTok{,ax}\OperatorTok{=}\NormalTok{Figure3\_ax3,cbar}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{Figure3\_ax3.set\_title(}\StringTok{"宾夕法尼亚州"}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
+\NormalTok{Figure3\_ax3.set\_xlabel(}\StringTok{\textquotesingle{}年份\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{35}\NormalTok{)}
+\NormalTok{Figure3\_ax3.set\_ylabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure3\_ax3.set\_yticklabels([])}
+\CommentTok{\# VA州}
+\NormalTok{sns.heatmap(NFLIS\_Figure3\_pivot\_VA,cmap}\OperatorTok{=}\NormalTok{cmap,linewidths}\OperatorTok{=}\FloatTok{0.05}\NormalTok{,ax}\OperatorTok{=}\NormalTok{Figure3\_ax4,cbar}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\NormalTok{Figure3\_ax4.set\_title(}\StringTok{"弗吉尼亚州"}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
+\NormalTok{Figure3\_ax4.set\_xlabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure3\_ax4.set\_ylabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure3\_ax4.set\_yticklabels([])}
+\CommentTok{\# WV州}
+\NormalTok{sns.heatmap(NFLIS\_Figure3\_pivot\_WV,cmap}\OperatorTok{=}\NormalTok{cmap,linewidths}\OperatorTok{=}\FloatTok{0.05}\NormalTok{,ax}\OperatorTok{=}\NormalTok{Figure3\_ax5,cbar}\OperatorTok{=}\VariableTok{True}\NormalTok{)}
+\NormalTok{Figure3\_ax5.set\_title(}\StringTok{"西弗吉尼亚州"}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{30}\NormalTok{)}
+\NormalTok{Figure3\_ax5.set\_xlabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure3\_ax5.set\_ylabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Figure3\_ax5.set\_yticklabels([])}
+
+\NormalTok{plt.tight\_layout()}
+\NormalTok{Figure3 }\OperatorTok{=}\NormalTok{ plt.gcf()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n250}{%
+\subsubsection{图4：五个州三类阿片药物量折线图}\label{header-n250}}
+
+\hypertarget{header-n251}{%
+\paragraph{整理数据为直接可用}\label{header-n251}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 五个州的总量情况分组}
+\NormalTok{NFLIS\_Fugure3\_Clear1 }\OperatorTok{=}\NormalTok{ MCM\_NFLIS\_Class\_Clear.groupby([}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"SubstanceClass"}\NormalTok{])[}\StringTok{"DrugReports"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{().reset\_index()}
+\NormalTok{NFLIS\_Fugure3\_Class1\_all }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Clear1.loc[(NFLIS\_Fugure3\_Clear1[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"半合成阿片类药物"}\NormalTok{)]}
+\NormalTok{NFLIS\_Fugure3\_Class2\_all }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Clear1.loc[(NFLIS\_Fugure3\_Clear1[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"合成阿片类药物"}\NormalTok{)]}
+\NormalTok{NFLIS\_Fugure3\_Class3\_all }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Clear1.loc[(NFLIS\_Fugure3\_Clear1[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"非合成阿片类药物"}\NormalTok{)]}
+\CommentTok{\# 五个州的分别情况分组}
+\NormalTok{NFLIS\_Fugure3\_Class }\OperatorTok{=}\NormalTok{ MCM\_NFLIS\_Class\_Clear.groupby([}\StringTok{"YYYY"}\NormalTok{,}\StringTok{"State"}\NormalTok{,}\StringTok{"SubstanceClass"}\NormalTok{])[}\StringTok{"DrugReports"}\NormalTok{].}\BuiltInTok{sum}\NormalTok{().reset\_index()}
+\NormalTok{NFLIS\_Fugure3\_Class1 }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Class.loc[(NFLIS\_Fugure3\_Class[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"半合成阿片类药物"}\NormalTok{)]}
+\NormalTok{NFLIS\_Fugure3\_Class2 }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Class.loc[(NFLIS\_Fugure3\_Class[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"合成阿片类药物"}\NormalTok{)]}
+\NormalTok{NFLIS\_Fugure3\_Class3 }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Class.loc[(NFLIS\_Fugure3\_Class[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"非合成阿片类药物"}\NormalTok{)]}
+\CommentTok{\# 对每个州进行汇合}
+\NormalTok{NFLIS\_Figure2\_Data\_Class1 }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Class1.pivot\_table(index}\OperatorTok{=}\StringTok{"YYYY"}\NormalTok{,columns}\OperatorTok{=}\StringTok{"State"}\NormalTok{,values}\OperatorTok{=}\StringTok{"DrugReports"}\NormalTok{).reset\_index()}
+\NormalTok{NFLIS\_Figure2\_Data\_Class2 }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Class2.pivot\_table(index}\OperatorTok{=}\StringTok{"YYYY"}\NormalTok{,columns}\OperatorTok{=}\StringTok{"State"}\NormalTok{,values}\OperatorTok{=}\StringTok{"DrugReports"}\NormalTok{).reset\_index()}
+\NormalTok{NFLIS\_Figure2\_Data\_Class3 }\OperatorTok{=}\NormalTok{ NFLIS\_Fugure3\_Class3.pivot\_table(index}\OperatorTok{=}\StringTok{"YYYY"}\NormalTok{,columns}\OperatorTok{=}\StringTok{"State"}\NormalTok{,values}\OperatorTok{=}\StringTok{"DrugReports"}\NormalTok{).reset\_index()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n254}{%
+\paragraph{折线图}\label{header-n254}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 创建画布、6个子图}
+\NormalTok{plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{,}\DecValTok{10}\NormalTok{))}
+\NormalTok{f4 }\OperatorTok{=}\NormalTok{ plt.figure(figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{15}\NormalTok{))}
+\NormalTok{Figure\_ax1 }\OperatorTok{=}\NormalTok{ f4.add\_subplot(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+\NormalTok{Figure\_ax2 }\OperatorTok{=}\NormalTok{ f4.add\_subplot(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax3 }\OperatorTok{=}\NormalTok{ f4.add\_subplot(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{Figure\_ax4 }\OperatorTok{=}\NormalTok{ f4.add\_subplot(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{Figure\_ax5 }\OperatorTok{=}\NormalTok{ f4.add\_subplot(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\NormalTok{Figure\_ax6 }\OperatorTok{=}\NormalTok{ f4.add\_subplot(}\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+
+\CommentTok{\# KY州不同类型药物的折线图}
+\NormalTok{Figure\_ax1.plot(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"KY"}\NormalTok{],label}\OperatorTok{=}\StringTok{"半合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax1.plot(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"KY"}\NormalTok{],label}\OperatorTok{=}\StringTok{"合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax1.plot(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"KY"}\NormalTok{],label}\OperatorTok{=}\StringTok{"非合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax1.set\_title(}\StringTok{"肯塔基州"}\NormalTok{)}
+\NormalTok{Figure\_ax1.legend(loc}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax1.grid(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{)}
+ \CommentTok{\#设置数字标签}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"KY"}\NormalTok{]):}
+\NormalTok{    Figure\_ax1.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"KY"}\NormalTok{]):}
+\NormalTok{    Figure\_ax1.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"KY"}\NormalTok{]):}
+\NormalTok{    Figure\_ax1.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+
+\CommentTok{\# OH州不同类型药物的折线图}
+\NormalTok{Figure\_ax2.plot(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"OH"}\NormalTok{],label}\OperatorTok{=}\StringTok{"半合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax2.plot(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"OH"}\NormalTok{],label}\OperatorTok{=}\StringTok{"合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax2.plot(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"OH"}\NormalTok{],label}\OperatorTok{=}\StringTok{"非合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax2.set\_title(}\StringTok{"俄亥俄州"}\NormalTok{)}
+\NormalTok{Figure\_ax2.legend(loc}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax2.grid(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{)}
+ \CommentTok{\#设置数字标签**}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"OH"}\NormalTok{]):}
+\NormalTok{    Figure\_ax2.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"OH"}\NormalTok{]):}
+\NormalTok{    Figure\_ax2.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"OH"}\NormalTok{]):}
+\NormalTok{    Figure\_ax2.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+    
+\CommentTok{\# PA州不同类型药物的折线图}
+\NormalTok{Figure\_ax3.plot(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"PA"}\NormalTok{],label}\OperatorTok{=}\StringTok{"半合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax3.plot(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"PA"}\NormalTok{],label}\OperatorTok{=}\StringTok{"合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax3.plot(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"PA"}\NormalTok{],label}\OperatorTok{=}\StringTok{"非合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax3.set\_title(}\StringTok{"宾夕法尼亚州"}\NormalTok{)}
+\NormalTok{Figure\_ax3.legend(loc}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax3.grid(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{)}
+ \CommentTok{\#设置数字标签**}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"PA"}\NormalTok{]):}
+\NormalTok{    Figure\_ax3.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"PA"}\NormalTok{]):}
+\NormalTok{    Figure\_ax3.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"PA"}\NormalTok{]):}
+\NormalTok{    Figure\_ax3.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+    
+\CommentTok{\# VA州不同类型药物的折线图}
+\NormalTok{Figure\_ax4.plot(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"VA"}\NormalTok{],label}\OperatorTok{=}\StringTok{"半合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax4.plot(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"VA"}\NormalTok{],label}\OperatorTok{=}\StringTok{"合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax4.plot(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"VA"}\NormalTok{],label}\OperatorTok{=}\StringTok{"非合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax4.set\_title(}\StringTok{"弗吉尼亚州"}\NormalTok{)}
+\NormalTok{Figure\_ax4.grid(axis}\OperatorTok{=}\StringTok{"x"}\NormalTok{)}
+\NormalTok{Figure\_ax4.legend(loc}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"VA"}\NormalTok{]):}
+\NormalTok{    Figure\_ax4.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"VA"}\NormalTok{]):}
+\NormalTok{    Figure\_ax4.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"VA"}\NormalTok{]):}
+\NormalTok{    Figure\_ax4.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+    
+\CommentTok{\# WV州不同类型药物的折线图}
+\NormalTok{Figure\_ax5.plot(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"WV"}\NormalTok{],label}\OperatorTok{=}\StringTok{"半合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax5.plot(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"WV"}\NormalTok{],label}\OperatorTok{=}\StringTok{"合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax5.plot(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"WV"}\NormalTok{],label}\OperatorTok{=}\StringTok{"非合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax5.set\_title(}\StringTok{"西弗吉尼亚州"}\NormalTok{)}
+\NormalTok{Figure\_ax5.legend(loc}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax5.grid(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{)}
+ \CommentTok{\#设置数字标签**}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class1[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class1[}\StringTok{"WV"}\NormalTok{]):}
+\NormalTok{    Figure\_ax5.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class2[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class2[}\StringTok{"WV"}\NormalTok{]):}
+\NormalTok{    Figure\_ax5.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Figure2\_Data\_Class3[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Figure2\_Data\_Class3[}\StringTok{"WV"}\NormalTok{]):}
+\NormalTok{    Figure\_ax5.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+    
+\CommentTok{\# 5个州总的不同类型药物的折线图}
+\NormalTok{Figure\_ax6.plot(NFLIS\_Fugure3\_Class1\_all[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Fugure3\_Class1\_all[}\StringTok{"DrugReports"}\NormalTok{],label}\OperatorTok{=}\StringTok{"半合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax6.plot(NFLIS\_Fugure3\_Class2\_all[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Fugure3\_Class2\_all[}\StringTok{"DrugReports"}\NormalTok{],label}\OperatorTok{=}\StringTok{"合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax6.plot(NFLIS\_Fugure3\_Class3\_all[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Fugure3\_Class3\_all[}\StringTok{"DrugReports"}\NormalTok{],label}\OperatorTok{=}\StringTok{"非合成阿片类药物"}\NormalTok{,linewidth}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax6.set\_title(}\StringTok{"总量"}\NormalTok{)}
+\NormalTok{Figure\_ax6.legend(loc}\OperatorTok{=}\DecValTok{2}\NormalTok{)}
+\NormalTok{Figure\_ax6.grid(axis}\OperatorTok{=}\StringTok{\textquotesingle{}x\textquotesingle{}}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Fugure3\_Class1\_all[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Fugure3\_Class1\_all[}\StringTok{"DrugReports"}\NormalTok{]):}
+\NormalTok{    Figure\_ax6.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Fugure3\_Class2\_all[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Fugure3\_Class2\_all[}\StringTok{"DrugReports"}\NormalTok{]):}
+\NormalTok{    Figure\_ax6.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ a,b }\KeywordTok{in} \BuiltInTok{zip}\NormalTok{(NFLIS\_Fugure3\_Class3\_all[}\StringTok{"YYYY"}\NormalTok{],NFLIS\_Fugure3\_Class3\_all[}\StringTok{"DrugReports"}\NormalTok{]):}
+\NormalTok{    Figure\_ax6.text(a, b}\OperatorTok{+}\FloatTok{0.001}\NormalTok{, }\StringTok{\textquotesingle{}}\SpecialCharTok{\%s}\StringTok{\textquotesingle{}} \OperatorTok{\%}\NormalTok{ b, ha}\OperatorTok{=}\StringTok{\textquotesingle{}center\textquotesingle{}}\NormalTok{, va}\OperatorTok{=} \StringTok{\textquotesingle{}bottom\textquotesingle{}}\NormalTok{,fontsize}\OperatorTok{=}\DecValTok{11}\NormalTok{)}
+
+\NormalTok{plt.tight\_layout()}
+\NormalTok{Figure4 }\OperatorTok{=}\NormalTok{ plt.gcf()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n262}{%
+\subsubsection{变量选择}\label{header-n262}}
+
+\hypertarget{header-n263}{%
+\paragraph{相关系数计算}\label{header-n263}}
+
+\hypertarget{header-n264}{%
+\subparagraph{计算各个年份相关系数}\label{header-n264}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 计算2010年相关系数}
+\NormalTok{df\_corr\_2010 }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.loc[(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"YYYY"}\NormalTok{]}\OperatorTok{==}\DecValTok{2010}\NormalTok{)].corr().reset\_index()}
+\NormalTok{df\_corr\_ext\_2010 }\OperatorTok{=}\NormalTok{ df\_corr\_2010.loc[(df\_corr\_2010[}\StringTok{"index"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"HC"}\NormalTok{))]}
+\NormalTok{df\_corr\_ext\_2010\_part }\OperatorTok{=}\NormalTok{ df\_corr\_ext\_2010[[}\StringTok{"index"}\NormalTok{,}\StringTok{"DrugReports"}\NormalTok{]].rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"DrugReports"}\NormalTok{:}\StringTok{"2010年相关系数"}\NormalTok{,}\StringTok{"index"}\NormalTok{:}\StringTok{"变量名"}\NormalTok{\})}
+\CommentTok{\# 计算2011年相关系数}
+\NormalTok{df\_corr\_2011 }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.loc[(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"YYYY"}\NormalTok{]}\OperatorTok{==}\DecValTok{2011}\NormalTok{)].corr().reset\_index()}
+\NormalTok{df\_corr\_ext\_2011 }\OperatorTok{=}\NormalTok{ df\_corr\_2011.loc[(df\_corr\_2011[}\StringTok{"index"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"HC"}\NormalTok{))]}
+\NormalTok{df\_corr\_ext\_2011\_part }\OperatorTok{=}\NormalTok{ df\_corr\_ext\_2011[[}\StringTok{"index"}\NormalTok{,}\StringTok{"DrugReports"}\NormalTok{]].rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"DrugReports"}\NormalTok{:}\StringTok{"2011年相关系数"}\NormalTok{,}\StringTok{"index"}\NormalTok{:}\StringTok{"变量名"}\NormalTok{\})}
+\CommentTok{\# 计算2012年相关系数}
+\NormalTok{df\_corr\_2012 }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.loc[(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"YYYY"}\NormalTok{]}\OperatorTok{==}\DecValTok{2012}\NormalTok{)].corr().reset\_index()}
+\NormalTok{df\_corr\_ext\_2012 }\OperatorTok{=}\NormalTok{ df\_corr\_2012.loc[(df\_corr\_2012[}\StringTok{"index"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"HC"}\NormalTok{))]}
+\NormalTok{df\_corr\_ext\_2012\_part }\OperatorTok{=}\NormalTok{ df\_corr\_ext\_2012[[}\StringTok{"index"}\NormalTok{,}\StringTok{"DrugReports"}\NormalTok{]].rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"DrugReports"}\NormalTok{:}\StringTok{"2012年相关系数"}\NormalTok{,}\StringTok{"index"}\NormalTok{:}\StringTok{"变量名"}\NormalTok{\})}
+\CommentTok{\# 计算2013年相关系数}
+\NormalTok{df\_corr\_2013 }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.loc[(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"YYYY"}\NormalTok{]}\OperatorTok{==}\DecValTok{2013}\NormalTok{)].corr().reset\_index()}
+\NormalTok{df\_corr\_ext\_2013 }\OperatorTok{=}\NormalTok{ df\_corr\_2013.loc[(df\_corr\_2013[}\StringTok{"index"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"HC"}\NormalTok{))]}
+\NormalTok{df\_corr\_ext\_2013\_part }\OperatorTok{=}\NormalTok{ df\_corr\_ext\_2013[[}\StringTok{"index"}\NormalTok{,}\StringTok{"DrugReports"}\NormalTok{]].rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"DrugReports"}\NormalTok{:}\StringTok{"2013年相关系数"}\NormalTok{,}\StringTok{"index"}\NormalTok{:}\StringTok{"变量名"}\NormalTok{\})}
+\CommentTok{\# 计算2014年相关系数}
+\NormalTok{df\_corr\_2014 }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.loc[(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"YYYY"}\NormalTok{]}\OperatorTok{==}\DecValTok{2014}\NormalTok{)].corr().reset\_index()}
+\NormalTok{df\_corr\_ext\_2014 }\OperatorTok{=}\NormalTok{ df\_corr\_2014.loc[(df\_corr\_2014[}\StringTok{"index"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"HC"}\NormalTok{))]}
+\NormalTok{df\_corr\_ext\_2014\_part }\OperatorTok{=}\NormalTok{ df\_corr\_ext\_2014[[}\StringTok{"index"}\NormalTok{,}\StringTok{"DrugReports"}\NormalTok{]].rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"DrugReports"}\NormalTok{:}\StringTok{"2014年相关系数"}\NormalTok{,}\StringTok{"index"}\NormalTok{:}\StringTok{"变量名"}\NormalTok{\})}
+\CommentTok{\# 计算2015年相关系数}
+\NormalTok{df\_corr\_2015 }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.loc[(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"YYYY"}\NormalTok{]}\OperatorTok{==}\DecValTok{2015}\NormalTok{)].corr().reset\_index()}
+\NormalTok{df\_corr\_ext\_2015 }\OperatorTok{=}\NormalTok{ df\_corr\_2015.loc[(df\_corr\_2015[}\StringTok{"index"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"HC"}\NormalTok{))]}
+\NormalTok{df\_corr\_ext\_2015\_part }\OperatorTok{=}\NormalTok{ df\_corr\_ext\_2015[[}\StringTok{"index"}\NormalTok{,}\StringTok{"DrugReports"}\NormalTok{]].rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"DrugReports"}\NormalTok{:}\StringTok{"2015年相关系数"}\NormalTok{,}\StringTok{"index"}\NormalTok{:}\StringTok{"变量名"}\NormalTok{\})}
+\CommentTok{\# 计算2016年相关系数}
+\NormalTok{df\_corr\_2016 }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.loc[(NFLIS\_and\_ACS\_ALL\_Out[}\StringTok{"YYYY"}\NormalTok{]}\OperatorTok{==}\DecValTok{2016}\NormalTok{)].corr().reset\_index()}
+\NormalTok{df\_corr\_ext\_2016 }\OperatorTok{=}\NormalTok{ df\_corr\_2016.loc[(df\_corr\_2016[}\StringTok{"index"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"HC"}\NormalTok{))]}
+\NormalTok{df\_corr\_ext\_2016\_part }\OperatorTok{=}\NormalTok{ df\_corr\_ext\_2016[[}\StringTok{"index"}\NormalTok{,}\StringTok{"DrugReports"}\NormalTok{]].rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"DrugReports"}\NormalTok{:}\StringTok{"2016年相关系数"}\NormalTok{,}\StringTok{"index"}\NormalTok{:}\StringTok{"变量名"}\NormalTok{\})}
+\CommentTok{\# 计算全部数据的相关系数}
+\NormalTok{df\_corr\_all }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.corr().reset\_index()}
+\NormalTok{df\_corr\_ext\_all }\OperatorTok{=}\NormalTok{ df\_corr\_all.loc[(df\_corr\_all[}\StringTok{"index"}\NormalTok{].}\BuiltInTok{str}\NormalTok{.contains(}\StringTok{"HC"}\NormalTok{))]}
+\NormalTok{df\_corr\_ext\_all\_part }\OperatorTok{=}\NormalTok{ df\_corr\_ext\_all[[}\StringTok{"index"}\NormalTok{,}\StringTok{"DrugReports"}\NormalTok{]].rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"DrugReports"}\NormalTok{:}\StringTok{"合计相关系数"}\NormalTok{,}\StringTok{"index"}\NormalTok{:}\StringTok{"变量名"}\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n267}{%
+\subparagraph{合并各个年份的相关系数}\label{header-n267}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 合并各个年份的相关系数}
+\NormalTok{df\_corr\_merge\_10\_11 }\OperatorTok{=}\NormalTok{ pd.merge(df\_corr\_ext\_2010\_part,df\_corr\_ext\_2011\_part,on}\OperatorTok{=}\StringTok{"变量名"}\NormalTok{,how}\OperatorTok{=}\StringTok{"outer"}\NormalTok{)}
+\NormalTok{df\_corr\_merge\_11\_12 }\OperatorTok{=}\NormalTok{ pd.merge(df\_corr\_merge\_10\_11,df\_corr\_ext\_2012\_part,on}\OperatorTok{=}\StringTok{"变量名"}\NormalTok{,how}\OperatorTok{=}\StringTok{"outer"}\NormalTok{)}
+\NormalTok{df\_corr\_merge\_12\_13 }\OperatorTok{=}\NormalTok{ pd.merge(df\_corr\_merge\_11\_12,df\_corr\_ext\_2013\_part,on}\OperatorTok{=}\StringTok{"变量名"}\NormalTok{,how}\OperatorTok{=}\StringTok{"outer"}\NormalTok{)}
+\NormalTok{df\_corr\_merge\_13\_14 }\OperatorTok{=}\NormalTok{ pd.merge(df\_corr\_merge\_12\_13,df\_corr\_ext\_2014\_part,on}\OperatorTok{=}\StringTok{"变量名"}\NormalTok{,how}\OperatorTok{=}\StringTok{"outer"}\NormalTok{)}
+\NormalTok{df\_corr\_merge\_14\_15 }\OperatorTok{=}\NormalTok{ pd.merge(df\_corr\_merge\_13\_14,df\_corr\_ext\_2015\_part,on}\OperatorTok{=}\StringTok{"变量名"}\NormalTok{,how}\OperatorTok{=}\StringTok{"outer"}\NormalTok{)}
+\NormalTok{df\_corr\_merge\_15\_16 }\OperatorTok{=}\NormalTok{ pd.merge(df\_corr\_merge\_14\_15,df\_corr\_ext\_2016\_part,on}\OperatorTok{=}\StringTok{"变量名"}\NormalTok{,how}\OperatorTok{=}\StringTok{"outer"}\NormalTok{)}
+\NormalTok{df\_corr\_merge\_all }\OperatorTok{=}\NormalTok{ pd.merge(df\_corr\_merge\_15\_16,df\_corr\_ext\_all\_part,on}\OperatorTok{=}\StringTok{"变量名"}\NormalTok{,how}\OperatorTok{=}\StringTok{"outer"}\NormalTok{)}
+\CommentTok{\# 计算平均数}
+\NormalTok{df\_corr\_merge\_all[}\StringTok{"均值"}\NormalTok{] }\OperatorTok{=}\NormalTok{ df\_corr\_merge\_all[[}\StringTok{"2010年相关系数"}\NormalTok{,}\StringTok{"2011年相关系数"}\NormalTok{,}\StringTok{"2012年相关系数"}\NormalTok{,}
+                                              \StringTok{"2013年相关系数"}\NormalTok{,}\StringTok{"2014年相关系数"}\NormalTok{,}\StringTok{"2015年相关系数"}\NormalTok{,}\StringTok{"2016年相关系数"}\NormalTok{]].mean(axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\CommentTok{\# 排序：倒序}
+\NormalTok{All\_Corr }\OperatorTok{=}\NormalTok{ df\_corr\_merge\_all.sort\_values(by}\OperatorTok{=}\NormalTok{[}\StringTok{"均值"}\NormalTok{],ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{).}\BuiltInTok{round}\NormalTok{(}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n270}{%
+\subparagraph{选择相关系数大于0.5的变量}\label{header-n270}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{All\_Corr\_Condi }\OperatorTok{=}\NormalTok{ All\_Corr[(}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"2010年相关系数"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{) }
+                                       \OperatorTok{\&}\NormalTok{ (}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"2011年相关系数"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)}
+                                       \OperatorTok{\&}\NormalTok{ (}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"2012年相关系数"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)}
+                                       \OperatorTok{\&}\NormalTok{ (}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"2013年相关系数"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)}
+                                       \OperatorTok{\&}\NormalTok{ (}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"2014年相关系数"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)}
+                                       \OperatorTok{\&}\NormalTok{ (}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"2015年相关系数"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)}
+                                       \OperatorTok{\&}\NormalTok{ (}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"2016年相关系数"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)}
+                                       \OperatorTok{\&}\NormalTok{ (}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"合计相关系数"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)}
+                                       \OperatorTok{\&}\NormalTok{ (}\BuiltInTok{abs}\NormalTok{(All\_Corr[}\StringTok{"均值"}\NormalTok{]) }\OperatorTok{\textgreater{}=} \FloatTok{0.5}\NormalTok{)]}
+\NormalTok{connames }\OperatorTok{=}\NormalTok{ []}
+\ControlFlowTok{for}\NormalTok{ conval }\KeywordTok{in}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.columns.tolist():}
+    \ControlFlowTok{if} \StringTok{"HC"} \KeywordTok{not} \KeywordTok{in}\NormalTok{ conval:}
+\NormalTok{        connames.append(conval)}
+\NormalTok{NFLIS\_and\_ACS\_All\_Corr\_Condi }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_ALL\_Out.ix[:,}\BuiltInTok{list}\NormalTok{(NFLIS\_and\_ACS\_ALL\_Out[connames])}\OperatorTok{+}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])].dropna()   }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n275}{%
+\subsection{统计推断}\label{header-n275}}
+
+\hypertarget{header-n276}{%
+\subsubsection{归一化}\label{header-n276}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data}\OperatorTok{=}\NormalTok{NFLIS\_and\_ACS\_All\_Corr\_Condi.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])]}
+\NormalTok{NFLIS\_and\_ACS\_All\_Condi\_Normal\_CH }\OperatorTok{=}\NormalTok{ (data }\OperatorTok{{-}}\NormalTok{ data.mean())}\OperatorTok{/}\NormalTok{data.std() }
+\CommentTok{\# 合并}
+\NormalTok{NFLIS\_and\_ACS\_All\_Condi\_Normal }\OperatorTok{=}\NormalTok{ pd.concat([NFLIS\_and\_ACS\_All\_Corr\_Condi.ix[:,}\BuiltInTok{list}\NormalTok{(NFLIS\_and\_ACS\_All\_Corr\_Condi[connames])],}
+\NormalTok{                                            NFLIS\_and\_ACS\_All\_Condi\_Normal\_CH],axis}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n281}{%
+\subsubsection{训练集与测试集}\label{header-n281}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Complex }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_All\_Condi\_Normal.ix[NFLIS\_and\_ACS\_All\_Condi\_Normal[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"合成阿片类药物"}\NormalTok{]}
+\NormalTok{Non\_Complex }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_All\_Condi\_Normal.ix[NFLIS\_and\_ACS\_All\_Condi\_Normal[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"非合成阿片类药物"}\NormalTok{]}
+\NormalTok{Semi\_Complex }\OperatorTok{=}\NormalTok{ NFLIS\_and\_ACS\_All\_Condi\_Normal.ix[NFLIS\_and\_ACS\_All\_Condi\_Normal[}\StringTok{"SubstanceClass"}\NormalTok{] }\OperatorTok{==} \StringTok{"半合成阿片类药物"}\NormalTok{]}
+
+\NormalTok{Complex\_x\_train,Complex\_x\_test,Complex\_y\_train,Complex\_y\_test }\OperatorTok{=}\NormalTok{ train\_test\_split(Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                                                                                 Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                                                                                 test\_size}\OperatorTok{=}\FloatTok{0.3}\NormalTok{,}
+\NormalTok{                                                                                 random\_state}\OperatorTok{=}\DecValTok{1234}\NormalTok{ )}
+\NormalTok{Non\_Complex\_x\_train,Non\_Complex\_x\_test,Non\_Complex\_y\_train,Non\_Complex\_y\_test }\OperatorTok{=}\NormalTok{ train\_test\_split(Non\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                                                                                                 Non\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                                                                                                 test\_size}\OperatorTok{=}\FloatTok{0.3}\NormalTok{,}
+\NormalTok{                                                                                                 random\_state}\OperatorTok{=}\DecValTok{1234}\NormalTok{ )}
+\NormalTok{Semi\_Complex\_x\_train,Semi\_Complex\_x\_test,Semi\_Complex\_y\_train,Semi\_Complex\_y\_test }\OperatorTok{=}\NormalTok{ train\_test\_split(Semi\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                                                                                                     Semi\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                                                                                                     test\_size}\OperatorTok{=}\FloatTok{0.3}\NormalTok{,}
+\NormalTok{                                                                                                     random\_state}\OperatorTok{=}\DecValTok{1234}\NormalTok{ )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n286}{%
+\subsubsection{KNN}\label{header-n286}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Complex\_KNN }\OperatorTok{=}\NormalTok{ KNeighborsClassifier()}
+\NormalTok{Complex\_KNN.fit(Complex\_x\_train,Complex\_y\_train)}
+\NormalTok{Complex\_KNN\_Y\_Predict }\OperatorTok{=}\NormalTok{ Complex\_KNN.predict(Complex\_x\_test)}
+\NormalTok{Complex\_KNN\_train\_score }\OperatorTok{=}\NormalTok{ Complex\_KNN.score(Complex\_x\_train, Complex\_y\_train)}
+\NormalTok{Complex\_KNN\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_KNN.score(Complex\_x\_test, Complex\_y\_test)}
+\NormalTok{Non\_Complex\_KNN }\OperatorTok{=}\NormalTok{ KNeighborsClassifier()}
+\NormalTok{Non\_Complex\_KNN.fit(Non\_Complex\_x\_train,Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_KNN\_Y\_Predict }\OperatorTok{=}\NormalTok{ Non\_Complex\_KNN.predict(Non\_Complex\_x\_test)}
+\NormalTok{Non\_Complex\_KNN\_train\_score }\OperatorTok{=}\NormalTok{ Non\_Complex\_KNN.score(Non\_Complex\_x\_train, Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_KNN\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_KNN.score(Non\_Complex\_x\_test, Non\_Complex\_y\_test)}
+\NormalTok{Semi\_Complex\_KNN }\OperatorTok{=}\NormalTok{ KNeighborsClassifier()}
+\NormalTok{Semi\_Complex\_KNN.fit(Semi\_Complex\_x\_train,Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_KNN\_Y\_Predict }\OperatorTok{=}\NormalTok{ Semi\_Complex\_KNN.predict(Semi\_Complex\_x\_test)}
+\NormalTok{Semi\_Complex\_KNN\_train\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_KNN.score(Semi\_Complex\_x\_train, Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_KNN\_test\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_KNN.score(Semi\_Complex\_x\_test, Semi\_Complex\_y\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n289}{%
+\subsubsection{决策树}\label{header-n289}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 决策树   }
+\NormalTok{Complex\_Decision }\OperatorTok{=}\NormalTok{ DecisionTreeClassifier()}
+\NormalTok{Complex\_Decision.fit(Complex\_x\_train,Complex\_y\_train)}
+\NormalTok{Complex\_Decision\_Y\_Predict }\OperatorTok{=}\NormalTok{ Complex\_Decision.predict(Complex\_x\_test)}
+\NormalTok{Complex\_Decision\_train\_score }\OperatorTok{=}\NormalTok{ Complex\_Decision.score(Complex\_x\_train, Complex\_y\_train)}
+\NormalTok{Complex\_Decision\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_Decision.score(Complex\_x\_test, Complex\_y\_test)}
+\NormalTok{Non\_Complex\_Decision }\OperatorTok{=}\NormalTok{ DecisionTreeClassifier()}
+\NormalTok{Non\_Complex\_Decision.fit(Non\_Complex\_x\_train,Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_Decision\_Y\_Predict }\OperatorTok{=}\NormalTok{ Non\_Complex\_Decision.predict(Non\_Complex\_x\_test)}
+\NormalTok{Non\_Complex\_Decision\_train\_score }\OperatorTok{=}\NormalTok{ Non\_Complex\_Decision.score(Non\_Complex\_x\_train, Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_Decision\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_Decision.score(Non\_Complex\_x\_test, Non\_Complex\_y\_test)}
+\NormalTok{Semi\_Complex\_Decision }\OperatorTok{=}\NormalTok{ DecisionTreeClassifier()}
+\NormalTok{Semi\_Complex\_Decision.fit(Semi\_Complex\_x\_train,Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_Decision\_Y\_Predict }\OperatorTok{=}\NormalTok{ Semi\_Complex\_Decision.predict(Semi\_Complex\_x\_test)}
+\NormalTok{Semi\_Complex\_Decision\_train\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_Decision.score(Semi\_Complex\_x\_train, Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_Decision\_test\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_Decision.score(Semi\_Complex\_x\_test, Semi\_Complex\_y\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n292}{%
+\subsubsection{随机森林}\label{header-n292}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 随机森林}
+\NormalTok{Complex\_RFC }\OperatorTok{=}\NormalTok{ RandomForestClassifier()}
+\NormalTok{Complex\_RFC.fit(Complex\_x\_train,Complex\_y\_train)}
+\NormalTok{Complex\_RFC\_Y\_Predict }\OperatorTok{=}\NormalTok{ Complex\_RFC.predict(Complex\_x\_test)}
+\NormalTok{Complex\_RFC\_train\_score }\OperatorTok{=}\NormalTok{ Complex\_RFC.score(Complex\_x\_train, Complex\_y\_train)}
+\NormalTok{Complex\_RFC\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_RFC.score(Complex\_x\_test, Complex\_y\_test)}
+\NormalTok{Non\_Complex\_RFC }\OperatorTok{=}\NormalTok{ RandomForestClassifier()}
+\NormalTok{Non\_Complex\_RFC.fit(Non\_Complex\_x\_train,Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_RFC\_Y\_Predict }\OperatorTok{=}\NormalTok{ Non\_Complex\_RFC.predict(Non\_Complex\_x\_test)}
+\NormalTok{Non\_Complex\_RFC\_train\_score }\OperatorTok{=}\NormalTok{ Non\_Complex\_RFC.score(Non\_Complex\_x\_train, Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_RFC\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_RFC.score(Non\_Complex\_x\_test, Non\_Complex\_y\_test)}
+\NormalTok{Semi\_Complex\_RFC }\OperatorTok{=}\NormalTok{ RandomForestClassifier()}
+\NormalTok{Semi\_Complex\_RFC.fit(Semi\_Complex\_x\_train,Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_RFC\_Y\_Predict }\OperatorTok{=}\NormalTok{ Semi\_Complex\_RFC.predict(Semi\_Complex\_x\_test)}
+\NormalTok{Semi\_Complex\_RFC\_train\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_RFC.score(Semi\_Complex\_x\_train, Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_RFC\_test\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_RFC.score(Semi\_Complex\_x\_test, Semi\_Complex\_y\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n295}{%
+\subsubsection{支持向量机}\label{header-n295}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# SVM}
+\NormalTok{Complex\_SVM }\OperatorTok{=}\NormalTok{ SVC()}
+\NormalTok{Complex\_SVM.fit(Complex\_x\_train,Complex\_y\_train)}
+\NormalTok{Complex\_SVM\_Y\_Predict }\OperatorTok{=}\NormalTok{ Complex\_SVM.predict(Complex\_x\_test)}
+\NormalTok{Complex\_SVM\_train\_score }\OperatorTok{=}\NormalTok{ Complex\_SVM.score(Complex\_x\_train, Complex\_y\_train)}
+\NormalTok{Complex\_SVM\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_SVM.score(Complex\_x\_test, Complex\_y\_test)}
+\NormalTok{Non\_Complex\_SVM }\OperatorTok{=}\NormalTok{ SVC()}
+\NormalTok{Non\_Complex\_SVM.fit(Non\_Complex\_x\_train,Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_SVM\_Y\_Predict }\OperatorTok{=}\NormalTok{ Non\_Complex\_SVM.predict(Non\_Complex\_x\_test)}
+\NormalTok{Non\_Complex\_SVM\_train\_score }\OperatorTok{=}\NormalTok{ Non\_Complex\_SVM.score(Non\_Complex\_x\_train, Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_SVM\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_SVM.score(Non\_Complex\_x\_test, Non\_Complex\_y\_test)}
+\NormalTok{Semi\_Complex\_SVM }\OperatorTok{=}\NormalTok{ SVC()}
+\NormalTok{Semi\_Complex\_SVM.fit(Semi\_Complex\_x\_train,Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_SVM\_Y\_Predict }\OperatorTok{=}\NormalTok{ Semi\_Complex\_SVM.predict(Semi\_Complex\_x\_test)}
+\NormalTok{Semi\_Complex\_SVM\_train\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_SVM.score(Semi\_Complex\_x\_train, Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_SVM\_test\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_SVM.score(Semi\_Complex\_x\_test, Semi\_Complex\_y\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n298}{%
+\subsubsection{神经网络}\label{header-n298}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 神经网络}
+\NormalTok{Complex\_MLP }\OperatorTok{=}\NormalTok{ MLPClassifier(solver}\OperatorTok{=}\StringTok{\textquotesingle{}lbfgs\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{1e{-}5}\NormalTok{,hidden\_layer\_sizes}\OperatorTok{=}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), random\_state}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{Complex\_MLP.fit(Complex\_x\_train,Complex\_y\_train)}
+\NormalTok{Complex\_MLP\_Y\_Predict }\OperatorTok{=}\NormalTok{ Complex\_MLP.predict(Complex\_x\_test)}
+\NormalTok{Complex\_MLP\_train\_score }\OperatorTok{=}\NormalTok{ Complex\_MLP.score(Complex\_x\_train, Complex\_y\_train)}
+\NormalTok{Complex\_MLP\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_MLP.score(Complex\_x\_test, Complex\_y\_test)}
+\NormalTok{Non\_Complex\_MLP }\OperatorTok{=}\NormalTok{ MLPClassifier(solver}\OperatorTok{=}\StringTok{\textquotesingle{}lbfgs\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{1e{-}5}\NormalTok{,hidden\_layer\_sizes}\OperatorTok{=}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), random\_state}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{Non\_Complex\_MLP.fit(Non\_Complex\_x\_train,Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_MLP\_Y\_Predict }\OperatorTok{=}\NormalTok{ Non\_Complex\_MLP.predict(Non\_Complex\_x\_test)}
+\NormalTok{Non\_Complex\_MLP\_train\_score }\OperatorTok{=}\NormalTok{ Non\_Complex\_MLP.score(Non\_Complex\_x\_train, Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_MLP\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_MLP.score(Non\_Complex\_x\_test, Non\_Complex\_y\_test)}
+\NormalTok{Semi\_Complex\_MLP }\OperatorTok{=}\NormalTok{ MLPClassifier(solver}\OperatorTok{=}\StringTok{\textquotesingle{}lbfgs\textquotesingle{}}\NormalTok{, alpha}\OperatorTok{=}\FloatTok{1e{-}5}\NormalTok{,hidden\_layer\_sizes}\OperatorTok{=}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), random\_state}\OperatorTok{=}\DecValTok{1}\NormalTok{)}
+\NormalTok{Semi\_Complex\_MLP.fit(Semi\_Complex\_x\_train,Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_MLP\_Y\_Predict }\OperatorTok{=}\NormalTok{ Semi\_Complex\_MLP.predict(Semi\_Complex\_x\_test)}
+\NormalTok{Semi\_Complex\_MLP\_train\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_MLP.score(Semi\_Complex\_x\_train, Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_MLP\_test\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_MLP.score(Semi\_Complex\_x\_test, Semi\_Complex\_y\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n301}{%
+\subsubsection{线性回归}\label{header-n301}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 线性回归}
+\NormalTok{Complex\_LR }\OperatorTok{=}\NormalTok{ LogisticRegression()}
+\NormalTok{Complex\_LR.fit(Complex\_x\_train,Complex\_y\_train)}
+\NormalTok{Complex\_LR\_Y\_Predict }\OperatorTok{=}\NormalTok{ Complex\_LR.predict(Complex\_x\_test)}
+\NormalTok{Complex\_LR\_train\_score }\OperatorTok{=}\NormalTok{ Complex\_LR.score(Complex\_x\_train, Complex\_y\_train)}
+\NormalTok{Complex\_LR\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_LR.score(Complex\_x\_test, Complex\_y\_test)}
+\NormalTok{Non\_Complex\_LR }\OperatorTok{=}\NormalTok{ LogisticRegression()}
+\NormalTok{Non\_Complex\_LR.fit(Non\_Complex\_x\_train,Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_LR\_Y\_Predict }\OperatorTok{=}\NormalTok{ Non\_Complex\_LR.predict(Non\_Complex\_x\_test)}
+\NormalTok{Non\_Complex\_LR\_train\_score }\OperatorTok{=}\NormalTok{ Non\_Complex\_LR.score(Non\_Complex\_x\_train, Non\_Complex\_y\_train)}
+\NormalTok{Non\_Complex\_LR\_test\_score }\OperatorTok{=}\NormalTok{ Complex\_LR.score(Non\_Complex\_x\_test, Non\_Complex\_y\_test)}
+\NormalTok{Semi\_Complex\_LR }\OperatorTok{=}\NormalTok{ LogisticRegression()}
+\NormalTok{Semi\_Complex\_LR.fit(Semi\_Complex\_x\_train,Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_LR\_Y\_Predict }\OperatorTok{=}\NormalTok{ Semi\_Complex\_LR.predict(Semi\_Complex\_x\_test)}
+\NormalTok{Semi\_Complex\_LR\_train\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_LR.score(Semi\_Complex\_x\_train, Semi\_Complex\_y\_train)}
+\NormalTok{Semi\_Complex\_LR\_test\_score }\OperatorTok{=}\NormalTok{ Semi\_Complex\_LR.score(Semi\_Complex\_x\_test, Semi\_Complex\_y\_test)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n304}{%
+\subsection{模型评估}\label{header-n304}}
+
+\hypertarget{header-n305}{%
+\subsubsection{特征重要性}\label{header-n305}}
+
+\hypertarget{header-n306}{%
+\paragraph{特征重要性计算}\label{header-n306}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 非合成类}
+\NormalTok{Non\_Complex\_Imp }\OperatorTok{=} \FloatTok{100.0}\OperatorTok{*}\NormalTok{(Non\_Complex\_RFC.feature\_importances\_}\OperatorTok{/}
+                             \BuiltInTok{max}\NormalTok{(Non\_Complex\_RFC.feature\_importances\_))}
+\NormalTok{Non\_Complex\_Importance }\OperatorTok{=}\NormalTok{ pd.DataFrame(np.array([Non\_Complex\_x\_test.columns,Non\_Complex\_Imp]).T,}
+\NormalTok{                                      columns}\OperatorTok{=}\NormalTok{[}\StringTok{"Var"}\NormalTok{,}\StringTok{"非合成类重要度"}\NormalTok{])}
+\NormalTok{Non\_Complex\_Importance[}\StringTok{"非合成类重要度"}\NormalTok{].astype(}\StringTok{"float"}\NormalTok{)}
+\NormalTok{Non\_Complex\_Importance\_Sort}\OperatorTok{=}\NormalTok{ Non\_Complex\_Importance.sort\_values(by}\OperatorTok{=}\StringTok{"非合成类重要度"}\NormalTok{,ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\CommentTok{\# 合成类}
+\NormalTok{Complex\_Imp }\OperatorTok{=} \FloatTok{100.0}\OperatorTok{*}\NormalTok{(Complex\_RFC.feature\_importances\_}\OperatorTok{/}
+                             \BuiltInTok{max}\NormalTok{(Complex\_RFC.feature\_importances\_))}
+\NormalTok{Complex\_Importance }\OperatorTok{=}\NormalTok{ pd.DataFrame(np.array([Complex\_x\_test.columns,Complex\_Imp]).T,}
+\NormalTok{                                  columns}\OperatorTok{=}\NormalTok{[}\StringTok{"Var"}\NormalTok{,}\StringTok{"合成类重要度"}\NormalTok{])}
+\NormalTok{Complex\_Importance[}\StringTok{"合成类重要度"}\NormalTok{].astype(}\StringTok{"float"}\NormalTok{)}
+\NormalTok{Complex\_Importance\_Sort}\OperatorTok{=}\NormalTok{ Complex\_Importance.sort\_values(by}\OperatorTok{=}\StringTok{"合成类重要度"}\NormalTok{,ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\CommentTok{\# 半合成类}
+\NormalTok{Semi\_Complex\_Imp }\OperatorTok{=} \FloatTok{100.0}\OperatorTok{*}\NormalTok{(Semi\_Complex\_RFC.feature\_importances\_}\OperatorTok{/}
+                             \BuiltInTok{max}\NormalTok{(Semi\_Complex\_RFC.feature\_importances\_))}
+\NormalTok{Semi\_Complex\_Importance }\OperatorTok{=}\NormalTok{ pd.DataFrame(np.array([Semi\_Complex\_x\_test.columns,Semi\_Complex\_Imp]).T,}
+\NormalTok{                                           columns}\OperatorTok{=}\NormalTok{[}\StringTok{"Var"}\NormalTok{,}\StringTok{"半合成类重要度"}\NormalTok{])}
+\NormalTok{Semi\_Complex\_Importance[}\StringTok{"半合成类重要度"}\NormalTok{].astype(}\StringTok{"float"}\NormalTok{)}
+\NormalTok{Semi\_Complex\_Importance\_Sort}\OperatorTok{=}\NormalTok{ Semi\_Complex\_Importance.sort\_values(by}\OperatorTok{=}\StringTok{"半合成类重要度"}\NormalTok{,ascending}\OperatorTok{=}\VariableTok{False}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n309}{%
+\paragraph{变量名匹配}\label{header-n309}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Complex\_Importance\_Rename }\OperatorTok{=}\NormalTok{ pd.merge(Complex\_Importance\_Sort,}
+\NormalTok{                                      ACS\_All\_5YR\_DP02\_metadata\_Dup,}
+\NormalTok{                                      on}\OperatorTok{=}\StringTok{"Var"}\NormalTok{,how}\OperatorTok{=}\StringTok{"left"}\NormalTok{)}
+\NormalTok{Non\_Complex\_Importance\_Rename }\OperatorTok{=}\NormalTok{ pd.merge(Non\_Complex\_Importance\_Sort,}
+\NormalTok{                                      ACS\_All\_5YR\_DP02\_metadata\_Dup,}
+\NormalTok{                                      on}\OperatorTok{=}\StringTok{"Var"}\NormalTok{,how}\OperatorTok{=}\StringTok{"left"}\NormalTok{)}
+\NormalTok{Semi\_Complex\_Importance\_Rename }\OperatorTok{=}\NormalTok{ pd.merge(Semi\_Complex\_Importance\_Sort,}
+\NormalTok{                                      ACS\_All\_5YR\_DP02\_metadata\_Dup,}
+\NormalTok{                                      on}\OperatorTok{=}\StringTok{"Var"}\NormalTok{,how}\OperatorTok{=}\StringTok{"left"}\NormalTok{)}
+\NormalTok{All\_Importance\_Rename }\OperatorTok{=}\NormalTok{ pd.concat([Complex\_Importance\_Rename,}
+\NormalTok{                                  Non\_Complex\_Importance\_Rename,}
+\NormalTok{                                  Semi\_Complex\_Importance\_Rename],}
+\NormalTok{                                axis}\OperatorTok{=}\DecValTok{1}\NormalTok{,join}\OperatorTok{=}\StringTok{"outer"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n312}{%
+\subsubsection{KFold验证}\label{header-n312}}
+
+\hypertarget{header-n313}{%
+\paragraph{非合成类}\label{header-n313}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{strKFold }\OperatorTok{=}\NormalTok{ StratifiedKFold(n\_splits}\OperatorTok{=}\DecValTok{10}\NormalTok{,shuffle}\OperatorTok{=}\VariableTok{False}\NormalTok{,random\_state}\OperatorTok{=}\DecValTok{1234}\NormalTok{)}
+\NormalTok{Non\_Complex\_KNN\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Non\_Complex\_KNN,}
+\NormalTok{                            Non\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Non\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Non\_Complex\_Decision\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Non\_Complex\_Decision,}
+\NormalTok{                            Non\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Non\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Non\_Complex\_RFC\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Non\_Complex\_RFC,}
+\NormalTok{                            Non\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Non\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Non\_Complex\_SVM\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Non\_Complex\_SVM,}
+\NormalTok{                            Non\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Non\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Non\_Complex\_MLP\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Non\_Complex\_MLP,}
+\NormalTok{                            Non\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Non\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Non\_Complex\_LR\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Non\_Complex\_LR,}
+\NormalTok{                            Non\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Non\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n318}{%
+\paragraph{合成类}\label{header-n318}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{strKFold }\OperatorTok{=}\NormalTok{ StratifiedKFold(n\_splits}\OperatorTok{=}\DecValTok{10}\NormalTok{,shuffle}\OperatorTok{=}\VariableTok{False}\NormalTok{,random\_state}\OperatorTok{=}\DecValTok{1234}\NormalTok{)}
+\NormalTok{Complex\_KNN\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Complex\_KNN,}
+\NormalTok{                            Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Complex\_Decision\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Complex\_Decision,}
+\NormalTok{                            Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Complex\_RFC\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Complex\_RFC,}
+\NormalTok{                            Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Complex\_SVM\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Complex\_SVM,}
+\NormalTok{                            Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Complex\_MLP\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Complex\_MLP,}
+\NormalTok{                            Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Complex\_LR\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Complex\_LR,}
+\NormalTok{                            Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n323}{%
+\paragraph{半合成类}\label{header-n323}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{strKFold }\OperatorTok{=}\NormalTok{ StratifiedKFold(n\_splits}\OperatorTok{=}\DecValTok{10}\NormalTok{,shuffle}\OperatorTok{=}\VariableTok{False}\NormalTok{,random\_state}\OperatorTok{=}\DecValTok{1234}\NormalTok{)}
+\NormalTok{Semi\_Complex\_KNN\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Semi\_Complex\_KNN,}
+\NormalTok{                            Semi\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Semi\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Semi\_Complex\_Decision\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Semi\_Complex\_Decision,}
+\NormalTok{                            Semi\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Semi\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Semi\_Complex\_RFC\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Semi\_Complex\_RFC,}
+\NormalTok{                            Semi\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Semi\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Semi\_Complex\_SVM\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Semi\_Complex\_SVM,}
+\NormalTok{                            Semi\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Semi\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Semi\_Complex\_MLP\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Semi\_Complex\_MLP,}
+\NormalTok{                            Semi\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Semi\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\NormalTok{Semi\_Complex\_LR\_Kfold }\OperatorTok{=}\NormalTok{ cross\_val\_score(Semi\_Complex\_LR,}
+\NormalTok{                            Semi\_Complex.ix[:,}\BuiltInTok{list}\NormalTok{(All\_Corr\_Condi[}\StringTok{"变量名"}\NormalTok{])],}
+\NormalTok{                            Semi\_Complex.ix[:,}\StringTok{"DrugReportsclass"}\NormalTok{],}
+\NormalTok{                            scoring}\OperatorTok{=}\StringTok{\textquotesingle{}accuracy\textquotesingle{}}\NormalTok{,}
+\NormalTok{                            cv}\OperatorTok{=}\NormalTok{strKFold)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n328}{%
+\subsubsection{Kfold结果值}\label{header-n328}}
+
+\hypertarget{header-n329}{%
+\paragraph{非合成类}\label{header-n329}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Non\_Complex\_Kfold\_Outdata }\OperatorTok{=}\NormalTok{ pd.DataFrame(np.array([Non\_Complex\_KNN\_Kfold,}
+\NormalTok{                                                   Non\_Complex\_Decision\_Kfold,}
+\NormalTok{                                                   Non\_Complex\_RFC\_Kfold,}
+\NormalTok{                                                   Non\_Complex\_SVM\_Kfold,}
+\NormalTok{                                                   Non\_Complex\_MLP\_Kfold,}
+\NormalTok{                                                   Non\_Complex\_LR\_Kfold]).T.}\BuiltInTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{),}
+\NormalTok{                                         columns}\OperatorTok{=}\NormalTok{[}\StringTok{"KNN"}\NormalTok{,}\StringTok{"决策树"}\NormalTok{,}\StringTok{"随机森林"}\NormalTok{,}\StringTok{"支持向量机"}\NormalTok{,}\StringTok{"神经网络"}\NormalTok{,}\StringTok{"线性回归"}\NormalTok{])}
+\NormalTok{Non\_Complex\_Kfold\_Box }\OperatorTok{=}\NormalTok{ Non\_Complex\_Kfold\_Outdata.stack().reset\_index()}
+\NormalTok{Non\_Complex\_Kfold\_Box }\OperatorTok{=}\NormalTok{ Non\_Complex\_Kfold\_Box.rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"level\_1"}\NormalTok{:}\StringTok{"各类机器学习算法"}\NormalTok{,}\StringTok{"0"}\NormalTok{:}\StringTok{"Kfold值"}\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n332}{%
+\paragraph{合成类}\label{header-n332}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Complex\_Kfold\_Outdata }\OperatorTok{=}\NormalTok{ pd.DataFrame(np.array([Complex\_KNN\_Kfold,}
+\NormalTok{                                                   Complex\_Decision\_Kfold,}
+\NormalTok{                                                   Complex\_RFC\_Kfold,}
+\NormalTok{                                                   Complex\_SVM\_Kfold,}
+\NormalTok{                                                   Complex\_MLP\_Kfold,}
+\NormalTok{                                                   Complex\_LR\_Kfold]).T.}\BuiltInTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{),}
+\NormalTok{                                         columns}\OperatorTok{=}\NormalTok{[}\StringTok{"KNN"}\NormalTok{,}\StringTok{"决策树"}\NormalTok{,}\StringTok{"随机森林"}\NormalTok{,}\StringTok{"支持向量机"}\NormalTok{,}\StringTok{"神经网络"}\NormalTok{,}\StringTok{"线性回归"}\NormalTok{])}
+\NormalTok{Complex\_Kfold\_Box }\OperatorTok{=}\NormalTok{ Complex\_Kfold\_Outdata.stack().reset\_index()}
+\NormalTok{Complex\_Kfold\_Box }\OperatorTok{=}\NormalTok{ Complex\_Kfold\_Box.rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"level\_1"}\NormalTok{:}\StringTok{"各类机器学习算法"}\NormalTok{,}\StringTok{"0"}\NormalTok{:}\StringTok{"Kfold值"}\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n335}{%
+\paragraph{半合成类}\label{header-n335}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Semi\_Complex\_Kfold\_Outdata }\OperatorTok{=}\NormalTok{ pd.DataFrame(np.array([Semi\_Complex\_KNN\_Kfold,}
+\NormalTok{                                                   Semi\_Complex\_Decision\_Kfold,}
+\NormalTok{                                                   Semi\_Complex\_RFC\_Kfold,}
+\NormalTok{                                                   Semi\_Complex\_SVM\_Kfold,}
+\NormalTok{                                                   Semi\_Complex\_MLP\_Kfold,}
+\NormalTok{                                                   Semi\_Complex\_LR\_Kfold]).T.}\BuiltInTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{),}
+\NormalTok{                                         columns}\OperatorTok{=}\NormalTok{[}\StringTok{"KNN"}\NormalTok{,}\StringTok{"决策树"}\NormalTok{,}\StringTok{"随机森林"}\NormalTok{,}\StringTok{"支持向量机"}\NormalTok{,}\StringTok{"神经网络"}\NormalTok{,}\StringTok{"线性回归"}\NormalTok{])}
+\NormalTok{Semi\_Complex\_Kfold\_Box }\OperatorTok{=}\NormalTok{ Semi\_Complex\_Kfold\_Outdata.stack().reset\_index()}
+\NormalTok{Semi\_Complex\_Kfold\_Box }\OperatorTok{=}\NormalTok{ Semi\_Complex\_Kfold\_Box.rename(columns}\OperatorTok{=}\NormalTok{\{}\StringTok{"level\_1"}\NormalTok{:}\StringTok{"各类机器学习算法"}\NormalTok{,}\StringTok{"0"}\NormalTok{:}\StringTok{"Kfold值"}\NormalTok{\})}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n338}{%
+\subsubsection{Kfold箱式图}\label{header-n338}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{f,(Complex\_Box1,Non\_Complex\_Box2,Semi\_Complex\_Box3) }\OperatorTok{=}\NormalTok{ plt.subplots(nrows}\OperatorTok{=}\DecValTok{3}\NormalTok{,figsize}\OperatorTok{=}\NormalTok{(}\DecValTok{15}\NormalTok{,}\DecValTok{15}\NormalTok{))}
+
+\NormalTok{sns.boxplot(x }\OperatorTok{=} \StringTok{"各类机器学习算法"}\NormalTok{, y }\OperatorTok{=}\NormalTok{ Complex\_Kfold\_Box.ix[:,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{], }
+\NormalTok{            data}\OperatorTok{=}\NormalTok{Complex\_Kfold\_Box,ax}\OperatorTok{=}\NormalTok{Complex\_Box1)}
+\NormalTok{Complex\_Box1.set\_xlabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Complex\_Box1.set\_ylabel(}\StringTok{\textquotesingle{}合成类\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{sns.boxplot(x }\OperatorTok{=} \StringTok{"各类机器学习算法"}\NormalTok{, y }\OperatorTok{=}\NormalTok{ Non\_Complex\_Kfold\_Box.ix[:,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{], }
+\NormalTok{            data}\OperatorTok{=}\NormalTok{Non\_Complex\_Kfold\_Box,ax}\OperatorTok{=}\NormalTok{Non\_Complex\_Box2)}
+\NormalTok{Non\_Complex\_Box2.set\_xlabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Non\_Complex\_Box2.set\_ylabel(}\StringTok{\textquotesingle{}非合成类\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{sns.boxplot(x }\OperatorTok{=} \StringTok{"各类机器学习算法"}\NormalTok{, y }\OperatorTok{=}\NormalTok{ Semi\_Complex\_Kfold\_Box.ix[:,}\OperatorTok{{-}}\DecValTok{1}\NormalTok{], }
+\NormalTok{            data}\OperatorTok{=}\NormalTok{Semi\_Complex\_Kfold\_Box,ax}\OperatorTok{=}\NormalTok{Semi\_Complex\_Box3)}
+\NormalTok{Semi\_Complex\_Box3.set\_xlabel(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{Semi\_Complex\_Box3.set\_ylabel(}\StringTok{\textquotesingle{}半合成类\textquotesingle{}}\NormalTok{)}
+
+\NormalTok{plt.tight\_layout()}
+\NormalTok{All\_Box }\OperatorTok{=}\NormalTok{ plt.gcf()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n345}{%
+\subsection{导出结果}\label{header-n345}}
+
+\hypertarget{header-n346}{%
+\subsubsection{数据清洗结果}\label{header-n346}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# 整理后的ACS\_ALL}
+\NormalTok{ACS\_ALL\_5YR\_DP02.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_ALL\_5YR\_DP02.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\CommentTok{\# 整理后的MCM\_NFLIS}
+\NormalTok{MCM\_NFLIS\_Class\_Clear.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"MCM\_NFLIS\_Class\_Clear.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\CommentTok{\# 整理后的ACS\_All\_5YR\_DP02\_metadata}
+\NormalTok{ACS\_All\_5YR\_DP02\_metadata\_Dup.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"ACS\_All\_5YR\_DP02\_metadata\_Dup.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\CommentTok{\# 按照三类药物数据合并}
+\NormalTok{NFLIS\_and\_ACS\_ALL\_Out.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"NFLIS\_and\_ACS\_ALL\_Out.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\CommentTok{\# 相关系数大于0.5的变量}
+\NormalTok{All\_Corr\_Condi.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"All\_Corr\_Condi.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\CommentTok{\# 相关系数大于0.5的变量的社会经济数据表}
+\NormalTok{NFLIS\_and\_ACS\_All\_Corr\_Condi.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"NFLIS\_and\_ACS\_All\_Corr\_Condi.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\CommentTok{\# 归一化后相关系数大于0.5的变量的社会经济数据表}
+\NormalTok{NFLIS\_and\_ACS\_All\_Condi\_Normal.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"NFLIS\_and\_ACS\_All\_Condi\_Normal.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n349}{%
+\subsubsection{统计描述结果}\label{header-n349}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{NFLIS\_Figure2\_Data\_Class1.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"NFLIS\_Figure2\_Data\_Class1.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{NFLIS\_Figure2\_Data\_Class2.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"NFLIS\_Figure2\_Data\_Class2.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{NFLIS\_Figure2\_Data\_Class3.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"NFLIS\_Figure2\_Data\_Class3.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Figure1.savefig(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"Figure1\_Pie.jpg"}\NormalTok{),dpi}\OperatorTok{=}\DecValTok{500}\NormalTok{)}
+\NormalTok{Figure2.savefig(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"Figure2\_Bar.jpg"}\NormalTok{),dpi}\OperatorTok{=}\DecValTok{500}\NormalTok{)}
+\NormalTok{Figure3.savefig(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"Figure3\_HeatMap.jpg"}\NormalTok{),dpi}\OperatorTok{=}\DecValTok{500}\NormalTok{)}
+\NormalTok{Figure4.savefig(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"Figure4\_Plot.jpg"}\NormalTok{),dpi}\OperatorTok{=}\DecValTok{500}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n354}{%
+\subsubsection{模型评估结果}\label{header-n354}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Kfold箱式图}
+\NormalTok{All\_Box.savefig(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"All\_Box.jpg"}\NormalTok{),dpi}\OperatorTok{=}\DecValTok{500}\NormalTok{)}
+\CommentTok{\# 三类药物特征重要度}
+\NormalTok{All\_Importance\_Rename.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"All\_Importance\_Rename.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\CommentTok{\# K折验证}
+\NormalTok{Complex\_Kfold\_Outdata.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"Complex\_Kfold\_Outdata.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{Semi\_Complex\_Kfold\_Outdata.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"Semi\_Complex\_Kfold\_Outdata.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\NormalTok{Non\_Complex\_Kfold\_Outdata.to\_csv(file\_path(}\StringTok{"02\_output"}\NormalTok{,}\StringTok{"Non\_Complex\_Kfold\_Outdata.csv"}\NormalTok{),encoding}\OperatorTok{=}\StringTok{"utf{-}8{-}sig"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n357}{%
+\subsubsection{模型的混淆矩阵}\label{header-n357}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}KNN合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Complex\_y\_test, Complex\_KNN\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}KNN半合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Semi\_Complex\_y\_test, Semi\_Complex\_KNN\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}KNN非合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Non\_Complex\_y\_test, Non\_Complex\_KNN\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Decision合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Complex\_y\_test, Complex\_Decision\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Decision半合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Semi\_Complex\_y\_test, Semi\_Complex\_Decision\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Decision非合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Non\_Complex\_y\_test, Non\_Complex\_Decision\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}RFC合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Complex\_y\_test, Complex\_RFC\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}RFC半合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Semi\_Complex\_y\_test, Semi\_Complex\_RFC\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}RFC非合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Non\_Complex\_y\_test, Non\_Complex\_RFC\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}SVM合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Complex\_y\_test, Complex\_SVM\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}SVM半合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Semi\_Complex\_y\_test, Semi\_Complex\_SVM\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}SVM非合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Non\_Complex\_y\_test, Non\_Complex\_SVM\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}MLP合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Complex\_y\_test, Complex\_MLP\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}MLP半合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Semi\_Complex\_y\_test, Semi\_Complex\_MLP\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}MLP非合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Non\_Complex\_y\_test, Non\_Complex\_MLP\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}LR合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Complex\_y\_test, Complex\_LR\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}LR半合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Semi\_Complex\_y\_test, Semi\_Complex\_LR\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(}\StringTok{\textquotesingle{}LR非合成类混淆矩阵为：\textquotesingle{}}\NormalTok{, confusion\_matrix(Non\_Complex\_y\_test, Non\_Complex\_LR\_Y\_Predict), sep}\OperatorTok{=}\StringTok{\textquotesingle{}}\CharTok{\textbackslash{}n}\StringTok{\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{header-n362}{%
+\subsubsection{模型的评估报告}\label{header-n362}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\BuiltInTok{print}\NormalTok{(}\StringTok{"最近邻法合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Complex\_KNN\_Y\_Predict,Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"最近邻法非合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Non\_Complex\_KNN\_Y\_Predict,Non\_Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"最近邻法半合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Semi\_Complex\_KNN\_Y\_Predict,Semi\_Complex\_y\_test))}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"决策树合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Complex\_Decision\_Y\_Predict,Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"决策树非合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Non\_Complex\_Decision\_Y\_Predict,Non\_Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"决策树半合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Semi\_Complex\_Decision\_Y\_Predict,Semi\_Complex\_y\_test))}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"随机森林合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Complex\_RFC\_Y\_Predict,Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"随机森林非合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Non\_Complex\_RFC\_Y\_Predict,Non\_Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"随机森林半合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Semi\_Complex\_RFC\_Y\_Predict,Semi\_Complex\_y\_test))}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"支持向量机合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Complex\_SVM\_Y\_Predict,Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"支持向量机非合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Non\_Complex\_SVM\_Y\_Predict,Non\_Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"支持向量机半合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Semi\_Complex\_SVM\_Y\_Predict,Semi\_Complex\_y\_test))}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"神经网络合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Complex\_MLP\_Y\_Predict,Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"神经网络非合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Non\_Complex\_MLP\_Y\_Predict,Non\_Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"神经网络半合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Semi\_Complex\_MLP\_Y\_Predict,Semi\_Complex\_y\_test))}
+
+\BuiltInTok{print}\NormalTok{(}\StringTok{"线性回归合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Complex\_LR\_Y\_Predict,Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"线性回归非合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Non\_Complex\_LR\_Y\_Predict,Non\_Complex\_y\_test))}
+\BuiltInTok{print}\NormalTok{(}\StringTok{"线性回归半合成阿片类："}\NormalTok{)}
+\BuiltInTok{print}\NormalTok{(classification\_report(Semi\_Complex\_LR\_Y\_Predict,Semi\_Complex\_y\_test))}
+\end{Highlighting}
+\end{Shaded}
+
+\end{document}

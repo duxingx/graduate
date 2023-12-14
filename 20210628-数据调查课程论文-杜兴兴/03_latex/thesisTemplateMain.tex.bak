@@ -1,0 +1,97 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 文件名 :     thesisTemplateMain      %
+%                                      %
+% 作者:        包小敏                  %
+%                                      %
+% 单位:        西南大学数学与统计学院  %
+%                                      %
+% 创建于:      2009年01月21日          %
+% 最后修改于:  2018年11月17日          %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[%CCT,
+               twoside,
+               ]{ctexbook}
+\usepackage{coverfigures/SWUthesis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 请在下面\includeonly{}的{}中列出需引入的文件名（若文件不在此文件所在的文
+% 件夹里，还需指明路径），文件名之间用逗号隔开。若修改过程中某个文件不需修改，
+% 则将这个文件名注释掉可以加快编译速度。
+% 一般情况下用PDFLaTeX编译，用LATEX编译速度可能会很慢，有些字还可能显示不出来。
+%------------------------------------------------------------------------------
+
+\include{coverfiles/informationInput}
+
+%%%%%%%%%%%%%%%%%
+\begin{document}%
+%%%%%%%%%%%%%%%%%
+\frontmatter
+\begin{titlepage}
+    \include{coverfiles/coverPage}
+\end{titlepage}
+%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}%
+%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{plain}
+%\include{declaration/declare}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\newpage             %
+\thispagestyle{empty}%
+\tableofcontents     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{comment}
+%\newpage
+\zihao{-4}                          %
+\thispagestyle{plain}                       %
+\addcontentsline{toc}{chapter}{摘要}        %
+\renewcommand{\baselinestretch}{\beishu}    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%插入中文摘要
+\include{abstract/Chabstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage                                    %
+\thispagestyle{plain}                       %
+\addcontentsline{toc}{chapter}{ABSTRACT}    %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%插入英文摘要
+\include{abstract/Enabstract}
+%\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter                                %
+\newpage                                   %
+\pagenumbering{arabic}                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%插入正文
+\include{bodyfiles/zhengwen}
+%--------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\addcontentsline{toc}{chapter}{参考文献}  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%插入参考文献
+\include{bibliography/biblio}
+
+%--------------------------------
+\begin{appendix}
+%插入发表论文及参加课题一览表
+%    \include{appendix/published/paper1}
+%插入其它附录
+   \include{appendix/code/Rcode}
+\end{appendix}
+%--------------------------------
+%%%%%%%%%%%%%
+\backmatter %
+%%%%%%%%%%%%%
+%--------------------------------
+%插入致谢
+%\include{thanks/zhixie}
+%%%%%%%%%%%%%%%
+\end{document}%
+%%%%%%%%%%%%%%%

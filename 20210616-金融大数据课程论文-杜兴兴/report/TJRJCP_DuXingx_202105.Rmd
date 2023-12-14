@@ -1,0 +1,1439 @@
+---
+title: "基于线性模型的锅炉冷壁温度曲线研究"
+author: "杜兴兴"
+date: "`r Sys.Date()`"
+geometry:
+  "left=3cm,right=3cm,top=3cm,bottom=3cm"
+output:
+  pdf_document: 
+    latex_engine: xelatex
+    extra_dependencies:
+      ctex: UTF8
+    number_sections: yes
+    df_print: kable
+    toc: yes
+    keep_tex: yes
+classoptions: "hyperref, 25pt, a4paper"
+---
+<span style="font-family:楷体;">
+<span style="font-size:10px;">
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = FALSE,
+	message = FALSE,
+	warning = FALSE,
+	collapse=TRUE,
+	cache = F,
+	comment = "",
+	fig.align = "center",
+	fig.height=7, 
+	fig.width=12,
+	fig.show="asis"
+)
+################################################################################
+library(readr)
+library(tidyverse)
+library(Hmisc) # 相关系数
+library(glmnet) # 弹性网变量选择
+library(broom) # 模型结果整理
+library(car) # qq图
+library(MASS) # 岭回归
+##############################################################################
+
+# 计算波峰波谷
+################################################################################
+findpeak_boo <- function(x){
+  r <- rle(x)
+  pks <- which(rep(x = diff(sign(diff(c(-Inf, r$values, -Inf)))) == -2, 
+                   times = r$lengths))
+  boos <- which(rep(x = diff(sign(diff(c(-Inf, r$values, -Inf)))) == 2, 
+                    times = r$lengths))
+  n_pks <- length(pks)
+  n_boos <- length(boos)
+  return(list(
+    "pks"=pks,
+    "boos"=boos,
+    "n_pks"=n_pks,
+    "n_boos"=n_boos))
+}
+################################################################################
+
+# 缺失值均值填补
+################################################################################
+fillna = function(x){
+  x[is.na(x)] = mean(x,na.rm = TRUE)
+  return(x)
+}
+##############################################################################
+```
+
+# 摘要
+
+&emsp;&emsp;在燃煤发电过程中，锅炉是一种重要的热能动力设备。锅炉的主要受热部分是水冷壁，其内部为流动的水用于吸收炉膛中高温燃烧产生的辐射热量，水受热蒸发产生高压蒸汽。影响水冷壁温度的因素有很多，本文旨在通过建立线性回归模型对水冷壁温度变化曲线进行分析研究。
+
+&emsp;&emsp;基于各个水冷壁管道的共5000组温度数据，从集中趋势、离中趋势及分布形态三个方面对数据进行描述。我们使用均值、标准差、最小值、最大值、波峰、趋势斜率等统计特征对10个水冷壁管道的温度时间序列数据进行分析，并辅以各管道温度变化的时序图和箱型图等综合分析管道温度的变化情况。在对各管道温度时间序列数据分析的基础上，基于题目给出的影响水冷壁温度的153个输入变量，首先对高维数据进行降维以便计算和可视化，采用弹性网约束的降维方式从中选取73个重要性变量；其次，在对比最小二乘回归和岭回归模型效果之后，选择效果更优的岭回归模型对10个水冷壁管道温度变化规律进行建模，并求解出各管道温度变化的线性回归方程。
+
+&emsp;&emsp;通过训练集和测试集拟合情况和模型拟合残差的分析，发现该模型拟合效果良好。在得到的岭回归模型基础上，通过绘制变量系数的重要性寻找重要影响变量，发现4角BC层二次风调节挡板位置反馈、1角A层二次风调节挡板位置反馈、A磨入口热一次风电调挡板位置、省煤器出口温度2、分离器出口汽温定值、A磨分离器风粉混合物温度2是关于水冷壁温度变化的重要影响变量，在实际操作过程中需要格外注意。
+
+  
+
+**关键词**：OLS、岭回归、水冷壁温度曲线
+
+\newpage
+
+# 引言
+
+&emsp;&emsp;在燃煤发电过程中，锅炉是一种重要的热能动力设备。它通过在炉膛中燃烧煤粉释放热量，将水加热成一定温度（或压力）的蒸汽，蒸汽再推动汽轮机旋转并驱动发电机发电。锅炉的主要受热部分是水冷壁，通常由数排钢管组成，分布于锅炉炉膛的四周，其内部为流动的水，用于吸收炉膛中高温燃烧产生的辐射热量，水受热蒸发产生高压蒸汽。
+
+&emsp;&emsp;在实际生产过程中，希望水冷壁的温度变化尽可能平稳，同时为保证安全，水冷壁温度不宜过高，否则有烧坏的风险。按照实际经验，操作人员给出的水冷壁温度超温报警线为445℃。影响水冷壁温度的因素有很多，包括锅炉负荷、蒸汽温度、蒸汽压力、燃料量、水煤比等。除了对水冷壁温度控制以外，识别出影响温度主要的操作变量对于工业生产和应用也是非常重要的。当然这个过程可以凭借专业的先验认知来确定，但为了可复用性，同时由于影响水冷壁温度的因素众多，因此需要建立一定的数学模型对其温度变化曲线进行分析和优化研究。
+
+&emsp;&emsp;本文对各个管道温度的均值进行拟合，然后将拟合模型应用到各个管道上。首先进行数据预处理，包括缺失值填补、异常值识别与处理、数据标准化、数据集划分。接下来进行降维处理后建立合适的统计模型。本文采用可接受性强、模型拟合效果较优的OLS回归与Ridge回归建立模型，并检验模型的是否有效，然后通过对比两个模型的拟合效果最终确定应用的模型。
+
+# 数据介绍
+
+## 数据来源
+
+&emsp;&emsp;数据来源于2021年长三角高校数学建模竞赛赛题数据。给出了10个具有代表性水冷壁管道的温度值，采样频率为15秒，共5000组数据；同时给出了影响水冷壁温度的153个输入变量的5000组数据，其中包括111个操作变量和42个状态变量。
+
+&emsp;&emsp;这里的操作变量，也常称作控制变量，是指在锅炉燃烧过程中，操作人员能够根据实际生产的需要而进行调节的量；而状态变量是用来描述锅炉燃烧系统运行状态的量，它的取值由相关检测设备采集得到，操作人员无法进行直接调节。
+
+&emsp;&emsp;由于原数据变量名较长且比较复杂，不便于编程实现和结果展示。因此，对所有输入变量的变量名进行统一编码。
+
+&emsp;&emsp;本文分析使用的软件为R语言 3.6版，统计分析主要用到的软件包为：tidyverse、Hmisc、glmnet、broom、MASS、ggplot2、dplyr、tidyr、readr，purrr、tibble、stringr、forcats。正文报告采用Rmarkdown中的knitr、pandoc包与LaTeX排版。
+
+```{r}
+# 数据导入
+################################################################################
+# setwd("D:\\OneDrive\\A_Study\\A5_FinaBigData\\A4_HomeWorkPaper")
+rawdata1 = readr::read_csv("../data/Appendix1.csv")
+rawdata2 = readr::read_csv("../data/Appendix2.csv",skip = 1,col_names = FALSE)
+################################################################################
+```
+
+## 数据预处理
+
+### 缺失值填补
+
+&emsp;&emsp;收集得到的数据某些字段值存在为空的情况，一般有三种处理方法：删除记录、数据填补、空值处理。填补缺失值方法有：人工填补、均数填补、中位数或众数填补、多重填补、使用最接近的样本值填补等。不同情况变量的缺失值本研究采用了不同的处理方式。当某一条观测数据缺失项大于总项的65%时，由于缺失信息较大，故选择删除记录；考虑到不偏离原数据的总体分布，故在删除记录之后用列众数对缺失数据进行填补。处理之后还剩5000条观测数据，152个输入变量。
+
+```{r}
+################################################################################
+data1_raw = rawdata1 %>% as_tibble() %>% drop_na()
+data2_raw = rawdata2 %>% mutate(Time=(1:nrow(.))) %>%        # 添加采样时间
+            map_dfc(~ replace_na(.x, rstatix::get_mode(.x)[1])) %>% # 缺失值填补
+            as_tibble() 
+################################################################################
+```
+
+### 数据标准化
+
+&emsp;&emsp;不同的变量有不同的量纲，比如总给水流量、锅炉烟气含氧量、锅炉给水温度等，数值间的差别比较大，归一化就是为了消除变量之间量纲的影响。归一化就是将数据映射到某一固定区间，一般为（0,1）或（-1,1）。主要是为了数据处理方便提出来的，把有量纲表达式变成无量纲表达式。归一化公式：$x^*=\frac{x-\bar{x}}{\sigma}$。考虑到量纲不同问题，故本文对除结局变量外的所有变量均用归一化方法进行处理。处理之后共计还剩5000条有效观测数据，152个输入变量。
+
+```{r}
+################################################################################
+data1.scale = data1_raw %>% 
+  mutate_at(vars(-Time),~ scale(., center = T, scale = T))  # 数据标准化
+data2.scale = data2_raw %>% 
+  mutate_at(vars(-Time),~ scale(., center = T, scale = T))  # 数据标准化
+
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,PipeMean) %>% 
+  left_join(data2.scale,by="Time")
+
+################################################################################
+```
+
+### 异常值处理
+
+&emsp;&emsp;库克距离用来判断强影响点是否为Y的异常值点：
+
+$$D_i(M,c)=\frac{\left(\hat{\beta}(i)-\hat{\beta}\right)'M\left(\hat{\beta}(i)-\hat{\beta}\right)}{c}$$
+
+&emsp;&emsp;M是给定的正定矩阵，c是给定的常熟，当$D_i{M,c}$较大时，判定$(x'_i,y)$为异常。一般认为当D<0.5时判断为非异常值点；当D>0.5时判断为异常值点。通过计算所以观测样本的Cook距离识别到如下6个异常值，见表1。
+
+
+```{r}
+# 异常值检测
+################################################################################
+options(width = 60)
+mod <- lm(PipeMean ~ ., data=dplyr::select(data_all,-Time))
+cooksd <- cooks.distance(mod)
+influences = which(cooksd > 4*mean(cooksd, na.rm=T))
+knitr::kable(data1_raw[influences,],caption = "Cook距离检测异常值样本结果表")
+
+write.csv(data1_raw[influences,],"../output/Cook距离检测异常值样本结果表.csv")
+
+################################################################################
+```
+
+&emsp;&emsp;本文采用直接对异常值删除的方式进行处理，处理之后还剩4994条观测数据，152个输入变量。
+
+```{r}
+# 删除异常值
+################################################################################
+data1_raw = data1_raw[-influences,]
+data2_raw = data2_raw[-influences,]
+data1.scale = data1.scale[-influences,]
+data2.scale = data2.scale[-influences,]
+data_all = data_all[-influences,]
+################################################################################
+```
+
+### 数据集划分
+
+&emsp;&emsp;将上述处理之后数据按照采用时间的顺序，以7:3的比例划分为训练集和测试集。得到训练集共3491条观测，测试集共1503条观测。在描述分析过程中对全样本进行分析。在统计建模过程中，先在训练集上进行模型拟合，然后将模型应用至测试集进行模型效果评估。
+
+```{r}
+# 宽数据转长数据
+################################################################################
+data1_longer = data1_raw %>% 
+  pivot_longer(cols = -Time,names_to="Pipes",values_to="Temperature")
+data2_longer = data2_raw %>% 
+  pivot_longer(cols = -Time,names_to="Variables",values_to="Value")
+################################################################################
+
+# 划分训练集和测试集（时序前后70%、30%）
+################################################################################
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-PipeMean))
+X.test = as.matrix(dplyr::select(test_data,-Time,-PipeMean))
+Y.train = as.matrix(dplyr::select(train_data,PipeMean))
+Y.test = as.matrix(dplyr::select(test_data,PipeMean))
+################################################################################
+```
+
+# 统计描述
+
+## 基本统计特征
+
+&emsp;&emsp;通过对11个（其中新增一列均值温度）水冷壁管道的数据分析，得到各个管道温度值的相关统计特征，见表2。从平均水平来看，各个管道的温度都在338℃～466℃的范围内波动。且平均温度最高的是管道10（424.92±18.70℃），最低是管道1（374.29±21.45℃），而管道9和管道10的温度均值在400℃以上，且最高温度值均高于超温报警线445℃，温度过高，有烧坏风险。整个水冷壁中出现的最高温度是在管道10中为465.40℃，最低温度出现在管道6为338.00℃。同时，各个管道温度的样本均值与样本中位数都非常匹配，没有发现任何异常现象。另外，表2中的最后两列分别为序列的波峰数和波谷数，通过识别序列的波峰波谷可以发现，整体上各个管道温度的变化波动都比较频繁，在4994个采样时间点上，出现了400次左右的波峰和波谷转折。
+
+
+```{r}
+## 因变量的统计特征
+################################################################################
+options(width = 60)
+Y.res_describe = data1_longer %>%
+  group_by(Pipes) %>%
+  summarise(
+    Mean = round(mean(Temperature),2),
+    Std = round(sd(Temperature),2),
+    Max = round(max(Temperature),2),
+    Min = round(min(Temperature),2),
+    Q25 = round(quantile(Temperature,.75),2),
+    Q50 = round(median(Temperature),2),
+    Q75 = round(quantile(Temperature,.25),2),
+    PNum = round(findpeak_boo(Temperature)[["n_pks"]],2),
+    TNum = round(findpeak_boo(Temperature)[["n_boos"]],2)
+  )
+
+knitr::kable(Y.res_describe,caption = "各个管道温度基本统计特征表")
+write.csv(Y.res_describe,"../output/各个管道温度基本统计特征表.csv")
+################################################################################
+```
+
+## 可视化分析
+
+&emsp;&emsp;绘制各个管道温度的时序图，见图1。可以发现，10个水冷壁管道的温度变化范围基本在338℃～466℃以内。其温度变化均有一定的趋势，在取样点1000附近时，各个管道的温度都在平缓地上升，并达到最高值。随后各管道的温度在小范围内波动并以较快的速度下降到较低值，在取样点3500左右时又缓慢回升，最后趋于稳定温度。
+
+&emsp;&emsp;管道1～管道8的总体变化趋势较为相似，且其温度变化范围都在超温警戒线以内。而管道9和管道10均有超过警戒线445℃的取样时间段，且管道10在取样点3200后，多个时段温度超出445℃，出现明显的超温现象。
+
+
+```{r fig.cap="水冷壁管道温度的时序图"}
+# 管道温度的时序图
+################################################################################
+res_lineplot = data1_longer %>%
+  ggplot(aes(x=Time,y=Temperature)) + 
+  geom_line(aes(group=Pipes,color=Pipes),size=1.) +
+  labs(x="Sampling time point",y="Pipe temperature") +
+  ggthemes::theme_few()
+ggsave(res_lineplot,filename = "../output/水冷壁管道温度的时序图2.png", width = 16, height = 10,dpi = 300)
+
+res_lineplot
+################################################################################
+```
+
+&emsp;&emsp;为了更好的描述各水冷壁管道温度数据的离散情况，我们使用箱型图进行进一步分析，见图2。箱型图最大的优点就是不受异常值的影响，能够以一种相对稳定的方式描述数据的离散分布情况。
+
+```{r fig.cap="各个管道温度的箱线图"}
+# 应变量的箱线图
+################################################################################
+res_boxplot = data1_longer %>%
+  ggplot(aes(x=Pipes,y=Temperature)) + 
+  geom_boxplot(aes(group=Pipes,color=Pipes,fill=Pipes))+
+  ggthemes::theme_few()
+ggsave(res_boxplot,filename = "../output/各个管道温度的箱线图.png", width = 16, height = 10,dpi = 300)
+
+res_boxplot
+################################################################################
+```
+
+&emsp;&emsp;由图2可以分析得出，管道1的平均温度最低，管道10的平均温度最高。管道6的最高温度相较于其他管道最低，管道10的最高温度最大，且已超过警戒值445℃。管道3、9的温度值出现了离群点，存在异常值，而其他管道温度无异常值。管道平均温度处于中间水平，能够较好代表各个管道温度。
+
+&emsp;&emsp;由于管道平均温度能够较好代表各个管道温度，为了降低模型的冗余，故先在管道平均温度上进行分析，然后应用到各个单独的管道数据上。因此，绘制单独的管道平均温度进行观察，见图3。
+
+
+```{r fig.cap="平均管道温度的时间序列图"}
+# 管道温度均值的时序图
+################################################################################
+res_lineplot = data1_longer %>%
+  filter(Pipes == "PipeMean") %>%
+  ggplot(aes(x=Time,y=Temperature,color=Temperature)) + 
+  geom_line() +
+  labs(x="Sampling time point",y="Pipe mean temperature") +
+  ggthemes::theme_few() + scale_color_distiller(palette = "Reds")
+ggsave(res_lineplot,filename = "../output/平均管道温度的时间序列图.png", width = 16, height = 10,dpi = 300)
+
+res_lineplot
+################################################################################
+```
+
+&emsp;&emsp;管道平均温度的整体走势符合各个管道的温度走势，且存在同各个管道类似的时序特点，最高温度和最低温度都同上面所述的各个管道情况接近。
+
+## 相关性分析
+
+&emsp;&emsp;通过计算各自变量与各个管道温度的相关系数，对得到的各个输入变量的相关系数绘制箱线图，见图 4。图中横轴表示不同的自变量，纵轴表示关于各个管道的相关系数的箱线图。
+
+
+```{r fig.cap="自变量与管道温度相关系数的箱线图"}
+# 因变量与自变量的相关系数
+################################################################################
+# 计算相关系数
+corr = rcorr(as.matrix(data1_raw),as.matrix(dplyr::select(data2_raw,-Time)))
+corr2 = as_tibble(corr[[1]]) %>% dplyr::select(-c(names(data1_raw)))
+cor = corr2[1:11,] %>% pivot_longer(cols=names(corr2),names_to="Variables",values_to="Correlation")
+write.csv(corr2[1:11],"../output/相关系数.csv")
+
+# 相关系数的箱线图
+
+res3_boxplot = cor %>%
+  ggplot(aes(x=fct_reorder(Variables, Correlation, .fun = median),y=Correlation)) + 
+  geom_boxplot(aes(group=Variables,
+                   color=fct_reorder(Variables, Correlation, .fun = median),
+                   fill=fct_reorder(Variables, Correlation, .fun = median))) + 
+  geom_hline(yintercept = c(0.5,-0.5),linetype=2)+
+  xlab("Independent variables") + 
+  ggthemes::theme_few()+
+  theme(axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+ggsave(res3_boxplot,filename = "../output/自变量与管道温度相关系数的箱线图.png", width = 16, height = 10,dpi = 300)
+
+res3_boxplot
+
+################################################################################
+```
+
+&emsp;从图中可以发现，不同的变量对管道温度的相关性差异明显，存在多个高度正相关的输入变量，同时也存在一些高度负相关的输入变量。除此之外，还可以注意到在相关系数（-0.5，0.5）的范围内同样存在需要变量，从相关系数上来看，这些变量与因变量温度的相关性很低甚至无线性相关性。
+
+&emsp;&emsp;所以通过相关性分析知道输入变量中存在着大量的冗余变量。为了降低模型的复杂度，有降维的必要性，进而删除一些无关变量。
+
+# 建模模型
+
+## 数据降维
+
+&emsp;&emsp;常见的数据降维方法有很多种，例如主成分降维、Lasso降维、相关性降维等。本文通过对比不同参数下的弹性网约束估计降维，确定一个较优的降维参数。弹性网约束模型如下：
+
+$$\hat{\beta}= arg min_{\beta}\left(\sum_{i}^n \left(y_i-\sum_{j=1}^p\beta_jx_{ij} \right)^2+\lambda_1\sum_{j=1}^p|p|+\lambda_2\sum_{j=1}^p\beta_j^2\right)$$
+
+&emsp;&emsp;从理论上可知，弹性网是综合了绝对约束和平方约束之后的模型，同时具有绝对约束估计和岭估计的特点。
+
+-   当$\lambda=1$时：弹性网约束估计就是岭回归；
+
+-   当$\lambda=0$时：弹性网约束估计就是Lasso回归；
+
+&emsp;&emsp;本文通过设置不同的参数对比训练结果进而确定最终降维方法。设置的参数为$\alpha=0$（Ridge约束），0.25（弹性网约束），0.75（弹性网约束），1（Lasso约束）。得到如下的20折交叉验证的收敛图，见图5。从图中可知，横轴是对数$\lambda$值，纵轴是均方误差。按照此参数的设置，$\alpha=0$不会进行变量降维，$\alpha=0.25$保留的 变量个数为99个，$\alpha=0.75$保留的变量个数为99个，$\alpha=0.75$保留的变量个数为108个，$\alpha=1$保留的变量个数为88个，且四种参数设置下均方误差都接近0。
+
+```{r fig.cap="不同参数的交叉验证收敛图"}
+# 交叉验证收敛图
+################################################################################
+op = par(no.readonly = TRUE)
+par(mfrow=c(2,2))
+for(i in c(0,0.25,0.75,1)){
+  cvfit = cv.glmnet(X.train,Y.train,alpha=i)
+  # alpha=0:Ridge
+  # alpha=1:Lasso
+  # alpha=0.25,0.78:弹性网
+  plot(cvfit)
+  # print(cvfit$lambda.min)
+}
+par(op)
+# png("../output/不同参数的交叉验证收敛图.png", width = 160, height = 100)
+# dev.off()
+################################################################################
+```
+
+&emsp;&emsp;此外，从理论上分析可以知道，岭回归约束不能对变量进行降维；而Lasso约束作为一种广泛使用的降维处理手段，在变量选择上有明显的优势且实际效果也较好。故本文采用Lasso约束进行变量降维处理。得到的变量选择结果共选取了73个变量，详见附录2。
+
+```{r}
+# 变量选择结果
+################################################################################
+cvfit4 = cv.glmnet(X.train,Y.train,alpha=1)
+z = coef.glmnet(cvfit4,s=cvfit4$lambda.1se)
+var_index = z@i[-1] # 提取筛选变量的索引
+
+# 筛选后的数据集
+X.train_select = X.train[,z@i[-1]]
+X.test_select = X.test[,z@i[-1]]
+
+train = as_tibble(X.train_select)
+test = as_tibble(X.test_select)
+
+train["PipeMean"] = train_data$PipeMean
+test["PipeMean"] = test_data$PipeMean
+write.csv(as.data.frame(z@i[-1]),"../output/筛选变量的索引.csv")
+################################################################################
+```
+
+## OLS回归
+
+### 建立OLS模型
+
+```{r}
+# 多元线性模型
+ols = lm(PipeMean~.,data = train)
+```
+
+&emsp;&emsp;在描述统计的基础上，进一步分析因变量Y和各个输入自变量之间的关系。更进一步地，希望知道解释变量是怎样影响管道温度的，其影响强度如何。因此建立一个普通最小二乘回归模型对训练集数据进行拟合。
+
+&emsp;&emsp;模型的相关参数以及检验结果如下表3所示。模型整体的F-检验高度限制（P-值<0.001），这说明至少有一个输入变量更管道温度显著相关。模型的调整后判决系数$R^2_{adj}=0.99$，说明输入变量对管道温度的拟合情况较优，但可能存在着较为严重的共线性问题，但本文主要考虑的是对管道温度的预测效果，故不考虑共线性问题。
+
+```{r}
+# 模型检验
+model_test = glance(ols) %>% dplyr::select(-df,-deviance,-nobs,-logLik)%>%round(2)
+knitr::kable(model_test,caption = "整体OLS模型检验结果表")
+write.csv(model_test,"../output/整体OLS模型检验结果表.csv")
+```
+
+&emsp;&emsp;分析每一个输入变量的t-检验结果，见表4。结果显示，X11、X12、X14、X15、X22、X29、X55、X57、X61、X65、X68、X71、X72、X85、X90、X91、X93、X95、X106、X107、X108、X121、X123、X143、X144、X145、X152变量高度不显著（检验水平$\alpha=0.05$）。另外从表中可以发现，在高度显著的变量中，X7、X16、X111、X127在控制其他变量不变的前提下，与管道温度的变化呈现明显正相关；X18、X137在控制其他变量不变的前提下，与管道温度的变化呈现明显负相关。
+
+```{r}
+# 系数结果
+options(width = 60)
+coef_test = ols %>% tidy(conf.int = TRUE) %>%
+mutate_at(vars(-term),~ round(., 5))
+knitr::kable(coef_test, caption = "OLS回归模型系数检验结果表",longtable=TRUE)
+write.csv(coef_test,"../output/OLS回归模型系数检验结果表.csv")
+
+```
+
+### OLS模型残差检验
+
+#### 残差图
+
+对于OLS模型中的随机误差向量$\epsilon$，若高斯-马尔科夫的某些假设不成立，$\epsilon$的分布就会发生变化，从而导致残差e的分布变化。因此有必要对所建立模型进行残差分析，残差分析的主要思想就是通过对e的表现加以研究，包括零均值、同方差、独立性，此处关于高斯-马尔科夫假设不进行详细阐述。从预测角度定义残差：
+
+$$\sigma_i=Y_i-x_i'\hat{\beta}(i), i=1,...,n$$
+
+&emsp;&emsp;由于量纲和度量单位的影响，直接进行比较普通残差是不适宜的，为此将他们标准化。有两种重要的标准化残差定义方式就是内学生化残差和外学生化残差。本文同时给出了这两种残差的残差图，见图6。
+
+&emsp;&emsp;由残差图可以发现，这些残差大致都落在（-2，2）的水平带域内，且不存在任何的趋势。这时数据与假设$N(0,1)$没有不一致的征兆，可以认为这个假设基本上是合理的。
+
+```{r fig.cap="拟合模型的标准化学生残差图"}
+# OLS普通残差
+################################################################################
+# 残差图
+y.rst1 <- rstandard(ols)    # 内学生化残差
+y.rst2 <- rstudent(ols)     # 外学生化残差
+
+r1 = as_tibble(y.rst1) %>% mutate(group="Internalized Residuals",Time=1:length(y.rst1))
+r2 = as_tibble(y.rst2) %>% mutate(group="Externalized Residuals",Time=1:length(y.rst2))
+
+ols_rst = bind_rows(r1,r2)
+
+resid_plot = ols_rst %>%
+  ggplot(aes(x=Time,y=value,color=group)) + 
+  geom_line() +
+  geom_hline(yintercept=0,color="black",linetype="dotted")+
+  ggthemes::theme_few() +
+  facet_grid(group~.) +
+  ggsave(filename = "../output/拟合模型的标准化学生残差图.png", width = 16, height = 10,dpi = 300)
+resid_plot
+################################################################################
+```
+
+#### 正态性检验
+
+图示法虽然能够较为直接的进行残差分析，但具有一定的主观性。因此，需要进一步通过假设检验的方式对残差进行正态性检验，见表5。本文采用R语言的shapiro.text函数进行正态性检验，检验显著性P-值远小于0.001，故拒绝原假设，接受残差不服从正态分布的假设。
+
+```{r}
+# 残差的W正态性检验
+options(width=60)
+r = resid(ols)
+shapiro = shapiro.test(r) %>% tidy()
+knitr::kable(shapiro,caption = "残差的正态性检验结果表")
+write.csv(shapiro,"../output/残差的正态性检验结果表.csv")
+```
+
+### OLS模型拟合
+
+&emsp;&emsp;用此模型对采样数据进行拟合并在测试集上进行预测，黑色的线代表实际的平均管道温度，绿色的线代表对建模所用数据进行回代拟合，红色的线代表对测试集的采样数据进行外样本预测，见图7。
+
+
+```{r fig.cap="OLS模型拟合效果图"}
+# OLS模型拟合、预测
+################################################################################
+ols_train_res = train %>%
+  modelr::add_predictions(ols) %>%
+  modelr::add_residuals(ols) %>%
+  mutate(Group = "Train")
+ols_test_res = test %>%
+  modelr::add_predictions(ols) %>%
+  modelr::add_residuals(ols) %>% 
+  mutate(Group = "Test")
+OLS_alldata_res = bind_rows(ols_train_res,ols_test_res)%>% 
+  mutate(Time = 1:dim(.)[1])
+
+# 预测图
+ggplot(data = OLS_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=PipeMean),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ols_train_res)[1], 
+             linetype="dotted",
+             color="grey",
+             size=2)+
+  ggsave(filename = "../output/OLS模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+
+################################################################################
+```
+
+&emsp;&emsp;从图形上来看，在训练集数据上预测效果拟合较好，但是在测试集数据上的预测效果明显差一些，但是对与管道温度的整体走势波动也能进行预测。并且对波峰波谷等转折点也能较好的预测。
+
+&emsp;&emsp;此外通过计算拟合和预测效果的一些评估指标如下表所示。当然为了衡量预测与实际数据之间的差距程度有各种各样的专业指标来评估，例如平均绝对误差，均方误差，决定系数，误差平方和，交叉熵误差等。本文采用了均方误差、误差平方和、平均绝对误差三个指标来衡量。
+
+&emsp;&emsp;均方误差（MSE）：
+
+$$MSE=\frac{\sum_{i=1}^m(f(x)-y_i)^2}{m}$$
+
+&emsp;&emsp;平均绝对误差（MAE）：
+
+$$MAE=\frac{\sum_{i=1}^m|f(x)-y_i|}{m}$$
+
+&emsp;&emsp;误差平方和（SSE）：
+
+$$SSE=\sum_{i=1}^m(f(x)-y_i)^2$$
+
+&emsp;计算结果见表6。训练集的残差平方和为10239.28，均方误差为2.93，绝对值残差和为4708.62；测试集的残差平方和为60747.91，均方误差为40.42，绝对值残差和为8045。68。可以发现，训练集上的均方误差远远小于测试集上的，当然均方误差由于经过平方之后拉大了实际上的差距。从绝对值误差平方和可以看出测试集上的误差接近与训练集的两倍。但是由于整体样本量较多，实际上对于单个样本的管道温度误差较小，结果可以接受。
+
+```{r fig.cap="OLS模型拟合效果图"}
+# 模型效果
+################################################################################
+options(width=60)
+ols_MSE.train = mean(ols_train_res$resid**2)
+ols_SSE.train = sum(ols_train_res$resid**2)
+ols_MSE.test = mean(ols_test_res$resid**2)
+ols_SSE.test = sum(ols_test_res$resid**2)
+ols_SAE.train = sum(abs(ols_train_res$resid))
+ols_SAE.test = sum(abs(ols_test_res$resid))
+
+ols_effect = data.frame("Data"=c("Train Data","Test Data"),
+                         "MSE"=c(ols_MSE.train,ols_MSE.test),
+                         "SSE"=c(ols_SSE.train,ols_SSE.test),
+                         "SAE"=c(ols_SAE.train,ols_SAE.test))
+knitr::kable(ols_effect,caption = "OLS回归模型评估结果")
+write.csv(ols_effect,"../output/OLS回归模型评估结果.csv")
+################################################################################
+
+```
+
+## Ridge回归
+
+### 建立模型
+
+&emsp;&emsp;岭回归估计（Ridge）是一种专用于共线性数据分析的有偏估计回归方法，实质上是一种改良的最小二乘估计法 。通过放弃最小二乘的无偏性，以损失部分信息、降低精度为代价获得回归系数更为符合实际的回归方法，对病态数据的耐受性远远高于最小二乘法。
+
+&emsp;&emsp;思想是在原先的$\beta$的最小二乘估计中加入一个小扰动$\lambda$，使原先无法求广义逆的情况变成可以求出其广义逆，使得问题稳定并得以求解。
+
+$$\hat{\beta}_{ridge}=arg min_{\beta}\left(\sum_{i=1}^N(y_i-\beta_0-\sum_{j=1}^px_{ij}\beta_j)^2+\lambda\sum_{j=1}^p\beta_j^2\right)$$
+
+&emsp;&emsp;上式就是称为关于岭回归$\lambda$的岭回归估计。后面这一项$\lambda\sum_{j=1}^p\beta_j^2$称为惩罚函数，它保证了$\beta$值不会变的很大。岭参数$\lambda$不同，岭回归系数也会不同。因此，我们对训练集数据建立岭回归模型，首先回归不同的$\lambda$下不同的岭回归系数，得到岭迹图见图8。
+
+```{r fig.cap="Ridge回归模型岭迹图",fig.height=6}
+# 岭回归模型
+################################################################################
+Ridge=lm.ridge(PipeMean~.,data=train,lambda=seq(0,0.4,length=100))
+#岭迹图
+plot(Ridge,xlab="Parameter", ylab="Coef")
+# png("../output/自变量系数的散点图.png", width = 10, height = 16,dpi = 300)
+# dev.off()
+```
+
+&emsp;&emsp;从图中可见，在$\lambda$很小时，通常各$\beta$系数取值较大；而如果$\lambda=0$，则 根普通意义的多元线性回归的最小二乘解完全一样；当$\lambda$略有增大，则各$\beta$系数取值迅速减小，即从不稳定趋于稳定。上图中的变化实际上并没有其他相关文献中的那么呈现喇叭状的岭迹图，说明原始的最小二乘解中的多重共线性不严重，或者几乎不存在多重共线性。但是我们主要考虑的是用岭回归方法进行建模预测，所以此处不影响后续考虑分析。
+
+
+```{r}
+#岭参数选取
+lambda0<-Ridge$kHKB
+#岭系数
+ridge.model=lm.ridge(PipeMean~.,data=train,lambda=lambda0)
+```
+
+&emsp;&emsp;一个合适较好的$\lambda$需要满足以下条件：各回归系数的岭估计基本稳定；用最小二乘估计时符号不合理的回归系数其岭估计的符号变得合理；回归系数没有不合乎实际意义的值；残差平方和增大不太多，一般$\lambda$越大，系数$\beta$会出现稳定的假象，但是残差平方和也会更大。对于最佳参数的选择有不同方法，但是结果差异较大，这是岭回归的弱点之一。R中也提供了几种选择准则：kHKB、kLW、lambdaGCV。本文按照kHKB的准则选取$\lambda=0.5290778$。并在此$\lambda$的基础上建立模型。得到系数估计见表7。
+
+```{r}
+# 模型检验
+ridge_model_test = glance(ridge.model)
+# knitr::kable(ridge_model_test,caption = "Ridge回归整体模型检验结果表")
+write.csv(ridge_model_test,"../output/Ridge回归整体模型检验结果表.csv")
+
+```
+
+```{r}
+# 系数检验结果
+ridge_coef_test = ridge.model %>% tidy()
+knitr::kable(ridge_coef_test,caption = "Ridge回归模型系数检验结果表",longtable=TRUE)
+write.csv(ridge_coef_test,"../output/Ridge回归模型系数检验结果表.csv")
+```
+
+### Ridge模型拟合
+
+&emsp;&emsp;用此模型对采样数据进行拟合并在测试集上进行预测，黑色的线代表实际的平均管道温度，绿色的线代表对建模所用数据进行回代拟合，红色的线代表对测试集的采样数据进行外样本预测，如图9所示。
+
+```{r fig.cap="Ridge模型拟合效果图"}
+# 岭回归模型拟合、预测
+################################################################################
+#计算残差
+beta0<-as.vector(coef(ridge.model)[1])
+coef=t(t(as.vector(coef(ridge.model)[-1])))
+
+ridge_train_res = train %>% 
+  mutate(pred=beta0 + X.train_select %*% coef) %>%
+  mutate(PipeMean=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = PipeMean - pred)
+
+ridge_test_res = test %>%
+  mutate(pred=beta0 + X.test_select %*% coef) %>%
+  mutate(PipeMean=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = PipeMean - pred)
+
+ridge_alldata_res = bind_rows(ridge_train_res,ridge_test_res)%>% mutate(Time = 1:dim(.)[1])
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=PipeMean),size=1)+
+  geom_line(aes(color=Group,group = 1),size=1)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res)[1], 
+             linetype="dotted",
+             color="grey",
+             size=2)+
+    ggsave("../output/Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+################################################################################
+
+```
+
+&emsp;&emsp;从图形上来看，在训练集数据上预测效果拟合较好，但是在测试集数据上的预测效果明显差一些，但是对与管道温度的整体走势波动也能进行预测。并且对波峰波谷等转折点也能较好的预测。
+
+&emsp;&emsp;此外通过计算拟合和预测效果的一些评估指标见表8所示。从表中得到，训练集的残差平方和为9728.97，均方误差为2.79，绝对值残差和为4592.21；测试集的残差平方和为65908.22，均方误差为43.85，绝对值残差和为8400.26。可以发现，训练集上的均方误差远远小于测试集上的，当然均方误差由于经过平方之后拉大了实际上的差距。从绝对值误差平方和可以看出测试集上的误差接近与训练集的两倍。但是由于整体样本量较多，实际上对于单个样本的管道温度误差较小，结果可以接受。
+
+```{r}
+# 模型效果
+################################################################################
+ridge_MSE.train = mean(ridge_train_res$resid**2)
+ridge_SSE.train = sum(ridge_train_res$resid**2)
+ridge_SAE.train = sum(abs(ridge_train_res$resid))
+ridge_SAE.test = sum(abs(ridge_test_res$resid))
+ridge_MSE.test = mean(ridge_test_res$resid**2)
+ridge_SSE.test = sum(ridge_test_res$resid**2)
+
+
+ridge_effect = data.frame("Data"=c("Train Data","Test Data"),
+                         "MSE"=c(ridge_MSE.train,ridge_MSE.test),
+                         "SSE"=c(ridge_SSE.train,ridge_SSE.test),
+                         "SAE"=c(ridge_SAE.train,ridge_SAE.test))
+knitr::kable(ridge_effect,caption = "Ridge回归模型评估结果")
+write.csv(ridge_effect,"../output/Ridge回归模型评估结果.csv")
+
+################################################################################
+```
+
+## 模型结果
+
+&emsp;&emsp;从上述建立的OLS、Ridge两个回归模型效果可以看出。虽然OLS在总的残差平方和上面要小，但是Ridge回归对于变量的解释性、合理性更强。而管道温度的调控需要实际的操作变量来调整，如果操作过程对管道温度影响方向的异常，可能产生不可预料的后果。因此本文采用更符合实际的ridge回归模型。
+
+应用到均值温度的模型表达式为：
+
+$$Y=-0.50X_4+2.10X_7+0.37X_8+0.51X_{10}+0.001X_{11}+...+0.87X_{148}+0.25X_{149}-0.13X_{151}+0.01X_{152}$$
+
+&emsp;&emsp;对ridge回归模型得到的变量系数估计有着重要的实际意义。当系数大于0时，代表该变量对管道温度产生正的影响；当系数小于0时，代表该变量对管道温度产生负的影响。而系数的绝对值大小代表着影响的强度。因此为了更直接的观察回归模型结果的系数的实际意义，对估计的系数绘制了散点图如图10所示。
+
+```{r fig.cap="自变量系数的散点图"}
+# 系数可视化（有置信区间）
+################################################################################
+options(width=60)
+ridge.model %>% tidy() %>% filter(term != "(Intercept)") %>%
+  ggplot() +  
+  geom_bar(aes(x = term, y = estimate,fill=term),
+   stat = "identity",
+   width = 0.5, 
+   position = position_dodge(width = 0.9)) + 
+    ggthemes::theme_few()+
+  theme(panel.grid.major.x = element_line(colour = "black"), 
+   panel.background = element_blank(),
+   axis.line.y = element_blank(),
+   axis.title.y = element_blank()) + 
+   coord_flip()+
+  ggsave("../output/自变量系数的条形图.png", width = 16, height = 10,dpi = 300)
+
+################################################################################
+```
+
+&emsp;&emsp;从图中可以发现，4角BC层二次风调节挡板位置反馈、1角A层二次风调节挡板位置反馈、A磨入口热一次风电调挡板位置、省煤器出口温度2、分离器出口汽温定值、A磨分离器风粉混合物温度2的系数值较大，即说明这几个变量为重要的操作变量。且管道温度与省煤器出口温度2为正相关，且该变量对管道温度影响在所有变量中影响最为强烈；A磨入口热一次风电调挡板位置对管道温度的影响呈现强烈的负相关。
+
+## 模型应用
+
+&emsp;&emsp;上述的模型为管道均值温度建模，实际上我们需要对各个管道温度建立有效的模型。因此，将上述模型应用到10个管道温度数据上，得到10个管道的拟合预测效果图，见附录3。
+
+&emsp;&emsp;从应用结果可以发现，整体上对于模型应用的效果较好，且对于超温现象能够较好的识别和拟合。
+
+# 结论
+
+&emsp;&emsp;时间序列平稳性检验可以很好地评价管道温度工作曲线的稳定性，使分析结果更具有合理性。综合比较线性回归，岭回归模型，由于岭回归在变量实际含义的解释方面有着更优秀的表现，因此采用线性回归模型进行结果，结果更加准确。
+
+&emsp;&emsp;虽然目前所得到的模型能够较好的拟合，但是由于所用模型线性模型较为简单，且未考虑时间因素的影响。所以残差存在非正态性，实际中可以考虑其他非线性模型和考虑时间序列分析。例如进行多元非线性拟合出最优方程或者建立LSTM神经网络建立水冷壁管道温度变化规律的数学模型，从而得到的优化模型更为准确。
+
+\newpage
+
+# 参考文献
+
+>   [1]仙树祥. 大容量“W”火焰超临界锅炉优化运行技术研究[D].华北电力大学,2015.
+
+>   [2]陈世杰,唐秋华.优化神经网络用电量预测性能的多元线性回归方法[J].机械设计与制造，2019(06):17-21. 
+
+>   [3]Neeraj Kumar, Ganesh Upadhyay and Pankaj Kumar. Comparative Performance of Multiple Linear Regression and Artificial Neural Network Based Models in Estimation of Evaporation [J]Advances in Research, 2017,11
+
+>   [4]李雷,赵柏森.基于人工神经网络和遗传算法的封头成形工艺参数多目标优化[J/OL].锻压技术,2021(05):39-45[2021-05-23].
+
+>   [5] 陈士华,马益平,方健美.遗传算法在智能配电网故障定位应用分析[J].能源与环保，2017，39(12):219-222
+
+\newpage
+
+# 附录
+
+## 附录一：自变量基本统计特征表
+
+```{r}
+# 自变量的统计特征
+###############################################################################
+X.res_describe = data2_longer %>%
+  group_by(Variables) %>%
+  summarise(
+    Mean = round(mean(Value),2),
+    Std = round(sd(Value),2),
+    Max = round(max(Value),2),
+    Min = round(min(Value),2),
+    Q25 = round(quantile(Value,.75),2),
+    Q50 = round(median(Value),2),
+    Q75 = round(quantile(Value,.25),2),
+    PNum = round(findpeak_boo(Value)[["n_pks"]],2),
+    TNum = round(findpeak_boo(Value)[["n_boos"]],2)
+  )
+X.res_describe
+###############################################################################
+```
+
+## 附录二：变量选择结果
+
+| Variable                       | Code | Variable                    | Code |
+| ------------------------------ | ---- | --------------------------- | ---- |
+| 锅炉烟气含氧量                 | X4   | F给煤机电机转速反馈信号     | X102 |
+| A空预器出口二次风量2           | X7   | F磨入口冷一次风电调挡板位置 | X104 |
+| #1角摆角燃烧器调节门反馈       | X8   | A磨入口热一次风电调挡板位置 | X105 |
+| #3角摆角燃烧器调节门反馈       | X10  | B磨入口热一次风电调挡板位置 | X106 |
+| #4角摆角燃烧器调节门反馈       | X11  | C磨入口热一次风电调挡板位置 | X107 |
+| #1角UD层二次风调节挡板位置反馈 | X12  | D磨入口热一次风电调挡板位置 | X108 |
+| #3角UD层二次风调节挡板位置反馈 | X14  | E磨入口热一次风电调挡板位置 | X109 |
+| #4角UD层二次风调节挡板位置反馈 | X15  | F磨入口热一次风电调挡板位置 | X110 |
+| #1角UC层二次风调节挡板位置反馈 | X16  | 省煤器出口温度2             | X111 |
+| #3角UB层二次风调节挡板位置反馈 | X22  | 锅炉负荷                    | X112 |
+| #3角FF层二次风调节挡板位置反馈 | X29  | 主蒸汽温度                  | X115 |
+| #4角FF层二次风调节挡板位置反馈 | X30  | 再热蒸汽温度                | X116 |
+| #1角F层二次风调节挡板位置反馈  | X31  | 分离器出口汽温过热度        | X117 |
+| #2角EE层二次风调节挡板位置反馈 | X36  | 分离器出口汽温定值          | X118 |
+| #4角EE层二次风调节挡板位置反馈 | X38  | 水煤比                      | X119 |
+| #3角DE层二次风调节挡板位置反馈 | X45  | 炉膛压力                    | X121 |
+| #1角D层二次风调节挡板位置反馈  | X47  | 炉膛与风箱差压              | X122 |
+| #1角CC层二次风调节挡板位置反馈 | X55  | A1风粉一次风速              | X123 |
+| #3角CC层二次风调节挡板位置反馈 | X57  | A磨分离器风粉混合物温度2    | X127 |
+| #3角C层二次风调节挡板位置反馈  | X61  | B2风粉一次风速              | X129 |
+| #3角BC层二次风调节挡板位置反馈 | X65  | B磨分离器风粉混合物温度2    | X132 |
+| #4角BC层二次风调节挡板位置反馈 | X66  | C2风粉一次风速              | X134 |
+| #2角B层二次风调节挡板位置反馈  | X68  | C3风粉一次风速              | X135 |
+| #1角AB层二次风调节挡板位置反馈 | X71  | C磨分离器风粉混合物温度2    | X137 |
+| #2角AB层二次风调节挡板位置反馈 | X72  | D1风粉一次风速              | X138 |
+| #1角A层二次风调节挡板位置反馈  | X75  | D2风粉一次风速              | X139 |
+| #3角AA层二次风调节挡板位置反馈 | X81  | D磨分离器风粉混合物温度2    | X142 |
+| #3角附加风压                   | X85  | E1风粉一次风速              | X143 |
+| A磨入口冷一次风电调挡板位置    | X89  | E2风粉一次风速              | X144 |
+| B给煤机电机转速反馈信号        | X90  | E3风粉一次风速              | X145 |
+| B给煤机给煤量反馈信号          | X91  | E4风粉一次风速              | X146 |
+| B磨入口冷一次风电调挡板位置    | X92  | E磨分离器风粉混合物温度2    | X147 |
+| C给煤机电机转速反馈信号        | X93  | F1风粉一次风速              | X148 |
+| C给煤机给煤量反馈信号          | X94  | F2风粉一次风速              | X149 |
+| C磨入口冷一次风电调挡板位置    | X95  | F4风粉一次风速              | X151 |
+| D给煤机电机转速反馈信号        | X96  | F磨分离器风粉混合物温度2    | X152 |
+| E磨入口冷一次风电调挡板位置    | X101 |                             |      |
+
+## 附录三：模型应用预测结果图
+
+
+```{r fig.cap="管道1-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe0) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe0))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe0))
+Y.train = as.matrix(dplyr::select(train_data,Pipe0))
+Y.test = as.matrix(dplyr::select(test_data,Pipe0))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe0
+test["Pipe"] = test_data$Pipe0
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe1 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=330,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道1-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+
+```{r fig.cap="管道2-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe1) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe1))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe1))
+Y.train = as.matrix(dplyr::select(train_data,Pipe1))
+Y.test = as.matrix(dplyr::select(test_data,Pipe1))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe1
+test["Pipe"] = test_data$Pipe1
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe2 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=340,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道2-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+```{r fig.cap="管道3-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe2) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe2))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe2))
+Y.train = as.matrix(dplyr::select(train_data,Pipe2))
+Y.test = as.matrix(dplyr::select(test_data,Pipe2))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe2
+test["Pipe"] = test_data$Pipe2
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe2 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=360,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道3-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+```{r fig.cap="管道4-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe3) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe3))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe3))
+Y.train = as.matrix(dplyr::select(train_data,Pipe3))
+Y.test = as.matrix(dplyr::select(test_data,Pipe3))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe3
+test["Pipe"] = test_data$Pipe3
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe3 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=345,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道4-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+```{r fig.cap="管道5-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe5) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe5))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe5))
+Y.train = as.matrix(dplyr::select(train_data,Pipe5))
+Y.test = as.matrix(dplyr::select(test_data,Pipe5))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe5
+test["Pipe"] = test_data$Pipe5
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe5 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=330,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道5-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+
+```{r fig.cap="管道6-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe5) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe5))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe5))
+Y.train = as.matrix(dplyr::select(train_data,Pipe5))
+Y.test = as.matrix(dplyr::select(test_data,Pipe5))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe5
+test["Pipe"] = test_data$Pipe5
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe6 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=330,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道6-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+
+```{r fig.cap="管道7-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe6) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe6))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe6))
+Y.train = as.matrix(dplyr::select(train_data,Pipe6))
+Y.test = as.matrix(dplyr::select(test_data,Pipe6))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe6
+test["Pipe"] = test_data$Pipe6
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe7 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=345,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道7-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+```{r fig.cap="管道1-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe7) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe7))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe7))
+Y.train = as.matrix(dplyr::select(train_data,Pipe7))
+Y.test = as.matrix(dplyr::select(test_data,Pipe7))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe7
+test["Pipe"] = test_data$Pipe7
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe8 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=345,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道8-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+```{r fig.cap="管道9-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe8) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe8))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe8))
+Y.train = as.matrix(dplyr::select(train_data,Pipe8))
+Y.test = as.matrix(dplyr::select(test_data,Pipe8))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe8
+test["Pipe"] = test_data$Pipe8
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe9 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.1, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=360,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道9-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+
+```{r fig.cap="管道10-Ridge模型拟合效果图"}
+# 管道一
+# 合并X、Y数据
+data_all = data1_raw %>% 
+  dplyr::select(Time,Pipe9) %>% 
+  left_join(data2.scale,by="Time")
+
+train_data = filter(data_all, Time <= nrow(data_all)*0.7)
+test_data = filter(data_all, Time > nrow(data_all)*0.7)
+
+X.train = as.matrix(dplyr::select(train_data,-Time,-Pipe9))
+X.test = as.matrix(dplyr::select(test_data,-Time,-Pipe9))
+Y.train = as.matrix(dplyr::select(train_data,Pipe9))
+Y.test = as.matrix(dplyr::select(test_data,Pipe9))
+
+# 筛选后的数据集
+train = as_tibble(X.train[,z@i[-1]])
+test = as_tibble(X.test[,z@i[-1]])
+train["Pipe"] = train_data$Pipe9
+test["Pipe"] = test_data$Pipe9
+
+
+# ridge模型建立
+ridge.model_all=lm.ridge(Pipe~.,data=train,lambda=lambda0)
+# ridge.model_all = lm(Pipe~.,data = train)
+
+beta0<-as.vector(coef(ridge.model_all)[1])
+coef=t(t(as.vector(coef(ridge.model_all)[-1])))
+
+ridge_train_res_all = train %>% 
+  mutate(pred=beta0 + X.train[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.train) %>%
+  mutate(Group = "Train") %>%
+  mutate(resid = Pipe - pred)
+ridge_test_res_all = test %>%
+  mutate(pred=beta0 + X.test[,z@i[-1]] %*% coef) %>%
+  mutate(Pipe=Y.test)%>%
+  mutate(Group = "Test") %>%
+  mutate(resid = Pipe - pred)
+ridge_alldata_res = bind_rows(ridge_train_res_all,ridge_test_res_all)%>% mutate(Time = 1:dim(.)[1])
+
+ridge_MSE.train = round(mean(ridge_train_res_all$resid**2),3)
+ridge_MSE.test = round(mean(ridge_test_res_all$resid**2),3)
+
+
+# 预测图
+ggplot(data = ridge_alldata_res,aes(x = Time,y=pred))+
+  geom_line(aes(y=Pipe),size=1.)+
+  geom_line(aes(color=Group,group = 1),size=1.)+
+  ggthemes::theme_few()+
+  xlab("Sample time")+
+  ylab("Pipe10 templature")+
+  theme(legend.title=element_blank(),
+        legend.position = c(0.9, 0.9),
+        legend.key.size = unit(0.5, "inches"))+
+  geom_vline(xintercept=dim(ridge_train_res_all)[1], 
+             linetype="dotted",
+             color="grey",
+             size=1)+
+  annotate("text",x=2500,y=370,label=paste("Train MSE:",ridge_MSE.train,";   Test MSE:",ridge_MSE.test))+
+  ggsave("../output/管道10-Ridge模型拟合效果图.png", width = 16, height = 10,dpi = 300)
+```
+
+</span></span>

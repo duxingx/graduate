@@ -1,0 +1,154 @@
+\renewcommand{\baselinestretch}{\yuanbeishu}\normalsize%
+\zihao{5}                                              %
+\begin{thebibliography}{99}                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+ [1].	林景怀, 杨明娜与韩凤, 医院住院患者阿片类药物的应用情况. 中国药物经济学, 2019. 14(11): 第32-34+41页.
+ [2].	传植, 揭开阿片类药物成瘾之谜. 世界科学, 2019(11): 第13-14页.
+ [3].	田野等, 我国2014-2016年阿片类药物使用情况分析. 中国药房, 2019. 30(09): 第1153-1157页.
+ [4].	袁莎, 美国阿片类药物危机及中美禁毒合作. 和平与发展, 2019(01): 第101-115+135-136页.
+ [5].	D, L.等, 家庭医生对自身管理阿片类药物危机的看法. 中国全科医学, 2019. 22(31): 第3804页.
+ [6].	邓硕曾北京中医药大学东方医院麻醉科教授, 阿片类药物“双刃”作用能否解, in 健康报. 第 008页.
+ [7].	张景奇, 史文宝与纪秀娟, 机器学习在医疗和公共卫生中应用. 中国公共卫生, 2019. 35(10): 第1449-1452页.
+ [8].	何巍, 基于机器学习的犯罪预测综述. 科学技术与工程, 2019. 19(36): 第37-43页.
+ [9].	程豪, 大数据背景下缺失数据问题及对策. 中国统计, 2019(10): 第72-74页.
+[10].	刘春亚, 基于粗集理论的数据预处理及应用研究, 2003, 重庆大学.
+[11].	尚绍环, 不同批样本归一化处理方法. 电子产品可靠性与环境试验, 2005(04): 第34-35页.
+[12].	高军. 性能退化数据的归一化处理方法. in 中国电子学会可靠性分会第十四届学术年会. 2008. 中国海南海口.
+[13].	窦小凡, KNN算法综述. 通讯世界, 2018(10): 第273-274页.
+[14].	邵珊珊, 基于KNN的分类方法及其应用研究, 2019, 燕山大学.
+[15].	孙明喆, 毕瑶家与孙驰, 改进随机森林算法综述. 现代信息科技, 2019. 3(20): 第28-30页.
+[16].	朱悦, 吴建华与方颖, SVM在冠心病分类预测中的应用研究. 生物医学工程学杂志, 2013. 30(06): 第1180-1185页.
+[17].	许兴阳, 基于BP人工神经网络的医院药库管理系统药品预测模型研究. 科技创新导报, 2008(20): 第169-170页.
+[18].	周济民, 基于神经网络改进的元胞自动机分析——美国阿片类药物滥用情况. 信息系统工程, 2019(11): 第144-145+147页.
+[19].	王凤竹, 稳健的Logistic回归及其应用, 2014, 华北电力大学.
+[20].	黄锦联, 二分类Logistic回归模型的Lq似然估计, 2013, 广西师范大学.
+
+
+
+
+\bibitem{Amemiya84}
+Amemiya, T. (1984). Tobit models: A survey. {\it Journal of Econometrics}, {\bf 24(1-2)}, 3-61.
+
+\bibitem{Austin00}
+Austin, P.C., Escobar, M. and Kopec, J. A. (2000). The use of the Tobit model for analyzing measures of health status. {\it Quality of Life Research}, {\bf 9(8)}, 901-910.
+
+\bibitem{Authority10}
+Authority, E. (2010). Management of left-censored data in dietary exposure assessment of chemical substances. {\it Efsa Journal}, {\bf 8(3)}, 1557.
+
+\bibitem{Chu05}
+Chu, H. and Nie, L. (2005). A note on comparing exposure data to a regulatory limit in the presence of unexposed and a limit of detection. {\it Biometrical Journal}, {\bf 47(6)}, 880-887.
+
+\bibitem{Cohen59}
+Cohen, A. C. (1959). Simplified estimators for the normal distribution when samples are singly censored or truncated. {\it Technometrics}, {\bf 1(3)}, 217-237.
+
+\bibitem{Dagne13}
+Dagne, G.A. and Huang, Y. (2013). Bayesian semiparametric mixture Tobit models with left censoring, skewness and covariate measurement errors. {\it Statistics in Medicine}, {\bf 32(22)}, 3881-3898.
+
+\bibitem{Dinse14}
+Dinse, G.E., et al. (2014). Accommodating measurements below a limit of detection: a novel application of Cox regression. {\it American Journal of Epidemiology}, {\bf 179(8)}, 1018-1024.
+
+\bibitem{Farewell82}
+Farewell, V.T. (1982). The use of mixture models for the analysis of survival data with long-term survivors. {\it Biometrics}, {\bf 38(4)}, 1041-1046.
+
+\bibitem{Ferrero17}
+Ferrero, A., Esplugues, A., Estarlich, M., et al. (2017). Infants' indoor and outdoor residential exposure to benzene and respiratory health in a Spanish cohort. {\it Environmental Pollution}, {\bf 222}, 486-494.
+
+\bibitem{Frone94}
+Frone, M.R., Cooper, M.L. and Russell, M. (1994). Stressful life events, gender and substance use: An application of tobit regression. {\it Psychology of Addictive Behaviors}, {\bf 8(2)}, 59-69.
+
+\bibitem{Alan85}
+Gleit, A. (1985). Estimation for small normal data sets with detection limits. {\it Environmental Science and Technology}, {\bf 19(12)}, 1201–1206.
+
+\bibitem{Halsey85}
+Halsey, N.A., Boulos, R., Mode, F., et al. (1985). Response to measles vaccine in Haitian infants 6 to 12 months old: influence of maternal antibodies, malnutrition and concurrent illnesses. {\it New England Journal of Medicine}, {\bf 313(9)}, 544-549.
+
+\bibitem{He20}
+He, H., Mi, X. and Tang, W. (2020). Statistical issues on analysis of censored data due to detection limit. {\it International Journal of Statistics and Probability}, {\bf 9(4)}, 49–61.
+
+\bibitem{HeH20}
+He H, Tang W, Kelly T, Li S and He J. (2020). Statistical tests for latent class in censored data due to detection limit. {\it Statistical Methods in Medical Research}, {\bf 29(8)}, 2179-2197.
+
+\bibitem{Hornung90}
+Hornung, R.W. and Reed, L.D. (1990). Estimation of average concentration in the presence of nondetectable values. {\it Applied Occupational and Environmental Hygiene}, {\bf 5(1)}, 46-51.
+
+\bibitem{Hughes99}
+Hughes, J.P. (1999). Mixed effects models with censored data with application to HIV RNA levels. {\it Biometrics}, {\bf 55(2)}, 625-629.
+
+\bibitem{Jamjoum02}
+Jamjoum, L.S., Bielak, L.F., et al. (2002). Relationship of blood pressure measures with coronary artery calcification. {\it Medical Science Monitor}, {\bf 8(12)}, CR775-CR781.
+
+\bibitem{Kakourou18}
+Kakourou, A., Vach, W. and Mertens, B. (2018). Adapting censored regression methods to adjust for the limit of detection in the calibration of diagnostic rules for clinical mass spectrometry proteomic data. {\it Statistical Methods in Medical Research}, {\bf 27(9)}, 2742-2755.
+
+\bibitem{Kim18}
+Kim S, Chang Y, Sung E, et al. (2018). Association between sonographically diagnosed nephrolithiasis and subclinical coronary artery calcification
+in adults. {\it American Journal of Kidney Diseases}, {\bf 71(1)}, 35-41.
+
+\bibitem{Lankester13}
+Lankester, J., Patel, C., Cullen, M. R., Ley, C. and Parsonnet, J. (2013). Urinary triclosan is associated with elevated body mass index in NHANES. {\it PloS One}, {\bf 8(11)}, e80057.
+
+\bibitem{Li15}
+Li, S., Zhao, J., Wang, G., et al. (2015). Urinary triclosan concentrations are inversely associated with body mass index and waist circumference in the US general population: experience in NHANES 2003–2010. {\it International Journal of Hygiene and Environmental health}, {\bf 218(4)}, 401-406.
+
+\bibitem{Lubin04}
+Lubin, J.H., Colt, J. S., et al. (2004). Epidemiologic evaluation of measurement data in the presence of detection limits. {\it Environmental Health Perspectives}, {\bf 112(17)}, 1691-1696.
+
+\bibitem{Maddala93}
+Maddala, G.S. (1993). 7 Estimation of limited dependent variable models under rational expectations. {\it Handbook of Statistics}, {\bf 11(1)}, 175-194.
+
+\bibitem{McDonald80}
+McDonald, J. F. and Moffitt, R. A. (1980). The uses of Tobit analysis. {\it The Review of Economics and Statistics}, {\bf 62(2)}, 318-321.
+
+\bibitem{Moulton95}
+Moulton, L.H. and Halsey, N.A. (1995). A mixture model with detection limits for regression analyses of antibody response to vaccine. {\it Biometrics}, {\bf 51(4)}, 1570-1578.
+
+\bibitem{Nassan17}
+Nassan, Feiby L., Coull, B.A., et al. (2017). Personal care product use in men and urinary concentrations of select phthalate
+metabolites and parabens: results from the Environment and Reproductive Health (EARTH) study. {\it Environmental Health Perspectives}, {\bf 125(8)}, 087012-1-087012-10.
+
+\bibitem{Newman89}
+Newman, M. C., Dixon, P. M., Looney, B. B. and Pinder III, J. E. (1989). Estimating mean and variance for environmental samples with below detection limit observations 1. {\it JAWRA Journal of the American Water Resources Association}, {\bf 25(4)}, 905-916.
+
+\bibitem{Olsen78}
+Olsen, R.J. (1978). Note on the uniqueness of the maximum likelihood estimator for the Tobit model. {\it Econometrica}, {\bf 46(5)}, 1211-1215.
+
+\bibitem{Ostergren17}
+Ostergren, P.B., Kistorp, C., Fode, M., Henderson, J., Bennedbaek, F. N., Faber, J. and Sonksen, J. (2017). Luteinizing hormone-releasing hormone agonists are superior to subcapsular orchiectomy in lowering testosterone levels of men with prostate cancer: results from a randomized clinical trial. {\it The Journal of Urology}, {\bf 197(6)}, 1441-1447.
+
+\bibitem{Park17}
+Park, M. and Lee, D. (2017). Analysis of severe injury accident rates on interstate highways using a random parameter tobit model. {\it Mathematical Problems in Engineering}, {\bf 2017}, 1-6.
+
+\bibitem{TR13}
+R Core Team. (2019). R: A Language and Environment for Statistical Computing. R for Statistical Computing, Vienna. https://www.R-Project.org
+
+
+\bibitem{Reilly04}
+Reilly, M.P., Wolfe, M. L., et al. (2004). Coronary artery calcification and cardiovascular risk factors: impact of the analytic approach. {\it Atherosclerosis}, {\bf 173(1)}, 69-78.
+
+
+\bibitem{Reisetter17}
+Reisetter, A.C., et al. (2017). Mixture model normalization for non-targeted gas chromatography/mass spectrometry metabolomics data. {\it BMC Bioinformatics}, {\bf 18(1)}, 1-17.
+
+\bibitem{Setty17}
+Setty, K. E., Kayser, G. L., et al. (2017). Water quality, compliance and health outcomes among utilities implementing Water Safety Plans in France and Spain - ScienceDirect. {\it International Journal of Hygiene and Environmental Health}, {\bf 220(3)}, 513-530.
+
+\bibitem{Slymen94}
+Slymen, D.J., de Peyster, A. and Donohoe, R.R. (1994). Hypothesis testing with valBues below detection limit in environmental studies. {\it Environmental Science and Technology}, {\bf 28(5)}, 898-902.
+
+\bibitem{Taylor01}
+Taylor, D. J., Kupper, L. L., Rappaport, S. M. and Lyles, R. H. (2001). A mixture model for occupational exposure mean testing with a limit of detection. {\it Biometrics}, {\bf 57(3)}, 681-688.
+
+
+
+\bibitem{Tobin58}
+Tobin, J. (1958). Estimation of relationships for limited dependent variables. {\it Econometrica}, {\bf 26(1)}, 24-36.
+
+\bibitem{Wang17}
+Wang, W. and Griswold, M. E. (2017). Natural interpretations in Tobit regression models using marginal estimation methods. {\it Statistical Methods in Medical Research}, {\bf 26(6)}, 2622-2632.
+
+
+
+
+\end{thebibliography}

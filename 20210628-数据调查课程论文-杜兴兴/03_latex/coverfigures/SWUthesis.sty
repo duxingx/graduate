@@ -1,0 +1,338 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Southwest University Graduate Thesis Template
+%% Template by Xiaomin Bao, <xbao@swu.edu.cn>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\ProvidesPackage{SWUthesis}[2015/7/31 v1.0 SWU graduate thesis]
+\typeout{SWU latex template thesis for graduate Version 1.0}
+
+% packages
+\RequirePackage{pstricks}
+\RequirePackage{color}            % color image and color definition
+\RequirePackage{fancyhdr,fancybox}% personalize page header
+\RequirePackage{graphicx}         % include graphics
+\RequirePackage{ifthen}           % logic options
+\RequirePackage{lastpage}         % refer to the number of last page
+\RequirePackage{listings}         % format source code
+\RequirePackage[toc,page,title,titletoc,header]{appendix}%附录制作
+\RequirePackage{enumerate}
+\RequirePackage{ccmap}%加此package，用PDFLatex编译后生成的PDF文件可以复制上面的汉字
+%\RequirePackage{CCTfntef}
+
+%下面两行在使用2.9.0.152版时是必须的，如果没有编译时会出问题。
+\standardtilde\let\standardtilde=\relax
+%\RequirePackage{CJK}
+
+%======数学公式===========
+\RequirePackage{amsthm,amsfonts}
+\RequirePackage{amsmath,bm}              % AMSLaTeX
+\RequirePackage{amssymb,mathrsfs}        % AMSLaTeX sym-bols
+\RequirePackage{latexsym}
+\RequirePackage{braket}
+\RequirePackage{cases,verbatim}
+%=========================
+\RequirePackage{multicol}
+%\RequirePackage{multirow}
+\RequirePackage{ccaption}
+\RequirePackage{caption3}
+\RequirePackage{subfigure}
+\RequirePackage{longtable,multirow,hhline, tabularx,array,slashbox,rotating}%@@表格相关
+\RequirePackage{flafter}
+\RequirePackage{pifont,calc}
+\RequirePackage{colortbl,booktabs,cite,lastpage}
+\RequirePackage{graphicx}
+\RequirePackage{epstopdf}
+\RequirePackage{epsf}
+%\RequirePackage{notebook2e}
+\RequirePackage[
+    paperwidth=210mm,
+    paperheight=297mm,
+    text={160mm,240mm}, % 等号“="与{160mm,240mm}之间不能留空格
+    left=25mm,
+    vmarginratio=24:19,
+    includeheadfoot,
+    ]
+{geometry}
+\definecolor{grey}{rgb}{0.91,0.91,0.91}
+\RequirePackage{background}
+\SetBgContents{}
+\SetBgAngle{-45}
+\SetBgColor{grey}
+\SetBgOpacity{0.08}
+% Declare Options
+\newcommand{\SWU@control}{2012}
+\DeclareOption*
+{
+    \edef\SWU@control{\CurrentOption}
+}
+
+% Process Options
+\ProcessOptions
+%\newcommand{\control}{\SWU@control}
+\newcommand{\xueyuan}{ \SWU@control}
+\newcommand{\beishu}{1.5}
+\newcommand{\yuanbeishu}{1}
+%\newcommand{\zhuanye}{ \SWU@control}
+%\newcommand{\banji}{ \SWU@control}
+%\newcommand{\xuehao}{ \SWU@control}
+%\newcommand{\xinmin}{ \SWU@control}
+
+% if we are running pdflatex?
+\RequirePackage{ifpdf}
+% style: hyperlinked references
+\ifpdf
+\RequirePackage{epstopdf}
+\DeclareGraphicsExtensions{.pdf,.jpg,.jpeg,.gif,.eps}
+\RequirePackage[
+    CJKbookmarks       = true,
+    pdftitle           = {Thesis Template For Graduate Students},
+    pdfauthor          = {Xiaomin Bao},
+    pdfsubject         = {Thesis LaTex Template},
+    pdfkeywords        = {LaTex Template},
+    pdfdisplaydoctitle = true,
+    bookmarksnumbered  = true,%
+    bookmarksopen      = true, %
+    pdfborder          = 001,     %注释掉此项则交叉引用为彩色边框
+    %pdfpagemode        = FullScreen,
+    colorlinks         = true,%
+    linkcolor          = blue,%
+    citecolor          = blue,%
+    pagecolor          = blue %
+    ]
+{hyperref}
+\else
+\DeclareGraphicsExtensions{.eps,.ps,.png,.gif}
+\RequirePackage[
+    dvipdfm,  %
+    CJKbookmarks       = true, %
+    pdftitle           = {Document Created On LaTex Template Designed By X. Bao},
+    pdfauthor          = {Xiaomin Bao},
+    pdfsubject         = {Graduate Student Thesis LaTex Template},
+    pdfkeywords        = {LaTex Template},
+    pdfdisplaydoctitle = true,
+    bookmarksnumbered  = true,%
+    bookmarksopen      = true, %
+    colorlinks         = true, % 注释掉此项则交叉引用为彩色边框(将colorlinks和pdfborder同时注释掉)
+    linkcolor          = blue, %
+    citecolor          = blue, %
+    pagecolor          = blue
+    ]
+{hyperref}
+\fi
+%\RequirePackage[boxruled]{algorithm2e}
+%%\let\chapter\undefined
+%%\RequirePackage{algorithm,algorithmic}
+%\SetAlgorithmName{算法}{}
+%
+%\let\@afterindentfalse\@afterindenttrue\@afterindenttrue
+\RequirePackage{algorithm,algorithmic}
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}}
+\renewcommand{\algorithmicensure}{\textbf{输出:}}
+
+\let\@afterindentfalse\@afterindenttrue\@afterindenttrue
+
+% 一级标题居中，3号字体并加粗
+\CTEXsetup[format+={\centering\heiti\zihao{3}}]{chapter}
+
+% 二级标题靠左对齐，4号字体并加粗
+\CTEXsetup[format+={\flushleft\heiti\zihao{4}}]{section}
+
+% 三级、四级标题缩进，小4号字体
+\CTEXsetup[format+={\rm\heiti\zihao{-4}}]{subsection}
+\CTEXsetup[format+={\rm\heiti\zihao{-4}}]{subsubsection}
+\CTEXoptions[today=small]
+
+% 若不用数字标记章，将注释此行，否则取消注释
+\CTEXsetup[number={\hspace{1pt}\arabic{chapter}\hspace{1pt}}]{chapter}
+\CTEXsetup[name={附录~}]{appendix}
+% 重新定义目录头
+\renewcommand\contentsname{目\qquad 录}
+% style: page layout
+% 一级标题靠左对齐，小4号字体并加粗
+%\CTEXsetup[format+={\flushleft\heiti\zihao{-4}}]{section}
+%%一级标题的序号后加.
+%\CTEXsetup[name={,.}]{section}
+%% 二级、三级标题缩进，小4号字体
+%\CTEXsetup[format+={\large\zihao{-4}}]{subsection}
+%\CTEXsetup[format+={\large\zihao{-4}}]{subsubsection}
+%\CTEXoptions[today=small]
+%\CTEXsetup[name={附录~}]{appendix}
+%\setlength{\headheight}{15pt}
+%\setlength{\headsep}{20pt}
+%\setlength{\footskip}{30pt}
+%\setlength{\voffset}{-5pt}
+%\setlength{\hoffset}{16pt}
+%\setlength{\oddsidemargin}{0pt}
+%\setlength{\evensidemargin}{\oddsidemargin}
+%\setlength{\textwidth}{\paperwidth-2\hoffset-2\oddsidemargin-2in}
+%\setlength{\marginparpush}{0pt}
+%\setlength{\marginparwidth}{0pt}
+%\addtolength{\textheight}{3\baselineskip}
+%\renewcommand{\headrulewidth}{0pt}
+%\setlength{\textwidth}       {16cm}
+%\setlength{\oddsidemargin}   {0.1cm}
+%\setlength{\evensidemargin}  {0.2cm}
+%\setlength{\textheight}      {24cm}
+\setlength{\topmargin}       {-1cm}
+\setlength{\mathsurround}{2pt} % 在非独立数学表达式前后加入 2pt 的空格
+%define the table of contents
+\renewcommand\tableofcontents{%
+    \centerline{\normalfont\Large\bfseries\contentsname
+        \@mkboth{%
+           \MakeUppercase\contentsname}{\MakeUppercase\contentsname}}%
+    \vskip 5ex%
+    \@starttoc{toc}%
+    }
+
+% style: float counter
+\setcounter{totalnumber}{6}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{3}
+%很多人发现缺省的浮动参数过于严格了。下面的命令
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.60}
+%将浮动参数重新设置为更宽松的值。---选自《Using Import graphics in LATEX2e》
+%\let\endkeywords\relax
+% style: table & figure caption font size and face
+\renewcommand{\figurename}{图}
+\renewcommand{\tablename}{表}
+%
+%图表标题的分隔符设置为空格
+\CTEXoptions[captiondelimiter={. }]
+%\captionsetup[figure]{labelsep=space}
+%\captionsetup[table]{labelsep=space}
+% style: table vertical merged cells
+\newcommand{\thline}{\hline\par\hline\par\hline}
+%\newcommand{\citeu}[1]{$^{\mbox{\protect\scriptsize{\rm\cite{#1}}}}$}
+\newcommand{\citeu}[1]{\hspace{-.1cm}$^{\mbox{\protect\scriptsize{\rm\cite{#1}}}}$}
+%\makeatletter
+%\def\@cite#1#2{\textsuperscript{[{#1\if@tempswa , #2\fi}]}}
+%\makeatother
+% style: figure include path
+\graphicspath{{./}{./img/}{./fig/}{./image/}{./figure/}{./picture/}}
+
+%define the the bibliography
+%\newtheorem{Theorem}{Theorem}[section]%
+%\newtheorem{Lemma}[Theorem]{Lemma}%
+%\newtheorem{Corollary}[Theorem]{Corollary}%
+%\newtheorem{Proposition}[Theorem]{Proposition}%
+%\newtheorem{Definition}[Theorem]{Definition}%
+%\newtheorem{Example}[Theorem]{Example}%
+\newtheorem{theorem}{定理\hspace{0.1mm}}           %
+\newtheorem{lemma}{引理\hspace{0.1mm}}             %
+\newtheorem{exercise}{练习\hspace{0.1mm}}          %
+\def\theproblem{\thesection.\arabic{exercise}}     %
+\newtheorem{definition}{{\bf 定义}}                %
+\def\proofname{\bf 证明}                           %
+%\def\CTEX@appendixname{}
+%\renewcommand{\appendices}{\heiti 附录}
+%\def\abstractname{\heiti 摘要}                     %
+%\newcommand{\zhaiyao}{\heiti 摘要：}               %
+\newtheorem{proposition}{命题\hspace{0.1mm}}       %
+\newtheorem{property}{性质\hspace{0.1mm}}          %
+\newtheorem{example}{例\hspace{0.1mm}}             %
+\newtheorem{corollary}[theorem]{推论\hspace{0.1mm}}%
+\theoremstyle{definition}\newtheorem*{solution}{解}%
+\theoremstyle{definition}\newtheorem*{note}{\heiti 注\hspace{0.1mm}}      %
+%\theoremstyle{definition}\newtheorem*{fenxi}{\heiti 分析\hspace{0.1mm}}      %
+\def\labelenumi{\rm(\arabic{enumi})}               %
+\def\theenumi{\rm(\arabic{enumi})}                 %
+\def\labelenumii{\rm(\alph{enumii})}               %
+\def\theenumii{\rm(\alph{enumii})}
+
+% style: list typesetting
+\definecolor{grey}{rgb}{0.91,0.91,0.91}
+\definecolor{darkgreen}{rgb}{0,0.3,0}
+\definecolor{darkblue}{rgb}{0,0,0.3}
+\def\lstbasicfont{\fontfamily{pcr}\selectfont\footnotesize}
+\lstset{%
+%    indexing
+%    numbers=left,
+%    numberstyle=\tiny,%
+%    character display
+    showstringspaces=false,
+    extendedchars=false, % 此句保证有R代码时，其中的注释符#在编译时不报错
+    showspaces=false,%
+    tabsize=4,%
+% style
+    frame=lines,%
+    %basicstyle={\footnotesize\lstbasicfont},%
+    basicstyle={\small\ttfamily},
+    keywordstyle=\color{darkblue}\bfseries,%
+    %identifierstyle=,%
+    commentstyle=\color{darkgreen},%\itshape,%
+    stringstyle=\color{black},%
+    breaklines=true,
+    breakatwhitespace=true,
+}
+\lstloadlanguages{C,C++,Java,Matlab,Mathematica,R}
+
+% style: SWU required header
+
+\fancyhf{}
+\pagestyle{fancy}
+\fancypagestyle{plain}
+{%
+ \fancyhf{}                                    % 清除所有页眉页脚
+ \fancyhead[EC,OC]{}                           % 页眉为空
+ %\fancyhead[EC,OC]{\zihao{5}\ziti{a}\leftmark} % 页眉不空
+ %\fancyfoot[EL]{\zihao{-5}\thepage}            % 偶数页页码位于页脚左侧位置
+ %\fancyfoot[OR]{\zihao{-5}\thepage}            % 奇数页页码位于页脚右侧位置
+
+ \fancyfoot[C]{\zihao{-5}\thepage}             % 页码位于页脚中间位置
+
+ %\fancyfoot[ER]{\zihao{-5}\school}             % 学院名称位于偶数页页脚右侧位置
+ %\fancyfoot[OL]{\zihao{-5}\minzi}              % 作者姓名位于奇数页页脚左侧位置
+}
+
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername.\ #1}{}}
+
+% 第x章 题目 这种形式
+%\renewcommand{\chaptermark}[1]{\markboth{第\chaptername\ 章 \, #1}{}}
+
+% 题目 这种形式
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+
+% 页眉
+\fancyhead[EC]{\zihao{5}\CJKfamily{song}《统计调查》课程论文}
+\fancyhead[OC]{\zihao{5}\CJKfamily{song}\leftmark}
+
+% 页眉使用的文武线，上粗下细
+\newcommand{\makeheadrule}{%
+    \makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{1.6pt}}%
+    \rule[.6\baselineskip]{\headwidth}{0.4pt}\vskip-.8\baselineskip}
+\makeatletter
+\renewcommand{\headrule}{%
+    {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+     \makeheadrule}}
+
+% 页脚
+%\fancyfoot[EL]{\zihao{-5}\thepage} % 偶数页页码位于页脚左侧位置
+%\fancyfoot[OR]{\zihao{-5}\thepage} % 奇数页页码位于页脚右侧位置
+
+\fancyfoot[C]{\zihao{-5}\thepage}  % 页码位于页脚中间位置
+
+%\fancyfoot[ER]{\zihao{-5}\school}  % 学院名称位于偶数页页脚右侧位置
+%\fancyfoot[OL]{\zihao{-5}\minzi}   % 作者姓名位于奇数页页脚左侧位置
+
+% 页脚线
+\renewcommand{\footrulewidth}{0.1pt}
+%\setcounter{page}{1}
+%\pagestyle{fancy}
+%%\lhead{\small \xueyuan}
+%%\chead{}
+%%\rhead{\small Page \thepage\ of \pageref{LastPage}}
+%%\lfoot{}
+%%\cfoot{}
+%%\rfoot{}
+%\lhead{}
+%\chead{}
+%\rhead{}
+%\lfoot{}
+%\cfoot{\zihao{-5}\small 第\;\thepage\;页\;共\;\pageref*{endofThesis}\;页}
+%\rfoot{\tiny\color{grey}{}}
+\endinput
