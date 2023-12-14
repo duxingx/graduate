@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[文献综述]{文献综述}\label{sec:1}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+    %\begin{figure}
+    \begin{minipage}[t]{0.55\textwidth}
+    \tableofcontents[currentsection,hideallsubsections]
+    % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{minipage}
+
+    \begin{minipage}[t]{0.55\textwidth}
+    \vspace{0.44cm}
+    \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+    \begin{itemize}
+    \item\hyperlink{subsec:1-1}{LR/Wald/Score test}
+    \item\hyperlink{subsec:1-2}{Vuong  test}
+    \item\hyperlink{subsec:1-4}{new  and intuitive test}
+    \end{itemize}
+    \end{spacing}
+    \end{minipage}
+    %\end{figure}
+    \end{multicols}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[LR/Wald/Score test]{LR/Wald/Score test}\label{subsec:1-1}
+\begin{frame}
+\frametitle{\textsc{LR/Wald/Score test}} %\transwipe % 涂抹效果
+\begin{itemize}
+\hilite<1>\item
+不能区分是删失数据还是膨胀数据
+\pause
+
+\hilite<3>\item
+需要确定分布形式
+\pause
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{\textsc{高斯序列极值分布的收敛}} %\transwipe % 涂抹效果
+\begin{itemize}
+\hilite<1>\item
+当$a_{n}, b_{n}$满足
+\begin{equation}
+\label{eqB}
+n\varphi(b_{n})=b_{n},\quad a_{n}=1/b_{n},
+\end{equation}
+Hall (1979)得到$\Delta(\Phi^{n}, \Lambda(x); a_{n}, b_{n})$的一致收敛速度, 即存在正常数$C_1, C_2,$
+使得对任意的$n\ge n_{0}$, 有
+\begin{eqnarray*}
+  \frac{C_1}{\log n}<\sup_{x\in \mathbb{R}}\mid \Delta(\Phi^{n}, \Lambda(x); a_{n}, b_{n})\mid<\frac{C_2}{\log n}.
+\end{eqnarray*}
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textsc{高斯序列顺序统计量幂分布的展开及收敛}} %\transwipe % 涂抹效果
+\begin{itemize}
+\hilite<1>\item
+进一步, Hall (1980)研究了高斯序列顺序统计量幂的渐近展开及收敛速度, 即对任意$r\geq1, t\geq0$, 存在常数$c_n>0$和$d_n\in \mathbb{R}$, 使得
+\begin{eqnarray*}
+   \lim_{n\rightarrow\infty}\mathbb{P}(|X_{n,n-r+1}|^t\leq c_nx+b_n)=\Lambda_r(x),
+\end{eqnarray*}
+其中, $\Lambda_r(x)=\Lambda(x)\sum^{r-1}_{j=0}e^{-jx}/j!, x\in \mathbb{R}$, 规范常数$c_n, d_n$满足
+\begin{eqnarray}
+\label{eq7}
+c_n=tb_n^{t-2}-2b_n^{-2}\mathbb{I}\{t=2\},d_{n}=b_n^t-2b_n^{-2}\mathbb{I}\{t=2\},
+\end{eqnarray}
+$b_n$由\eqref{eqB}决定. Hall (1980)指出, 当$t=2$时该收敛最快.
+\pause
+
+\hilite<2>\item
+在此基础上, Zhou和Lin (2016)研究了高斯序列最大值幂的分布函数与密度函数的高阶展开, 指出它们收敛的速度均在幂指数取$2$时最快, 且均与$1/ (\log n)^2$同阶.
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textsc{其他给定分布序列极值分布的展开及收敛}} %\transwipe % 涂抹效果
+\begin{itemize}
+\hilite<1>\item
+ Liao和Peng (2012)研究了对数正态随机序列局部最大值分布的一致收敛速度, 并指出它与$1/(\log n)^{1/2}$同阶.
+\pause
+
+\hilite<2>\item
+Liao与Peng (2013a)研究了对数偏正态分布随机变量序列的极值分布函数的高阶展开, 指出其收敛到Gumbel极值分布函数$\Lambda(x)$的速度同阶于$1/(\log n)^{1/2}$.
+\pause
+
+\hilite<3>\item
+Liao 等 (2014) 针对服从偏正态分布的随机序列, 研究了其规范化极值分布的渐近展开, 并且得出该分布函数的收敛速度与$1/ \log n$ 同阶.
+\pause
+
+\hilite<4>\item
+ Hashorva 等 (2016)建立了在细化的H\"usler-Reiss条件下, 二元高斯三角阵极值联合分布函数的高阶渐近展开.
+ \pause
+
+ \hilite<5>\item
+Li和Li (2015)研究了服从广义误差分布随机变量序列极值的密度函数的高阶展开.
+ \end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

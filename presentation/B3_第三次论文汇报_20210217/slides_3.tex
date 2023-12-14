@@ -1,0 +1,370 @@
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \documentclass[table,CJK,mathserif,12pt]{beamer}% notheorems,
+    \include{background/background}
+    \title[A New Statistical Test for ZMP Model] % (optional, use only with long paper titles)
+    { \textsc{A New Statistical Test for ZMP Model} }
+    \author[杜兴兴、魏雅慧] % (optional, use only with lots of authors)
+    {\quad\\  \large  杜兴兴   魏雅慧 }
+    \institute[数学与统计学院] % (optional, but mostly needed)
+    {数学与统计学院}
+    %% 日期自动生成
+    \date{\scriptsize{\today} }%{{\the\year}年{\the\month}月{\the\day}日}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{document}
+
+    \begin{CJK}{GBK}{kai}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame} % 封面
+      \vspace{0.5cm}
+      \titlepage
+      \hypertarget{beginning}{}
+    \end{frame}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{frame}
+      \frametitle{\textsc{目录}} \vspace{-0.3cm}
+      \tableofcontents[hidesubsections]
+      % You might wish to add the option[pausesections,subsection]
+    \end{frame}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \section[模型回顾]{模型回顾}\label{sec:1}
+    \subsection[模型回顾]{泊松模型和零膨胀泊松}
+    \begin{frame}
+    	\frametitle{模型设定}
+    	泊松模型：
+    	\begin{itemize}
+    		\item $p(y_i|\mu)=\frac{\mu^{y_i}\:*\:e^{-\mu}}{y_i!}$ , $y_i\geq0$
+    	\end{itemize}
+        泊松回归：
+        \begin{itemize}
+        \item $y_i|x_i\sim i.d.\:Piosson(\mu_i)$ , $log(\mu_i)=x_i^T\beta$
+        \item 当在零存在过多时，为零膨胀模型(ZIP)，由于膨胀和紧缩仅在正负号存在区别，我们在此仅讨论膨胀现象。
+        \end{itemize}
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[模型回顾]{泊松模型和零膨胀泊松}
+    \begin{frame}
+    	\frametitle{模型设定}
+        零膨胀泊松(ZIP)模型：
+        \begin{itemize}
+        \item 假设过多零的概率为$\omega$，则原分布的概率为1-$\omega$。
+          \item 混合概率分布为
+          \begin{equation}
+                    \left\{
+                    \begin{array}{cc}
+                        { P(Y_i=0)=\omega + (1-\omega)e^{-\lambda_i}} & { } \\
+                        {P(Y_i=y_i)=(1-\omega)\frac{e^{-\lambda_i}\lambda_i^{y_i}}{y_i!}} & {(y_i>0)}、
+                    \end{array}%
+                    \right.
+           \end{equation}%
+        \end{itemize}
+        零膨胀泊松回归：
+        \begin{itemize}
+            \item $\omega$ 为动态时，
+                \begin{itemize}
+                \item $y_i|x_i\sim i.d.\:\:ZIP(\omega_i,\mu_i)$ , $logit(\omega_i)=x_i^T\beta_1$ , $log(\mu_i)=v_i^T\beta_2$
+                \end{itemize}
+            \item $\omega$ 为常数时，
+                \begin{itemize}
+                \item $y_i|x_i\sim i.d.\:\:ZIP(\omega_i,\mu_i)$ , $\omega_i=c_i$ , $log(\mu_i)=v_i^T\beta_2$
+                 \end{itemize}
+        \end{itemize}
+
+    \end{frame}
+
+    \section[随机模拟]{随机模拟}\label{sec:2}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+    \begin{frame}%<beamer>
+        \frametitle{\textsc{目录}} \vspace{-1.05cm}
+        \begin{multicols}{2}
+            \begin{minipage}[t]{0.55\textwidth}
+                \tableofcontents[currentsection,hideallsubsections]
+            \end{minipage}
+
+            \begin{minipage}[t]{0.55\textwidth}
+            \vspace{0.44cm}
+            \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+            \begin{itemize}
+            \item\hyperlink{subsec:1-1}{模拟设置}
+            \item\hyperlink{subsec:1-2}{Poisson Response}
+            \end{itemize}
+            \end{spacing}
+            \end{minipage}
+        \end{multicols}
+    \end{frame}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+    \subsection[模拟设置]{模拟设置}\label{subsec:2-1}
+    \begin{frame}
+    	\frametitle{模拟设置}
+    	\begin{itemize}
+            \item 检验是否为零膨胀泊松（ZIP）：
+                $$ H_0:\omega=0\:\:\:vs\:\:\:\omega>0 $$
+            \item 均值变动：$y\sim Poisson(\mu)$
+            \item 考虑三种情形：
+            \begin{itemize}
+                \item 无协变量，$\mu=c$
+                \item 协变量服从均匀分布， $\mu=exp(\alpha-1.4*x)$
+                \item 协变量服从正态分布， $\mu=exp(\alpha-x)$
+            \end{itemize}
+            \item 样本量：50，100，200，500
+            \item Monte Carlo(蒙特卡罗)样本量：100
+
+        \end{itemize}
+    \end{frame}
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[Poisson Response]{Poisson Response}
+    \begin{frame}
+    	\frametitle{No Covariate}
+    	\begin{itemize}
+            \item R Code
+            \item Type Error I:p-p plot
+            \item Results
+        \end{itemize}
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[Poisson Response]{Poisson Response}
+    \begin{frame}
+    	\frametitle{No Covariate (Type Error I:p-p plot)}
+        \begin{figure}
+          \centering
+          % Requires \usepackage{graphicx}
+          \includegraphics[scale=0.45]{./figure/type11.png}\\
+        \end{figure}
+
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[Poisson Response]{Poisson Response}
+    \begin{frame}
+    	\frametitle{Covariate x $\sim U(0,1)$}
+    	\begin{itemize}
+            \item R Code
+            \item Type Error I:p-p plot
+            \item Results
+
+        \end{itemize}
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[Poisson Response]{Poisson Response}
+    \begin{frame}
+    	\frametitle{Covariate x $\sim U(0,1)$(Type Error I:p-p plot)}
+         \begin{figure}
+          \centering
+          % Requires \usepackage{graphicx}
+          \includegraphics[scale=0.45]{./figure/type12.png}\\
+        \end{figure}
+
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[Poisson Response]{Poisson Response}
+    \begin{frame}
+    	\frametitle{Covariate x $\sim N(0,1)$}
+    	\begin{itemize}
+            \item R Code
+            \item Type Error I:p-p plot
+            \item Results
+
+        \end{itemize}
+    \end{frame}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[Poisson Response]{Poisson Response}
+    \begin{frame}
+    	\frametitle{Covariate x $\sim N(0,1)$(Type Error I:p-p plot)}
+         \begin{figure}
+          \centering
+          % Requires \usepackage{graphicx}
+          \includegraphics[scale=0.45]{./figure/type13.png}\\
+        \end{figure}
+
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \section[appendix]{appendix}
+    \subsection[score test推导]{score test推导}
+    \begin{frame}%<beamer>
+        \frametitle{\textsc{模型设定}}
+        \begin{itemize}
+          \item ZIP统计模型：
+             \begin{equation}
+                \left\{
+                \begin{array}{cc}
+                    { P(Y_i=0)=\omega + (1-\omega)e^{-\lambda_i}} & { } \\
+                    {P(Y_i=y_i)=(1-\omega)\frac{e^{-\lambda_i}\lambda_i^{y_i}}{y_i!}} & {(y_i>0)}、
+                \end{array}%
+                \right.
+            \end{equation}%
+          \item 令：
+            \begin{itemize}
+            \item $\theta = \frac{\omega}{1-\omega}=\text{常数}  \:\:(-f(0)\le\theta<\inf)$
+            \item $ ln(\lambda_i) = X_i \beta $
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \subsection[score test推导]{score test推导}
+    \begin{frame}%<beamer>
+        \begin{itemize}
+            \item 示性函数:
+            \begin{tiny}
+            \begin{equation}
+                I_{(condition)}= \left\{
+                \begin{array}{cc}
+                  {1} & {\text{if condition is True}} \\
+                  {0} & {\text{if condition is False}}
+                \end{array}
+                \right.
+            \end{equation}
+            \end{tiny}
+          \item 对数似然：
+            \begin{tiny}
+             \begin{equation}
+                l(\lambda,\theta;y)=\sum_i\left\{-log(1+\theta)+I_{y_i=0}log(\theta+e^{-\lambda_i}) + +I_{y_i>0} \left[ -\lambda_i + y_i log(\lambda_i)-log(y_i!) \right]  \right\}
+            \end{equation}%
+            \end{tiny}
+         \item 偏导方程：
+            \begin{tiny}
+            $$ \frac{dl}{d\beta_r}=\sum_i\left\{ I_{(y_i=0)}\left( \frac{-e^{-\lambda_i}}{\theta+e^{-\lambda_i}} \right)\lambda_i x_{ir} + I_{y_i>0}(y_i-\lambda_i) x_{ir}  \right\}  \:\: r=1,2,..,p$$
+            $$ \frac{dl}{d\theta} = \sum_i \left\{ \frac{-1}{(1+\theta)} + I_{y_i=0} \left( \frac{1}{\theta + e^{-\lambda_i}} \right)  \right\} $$
+            \end{tiny}
+        \end{itemize}
+    \end{frame}
+
+
+
+    \subsection[score test推导]{score test推导}
+    \begin{frame}%<beamer>
+        \begin{itemize}
+            \item ZIP的对数似然函数基础上构建得分向量：
+                $$ U(\beta,\theta) = \left[
+                \begin{array}{c}
+                \frac{\partial{l}}{\partial{\beta}} \\
+                \frac{\partial{l}}{\partial{\theta}}
+                \end{array}
+                 \right] $$
+            \item Fisher信息矩阵：
+                $$ J(\beta,\theta) = \left[
+                \begin{array}{cc}
+                \frac{\partial^2{l}}{\partial{\beta}\partial{\beta'}} & \frac{\partial^2{l}}{\partial{\beta}\partial{\theta}}  \\
+                \frac{\partial^2{l}}{\partial{\beta'}\partial{\theta}} & \frac{\partial^2{l}}{\partial{\theta}\partial{\theta}}  \\
+                \end{array}
+                 \right]  $$
+          \item 在原假设成立下,根据Fisher信息矩阵构建Score检验统计量：
+            $$ S(\hat{\beta})=S(\hat{\beta},0)=U^T(\hat{\beta},0)[J(\hat{\beta},0)]^{-1}U(\hat{\beta,0}) \sim \chi^2_{(1)}$$
+
+
+        \end{itemize}
+    \end{frame}
+
+
+
+    \subsection[score test推导]{score test推导}
+    \begin{frame}%<beamer>
+        \begin{itemize}
+            \item 所以在原假设条件下，$\theta=0$:
+            $$ \frac{dl}{d\theta}|_{\theta=0} = \sum_i\left\{ \frac{I_{(y_i=0)}}{e^{-\hat{\lambda}_i}}-1 \right\} $$
+            \item 计算得分向量得：
+                $$ U^T(\beta,0) = \left(  0,...,0,\sum_i\left\{ \frac{I_{(y_i=0)}}{e^{-\hat{\lambda}_i}}-1 \right\}           \right) $$
+
+        \end{itemize}
+    \end{frame}
+
+
+    \subsection[score test推导]{score test推导}
+    \begin{frame}%<beamer>
+        \begin{itemize}
+            \item 计算二阶偏导:
+            \begin{tiny}
+                \begin{equation}
+                    \begin{array}{l}
+                    \frac{d^2l(.)}{d\beta_r d\beta_s} = \sum_i \left\{ I_{y_i=0} \left( \frac{-e^{-\lambda_i}[(1-\lambda_i)\theta+e^{-\lambda_i}]}{[\theta+e^{-\lambda_i}]^2} \right) \lambda_i x_{ir} x_{is} -I_{(y_i>0)}\lambda_i x_ir x_is  \right\} \:r=1...p,s=1...p  \\    \\
+                    \frac{d^2l(.)}{d\beta_r d\theta} = \sum_i \left\{ I_{y_i=0} \left( \frac{-e^{-\lambda_i}}{[\theta+e^{-\lambda_i}]^2} \right) \lambda_i x_{ir}   \right\} \:r=1...p                   \\  \\
+                     \frac{d^2l(.)}{d\theta^2} = \sum_i \left\{ \frac{1}{(1+\theta)^2}  - I_{y_i=0} \left( \frac{1}{[\theta+e^{-\lambda_i}]^2} \right)  \right\}                   \\
+                    \end{array}
+                \end{equation}
+            \end{tiny}
+
+            \item 可以得到$J(\hat{\beta},0)$:
+                \begin{itemize}
+                \item $\hat{J}_{r,s}=\sum_i{\hat{\lambda}_i x_{ir} x_{is}} \:\: r=1...p,s=1...p$
+                \item $ \hat{J}_{r,p+1} = -\sum_i{\hat{\lambda_i}{x_ir}} \:\:r=1...p  $
+                \item $\hat{J}_{p+1,p+1} = \sum_i{\frac{1-e^{-\hat{\lambda_i}}}{e^{-\hat{\lambda_i}}}}$
+                \end{itemize}
+        \end{itemize}
+    \end{frame}
+
+    \subsection[score test推导]{score test推导}
+    \begin{frame}%<beamer>
+        \begin{itemize}
+            \item $J(\hat{\beta},0)$矩阵分块得:
+            $$ J(\hat{\beta},0) = \left[
+            \begin{array}{cc}
+                \hat{J_{11}} & \hat{J_{12}} \\
+                \hat{J_{21}} & \hat{J_{22}}
+            \end{array}  \right] $$
+
+            \item $\hat{J_{11}}=X^Tdiag(\hat{\lambda}X) $
+            \item $\hat{J_{12}}=-X^T \hat{\lambda} $
+            \item $\hat{J_{21}}=-\hat{\lambda^T} X^T $
+            \item $\hat{J_{22}}=\sum_i \left( \frac{1}{e^{\hat{-\lambda_i}}} - 1 \right) $
+        \end{itemize}
+    \end{frame}
+
+
+    \subsection[score test推导]{score test推导}
+    \begin{frame}%<beamer>
+        \begin{itemize}
+            \item $J(\hat{\beta},0)^{-1}$定义为C:
+            $$ J(\hat{\beta},0)^{-1} = C(\hat{\beta},0) = \left[
+            \begin{array}{cc}
+                {C_{11}} & {C_{12}} \\
+                {C_{21}} & {C_{22}}
+            \end{array}  \right] $$
+
+            \item 由于得分向量$U(\hat{\beta},0)$的结构只需要$C_{22}$即可：
+
+                $$ C_{22}^{-1} = \hat{J}_{22} - \hat{J}_{21} \hat{J}_{11}^{-1} \hat{J}_{12} $$
+                $$C_{22}^{-1} = \sum_i \left( \frac{1}{e^{-\hat{\lambda_i}}} -1  \right) -\hat{\lambda}^T X [X^T diag(\hat{\lambda})X]^{-1} X^T \hat{\lambda} $$
+
+        \end{itemize}
+    \end{frame}
+
+    \subsection[score test推导]{score test推导}
+    \begin{frame}%<beamer>
+        \begin{itemize}
+
+            \item Score统计量最终形式为:
+            $$ S(\hat{\beta})=S(\hat{\beta},0)=U^T(\hat{\beta},0)[J(\hat{\beta},0)]^{-1}U(\hat{\beta,0}) \sim \chi^2_{(1)}$$
+            $$ S(\hat{\beta},0) = \frac{\left\{ \sum_{i=1}^n { \left( \frac{I_{y_i=0}}{e^{-\hat{\lambda_i}}} -1 \right)} \right\}^2  }{\sum_i \left( \frac{1}{e^{-\hat{\lambda_i}}} -1  \right) -\hat{\lambda}^T X [X^T diag(\hat{\lambda})X]^{-1} X^T \hat{\lambda}} $$
+            \item 可得：
+            $$ S_{score} = \frac{\left\{ \sum_{i=1}^n { \left( \frac{I_{y_i=0}}{e^{-\hat{\lambda_i}}} -1 \right)} \right\} }{\left\{\sum_i \left( \frac{1}{e^{-\hat{\lambda_i}}} -1  \right) -\hat{\lambda}^T X [X^T diag(\hat{\lambda})X]^{-1} X^T \hat{\lambda}\right\}^{1/2}}  $$
+            $$ S_{score} \sim N(0,1)$$
+        \end{itemize}
+    \end{frame}
+
+
+
+
+
+
+    \end{CJK}
+    \end{document}

@@ -1,0 +1,73 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[问题导向]{问题导向}\label{sec:1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+        %\begin{figure}
+            \begin{minipage}[t]{0.55\textwidth}
+                \tableofcontents[currentsection,hideallsubsections]
+                % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+            \end{minipage}
+
+            \begin{minipage}[t]{0.55\textwidth}
+                \vspace{0.44cm}
+                \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+                    \begin{itemize}
+                        \item\hyperlink{subsec:1-1}{零膨胀问题}
+                        \item\hyperlink{subsec:1-2}{潜在类问题}
+                    \end{itemize}
+                \end{spacing}
+            \end{minipage}
+        %\end{figure}
+    \end{multicols}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[零膨胀问题]{零膨胀问题}\label{subsec:1-1}
+\begin{frame}
+    \frametitle{\textsc{零膨胀问题}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \hilite<1>\item
+            （这里应该说明ZIP，ZDP的问题引入）
+                \begin{itemize}
+                    \hilite<2>\item
+                        案例：ZIP案例问题
+
+                        xxxxxxxxxxxxxxxxxxxxxx
+                    \pause
+                \end{itemize}
+        \pause
+
+        \hilite<3>\item
+            问题：如何检验数据中是否存在零过多或过少？
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[潜在类问题]{潜在类问题}\label{subsec:1-2}
+\begin{frame}
+    \frametitle{\textsc{潜在类问题}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \hilite<1>\item
+            （这里说明潜在类问题，也就是tobit模型或mtobit模型的问题引入）
+                \begin{itemize}
+                    \hilite<2>\item
+                        案例：tobit模型的案例问题
+
+                            xxxxxxxxxxx
+                    \pause
+                \end{itemize}
+        \pause
+
+        \hilite<3>\item
+            如何检验是否存在检测限制问题或是否存在潜在类问题？
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

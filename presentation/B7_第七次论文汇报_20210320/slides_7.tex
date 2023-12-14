@@ -1,0 +1,682 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[table,CJK,mathserif,12pt]{beamer}
+\include{background/background}
+\title[censored zero-inflated model]
+{ \textsc{censored zero-inflated model} }
+\author[Xingxing Du and Yahui Wei]
+{\quad\\  \large Xingxing Du and Yahui Wei}
+\institute[Southwest University]
+{Southwest University }
+\date{\scriptsize{\today} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{CJK}{GBK}{kai}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} % 封面
+  \vspace{0.5cm}
+  \titlepage
+  \hypertarget{beginning}{}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{\textsc{目录}} \vspace{-0.3cm}
+  \tableofcontents[hidesubsections]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[Introduction]{Introduction}
+\begin{frame}
+    \begin{itemize}
+
+        \item Censoring:
+            \begin{itemize}
+                \item whether the lower or upper bound had been passed and the value of the bound are available.
+            \end{itemize}
+        \item Truncation:
+            \begin{itemize}
+                \item a sample with all values outside the bounds entirely omitted, not even the count to those omitted were kept.
+           \end{itemize}
+        \item Zero-Inflated Poisson(ZIP) models with censored:
+            \begin{itemize}
+                \item count data are censored from above (right) or below (left) a specific point or a combination of them.
+                \item the number of zero counts are much greater than expected for the Poisson distribution.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\section[Literature Review]{Literature Review}
+\begin{frame}
+    \begin{itemize}
+        \item There is a large body of literature on zero-inflated Poisson models:LR,Wald,Score test
+        \item Hua He et al.(2019) develop a new approach for testing inflated zero under the Poisson model.
+        \item Yi Tang et al.(2019) compare the new test with the Wald,score,and likelihood ratio tests.
+        \item Yuhan Zou et al.(2020)applied  the new approach for latent class in censored data due to detection limit.
+    \end{itemize}
+
+\end{frame}
+
+
+
+\section[The Model]{The Model}
+\subsection[Models]{Models}
+\begin{frame}
+    \begin{itemize}
+        \item Poisson Model:
+            $$P(Y_i=y_i)=\frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}$$
+        \item Poisson Regression:
+            $$Y_i|X_i \sim i.d. Poisson(\mu_i),\:\:log(\mu_i)=x_i^T\beta$$
+    \end{itemize}
+\end{frame}
+
+
+\subsection[Models(cont.)]{Models}
+\begin{frame}
+    \begin{itemize}
+        \item ZIP Model:
+            $$ P(Y_i=y_i)=\left\{
+                \begin{array}{cc}
+                    \omega+(1-\omega)e^{-\mu_i} & y_i=0 \\
+                    (1-\omega)\frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}  & y_i>0
+                \end{array}
+            \right. $$
+        \item ZIP Regression:
+            $$Y_i|X_i \sim i.d.ZIP(\omega_i,\mu_i),\:\:logit(\omega_i)=\mu_i^T\beta_{\omega},\:log(\mu_i)=x^T_i\beta$$
+    \end{itemize}
+\end{frame}
+
+\subsection[Models(cont.)]{Models}
+\begin{frame}
+    \begin{itemize}
+        \item Censored Poisson Regression:
+            $$Y_i| X_i \sim i.d. Poisson(\mu_i)$$
+            $$
+            z_i = min\left\{Y_i,L\right\}=\left\{
+                \begin{array}{cc}
+                    y_i &,y_i < L  \\
+                    L&,y_i \ge L
+                \end{array}
+             \right.;
+            $$
+            $$
+            Z_i | X_i \sim i.d. CensoredPoisson(\mu_i,L), log(\mu_i)=X_i^T\beta
+            $$
+        \item Censored Poisson Model:
+            $$ P(Z_i=z_i) = p \left\{ min(Y_i,L)=z_i \right\}=\left\{
+                    \begin{array}{ccc}
+                        Pr(Y_i = z_i)&, z_i<L \\
+                        Pr(Y_i \ge L)&,z_i = L \\
+                        0&,z_i > L
+                    \end{array}
+                 \right.
+            $$
+            \begin{small}
+            $$ =\left\{
+                    \begin{array}{ccc}
+                        \frac{e^{-\mu_i}\mu_i^{z_i}}{z_i!}&, z_i<L \\
+                        \sum_{y_i=L}^{\infty}{Pr(Y_i=y_i)}&,z_i = L \\
+                        0&,z_i > L
+                    \end{array}
+                 \right.
+            $$
+            \end{small}
+    \end{itemize}
+\end{frame}
+
+\subsection[Likelihood Function]{Likelihood Function}
+\begin{frame}
+    \begin{itemize}
+        \item define an indicator variable of censoring occurs:
+        $$d_i = I_{(z_i\ge L)}=\left\{ \begin{array}{cc}
+        1,&z_i\ge L\\
+        0,&otherwise
+        \end{array}
+        \right.
+        $$
+    \end{itemize}
+
+    \begin{itemize}\item for $Y_i \ge y_i$,let:
+        $$c_i = Pr(Y_i\ge y_i)= \sum_{y_i=L}^{\infty}{P(Y_i=y_i)}$$
+    \end{itemize}
+\end{frame}
+
+\subsection[Likelihood Function(cont.)]{Likelihood Function(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item  Likelihood function of censored Poisson:
+            $$ L_1=\prod_{i=1}^n\left\{ \left[ \frac{e^{-\mu_i}\mu_i^{z_i}}{z_i!} \right]^{(1-d_i)} \left[  \sum_{y_i=L}^{\infty}{P(Y_i=y_i)}\right]^{d_i} \right\} $$
+
+        \item Log-likelihood function of censored Poisson:
+            \begin{small}
+            $$ l_1=log(L_1)=
+                \sum_{i=1}^n\left\{(1-d_i)log\left[ \frac{e^{-\mu_i}\mu_i^{z_i}}{z_i!} \right]
+                + d_i log (c_i) \right\}   $$
+            \end{small}
+    \end{itemize}
+\end{frame}
+
+\subsection[Models(cont.)]{Models}
+\begin{frame}
+    \begin{itemize}
+       \item Censored ZIP Regression:
+             $$Y_i| X_i \sim i.d. ZIP(\omega_i,\mu_i)$$
+             $$
+            Z_i = min\left\{Y_i,L\right\}=\left\{
+                \begin{array}{cc}
+                    y_i &,y_i < L  \\
+                    L&,y_i \ge L
+                \end{array}
+             \right.
+            $$
+            $$
+            Z_i | X_i \sim i.d. CensoredZIP(\omega_i,\mu_i,L), logit(\omega_i)=\mu_i^T\beta_w
+                 ,log(\mu_i)=x_i^T\beta
+            $$
+        \item Censored ZIP Model:
+            \begin{small}
+            $$ P(Z_i=z_i) = p \left\{ min(Y_i,L)=z_i \right\}=\left\{
+                    \begin{array}{ccc}
+                        Pr(Y_i = z_i)&, z_i<L \\
+                        Pr(Y_i \ge L)&,z_i = L \\
+                        0&, z_i>L
+                    \end{array}
+                 \right.
+            $$
+            $$ =\left\{
+                    \begin{array}{ccc}
+                        \left[ \omega+(1-\omega)e^{-\mu_i}\right]^{r_i} \left[
+                            (1-\omega)\frac{e^{-\mu_i}\mu_i^{z_i}}{z_i!} \right]^{1-r_i}  &, z_i<L \\
+                         \sum_{y_i=L}^{\infty}{P(Y_i=y_i)} & z_i = L   \\
+                        0 &,z_i>L
+                    \end{array}
+                 \right.
+            $$
+        \end{small}
+     \end{itemize}
+\end{frame}
+
+\subsection[Likelihood Function]{Likelihood Function}
+\begin{frame}
+    \begin{itemize}
+        \item define an indicator variable of zero occurs:
+        $$r_i = I_{(z_i=0)}=\left\{ \begin{array}{cc}
+        1,&z_i=0\\
+        0,&otherwise
+        \end{array}
+        \right.
+        $$
+    \end{itemize}
+\end{frame}
+
+
+\subsection[Likelihood Function]{Likelihood Function}
+\begin{frame}
+    \begin{itemize}
+        \item Likelihood function of censored ZIP model:
+            \begin{tiny}
+            $$
+            L_2 = \prod_{i=1}^n \left\{
+                                    \left[ \sum_{y_i=L}^{\infty}{P(Y_i=y_i)} \right]^{d_i}
+                                    \left[
+                                            \left( \omega+(1-\omega)e^{-\mu_i} \right)^{r_i}
+                                            \left((1-\omega)\frac{e^{-\mu_i}\mu_i^{z_i}}{z_i!}\right)^{1-r_i}
+                                    \right]^{1-d_i}
+                                \right\}
+            $$
+            \end{tiny}
+
+        \item Log-likelihood function of censored ZIP model:
+            $$ l_2=log(L_2) $$
+            \begin{tiny}
+            $$
+            l_2 = \sum_{i=1}^n \left\{
+                (1-d_i)
+                \left[ r_i \bullet log(\omega +(1-\omega)e^{-\mu_i}) \right]
+                + (1-r_i)log\left[\left(1-\omega \right)
+                                  \left(\frac{e^{-\mu_i}\mu_i^{z_i}}{z_i!}\right)
+                            \right]
+                + d_i \bullet log(c_i)
+            \right\}
+            $$
+            \end{tiny}
+    \end{itemize}
+\end{frame}
+
+
+
+\subsection[Hypothesis]{Hypothesis}
+\begin{frame}
+    \begin{itemize}
+        \item $H_0:\:\:Y_i|x_i$ follows the censored Poisson model
+
+        \item $H_1:\:\:Y_i|x_i$ follows the censored ZIP model
+
+    \end{itemize}
+
+
+    $$H_0:\omega = 0\:\:\: vs.\:\:\:H_1:\omega > 0$$
+\end{frame}
+
+
+
+
+\subsection[Wald Test]{Wald Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+        $$ \frac{\hat{\omega}}{\hat{\sigma}} \sim N(0,1) \:\:\:or\:\:\: \frac{\hat{\omega}^2}{\hat{\sigma}^2} \sim \chi^2(1)$$
+        \item method:
+            \begin{itemize}
+                \item $\omega$ can be obtained by the maximum likelihood function.
+                \item the variance of the MLE of $\omega$ can further be estimated by the fisher information matrix.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+
+\subsection[LR Test]{LR Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+            $$ S_{LR}=2\left[ l_1(\hat{\omega},\hat{\beta})- l_2(0,\hat{\beta}) \right]\sim \chi^2(1) $$
+
+            \end{itemize}
+\end{frame}
+
+
+
+\subsection[LR Test]{LR Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+            $$ S_{LR}=2\left[ l_1(\hat{\omega},\hat{\beta})- l_2(0,\hat{\beta}) \right]\sim \chi^2(1) $$
+
+            \end{itemize}
+\end{frame}
+
+
+
+\subsection[Score Test]{Score Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+            $$ S_{score}\sim N(0,1) $$
+        \item method:
+            \begin{itemize}
+                \item 在CZIP中的MLE中，令$\theta = \frac{\omega}{1-\omega}$，$\omega=0$，
+                \item 得到$\hat{\theta},\hat{\beta},\frac{\hat{\theta_0}}{\sigma_{\theta_0}}\sim N(0,1)$
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+    \item score：
+    \begin{small}
+        $$
+         \frac{\partial{l_2}}{\partial{\omega}}=\sum_{i=1}^n \left\{(1-d_i)
+          \left[ \frac{r_i(1-e^{-\mu_i})}{\omega+(1-\omega)e^{-\mu_i}} - \frac{1-r_i}{1-\omega} \right]
+         \right\}
+        $$
+    \end{small}
+    \item 令$P_i=e^{-\mu_i}$：
+    \begin{small}
+         $$
+         \frac{\partial{l_2}}{\partial{\omega}}=\sum_{i=1}^n \left\{(1-d_i)
+          \left[ \frac{r_i(1-P_i)}{\omega+(1-\omega)P_i} - \frac{1-r_i}{1-\omega} \right]
+         \right\}
+        $$
+    \end{small}
+    \item 令$\omega=0$：
+       \begin{small}
+        $$
+         \frac{\partial{l_2}}{\partial{\omega}}|_{\omega=0}=\sum_{i=1}^n \left\{(1-d_i)
+          \left[ \frac{r_i(1-P_i)}{P_i} - (1-r_i) \right]
+         \right\}
+        $$
+        $$
+         \frac{\partial{l_2}}{\partial{\omega}}|_{\omega=0}=\sum_{i=1}^n \left\{(1-d_i)
+          \left[ \frac{r_i-P_i}{P_i}\right]
+         \right\}
+        $$
+       \end{small}
+    \end{itemize}
+\end{frame}
+
+
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+
+    \item 令$\theta = \frac{\omega}{1-\omega}$，则
+    \begin{small}
+        $\omega=\frac{\theta}{1+\theta},1-\omega=\frac{1}{1+\theta}$：
+
+        $$\frac{\partial{l_2}}{\partial{\beta}}=\sum_{i=1}^n \left\{(1-d_i)\left[
+            \frac{-r_i\mu_i e^{-\mu_i}x_i^T}{\theta_i +  e^{-\mu_i}}
+            +(1-r_i)(z_i-\mu_i)x_i^T\right]
+            +\frac{d_i}{c_i}\frac{\partial{c_i}}{\partial{\beta}} \right\}
+        $$
+    \end{small}
+    \item $log(\mu_i)=x_i^T\beta,\mu_i = e^{-\mu_i}$
+        $$\frac{\partial{log(\mu_i)}}{\partial{\beta}}=x_i^T$$
+        $$\frac{\partial{\mu_i}}{\partial{\beta}}=x_i^T\mu_i$$
+    \end{itemize}
+\end{frame}
+
+
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+    \item
+        $$
+            \frac{\partial{c_i}}{\partial{\beta}}=
+            \frac{\partial{\sum_{y_i=L}^{\infty}{P(Y_i=y_i)}}}{\partial{\beta}}=
+            \frac{\partial{\left[1-\sum_{y_i=0}^{L-1}{P(Y_i=y_i)}\right]}}{\partial{\beta}}
+        $$
+        $$
+            \frac{\partial{c_i}}{\partial{\beta}}=
+            \frac{\partial{\sum_{y_i=0}^{L-1}{P(Y_i=y_i)}}}{\partial{\beta}}=
+            -\sum_{y_i=0}^{L-1}\frac{\partial{{P(Y_i=y_i)}}}{\partial{\beta}}
+        $$
+        $$
+            \frac{\partial{c_i}}{\partial{\beta}}=
+            -\sum_{y_i=0}^{L-1}\frac{\partial{{\frac{e^{-\mu_i}\mu_i^{y_i}}{(y_i)!}}}}{\partial{\beta}}=
+            -\sum_{y_i=0}^{L-1}(y_i-\mu_i)P(Y_i=y_i)X_i^T
+        $$
+    \end{itemize}
+\end{frame}
+
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+    \item
+        $$
+            \frac{\partial{c_i}}{\partial{\beta}}=
+            \mu_i\sum_{k=0}^{L-1}P(Y_i=k)-\mu_i\sum_{k=1}^{L-1}P(Y_i=k)
+        $$
+        $$
+            \frac{\partial{c_i}}{\partial{\beta}}=\mu_iP(Y_i=0)=\mu_ie^{-\mu_i}
+        $$
+    \item
+    \begin{small}
+        $$
+            \frac{\partial{l_2}}{\partial{\beta}}=\sum_{i=1}^n \left\{(1-d_i)\left[
+            \frac{-r_i\mu_i p_i}{\theta_i +  p_i}
+            +(1-r_i)(z_i-\mu_i)\right]
+            +\frac{d_i}{c_i}\mu_i p_i \right\}x_i^T
+        $$
+    \end{small}
+    \end{itemize}
+\end{frame}
+
+
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+    \item 令$\theta=0$，得分数方程组如下：
+    \begin{tiny}
+        $$
+            \psi_1 = \frac{\partial{l_2}}{\partial{\theta}}|_{\theta=0}=\sum_{i=1}^n \left\{(1-d_i)
+            \left[ \frac{r_i-p_i}{p_i}\right]
+            \right\}
+        $$
+        $$
+            \psi_2 = \frac{\partial{l_2}}{\partial{\beta}}|_{\theta=0}=\sum_{i=1}^n \left\{(1-d_i)\left[
+            -r_i\mu_i
+            +(1-r_i)(z_i-\mu_i)\right]
+            +\frac{d_i}{c_i}\mu_i p_i \right\}x_i^T
+        $$
+    \end{tiny}
+    \end{itemize}
+\end{frame}
+
+
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+        \begin{small}
+        $$S_{Score}=\frac{\sum_{i=1}^n (1-c_i) \frac{r_i-p_i}{p_i} }{\left\{ \sum_{i=1}^n \left[ (1-c_i) \frac{1-p_i}{p_i} -(c_i\mu_i)^T X \left(diag(dU)\right)^{-1} X^T (c_i\mu_i) \right]  \right\}^{\frac{1}{2}}}$$
+        \end{small}
+             \begin{itemize}
+             \begin{tiny}
+               \item  $c_i=\sum_{j=0}^{y_i-1} P(Y_i= y_i) $
+               \item  $p_i=e^{-\mu_i}$
+               \item  $dU =X^T \left[  \sum_{i=1}^n \frac{c_i}{1-c_i} (y_i-c_i)^2 \right]X$
+               \end{tiny}
+             \end{itemize}
+        $$ S_{Score}\sim N(0,1) $$
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+             $\sqrt{n} \left( \hat{s} - 0 \right) \to N(0,\tau^2) $
+           \begin{itemize}
+            \item  $\tau^2$ 是矩阵$A^{-1}BA^{-T}$ 的$(1,1)$ 项
+            \item $ A(\gamma)=E\left[ \frac{\partial}{\partial\gamma}\Psi_i( Y_i ,\gamma) \right] $
+            \item $ B(\gamma)=Var(\Psi_i( Y_i ,\gamma) $
+           \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item
+         $$ E(r_i)=P(z_i=0)=P(Y_i=0)=p_i $$
+         $$ S = \frac{1}{n}\sum_{i=1}^n\left(r_i-E(r_i)\right)=\frac{1}{n}\sum_{i=1}^n(r_i-p_i)$$
+         $$s = E(s)=0$$
+        \begin{itemize}
+            \item Estimation Equation(EE):
+            $$\psi _{1}=\frac{1}{n}\sum_{i=1}^{n}\left( r_{i}-p_{i}-s\right)  $$
+            $$\psi _{2}=\frac{1}{n}\sum_{i=1}^{n}\left[(1-d_i)(z_i-\mu_i)+\frac{d_i}{c_i}\mu_ip_i\right] x_i^T  $$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item 方差计算:
+            $$
+                A=E(\frac{\partial{\psi}}{\partial{\theta}})=E\left[\begin{array}{cc}
+                    \frac{\partial{\psi_1}}{\partial{s}} & \frac{\partial{\psi_1}}{\partial{\beta}} \\
+                    \frac{\partial{\psi_2}}{\partial{s}} & \frac{\partial{\psi_2}}{\partial{\beta}}
+                \end{array}\right]=
+                E\left[\begin{array}{cc}
+                    -1 & \frac{\partial{\psi_1}}{\partial{\beta}} \\
+                    0 & \frac{\partial{\psi_2}}{\partial{\beta}}
+                \end{array}\right]
+            $$
+            $$
+                A=E(\frac{\partial{\psi}}{\partial{\theta}})=
+                \left[\begin{array}{cc}
+                    -1 & L \\
+                    0 & J
+                \end{array}\right]
+            $$
+            $$
+                B=E(\psi \psi^T)=
+                E\left[\begin{array}{cc}
+                    \psi_1^T\psi_1 & \psi_1^T\psi_2 \\
+                    \psi_2^T\psi_2 & \psi_2^T\psi_2
+                \end{array}\right]
+            $$
+    \end{itemize}
+\end{frame}
+
+
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item
+            $$
+                \frac{\partial{\psi_1}}{\partial{\beta}}=\frac{1}{n}\sum_{i=1}^np_i\mu_ix_{is}
+            $$
+            $$
+                \frac{\partial{\psi_2}}{\partial{\beta}}=\frac{\partial{l_1}^2}{\partial{\beta}^2}
+            $$
+            $$
+                 \frac{\partial{\l_1}}{\partial{\beta_s\beta_r}}=
+                \sum_{i=1}^n\left\{ -(1-d_i)\mu_i+d_i\mu_ip_i[c_i(1-\mu_i)-mu_i p_i] \right\}x_{is}x_{ir}
+            $$
+    \end{itemize}
+\end{frame}
+
+
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item 令：
+        \begin{small}
+            $$
+            J_{r_1s}=\frac{\partial{\l_1}}{\partial{\beta_s\beta_r}}
+            $$
+            $$
+            L = E(\frac{\partial{\psi_1}}{\partial{\beta}})=-\left(
+                \frac{1}{n}\sum_{i=1}^np_i\mu_ix_{i0},
+                \frac{1}{n}\sum_{i=1}^np_i\mu_ix_{i1},
+                ...,
+                \frac{1}{n}\sum_{i=1}^np_i\mu_ix_{ip}
+                \right)^T
+            $$
+            $$
+                L = \frac{1}{n}X^Tdiag(p_i\mu_i)I
+            $$
+    \end{small}
+    \end{itemize}
+\end{frame}
+
+
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item
+        $$
+            A^{-1}=
+            \left[\begin{array}{cc}
+                -1 & LJ^{-1} \\
+                0 & J^{-1}
+            \end{array}\right]
+        $$
+
+        $$
+            E(d_i)=P(z_i\ge L) = \sum_{y_i=L}^{\infty}{Y_i=y_i}=c_i
+        $$
+        \begin{small}
+        $$
+            \frac{\partial{\l_1}^2}{\partial{\beta_s\beta_r}} =
+            \frac{1}{n}\sum_{i=1}^n\left\{ -(1-c_i)\mu_i+\frac{d_i\mu_ip_i[c_i(1-\mu_i)-\mu_i p_i] }{c_i^2}
+            \right\}x_{is}x_{ir}
+        $$
+        $$
+            E(\frac{\partial{\l_1}^2}{\partial{\beta_s\beta_r}}) =
+            \frac{1}{n}\sum_{i=1}^n\left\{ c_i-1-\frac{\mu_ip_i^2}{c_i}+\mu_i p_i(1-\mu_i) \right\}\mu_i x_{is}x_{ir}
+        $$
+        $$
+            E(\frac{\partial{\l_1}^2}{\partial{\beta_s\beta_r}}) =-J_{s,r}
+        $$
+        $$
+            J=-E(\frac{\partial{\l_1}^2}{\partial{\beta_s\beta_r}})
+        $$
+        \end{small}
+    \end{itemize}
+\end{frame}
+
+
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item
+        $$
+            E(\psi^2)=-E(\frac{\partial{\psi}}{\partial{\theta}})
+        $$
+        $$
+            B=E(\psi \psi^T)=
+            E\left[\begin{array}{cc}
+                \frac{1}{n}\sum_{i=1}^n{p_i(1-p_i)} & -L \\
+                -L^T & -J
+            \end{array}\right]
+        $$
+        \item 令$\lambda = \frac{1}{n}\sum_{i=1}^n{p_i(1-p_i)}$:
+            $$E(\psi_1 \psi_1^T)=Var(v_i-p_i-s)=Var(r_i)=\frac{1}{n}\sum_{i=1}^n{p_i(1-p_i)}$$
+    \end{itemize}
+\end{frame}
+
+
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item 则：
+        $$
+            A^{-1}BA^{-T}=
+            \left(\begin{array}{cc}
+                -1 & -LJ^{-1} \\
+                0 & J^{-1}
+            \end{array}\right)
+            \left(\begin{array}{cc}
+                \lambda & -L \\
+                -L^T & -J
+            \end{array}\right)
+            \left(\begin{array}{cc}
+                -1 & 0 \\
+                LJ^{-1} & J^{-1}
+            \end{array}\right)
+        $$
+        $$
+            A^{-1}BA^{-T}=
+            \left(\begin{array}{cc}
+                -\lambda-LJ^{-1}L^T & 0 \\
+                -J^-1L^T & -I
+            \end{array}\right)
+            \left(\begin{array}{cc}
+                -1 & 0 \\
+                LJ^{-1} & J^{-1}
+            \end{array}\right)
+        $$
+        $$
+            A^{-1}BA^{-T}=
+            \left(\begin{array}{cc}
+                \lambda+LJ^{-1}L^T & 0 \\
+                0 & -J^{-1}
+            \end{array}\right)
+        $$
+    \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[He Test(cont.)]{He Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+            $$
+            S_{HE}=\frac{\frac{1}{n}\sum_{i=1}^n(r_i-\hat{p_i})}
+                    {\left(\frac{1}{n}\sum_{i=1}^n\hat{p_i}(1-\hat{p_i})+LJ^{-1}L^T\right)^{1/2}} \sim N(0,1)
+            $$
+    \end{itemize}
+\end{frame}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{CJK}
+\end{document}
+

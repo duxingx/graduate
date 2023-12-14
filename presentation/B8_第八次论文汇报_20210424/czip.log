@@ -1,0 +1,504 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/W32TeX) (preloaded format=pdflatex 2022.3.6)  6 MAR 2022 16:05
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**czip.tex
+(./czip.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+)
+\c@part=\count179
+\c@section=\count180
+\c@subsection=\count181
+\c@subsubsection=\count182
+\c@paragraph=\count183
+\c@subparagraph=\count184
+\c@figure=\count185
+\c@table=\count186
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup4
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen139
+))
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen140
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count187
+LaTeX Info: Redefining \frac on input line 234.
+\uproot@=\count188
+\leftroot@=\count189
+LaTeX Info: Redefining \overline on input line 399.
+\classnum@=\count190
+\DOTSCASE@=\count191
+LaTeX Info: Redefining \ldots on input line 496.
+LaTeX Info: Redefining \dots on input line 499.
+LaTeX Info: Redefining \cdots on input line 620.
+\Mathstrutbox@=\box47
+\strutbox@=\box48
+\big@size=\dimen141
+LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
+\macc@depth=\count192
+\c@MaxMatrixCols=\count193
+\dotsspace@=\muskip16
+\c@parentequation=\count194
+\dspbrk@lvl=\count195
+\tag@help=\toks16
+\row@=\count196
+\column@=\count197
+\maxfields@=\count198
+\andhelp@=\toks17
+\eqnshift@=\dimen142
+\alignsep@=\dimen143
+\tagshift@=\dimen144
+\tagwidth@=\dimen145
+\totwidth@=\dimen146
+\lineht@=\dimen147
+\@envbody=\toks18
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2923.
+LaTeX Info: Redefining \] on input line 2924.
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2020/05/29 v2.20.6
+\thm@style=\toks20
+\thm@bodyfont=\toks21
+\thm@headfont=\toks22
+\thm@notefont=\toks23
+\thm@headpunct=\toks24
+\thm@preskip=\skip52
+\thm@postskip=\skip53
+\thm@headsep=\skip54
+\dth@everypar=\toks25
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/cases/cases.sty
+Package: cases 2020/03/29 ver 3.2
+\numc@numwid=\dimen148
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/tools/indentfirst.sty
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 2017/06/25 v1.7b (e)psfig emulation (SPQR)
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks26
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 105.
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen149
+\Gin@req@width=\dimen150
+)
+\epsfxsize=\dimen151
+\epsfysize=\dimen152
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2020/02/24 v1.2b Standard LaTeX Color (DPC)
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/cjk/texinput/CJK.sty
+Package: CJK 2015/04/18 4.8.4
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/cjk/texinput/mule/MULEenc.sty
+Package: MULEenc 2015/04/18 4.8.4
+) (d:/ProgramData/texlive/2021/texmf-dist/tex/latex/cjk/texinput/CJK.enc
+File: CJK.enc 2015/04/18 4.8.4
+Now handling font encoding C00 ...
+... no UTF-8 mapping file for font encoding C00
+Now handling font encoding C05 ...
+... no UTF-8 mapping file for font encoding C05
+Now handling font encoding C09 ...
+... no UTF-8 mapping file for font encoding C09
+Now handling font encoding C10 ...
+... no UTF-8 mapping file for font encoding C10
+Now handling font encoding C20 ...
+... no UTF-8 mapping file for font encoding C20
+Now handling font encoding C19 ...
+... no UTF-8 mapping file for font encoding C19
+Now handling font encoding C40 ...
+... no UTF-8 mapping file for font encoding C40
+Now handling font encoding C42 ...
+... no UTF-8 mapping file for font encoding C42
+Now handling font encoding C43 ...
+... no UTF-8 mapping file for font encoding C43
+Now handling font encoding C50 ...
+... no UTF-8 mapping file for font encoding C50
+Now handling font encoding C52 ...
+... no UTF-8 mapping file for font encoding C52
+Now handling font encoding C49 ...
+... no UTF-8 mapping file for font encoding C49
+Now handling font encoding C60 ...
+... no UTF-8 mapping file for font encoding C60
+Now handling font encoding C61 ...
+... no UTF-8 mapping file for font encoding C61
+Now handling font encoding C63 ...
+... no UTF-8 mapping file for font encoding C63
+Now handling font encoding C64 ...
+... no UTF-8 mapping file for font encoding C64
+Now handling font encoding C65 ...
+... no UTF-8 mapping file for font encoding C65
+Now handling font encoding C70 ...
+... no UTF-8 mapping file for font encoding C70
+Now handling font encoding C31 ...
+... no UTF-8 mapping file for font encoding C31
+Now handling font encoding C32 ...
+... no UTF-8 mapping file for font encoding C32
+Now handling font encoding C33 ...
+... no UTF-8 mapping file for font encoding C33
+Now handling font encoding C34 ...
+... no UTF-8 mapping file for font encoding C34
+Now handling font encoding C35 ...
+... no UTF-8 mapping file for font encoding C35
+Now handling font encoding C36 ...
+... no UTF-8 mapping file for font encoding C36
+Now handling font encoding C37 ...
+... no UTF-8 mapping file for font encoding C37
+Now handling font encoding C80 ...
+... no UTF-8 mapping file for font encoding C80
+Now handling font encoding C81 ...
+... no UTF-8 mapping file for font encoding C81
+Now handling font encoding C01 ...
+... no UTF-8 mapping file for font encoding C01
+Now handling font encoding C11 ...
+... no UTF-8 mapping file for font encoding C11
+Now handling font encoding C21 ...
+... no UTF-8 mapping file for font encoding C21
+Now handling font encoding C41 ...
+... no UTF-8 mapping file for font encoding C41
+Now handling font encoding C62 ...
+... no UTF-8 mapping file for font encoding C62
+)
+LaTeX Info: Redefining \selectfont on input line 755.
+\CJK@indent=\box49
+)
+\c@theorem=\count199
+\c@corollary=\count266
+\c@lemma=\count267
+\c@condition=\count268
+\c@proposition=\count269
+\c@remark=\count270
+\c@definition=\count271
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.de
+f
+File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count272
+\l__pdf_internal_box=\box50
+) (./czip.aux
+
+LaTeX Warning: Label `sec3-4' multiply defined.
+
+)
+\openout1 = `czip.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C00/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C05/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C09/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C10/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C20/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C19/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C40/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C42/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C43/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C50/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C52/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C49/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C60/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C61/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C63/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C64/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C65/mj/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C70/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C31/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C32/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C33/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C34/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C35/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C36/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C37/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C80/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C81/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C01/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C11/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C21/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C41/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for C62/song/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+ (d:/ProgramData/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count273
+\scratchdimen=\dimen153
+\scratchbox=\box51
+\nofMPsegments=\count274
+\nofMParguments=\count275
+\everyMPshowfont=\toks27
+\MPscratchCnt=\count276
+\MPscratchDim=\dimen154
+\MPnumerator=\count277
+\makeMPintoPDFobject=\count278
+\everyMPtoPDFconversion=\toks28
+)
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.st
+y
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 45
+.
+ (d:/ProgramData/texlive/2021/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Trying to load font information for U+msa on input line 45.
+
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 45.
+
+
+(d:/ProgramData/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+
+LaTeX Warning: No \author given.
+
+[1
+
+{d:/ProgramData/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3] [4] [5]
+<./figure/q/q41.pdf, id=29, 505.89pt x 505.89pt>
+File: ./figure/q/q41.pdf Graphic file (type pdf)
+<use ./figure/q/q41.pdf>
+Package pdftex.def Info: ./figure/q/q41.pdf  used on input line 350.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/q/q42.pdf, id=30, 505.89pt x 505.89pt>
+File: ./figure/q/q42.pdf Graphic file (type pdf)
+<use ./figure/q/q42.pdf>
+Package pdftex.def Info: ./figure/q/q42.pdf  used on input line 357.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/q/q43.pdf, id=31, 505.89pt x 505.89pt>
+File: ./figure/q/q43.pdf Graphic file (type pdf)
+<use ./figure/q/q43.pdf>
+Package pdftex.def Info: ./figure/q/q43.pdf  used on input line 364.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/q/q71.pdf, id=32, 505.89pt x 505.89pt>
+File: ./figure/q/q71.pdf Graphic file (type pdf)
+<use ./figure/q/q71.pdf>
+Package pdftex.def Info: ./figure/q/q71.pdf  used on input line 373.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/q/q72.pdf, id=33, 505.89pt x 505.89pt>
+File: ./figure/q/q72.pdf Graphic file (type pdf)
+<use ./figure/q/q72.pdf>
+Package pdftex.def Info: ./figure/q/q72.pdf  used on input line 380.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/q/q73.pdf, id=34, 505.89pt x 505.89pt>
+File: ./figure/q/q73.pdf Graphic file (type pdf)
+<use ./figure/q/q73.pdf>
+Package pdftex.def Info: ./figure/q/q73.pdf  used on input line 387.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/q/q301.pdf, id=35, 505.89pt x 505.89pt>
+File: ./figure/q/q301.pdf Graphic file (type pdf)
+<use ./figure/q/q301.pdf>
+Package pdftex.def Info: ./figure/q/q301.pdf  used on input line 396.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/q/q302.pdf, id=36, 505.89pt x 505.89pt>
+File: ./figure/q/q302.pdf Graphic file (type pdf)
+<use ./figure/q/q302.pdf>
+Package pdftex.def Info: ./figure/q/q302.pdf  used on input line 403.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/q/q303.pdf, id=37, 505.89pt x 505.89pt>
+File: ./figure/q/q303.pdf Graphic file (type pdf)
+<use ./figure/q/q303.pdf>
+Package pdftex.def Info: ./figure/q/q303.pdf  used on input line 410.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p41.pdf, id=38, 505.89pt x 505.89pt>
+File: ./figure/p/p41.pdf Graphic file (type pdf)
+<use ./figure/p/p41.pdf>
+Package pdftex.def Info: ./figure/p/p41.pdf  used on input line 421.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p42.pdf, id=39, 505.89pt x 505.89pt>
+File: ./figure/p/p42.pdf Graphic file (type pdf)
+<use ./figure/p/p42.pdf>
+Package pdftex.def Info: ./figure/p/p42.pdf  used on input line 428.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p43.pdf, id=40, 505.89pt x 505.89pt>
+File: ./figure/p/p43.pdf Graphic file (type pdf)
+<use ./figure/p/p43.pdf>
+Package pdftex.def Info: ./figure/p/p43.pdf  used on input line 435.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p71.pdf, id=41, 505.89pt x 505.89pt>
+File: ./figure/p/p71.pdf Graphic file (type pdf)
+<use ./figure/p/p71.pdf>
+Package pdftex.def Info: ./figure/p/p71.pdf  used on input line 444.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p72.pdf, id=42, 505.89pt x 505.89pt>
+File: ./figure/p/p72.pdf Graphic file (type pdf)
+<use ./figure/p/p72.pdf>
+Package pdftex.def Info: ./figure/p/p72.pdf  used on input line 451.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p73.pdf, id=43, 505.89pt x 505.89pt>
+File: ./figure/p/p73.pdf Graphic file (type pdf)
+<use ./figure/p/p73.pdf>
+Package pdftex.def Info: ./figure/p/p73.pdf  used on input line 458.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p301.pdf, id=44, 505.89pt x 505.89pt>
+File: ./figure/p/p301.pdf Graphic file (type pdf)
+<use ./figure/p/p301.pdf>
+Package pdftex.def Info: ./figure/p/p301.pdf  used on input line 467.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p302.pdf, id=45, 505.89pt x 505.89pt>
+File: ./figure/p/p302.pdf Graphic file (type pdf)
+<use ./figure/p/p302.pdf>
+Package pdftex.def Info: ./figure/p/p302.pdf  used on input line 474.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+<./figure/p/p303.pdf, id=46, 505.89pt x 505.89pt>
+File: ./figure/p/p303.pdf Graphic file (type pdf)
+<use ./figure/p/p303.pdf>
+Package pdftex.def Info: ./figure/p/p303.pdf  used on input line 481.
+(pdftex.def)             Requested size: 469.75499pt x 469.76265pt.
+ [6] [7 <./figure/q/q41.pdf>] [8 <./figure/q/q42.pdf>] [9 <./figure/q/q43.pdf>]
+ [10 <./figure/q/q71.pdf>] [11 <./figure/q/q72.pdf>] [12 <./figure/q/q73.pdf>] 
+[13 <./figure/q/q301.pdf>] [14 <./figure/q/q302.pdf>] [15 <./figure/q/q303.pdf>
+] [16 <./figure/p/p41.pdf>] [17 <./figure/p/p42.pdf>] [18 <./figure/p/p43.pdf>]
+ [19 <./figure/p/p71.pdf>] [20 <./figure/p/p72.pdf>] [21 <./figure/p/p73.pdf>] 
+[22 <./figure/p/p301.pdf>] [23 <./figure/p/p302.pdf>] [24 <./figure/p/p303.pdf>
+] (./czip.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3673 strings out of 478994
+ 47676 string characters out of 5856172
+ 350485 words of memory out of 5000000
+ 21070 multiletter control sequences out of 15000+600000
+ 411800 words of font info for 60 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 83i,15n,88p,221b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
+<d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
+.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cme
+x10.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi10.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmmi6.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmmi8.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmr10.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmr6.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr8.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy10.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmsy6.pfb><d:/ProgramData/texlive/2021/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy8.pfb>
+Output written on czip.pdf (24 pages, 560093 bytes).
+PDF statistics:
+ 252 PDF objects out of 1000 (max. 8388607)
+ 177 compressed objects within 2 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+

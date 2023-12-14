@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[主要结论]{主要结论} %[误差校正基础]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-0.85cm}\label{sec:2}
+    \begin{multicols}{2}
+    \begin{minipage}[t]{0.55\textwidth}
+    \tableofcontents[currentsection,hideallsubsections]
+    % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{minipage}
+
+    \begin{minipage}[t]{0.55\textwidth}
+    \vspace{0.5cm}
+    \begin{spacing}{0.9} % 调整间距 需要\usepackage{setspace}
+    \begin{itemize}
+        \item\hyperlink{subsec:2-1}{高斯序列顺序统计量幂分布的高阶展开及收敛速度}
+        \item\hyperlink{subsec:2-2}{高斯序列顺序统计量幂密度的高阶展开及收敛速度}
+    \end{itemize}
+    \end{spacing}
+    \end{minipage}
+    \end{multicols}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[高斯序列顺序统计量幂分布的高阶展开及收敛速度]{高斯序列顺序统计量幂分布的高阶展开及收敛速度}\label{subsec:2-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{\textsc{高斯序列顺序统计量幂分布的高阶展开}} %\transwipe % 涂抹效果
+\begin{itemize}
+\hilite<1>\item
+\begin{theorem}[定理1]
+对任意给定常数$1\leq r\leq n, t\geq 0$及充分大的$n$, $t>0$时,
+\begin{eqnarray*}
+&&\mathbb{P}(|X_{n,n-r+1}|^t\leq c_nx+d_n)\\
+&=&\Lambda(x)\Bigg(\sum^{r-1}_{j=0}e^{-jx}/j!+e^{-rx}/(r-1)!(1+x+\frac{2-t}{2}x^2)a_n^2 \\
+&&+\bigg(\sum^{r-1}_{j=0}e^{-jx}/j!\Big(-je^{-x}+\frac{j(j-1)}{2}+\frac{e^{-x}}{2}\Big)(1+x\\
+&&+\frac{2-t}{2}x^2)^2-e^{-rx}/(r-1)!\Big(3+3x+\frac{3}{2}x^2\\
+\end{eqnarray*}
+\end{theorem}
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textsc{高斯序列顺序统计量幂分布的高阶展开}} %\transwipe % 涂抹效果
+\begin{itemize}
+\hilite<1>\item
+\begin{theorem}[定理1]
+\begin{eqnarray*}
+&&+\frac{(2-t)(2t+1)}{6}x^3+\frac{(t-2)^2}{8}x^4\Big)\bigg)a_n^4+O(a_n^6)\Bigg).
+\end{eqnarray*}
+当$t=2$时,
+\begin{eqnarray*}
+  &&\mathbb{P}(|X_{n,n-r+1}|^2\leq c_nx+d_n)\\*
+  &=&\Lambda(x)\Big(\sum^{r-1}_{j=0}e^{-jx}/j!-e^{-rx}/(r-1)!(\frac{7}{2}+3x+x^2)a_n^4\\
+  &&+e^{-rx}/(r-1)!(\frac{43}{3}+14x+6x^2+\frac{4}{3}x^3)a_n^6+O(a_n^8)\Big).\\
+  \end{eqnarray*}
+\end{theorem}
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textsc{高斯序列顺序统计量幂分布的收敛速度}} %\transwipe % 涂抹效果
+\begin{corollary}[推论1]
+由定理1, 有
+$t>0$时, $\mathbb{P}(|X_{n,n-r+1}|^t\leq c_nx+d_n)$收敛到$\Lambda(x)\sum^{r-1}_{j=0}e^{-jx}/j!$的速度与$1/ \log n$同阶; $t=2$时, $\mathbb{P}(|X_{n,n-r+1}|^2\leq c_nx+d_n)$ 收敛到$\Lambda(x)\sum^{r-1}_{j=0}e^{-jx}/j!$的速度与$1/ (\log n)^2$同阶.
+\end{corollary}
+
+\end{frame}
+
+\subsection[高斯序列顺序统计量幂密度的高阶展开及收敛速度]{高斯序列顺序统计量幂分布的高阶展开及收敛速度}\label{subsec:2-1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{\textsc{高斯序列顺序统计量幂密度的高阶展开}} %\transwipe % 涂抹效果
+\begin{itemize}
+\hilite<1>\item
+\begin{theorem}[定理2]
+令$f_n(x)$为$P(|X_{n,n-r+1}|^t\leq c_nx+d_n)$的密度函数, 对充分大的$n$且$t>0$时,有
+\begin{eqnarray*}
+  &&f_n(x)\\
+  &=&\Lambda'(x)e^{-(r-1)x}/(r-1)!\Bigg(1+\bigg(1+e^{-x}-r+(2-t-r\\
+  &&+e^{-x})x+\frac{2-t}{2}(e^{-x}-r)x^2\bigg)a_n^2+\bigg((r-e^{-x}-1)\\
+  &&\cdot\Big(3+3x+\frac{3}{2}x^2+\frac{(2-t)(2t+1)}{6}x^3+\frac{(t-2)^2}{8}x^4\Big)
+\end{eqnarray*}
+\end{theorem}
+ \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{\textsc{高斯序列顺序统计量幂密度的高阶展开}} %\transwipe % 涂抹效果
+\begin{theorem}[定理2]
+\begin{eqnarray*}
+ &&+\frac{(r-e^{-x}-1)^2-r+1}{2}(1+x+\frac{2-t}{2}x^2)^2\\
+         &&+x(e^{-x}-1)(1-t+\frac{t-2}{2}x^2)(1+x+\frac{2-t}{2}x^2)\\
+         &&+x^2\Big(\frac{(1-t)(1-2t)}{2}+\frac{5(1-t)(t-2)}{6}x+\frac{(t-2)^2}{8}x^2\Big)\bigg)a_n^4\\
+         &&+O(a_n^6)\Bigg).
+\end{eqnarray*}
+\end{theorem}
+ \end{frame}
+\begin{frame}
+\frametitle{\textsc{高斯序列顺序统计量幂密度的高阶展开}} %\transwipe % 涂抹效果\
+\begin{theorem}[定理2]
+当$t=2$时,
+\begin{eqnarray*}
+ &&f_n(x)\\
+&=&\Lambda'(x)e^{-(r-1)x}/(r-1)!\bigg(1+\Big(\frac{1}{2}+x+x^2+(r-e^{-x}-1)\\
+&&\cdot(\frac{7}{2}+3x+x^2)\Big)a_n^4+\Big((e^{-x}-r+1)(\frac{43}{3}+14x+6x^2\\
+&&+\frac{4}{3}x^3)-(\frac{1}{3}+2x+2x^2+\frac{4}{3}x^3)\Big)a_n^6+O(a_n^8)\bigg).\\
+  \end{eqnarray*}
+\end{theorem}
+\end{frame}
+
+\begin{frame}
+\frametitle{\textsc{高斯序列顺序统计量幂密度的收敛速度}} %\transwipe % 涂抹效果
+\begin{corollary}[推论2]
+由定理2, $t>0$时, $f_n(x)$收敛到$\Lambda'(x)e^{-(r-1)x}/(r-1)!$的速度与$1/\log n$同阶; $t=2$时, $f_n(x)$收敛到$\Lambda'(x)e^{-(r-1)x}/(r-1)!$的速度与$1/ (\log n)^2$同阶.
+\end{corollary}
+
+\end{frame}
+

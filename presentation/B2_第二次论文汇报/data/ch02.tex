@@ -1,0 +1,86 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[文献综述]{文献综述}\label{sec:1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+        %\begin{figure}
+            \begin{minipage}[t]{0.55\textwidth}
+                \tableofcontents[currentsection,hideallsubsections]
+                % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+            \end{minipage}
+
+            \begin{minipage}[t]{0.55\textwidth}
+                \vspace{0.44cm}
+                \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+                    \begin{itemize}
+                        \item\hyperlink{subsec:2-1}{文献1}
+                        \item\hyperlink{subsec:2-2}{文献2}
+                        \item\hyperlink{subsec:2-3}{文献3}
+                    \end{itemize}
+                \end{spacing}
+            \end{minipage}
+        %\end{figure}
+    \end{multicols}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[文献1]{文献1}\label{subsec:2-1}
+\begin{frame}
+    \frametitle{\textsc{文献1题目}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \hilite<1>\item
+            不能区分是删失数据还是膨胀数据
+        \pause
+
+        \hilite<2>\item
+            需要确定分布形式
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[文献2]{文献2}\label{subsec:2-2}
+\begin{frame}
+    \frametitle{\textsc{文献2题目}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \hilite<1>\item
+            用似然比构造统计量，其分布服从渐进正态分布
+        \pause
+
+        \hilite<2>\item
+            第一类错误大
+        \pause
+
+        \hilite<3>\item
+            需要确定分布形式
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[文献3]{文献3}\label{subsec:2-3}
+\begin{frame}
+    \frametitle{\textsc{文献3题目}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \hilite<1>\item
+            核心思想：.....
+        \pause
+
+        \hilite<2>\item
+            评价：$p_{0.5}$ 不准确，只是一种经验的判断
+        \pause
+
+        \hilite<3>\item
+            需要确定分布形式
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
