@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[检验方法]{检验方法}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页 
+\begin{frame}%<beamer>
+    \frametitle{\textsc{Contents}} \vspace{-0.85cm}\label{sec:3}
+    \begin{multicols}{2}
+    \begin{minipage}[t]{0.55\textwidth}
+    \tableofcontents[currentsection,hideallsubsections]
+    % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{minipage}
+
+    \begin{minipage}[t]{0.55\textwidth}
+    \vspace{0.6cm}
+    \begin{spacing}{0.9} % 调整间距 需要\usepackage{setspace}
+    \begin{itemize}
+        \item\hyperlink{subsec:3-1}{传统方法}
+        \item\hyperlink{subsec:3-2}{He Test}
+
+    \end{itemize}
+    \end{spacing}
+    \end{minipage}
+    \end{multicols}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[传统方法]{传统方法}\label{subsec:3-1}
+
+\begin{frame}
+\frametitle{\textsc{传统方法构造的统计量}}
+    \begin{itemize}
+        \hilite<1>\item
+            LR Test:
+            \begin{itemize}
+            \hilite<1>\item
+                $S_{LR}=2[l_2(\hat{\omega},\hat{\beta_{\mu}},\hat{\sigma})-l_1(\hat{\beta_{\mu}}',\hat{\sigma}')] \sim \chi_1^2$
+            \pause
+            \end{itemize}
+        \pause
+
+        \hilite<2>\item
+            Wald Test:
+            \begin{itemize}
+            \hilite<2>\item
+                $S_{Wald}=\frac{\hat{\omega}}{\hat{\sigma_{\omega}}^2} \sim \chi_1^2$ 或 $Z_{Wald}=\frac{\hat{\omega}}{\hat{\omega}} \sim N(0,1)$
+            \pause
+            \end{itemize}
+        \pause
+
+        \hilite<3>\item
+            Score Test:
+            \begin{itemize}
+            \hilite<3>\item
+                $S_{score}=\frac{\sum_{i=1}^n{\frac{1}{p_i}(r_i-p_i)}}{[\sum_{i=1}^n{\frac{(1-p_i)}{p_i}} - (\hat{\mu})X{(X^Tdiag(\hat{\mu})X)^{-1}}X^T(\hat{\mu})]^{1/2}} \sim N(0,1)$
+            \pause
+            \end{itemize}
+        \pause
+
+        \hilite<4>\item
+            Vuong Test:
+            \begin{itemize}
+            \hilite<4>\item
+                $V=\frac{\sqrt{n}\bar{g}}{s_g} \sim AN(0,1) ; g_i=log[\frac{f_1(y_i|\theta_1^*)}{f_2(y_i|\theta_2^*)}]$
+            \pause
+            \end{itemize}
+            \begin{itemize}
+            \hilite<4>\item
+               $\bar{g}=\frac{1}{n}\sum_{i=1}^ng_i ; s_g^2=\frac{1}{n-1}\sum_{n-1}^n(g_i-\bar{g})^2$
+            \pause
+            \end{itemize}
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[He Test]{He Test}\label{subsec:3-2}
+\begin{frame}
+    \frametitle{\textsc{模型设定}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \hilite<1>\item
+            Tobit模型：
+
+            $$ f(y_i)=\left\{
+            \begin{array}{rcl}
+            \frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y_i-\mu_i)^2}{2\sigma^2})       &      & {if \:\:\: y_i \geq L}\\
+            \Phi(\frac{L-\mu_i}{\sigma})     &      & {if \:\:\:  y_i    <    L}\\
+            \end{array} \right. $$
+
+        \pause
+
+        \hilite<2>\item
+            Tobit回归：
+            $$Y_i|x_i \sim i.d.\:\: Tobit(\mu_i,\sigma^2,L),\:\:\:\mu_i=x_i^T\beta.$$
+        \pause
+
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[He Test]{He Test}\label{subsec:3-2}
+\begin{frame}
+    \frametitle{\textsc{模型设定}} %\transwipe % 涂抹效果
+    \begin{itemize}
+
+        \hilite<1>\item
+            当存在潜在类时，mTobit模型：
+
+                $$ f(y_i)=\left\{
+                \begin{array}{rcl}
+                (1-\omega)\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y_i-\mu_i)^2}{2\sigma^2})       &      & {if\:exposed\:and\: y_i \geq L,}\\
+                (1-\omega)\Phi(\frac{L-\mu_i}{\sigma})     &      & {if\:exposed\:and\:  y_i    <    L,}\\
+                \omega   &      & {if\:nonexposed.}
+                \end{array} \right. $$
+
+        \pause
+        
+        \hilite<2>\item
+            mTobit回归：
+            
+            $$ \left\{
+                \begin{array}{rcl}
+                Y_i|x_i \sim i.d.\:\: mTobit(\omega_i,\mu_i,\sigma^2,L),       \\
+                logit(\omega_i)=\mu_i^T\beta_1,   \\
+                log(\mu_i)=v_i^T\beta_2. 
+                \end{array} \right. $$
+
+        \pause        
+    \end{itemize}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[He Test]{He Test}\label{subsec:3-2}
+\begin{frame}
+    \frametitle{\textsc{模型设定}} %\transwipe % 涂抹效果
+    \begin{itemize}
+
+        \hilite<1>\item
+            零的表示：
+                $$ r_i=1_{{y_i=0}}$$
+        \pause
+
+        \hilite<2>\item
+            似然函数：
+            \begin{itemize}
+                \hilite<1>\item
+                    Tobit模型：
+                    \begin{equation}
+                    L_{1}=\left[ \Phi \left( \frac{L-\mu_{i}}{\sigma}\right) \right] ^{r_{i}}%
+                    \left[ \frac{1}{\sqrt{2\pi}\sigma}\exp \left( -\frac{(y_{i}-\mu_{i})^{2}}{
+                    2\sigma^{2}}\right) \right] ^{(1-r_{i})}.  \notag
+                    \end{equation}
+                \pause
+            \end{itemize}
+            
+            \begin{itemize}
+                \hilite<1>\item
+                    mTobit模型：
+                    \begin{tiny}
+                    \begin{equation}
+                    L_{2}=\left[ \omega + \left( 1-\omega \right) \Phi \left( \frac{L-\mu_{i}}{\sigma}\right) \right] ^{r_{i}}%
+                    \left[ \left( 1-\omega \right) \frac{1}{\sqrt{2\pi}\sigma}\exp \left( -\frac{(y_{i}-\mu_{i})^{2}}{
+                    2\sigma^{2}}\right) \right] ^{(1-r_{i})}.  \notag
+                    \end{equation}
+                    \end{tiny}
+                \pause
+            \end{itemize}
+        \pause
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{\textsc{假设检验}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \hilite<1>\item
+            使用半参数的思想，使用已知函数的估计量来构造统计量
+        \pause
+
+        \hilite<2>\item
+            矩阵，无偏、渐进正态
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{\textsc{构建统计量}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \hilite<1>\item
+            使用半参数的思想，使用已知函数的估计量来构造统计量
+        \pause
+
+        \hilite<2>\item
+            矩阵，无偏、渐进正态
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+

@@ -1,0 +1,1241 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[table,CJK,mathserif,12pt]{beamer}% notheorems,
+\include{background/background}
+\title[A New Statistical Test for Tobit Model and ZMP Model] % (optional, use only with long paper titles)
+{ \textsc{A New Statistical Test for Tobit Model and ZMP Model} }
+\author[杜兴兴、魏雅慧] % (optional, use only with lots of authors)
+{\quad\\  \large  杜兴兴   魏雅慧 }
+\institute[数学与统计学院] % (optional, but mostly needed)
+{数学与统计学院}
+%% 日期自动生成
+\date{\scriptsize{\today} }%{{\the\year}年{\the\month}月{\the\day}日}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\begin{CJK}{GBK}{kai}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} % 封面
+  \vspace{0.5cm}
+  \titlepage
+  \hypertarget{beginning}{}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{\textsc{目录}} \vspace{-0.3cm}
+  \tableofcontents[hidesubsections]
+  % You might wish to add the option[pausesections,subsection]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[问题导向]{问题导向}\label{sec:1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+        \begin{minipage}[t]{0.35\textwidth}
+            \tableofcontents[currentsection,hideallsubsections]
+        \end{minipage}
+
+        \begin{minipage}[t]{0.35\textwidth}
+        \vspace{0.44cm}
+        \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+        \begin{itemize}
+        \item\hyperlink{subsec:1-1}{截尾数据问题}
+        \item\hyperlink{subsec:1-2}{潜在类数据问题}
+        \end{itemize}
+        \end{spacing}
+        \end{minipage}
+    \end{multicols}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[截尾数据问题]{截尾数据问题}\label{subsec:1-1}
+\begin{frame}
+    \frametitle{\textsc{截尾数据问题}} %\transwipe % 涂抹效果
+    \begin{itemize}
+
+        \item 案例1：
+            \\ 尿液、血清或其他生物基质中感兴趣的生物标志物通常具有检测的检测界限，在检测界限下通常存在过量的观测数据或删失数据。在公共卫生和医学研究中，由于检测限而导致的数据审查非常普遍。
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[潜在类数据问题]{潜在类数据问题}\label{subsec:1-1}
+\begin{frame}
+    \frametitle{\textsc{潜在类数据问题}} %\transwipe % 涂抹效果
+    \begin{itemize}
+
+        \item 案例2：
+            \\ 在实践中，通常数据会表现出模型预期的过度删失观察。一个常见的原因是研究人群的异质性，也就是说，存在一个缺乏这种生物标志物的亚群，其值总是低于或高于检测限，因此被限制。
+        \item 问题：如何检测数据中是否存在这样的现象？
+
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[文献综述]{文献综述}\label{sec:2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+        %\begin{figure}
+            \begin{minipage}[t]{0.55\textwidth}
+                \tableofcontents[currentsection,hideallsubsections]
+                % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+            \end{minipage}
+
+            \begin{minipage}[t]{0.55\textwidth}
+                \vspace{0.44cm}
+                \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+                    \begin{itemize}
+                        \item\hyperlink{subsec:2-1}{传统方法}
+                        \item\hyperlink{subsec:2-2}{其他文献}
+                    \end{itemize}
+                \end{spacing}
+            \end{minipage}
+        %\end{figure}
+    \end{multicols}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[传统方法]{传统方法}\label{subsec:2-1}
+\begin{frame}
+\frametitle{\textsc{前人的方法研究}}
+    \begin{itemize}
+
+        \item LR Test:
+        \begin{itemize}
+             \item $S_{LR}=2[l_2(\hat{\omega},\hat{\beta_{\mu}},\hat{\sigma})-l_1(\hat{\beta_{\mu}}',\hat{\sigma}')] \sim \chi_1^2$
+        \end{itemize}
+
+        \item Wald Test:
+        \begin{itemize}
+            \item $ S_{Wald}=\frac{\hat{\omega}}{\hat{\sigma_{\omega}}^2} \sim \chi_1^2$ 或 $Z_{Wald}=\frac{\hat{\omega}}{\hat{\omega}} \sim N(0,1)$
+        \end{itemize}
+
+        \item Score Test:
+        \begin{itemize}
+        \item $S_{score}=\frac{\sum_{i=1}^n{\frac{1}{p_i}(r_i-p_i)}}{[\sum_{i=1}^n{\frac{(1-p_i)}{p_i}} - (\hat{\mu})X{(X^Tdiag(\hat{\mu})X)^{-1}}X^T(\hat{\mu})]^{1/2}} \sim N(0,1)$
+        \end{itemize}
+
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[传统方法]{传统方法}\label{subsec:2-1}
+\begin{frame}
+\frametitle{\textsc{前人的方法研究(CONT.)}}
+
+    \begin{itemize}
+    \item Vuong Test:
+    $$V=\frac{\sqrt{n}\bar{g}}{s_g} \sim AN(0,1),\:\:g_i=log\left[ \frac{f_1(y_i|\theta_1^*)}{f_2(y_i|\theta_2^*)}\right]$$
+    $$\bar{g}=\frac{1}{n}\sum_{i=1}^ng_i ; s_g^2=\frac{1}{n-1}\sum_{n-1}^n(g_i-\bar{g})^2$$
+    \item 用似然比构造统计量，其分布服从渐进正态分布
+    \item 第一类错误大
+    \item 需要确定分布形式
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[其它文献]{其它文献}\label{subsec:2-3}
+\begin{frame}
+    \frametitle{\textsc{其它文献}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item -Paul Wilson and Jochen Einbeck,$(2019) $
+
+    \item 核心思想：
+        \\ 基于泊松回归，通过“中P值”的方法检验数据中零的个数；
+    \item 建立假设：
+        \\$H_0:Y_i|x_i$ 服从特定的分布
+        \\$H_1^{(a)}:Y_i|x_i$ 是一个零修改模型，即$n_0<n_{\alpha/2} \: or \: n_0>n_{1-\alpha/2}$
+        \\$H_1^{(b)}:Y_i|x_i$ 是一个零膨胀模型，即$n_0>n_{1-\alpha}$
+        \\$H_1^{(c)}:Y_i|x_i$ 是一个零紧缩模型，即$n_0<n_{\alpha}$
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[其它文献]{其它文献}\label{subsec:2-3}
+\begin{frame}
+    \frametitle{\textsc{其它文献(CONT.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 检验步骤：
+        \begin{itemize}
+
+        \item 通过数据计算出泊松参数$\hat{\mu_i} $，构造混合估计量:
+            $$\hat{\mu}_{H}=h\hat{\mu}_{W}+(1-h)\hat{\mu_T} \:,\: 0 \leq h \leq 1.$$
+%
+        \item 对每个$y_i$ 估计$p_i$:
+            $$ p_i=p(0|\hat{\mu}_i,\hat{\phi})=e^{-\hat{\mu_i}}$$
+
+        \item 根据$ N_0 \sim Poisson-binomial(p_i)$，计算"中P 值":
+            $$P^*_{0.5}=0.5(P[N_0\geq t]+P[N_0\geq t+1])$$
+
+        \item 根据"中P 值"判断假设是否拒绝原假设
+        \end{itemize}
+    \item 评价：
+        \begin{itemize}
+            \item $ p_{0.5} $ 不准确，只是一种经验的判断
+            \item 需要确定分布形式
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section[He Test]{He Test}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-0.85cm}\label{sec:3}
+    \begin{multicols}{2}
+    \begin{minipage}[t]{0.55\textwidth}
+    \tableofcontents[currentsection,hideallsubsections]
+    % [currentsection,hideallsubsections][sectionstyle=show/shaded,subsectionstyle=show/shaded/hide]
+    \end{minipage}
+
+    \begin{minipage}[t]{0.55\textwidth}
+    \vspace{0.6cm}
+    \begin{spacing}{0.9} % 调整间距 需要\usepackage{setspace}
+    \begin{itemize}
+        \item\hyperlink{subsec:3-1}{Tobit 模型与mTobit模型}
+        \item\hyperlink{subsec:3-2}{泊松模型和零修改模型}
+
+
+    \end{itemize}
+    \end{spacing}
+    \end{minipage}
+    \end{multicols}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item a new statistical test for latent class in censored data due to detection limit.(Zou et al.,2020)
+
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{模型设定1}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item Tobit模型：
+        \begin{itemize}
+        \item 截尾数据(检测限度L)，总体来自正态分布
+        \item
+            $ f(y_i)=\left\{
+            \begin{array}{rcl}
+            \frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y_i-\mu_i)^2}{2\sigma^2})       &      & {if \:\:\: y_i \geq L}\\
+            \Phi(\frac{L-\mu_i}{\sigma})     &      & {if \:\:\:  y_i    <    L}\\
+            \end{array} \right. $
+        \end{itemize}
+    \item Tobit回归：
+        \begin{itemize}
+        \item $Y_i|x_i \sim i.d.\:\: Tobit(\mu_i,\sigma^2,L),\:\:\:\mu_i=x_i^T\beta.$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{模型设定2}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item mTobit模型：
+        \begin{itemize}
+            \item 已知Tobit 分布，检测界限为L
+            \item 实例中，通常表现出检测界限以下存在过量的观测数据，即潜在类，概率为$\omega$
+            \item \begin{tiny}$ f(y_i)=\left\{
+                \begin{array}{rcl}
+                (1-\omega)\frac{1}{\sqrt{2\pi}\sigma}exp(-\frac{(y_i-\mu_i)^2}{2\sigma^2})       &      & {if\:exposed\:and\: y_i \geq L,}\\
+                (1-\omega)\Phi(\frac{L-\mu_i}{\sigma})     &      & {if\:exposed\:and\:  y_i    <    L,}\\
+                \omega   &      & {if\:nonexposed.}
+                \end{array} \right. $
+                \end{tiny}
+
+        \end{itemize}
+
+    \item mTobit回归：
+        \begin{itemize}
+            \item
+            \begin{tiny}
+            $ Y_i|x_i \sim i.d.\:\: mTobit(\omega_i,\mu_i,\sigma^2,L),logit(\omega_i)=\mu_i^T\beta_1,\mu_i=v_i^T\beta_2.$
+            \end{tiny}
+        \end{itemize}
+
+    \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{模型设定}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 零的表示：
+        $$ r_i=1_{ \left\{ y_i<L \right\} }$$
+
+
+    \item 似然函数：
+    \begin{itemize}
+    \item Tobit 模型：
+        \begin{tiny}
+        \begin{equation}
+        L_{1}=\prod_{i=1}^n\left[ \Phi \left( \frac{L-\mu_{i}}{\sigma}\right) \right] ^{r_{i}}%
+        \left[ \frac{1}{\sqrt{2\pi}\sigma}\exp \left( -\frac{(y_{i}-\mu_{i})^{2}}{
+        2\sigma^{2}}\right) \right] ^{(1-r_{i})}.  \notag
+        \end{equation}
+        \end{tiny}
+    \end{itemize}
+
+    \begin{itemize}
+    \item mTobit 模型：
+        \begin{tiny}
+        \begin{equation}
+        L_{2}=\prod_{i=1}^n\left[ \omega + \left( 1-\omega \right) \Phi \left( \frac{L-\mu_{i}}{\sigma}\right) \right] ^{r_{i}}%
+        \left[ \left( 1-\omega \right) \frac{1}{\sqrt{2\pi}\sigma}\exp \left( -\frac{(y_{i}-\mu_{i})^{2}}{
+        2\sigma^{2}}\right) \right] ^{(1-r_{i})}.  \notag
+        \end{equation}
+        \end{tiny}
+    \end{itemize}
+
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{假设检验}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 假设：
+            $$ H_0:\omega=0\:\:\:\:vs.\:\:\:\:H_1:\omega > 0 $$
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{构建统计量}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \item 分布：
+            $$ \sqrt{n} \left( \hat{s} - 0 \right) \to N(0,\tau^2) $$
+        \item 构建思想：
+            \begin{itemize}
+                \item MLE 估计得到Tobit 模型的参数；
+                \item 使用其构造新的无偏量；
+                \item 其服从渐进正态分布；
+            \end{itemize}
+        \pause
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item MLE估计得Tobit 模型的参数$\beta$ 和$\sigma$：
+    \begin{itemize}
+        \begin{tiny}
+            \item 假设：$y_{i}|\mathbf{x}_{i}\sim$ i.d.\thinspace Tobit$(\mu_{i},\sigma
+            ^{2},L)$, with $\mu_{i}=\mathbf{x}_{i}^{T}\mathbf{\beta}$, $\ $whre $\mathbf{%
+            \beta}=(\beta_{0},\beta_{1},..,\beta_{p}).$
+
+            \item 令：$c_{i}=\Phi \left( \frac{L-\mu_{i}}{\sigma}\right) $, $d_{i}=\frac{1}{\sqrt{2\pi}}\exp(-\frac{(L-\mu_{i})^{2}}{2\sigma^{2}})$
+
+
+            \item 似然函数：
+            \begin{equation}
+                L_{i}=\prod_{i=1}^n\left[ \Phi \left( \frac{L-\mu_{i}}{\sigma}\right) \right] ^{r_{i}}%
+                \left[ \frac{1}{\sqrt{2\pi}\sigma}\exp \left( -\frac{(y_{i}-\mu_{i})^{2}}{
+                2\sigma^{2}}\right) \right] ^{(1-r_{i})}.  \notag
+            \end{equation}
+            \item 对数似然函数：
+            \begin{equation}
+                l(\mathbf{\beta},\sigma)=\sum_{i=1}^{n}\left \{ r_{i}\log c_{i}+(1-r_{i})%
+                \left[ \log \left( -\sqrt{2\pi}\sigma \right) -\frac{(y_{i}-\mu_{i})^{2}}{%
+                2\sigma^{2}}\right] \right \} .  \label{ll}
+            \end{equation}
+            \item 偏导方程：
+            \begin{equation}
+                \frac{dl(\cdot)}{d\beta_{r}}=\sum_{i=1}^{n}\left \{ \frac{r_{i}}{c_{i}}\frac{%
+                dc_{i}}{d\beta_{r}}+\left( 1-r_{i}\right) \frac{\left( y_{i}-\mu _{i}\right)
+                }{\sigma^{2}}x_{ir}\right \} =0,\text{ \  \ }r=0,1,2,\ldots ,p,
+                \label{scorebeta}
+            \end{equation}
+            \begin{equation}
+                \frac{dl(\cdot)}{d\sigma}=\sum_{i=1}^{n}\left \{ \frac{r_{i}}{c_{i}}\frac{%
+                dc_{i}}{d\sigma}+\left( 1-r_{i}\right) \left[ -\frac{1}{\sigma}+\frac{\left(
+                y_{i}-\mu_{i}\right) ^{2}}{\sigma^{3}}\right] \right \}=0 .
+                \label{scoresegma}
+            \end{equation}
+            \end{tiny}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item MLE估计得Tobit 模型的参数$\beta$ 和$\sigma$ (Cont.)：
+        \begin{itemize}
+            \begin{tiny}
+            \item 由于：
+            \begin{equation}
+                \frac{dc_{i}}{d\beta_{r}} =\left( \int_{-\infty}^{\frac{L-\mu_{i}}{ \sigma}%
+                }\frac{1}{\sqrt{2\pi}}\exp \left( -\frac{t^{2}}{2}\right) dt\right)
+                ^{\prime}=-d_{i}\frac{x_{ir}}{\sigma},\  \text{\  \ }r=0,1,2,\ldots,p,  \notag
+            \end{equation}
+
+            \begin{equation}
+                \frac{dc_{i}}{d\sigma} =\left( \int_{-\infty}^{\frac{L-\mu_{i}}{\sigma}}%
+                \frac{1}{\sqrt{2\pi}}\exp \left( -\frac{t^{2}}{2}\right) dt\right)
+                ^{\prime}=-d_{i}\frac{L-\mu_{i}}{\sigma^{2}},  \notag
+            \end{equation}
+            \item 得到新的偏导方程：
+            \begin{center}
+                $%
+                \begin{cases}
+                \sum_{i=1}^{n}\left \{ -r_{i}\frac{d_{i}}{c_{i}}+\left( 1-r_{i}\right) \frac{%
+                \left( y_{i}-\mu_{i}\right) }{\sigma}\right \} \frac{x_{ir}}{\sigma }%
+                =0,\quad r=0,1,2,\ldots,p, \\
+                \sum_{i=1}^{n}\left \{ -r_{i}\frac{d_{i}}{c_{i}}\frac{L-\mu_{i}}{\sigma }%
+                +\left( 1-r_{i}\right) \left[ -1+\frac{\left( y_{i}-\mu_{i}\right) ^{2}}{%
+                \sigma2}\right] \right \} =0.%
+                \end{cases}
+                $
+            \end{center}
+
+
+
+            \end{tiny}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 构造新的无偏估计量:
+        \begin{itemize}
+        \begin{tiny}
+
+        \item 根据Tobit 模型下截尾数据的观测比例与期望比例的差异可以给出：
+        \begin{equation}
+            s=\frac{1}{n}\sum_{i=1}^{n}\left( r_{i}-E\left( r_{i}\right) \right) =\frac{1%
+            }{n}\sum_{i=1}^{n}\left[ r_{i}-\Phi \left( \frac{L-\mu _{i}}{\sigma }\right) %
+            \right] =\frac{1}{n}\sum_{i=1}^{n}\left[ r_{i}-c_{i}\right] .  \label{scores}
+        \end{equation}%
+        \item 根据上式构造出检验统计量$s'$：
+        \begin{equation}
+            s'=\frac{\frac{1}{n}\sum_{i=1}^n(r_i-c_i)}{\frac{1}{n}\left[ \sum_{i=1}^{n}c_i(1-c_i) \right]^{1/2}} \sim AN(0,1)
+        \end{equation}
+        \item $s$ 是关于$\beta,\sigma$ 的函数;$s'$也是关于$\beta,\sigma$ 的函数
+        \item 用$\beta,\sigma$ 的拟合值来表示s，s是有偏的
+        \item 加入约束条件，使得s为无偏估计量
+        \begin{equation}
+            \frac{1}{n}\sum_{i=1}^{n}( r_{i}-c_{i}-s)=0
+        \end{equation}
+        \item 由于要考虑$\beta,\sigma$ 的变异性，所以使用估计方程方法来求解统计量s
+        \end{tiny}
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 构造新的无偏估计量:
+        \begin{itemize}
+        \begin{tiny}
+
+        \item 综上，可以得到一组方程：
+        \begin{align}
+            \psi _{1r}& =\frac{1}{n}\sum_{i=1}^{n}\left[ \left( 1-r_{i}\right) \frac{%
+            \left( y_{i-}\mu _{i}\right) }{\sigma }-r_{i}\frac{d_{i}}{c_{i}}\right]
+            \frac{x_{ir}}{\sigma },\quad r=0,1,2,\ldots ,p,  \notag \\
+            \psi _{2}& =\frac{1}{n}\sum_{i=1}^{n}\left \{ \left( 1-r_{i}\right) \left[ -%
+            \frac{1}{\sigma }+\frac{\left( y_{i-}\mu _{i}\right) ^{2}}{\sigma ^{3}}%
+            \right] -r_{i}\frac{d_{i}}{c_{i}}\frac{L-\mu _{i}}{\sigma ^{2}}\right \} ,
+            \notag \\
+            \psi _{3}& =\frac{1}{n}\sum_{i=1}^{n}\left( r_{i}-c_{i}-s\right) .
+        \end{align}%
+
+        \item 定义： ${\Psi }=\left( \mathbf{\psi }_{1},\psi _{2},\psi _{3}\right)
+        ^{T},$ $\mathbf{\psi }_{1}=\left( \psi _{10},\psi _{11},\psi _{12},\ldots
+        ,\psi _{1p}\right) $ and $\mathbf{\gamma }=(\mathbf{\beta },\sigma ,s).$
+        \end{tiny}
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+        \item 统计量的渐进分布:
+        \begin{itemize}
+            \item 由估计方程（EE）可以得到统计量的渐进分布：
+            $$ \sqrt{n} \left( \hat{s} - 0 \right) \to N(0,\tau^2) $$
+            \item  $\tau^2$ 是矩阵$A^{-1}BA^{-T}$ 的$(p+3)*(p+3)$ 项
+            \item $ A(\gamma)=E\left[ \frac{\partial}{\partial\gamma}\Psi_i( Y_i ,\gamma) \right] $
+            \item $ B(\gamma)=Var(\Psi_i( Y_i ,\gamma) $
+        \end{itemize}
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item A，B矩阵的具体形式：
+
+        \begin{equation}
+            A(\mathbf{\gamma })=E\frac{\partial {\Psi }}{\partial \mathbf{\gamma }%
+            }=E\left(
+            \begin{array}{ccc}
+            {\frac{\partial \mathbf{\psi }_{1}^{T}}{\partial \mathbf{\beta }}} & {\frac{%
+            \partial \mathbf{\psi }_{1}^{T}}{\partial \sigma }} & {\frac{\partial
+            \mathbf{\psi }_{1}^{T}}{\partial s}} \\
+            {\frac{\partial \mathbf{\psi }_{2}}{\partial \mathbf{\beta }}} & {\frac{%
+            \partial \mathbf{\psi }_{2}}{\partial \sigma }} & {\frac{\partial \mathbf{%
+            \psi }_{2}}{\partial s}} \\
+            {\frac{\partial \psi _{3}}{\partial \mathbf{\beta }}} & {\frac{\partial \psi
+            _{3}}{\partial \sigma }} & {\frac{\partial \psi _{3}}{\partial s}}%
+            \end{array}%
+            \right) ,  \label{A}
+        \end{equation}%
+
+        \begin{equation}
+            B(\mathbf{\gamma })=E{\Psi }^{T}{\Psi }=E\left(
+            \begin{array}{ccc}
+            \mathbf{\psi }_{1}^{T}\mathbf{\psi }_{1} & \mathbf{\psi }_{1}^{T}\psi {_{2}}
+            & \mathbf{\psi }_{1}^{T}{\psi _{3}} \\
+            \psi _{2}\mathbf{\psi }_{1} & \psi _{2}^{2} & \psi _{2}{\psi _{3}} \\
+            {\psi _{3}}\mathbf{\psi }_{1} & {\  \psi _{3}}\psi _{2} & {\psi _{3}^{2}}%
+            \end{array}%
+            \right) .  \label{B}
+        \end{equation}%
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 计算A矩阵中的每个元素：
+        \begin{tiny}
+        \begin{align*}
+            {\frac{\partial \mathbf{\psi }_{1}^{T}}{\partial \mathbf{\beta }}}& =\frac{%
+            \partial ^{2}l}{\partial \beta ^{2}}=\left(
+            \begin{array}{ccc}
+            \frac{d^{2}l}{d\beta _{0}d\beta _{0}} & \mathbf{\cdots } & \frac{d^{2}l}{%
+            d\beta _{0}d\beta _{p}} \\
+            \vdots & \mathbf{\cdots } & \vdots \\
+            \frac{d^{2}l}{d\beta _{p}d\beta _{0}} & \mathbf{\cdots } & \frac{d^{2}l}{%
+            d\beta _{p}d\beta _{p}}%
+            \end{array}%
+            \right) ,\quad \\
+            \frac{\partial \mathbf{\psi }_{1}^{T}}{\partial \sigma }& =\frac{\partial
+            ^{2}l}{\partial \beta \partial \sigma }=\left( {\frac{\partial \mathbf{\psi }%
+            _{2}}{\partial \mathbf{\beta }}}\right) ^{T}=\left( \frac{d^{2}l}{d\beta
+            _{0}d\partial \sigma },\frac{d^{2}l}{d\beta _{1}d\partial \sigma },\ldots ,%
+            \frac{d^{2}l}{d\beta _{p}d\partial \sigma }\right) ^{T}, \\
+            {\frac{\partial \mathbf{\psi }_{1}^{T}}{\partial s}}& {=}\mathbf{0}%
+            _{(p+1)\times 1},
+        \end{align*}%
+        \end{tiny}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 计算A矩阵中的每个元素(cont.)：
+        \begin{tiny}
+        \begin{align*}
+            {\frac{\partial \mathbf{\psi }_{2}}{\partial \sigma }}& {=}\frac{\partial
+            ^{2}l}{\partial \sigma ^{2}}=\frac{1}{n}\sum_{i=1}^{n}\left \{ -r_{i}\frac{%
+            d_{i}\left( L-\mu _{i}\right) }{c_{i}\sigma ^{3}}\left[ \frac{d_{i}}{c_{i}}%
+            \frac{L-\mu _{i}}{\sigma }+\frac{\left( L-\mu _{i}\right) ^{2}}{\sigma ^{2}}%
+            -2\right] +\left( 1-r_{i}\right) \left[ \frac{1}{\sigma ^{2}}-3\frac{%
+            (y_{i}-\mu _{i})^{2}}{\sigma ^{4}}\right] \right \} , \\
+            {\frac{\partial \mathbf{\psi }_{2}}{\partial s}}& {=0,} \\
+            \frac{\partial \psi _{3}}{\partial \mathbf{\beta }}& ==\left( \frac{1}{n}%
+            \sum_{i=1}^{n}d_{i}\frac{x_{i0}}{\sigma },\frac{1}{n}\sum_{i=1}^{n}d_{i}%
+            \frac{x_{i1}}{\sigma },\ldots ,\frac{1}{n}\sum_{i=1}^{n}d_{i}\frac{x_{ip}}{%
+            \sigma }\right) , \\
+            \frac{\partial \psi _{3}}{\partial \sigma }& =\frac{1}{n}\sum_{i=1}^{n}d_{i}%
+            \frac{L-\mu _{i}}{\sigma ^{2}}, \\
+            \frac{\partial \psi _{3}}{\partial \mathbf{s}}& =-1.
+        \end{align*}%
+        \end{tiny}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 对A矩阵进行分块：
+        $$ A=\left(
+        \begin{array}{ccc}
+        \mathbf{J}_{11} & \mathbf{J}_{12} & \mathbf{0} \\
+        \mathbf{J}_{21} & \mathbf{J}_{22} & \mathbf{0} \\
+        \mathbf{J}_{31} & \mathbf{J}_{32} & -1%
+        \end{array}%
+        \right) ,$$
+    \begin{itemize}
+        \item $\mathbf{J}_{11}$ 是：($p+1)\times (p+1)$ 矩阵
+        \item $\mathbf{J}_{21}$、 $\mathbf{J}_{31}$ 是： $1\times (p+1)$ 矩阵
+        \item $\mathbf{J}_{12}=\mathbf{J}_{21}^{T}$
+        \item $\mathbf{J}_{22}$、$\mathbf{J}_{32}$ 是相同形状的矩阵
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 对B矩阵进行计算：
+        \begin{itemize}
+        \item 由(\ref{scorebeta})，$\mathbf{\psi}_{1}$ 和 $\psi_{2}$ 是偏导方程，可以得到下面的推导：
+        \begin{tiny}
+        \begin{align*}
+        E\psi^{2} & =E\left( \frac{\partial \log f}{\partial \theta}\right)
+        ^{2}=\int \left( \frac{\partial \log f}{\partial \theta}\right) ^{2}\cdot
+        fdx=\int \frac{\partial \log f}{\partial \theta}\frac{\partial \log f}{%
+        \partial \theta}\cdot fdx \\
+        & =\int \frac{\partial \log f}{\partial \theta}\frac{\partial f}{\partial
+        \theta }\frac{1}{f}\cdot fdx=\int \frac{\partial \log f}{\partial \theta}%
+        \frac{\partial f}{\partial \theta}dx \\
+        & =\int \left[ \frac{\partial \left( \frac{\partial \log f}{\partial \theta }%
+        \cdot f\right) }{\partial \theta}-\frac{\partial^{2}\log f}{\partial
+        \theta^{2}}\cdot f\right] dx \\
+        & =\frac{\partial}{\partial \theta}\int \frac{\partial \log f}{\partial
+        \theta }\cdot fdx-\int \frac{\partial^{2}\log f}{\partial \theta^{2}}\cdot
+        fdx=E\psi-E\frac{\partial \psi}{\partial \theta} \\
+        & =-E\frac{\partial \psi}{\partial \theta},
+        \end{align*}
+        \end{tiny}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item B矩阵的表达形式：
+        \begin{itemize}
+        \item 由(\ref{scorebeta})，$\mathbf{\psi}_{1}$ 和 $\psi_{2}$ 是偏导方程，可以得到下面的推导：
+        \begin{tiny}
+        \begin{equation}
+        B(\mathbf{\gamma})=E{\Psi}^{T}{\Psi}=\left(
+        \begin{array}{ccc}
+        -\mathbf{J}_{11} & -\mathbf{J}_{12} & -\mathbf{J}_{13} \\
+        -\mathbf{J}_{21} & -\mathbf{J}_{22} & -\mathbf{J}_{23} \\
+        -\mathbf{J}_{31} & {\ }-\mathbf{J}_{32} & \frac{1}{n}%
+        \sum_{i=1}^{n}c_{i}(1-c_{i})%
+        \end{array}
+        \right) =\left(
+        \begin{array}{cc}
+        -\mathbf{J} & -\mathbf{L}^{T} \\
+        -\mathbf{L} & \frac{1}{n}\sum_{i=1}^{n}c_{i}(1-c_{i})%
+        \end{array}
+        \right).  \notag
+        \end{equation}
+        \item 令$\lambda=\frac{1}{n}\sum_{i=1}^{n}c_{i}(1-c_{i})$,
+        \end{tiny}
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item $A^{-1}BA^{-T}$ 的表达式：
+        \begin{tiny}
+        \begin{align*}
+        \mathbf{A}^{-1}\mathbf{BA}^{-T} & =\allowbreak \left(
+        \begin{array}{cc}
+        \mathbf{J}^{-1} & \mathbf{0} \\
+        \mathbf{LJ}^{-1} & {{\mathbf{-1}}}%
+        \end{array}
+        \right) \left(
+        \begin{array}{cc}
+        -\mathbf{J} & -\mathbf{L}^{T} \\
+        -\mathbf{L} & \lambda%
+        \end{array}
+        \right) \allowbreak \left(
+        \begin{array}{cc}
+        \mathbf{J}^{-1} & \mathbf{J}^{-T}\mathbf{L}^{T} \\
+        \mathbf{0} & {{\mathbf{-1}}}%
+        \end{array}
+        \right) \\
+        & =\left(
+        \begin{array}{cc}
+        -\mathbf{J}^{-1} & 0 \\
+        0 & \mathbf{LJ}^{-1}\mathbf{L}^{T}\mathbf{+}\lambda%
+        \end{array}
+        \right)
+        \end{align*}
+        \end{tiny}
+
+    \item 所以可以得到$\tau^2$ 的表达式：
+        \begin{tiny}
+        \begin{align*}
+        \mathbf{LJ}^{-1}\mathbf{L}^{T}\mathbf{+}\lambda & =\left( {\mathbf{J}}_{31},{%
+        \mathbf{J}}_{32}\right) \left(
+        \begin{array}{cc}
+        W & -\mathbf{J}{_{11}^{-1}}\mathbf{J}_{12}V \\
+        -\mathbf{J}_{22}^{-1}\mathbf{J}_{21}W & V%
+        \end{array}
+        \right) \cdot \binom{{\mathbf{J}}_{31}^{T}}{{\mathbf{J}}_{32}}+\lambda \\
+        & =\left( {\mathbf{J}}_{31}W-{\mathbf{J}}_{32}\mathbf{J}_{22}^{-1}\mathbf{J}%
+        _{21}W,-{\mathbf{J}}_{31}\mathbf{J}{_{11}^{-1}}\mathbf{J}_{12}V+{\mathbf{J}}%
+        _{32}V\right) \cdot \binom{{\mathbf{J}}_{31}}{{\mathbf{J}}_{32}}+\lambda \\
+        & =\lambda+{\mathbf{J}}_{31}W{\mathbf{J}}_{31}^{T}-{\mathbf{J}}_{32}\mathbf{J%
+        }_{22}^{-1}\mathbf{J}_{21}W{\mathbf{J}}_{31}^{T}-{\mathbf{J}}_{31}\mathbf{J}{%
+        _{11}^{-1}}\mathbf{J}_{12}V{\mathbf{J}}_{32}+{\mathbf{J}}_{32}V{\mathbf{J}}%
+        _{32}.
+        \end{align*}
+        \end{tiny}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+\item 最终统计量形式：
+        \begin{tiny}
+        \begin{equation}
+        S_{\text{new}}=\frac{\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\left \{ r_{i}-\widehat{%
+        c}_{i}\right \} }{\left( \frac{1}{n}\sum_{i=1}^{n}\widehat{c}_{i}(1-\widehat{%
+        c}_{i})+\widehat{{\mathbf{J}}}_{31}\widehat{W}\widehat {{\mathbf{J}}}%
+        _{31}^{T}-\widehat{{\mathbf{J}}}_{32}\widehat{\mathbf{J}}_{22}^{-1}\widehat{%
+        \mathbf{J}}_{21}\widehat{W}\widehat{{\mathbf{J}}}_{31}^{T}-\widehat{{\mathbf{%
+        J}}}_{31}\widehat{\mathbf{J}}{_{11}^{-1}}\widehat{\mathbf{J}}_{12}\widehat{V}%
+        \widehat{{\mathbf{J}}}_{32}+\widehat {{\mathbf{J}}}_{32}\widehat{V}\widehat{{%
+        \mathbf{J}}}_{32}\right) ^{\frac {1}{2}}}.
+        \end{equation}
+        \end{tiny}
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+\subsection[Tobit模型与mTobit模型]{Tobit模型与mTobit模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{统计量的推导(cont.)}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item 回顾：
+        $$Y_i|x_i \sim i.d.\:\: Tobit(\mu_i,\sigma^2,L),\:\:\:\mu_i=x_i^T\beta.$$
+        $$S_{score}=\frac{\sum_{i=1}^n{\frac{1}{p_i}(r_i-p_i)}}{[\sum_{i=1}^n{\frac{(1-p_i)}{p_i}} - (\hat{\mu})X{(X^Tdiag(\hat{\mu})X)^{-1}}X^T(\hat{\mu})]^{1/2}} \sim N(0,1)$$
+    \item 补充：
+        \begin{itemize}
+        \item 当$\mu$ 为一个常数时，上述推导的统计量$S_{\text{new}}$ 等价于$S_{\text{score}}$
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[泊松模型与零修改模型]{泊松模型与零修改模型}\label{subsec:3-1}
+\begin{frame}
+    \frametitle{\textsc{}} %\transwipe % 涂抹效果
+    \begin{itemize}
+    \item A test of inflated zeros for Poisson regression models.(He et al.,2019)
+    \end{itemize}
+\end{frame}
+
+
+\subsection[泊松模型与零修改模型]{泊松模型与零修改模型}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{模型设定}
+	泊松模型：
+	\begin{itemize}
+		\item $p(y_i|\mu)=\frac{\mu^{y_i}\:*\:e^{-\mu}}{y_i!}$ , $y_i\geq0$
+	\end{itemize}
+    泊松回归：
+    \begin{itemize}
+    \item $y_i|x_i\sim i.d.\:Piosson(\mu_i)$ , $log(\mu_i)=x_i^T\beta$
+    \item 当在零存在过多时，为零膨胀模型(ZIP)，由于膨胀和紧缩仅在正负号存在区别，我们在此仅讨论膨胀现象。
+    \end{itemize}
+    ZIP回归：
+    \begin{itemize}
+    \item $y_i|x_i\sim i.d.\:\:ZIP(\omega_i,\mu_i)$ , $logit(\omega_i)=x_i^T\beta_1$ , $log(\mu_i)=v_i^T\beta_2$
+    \end{itemize}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+\subsection[泊松模型与零修改模型]{泊松模型与零修改模型}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{假设检验}
+	假设：
+	\begin{itemize}
+    \item $H_0:\omega=0\:\:\:\:vs\:\:\:\:H_1:\omega\neq0$
+    \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+\subsection[泊松模型与零修改模型]{泊松模型与零修改模型}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{统计量}
+	分布：
+	\begin{itemize}
+    \item $ \sqrt{n}(\hat{s}-0)\:\to\:N(0,\tau^2) $
+    \end{itemize}
+    构建思想：
+	\begin{itemize}
+    \item LSE估计得泊松模型的参数；
+    \item 使用其构建新的无偏量；
+    \item 其服从渐进正态分布；
+    \end{itemize}
+
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%·
+
+\subsection[泊松模型与零修改模型]{泊松模型与零修改模型}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{统计量的推导}
+	统计量服从正态分布：
+	\begin{itemize}
+    \item 由估计方程，得到统计量:
+        \\$ \sqrt{n}(\hat{s}-0)\:\to\:N(0,\tau^2) $
+    \item $\tau^2$是矩阵$A^{-1}BA^{-T}$ 的$(p+2)*(p+2)$ 项;
+    \item $A(\mathbf{\gamma })=E\frac{\partial {\Psi }}{\partial \mathbf{\gamma }}$ , $B=E\left( \Psi\Psi^T \right)$
+    \item $\Psi_1 =  \frac{1}{n}\sum_{i=1}^n{\left[ r_i-exp(-exp(x_i^T\beta))-S \right]}=0$
+    \item $ \Psi_2 = \frac{1}{n}\sum_{i=1}^n{X_i^T(y_i-exp(x_i^T\beta))}=0$
+    \item （去掉等于0）
+    \end{itemize}
+\end{frame}
+
+
+\section[随机模拟]{随机模拟}\label{sec:1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+        \begin{minipage}[t]{0.55\textwidth}
+            \tableofcontents[currentsection,hideallsubsections]
+        \end{minipage}
+
+        \begin{minipage}[t]{0.55\textwidth}
+        \vspace{0.44cm}
+        \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+        \begin{itemize}
+        \item\hyperlink{subsec:1-1}{模拟设置}
+        \item\hyperlink{subsec:1-2}{Tobit Response}
+        \item\hyperlink{subsec:1-2}{mTobit Response}
+        \end{itemize}
+        \end{spacing}
+        \end{minipage}
+    \end{multicols}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection[模拟设置]{模拟设置}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{模拟设置}
+	\begin{itemize}
+        \item 检验在删失数据中时候存在一个潜在类：
+            $$ H_0:\omega=0\:\:\:vs\:\:\:\omega>0 $$
+        \item 检测限制：L设为-1
+        \item Tobit 回归模型的方差：$\sigma^2=4$
+        \item 均值变动：$y\sim Tobit(\mu,4,-1)$
+        \item 考虑三种情形：
+        \begin{itemize}
+            \item No covariate
+            \item Covariate x $\sim Uniform(0,1)$
+            \item Covariate x $\sim N(0,2)$
+        \end{itemize}
+        \item 样本量：50，100，200，500，1000
+        \item Monte Carlo(蒙特卡罗)样本量：1000
+
+    \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit Response]{Tobit Response}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{No Covariate}
+	\begin{itemize}
+        \item R Code
+        \item Type Error I:p-p plot
+        \item Results
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit Response]{Tobit Response}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{No Covariate(Type Error I:p-p plot)}
+        \begin{center}
+            \includegraphics[scale=0.45]{./figure/fig/NoCovariate.png}
+        \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit Response]{Tobit Response}\label{subsec:3-2}
+\begin{frame}
+	\frametitle{Covariate x $\sim U(0,1)$}
+	\begin{itemize}
+        \item R Code
+        \item Type Error I:p-p plot
+        \item Results
+
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit Response]{Tobit Response}\label{subsec:3-2}
+\begin{frame}
+	\frametitle{Covariate x $\sim U(0,1)$(Type Error I:p-p plot)}
+    \begin{center}
+        \includegraphics[scale=0.45]{./figure/fig/Covariate_N.png}
+    \end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit Response]{Tobit Response}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{Covariate x $\sim N(0,2)$}
+	\begin{itemize}
+        \item R Code
+        \item Type Error I:p-p plot
+        \item Results
+
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Tobit Response]{Tobit Response}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{Covariate x $\sim N(0,2)$(Type Error I:p-p plot)}
+    \begin{center}
+        \includegraphics[scale=0.45]{./figure/fig/Covariate_U.png}
+    \end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{No Covariate}
+	\begin{itemize}
+        \item $ y \sim mTobit(\omega,\mu,4,-1),\:\:\omega=0.05k,\:\:k=1,2,...,6$
+        \begin{itemize}
+            \item R Code
+            \item Power:Probabilities of latent class
+            \item Results
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-1}
+\begin{frame}
+	\frametitle{No Covariate(Power)}
+    \begin{center}
+        \includegraphics[scale=0.4]{./figure/fig/figa.png}
+    \end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-2}
+\begin{frame}
+	\frametitle{Covariate x $\sim U(0,1)$}
+	\begin{itemize}
+        \item $ y \sim mTobit(\omega,\mu,4,-1),\mu = \alpha - x,\:\:\omega=0.05k$
+        $$ k=1,2,...,6,\:\:\alpha=0,1,2,3,4 $$
+        \begin{itemize}
+            \item R Code
+            \item Power:Probabilities of latent class
+            \item Results
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-2}
+\begin{frame}
+	\frametitle{Covariate x $\sim U(0,1)$(Power)}
+    \begin{center}
+        \includegraphics[scale=0.4]{./figure/fig/figb.png}
+    \end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-2}
+\begin{frame}
+	\frametitle{Covariate x $\sim U(0,1)$}
+	\begin{itemize}
+        \item $ y\sim mTobit(\omega,\mu,4,-1),\:\:\mu=\alpha-x,\:\:logit(\omega=-b+x)$
+        $$ \alpha=0,1,2,3,4;\:\:b=0.5,1.0,1.5,2.0,2.5,3.0$$
+        \begin{itemize}
+            \item R Code
+            \item Power:Probabilities of latent class
+            \item Results
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-2}
+\begin{frame}
+	\frametitle{Covariate x $\sim U(0,1)$(Power)}
+    \begin{center}
+        \includegraphics[scale=0.4]{./figure/fig/figc.png}
+    \end{center}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{Covariate x $\sim N(0,2)$}
+	\begin{itemize}
+        \item $ y \sim mTobit(\omega,\mu,4,-1),\mu = \alpha - x,\:\:\omega=0.05k$
+        $$ k=1,2,...,6,\:\:\alpha=0,1,2,3,4 $$
+        \begin{itemize}
+            \item R Code
+            \item Power:Probabilities of latent class
+            \item Results
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-2}
+\begin{frame}
+	\frametitle{Covariate x $\sim N(0,2)$(Power)}
+    \begin{center}
+        \includegraphics[scale=0.4]{./figure/fig/figd.png}
+    \end{center}
+\end{frame}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{Covariate x $\sim N(0,2)$}
+	\begin{itemize}
+        \item $ y\sim mTobit(\omega,\mu,4,-1),\:\:\mu=\alpha-x,\:\:logit(\omega=-b+x)$
+        $$ \alpha=0,1,2,3,4;\:\:b=0.5,1.0,1.5,2.0,2.5,3.0$$
+        \begin{itemize}
+            \item R Code
+            \item Power:Probabilities of latent class
+            \item Results
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[mTobit Response]{mTobit Response}\label{subsec:3-2}
+\begin{frame}
+	\frametitle{Covariate x $\sim N(0,2)$(Power)}
+    \begin{center}
+        \includegraphics[scale=0.4]{./figure/fig/fige.png}
+    \end{center}
+\end{frame}
+
+\section[案例研究]{案例研究}\label{sec:1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+        \begin{minipage}[t]{0.35\textwidth}
+            \tableofcontents[currentsection,hideallsubsections]
+        \end{minipage}
+
+        \begin{minipage}[t]{0.35\textwidth}
+        \vspace{0.44cm}
+        \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+        \begin{itemize}
+        \item\hyperlink{subsec:1-1}{数据介绍}
+        \item\hyperlink{subsec:1-2}{建立模型}
+        \item\hyperlink{subsec:1-2}{假设检验}
+        \item\hyperlink{subsec:1-2}{检验结果}
+        \end{itemize}
+        \end{spacing}
+        \end{minipage}
+    \end{multicols}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[数据介绍]{数据介绍}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{数据介绍}
+	\begin{itemize}
+        \item 使用从2003年至2010年的四次调查中收集的尿液三氯生浓度;
+        \item 调查对象为3659 名儿童(6-19岁)和6566 名成人(20 岁);
+        \item 以检验是否存在一个潜在的浓度类别，即是否存在一个尿液三氯生非接触组;
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[建立模型]{建立模型}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{建立模型}
+	\begin{itemize}
+        \item 对于转换后的数据，假设mTobit回归模型包含年龄、性别、种族、教育程度、BMI、尿可替宁和肌酐等协变量:
+        $$y_i\sim mTobit(\omega,\mu_i,\sigma^2,L=log(2.3))$$
+        \begin{tiny}
+        $$\mu_i=\beta_0+\beta_1Age_i+\beta_2Gender_i+\beta_3Race_i+\beta_4Edu_i+\beta_5BMI_i+\beta_6Cotinine_i+\beta_7Creatinine_i$$
+        \end{tiny}
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[假设检验]{假设检验}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{假设检验}
+    \begin{itemize}
+    \item 设立假设检验：
+	\begin{itemize}
+         $$H_0:\omega=0\:\:vs\:\:\omega>0$$
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[检验结果]{检验结果}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{检验结果}
+    \begin{itemize}
+    \item 对于$H_0:\omega=0\:\:vs\:\:\omega>0$：
+    \begin{itemize}
+    \item Wald、LR、score 和new Test 分别代表的P值为：
+    $$0.5000,0.5037,0.768, 0.986$$
+    \end{itemize}
+    \item 四个测试都得出了同样得结论，即没有显著证据表明能够拒绝$H_0$。
+    \item 即尿中三氯生得浓度没有潜在得类别。
+
+    \end{itemize}
+\end{frame}
+
+\section[总结讨论]{总结讨论}\label{sec:1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 章首目录页
+\begin{frame}%<beamer>
+    \frametitle{\textsc{目录}} \vspace{-1.05cm}
+    \begin{multicols}{2}
+        \begin{minipage}[t]{0.25\textwidth}
+            \tableofcontents[currentsection,hideallsubsections]
+        \end{minipage}
+        \begin{minipage}[t]{0.25\textwidth}
+        \vspace{0.34cm}
+        \begin{spacing}{1.2} % 调整间距 需要\usepackage{setspace}
+        \begin{itemize}
+        \item\hyperlink{subsec:1-1}{方法评价}
+        \item\hyperlink{subsec:1-2}{后期计划}
+        \end{itemize}
+        \end{spacing}
+        \end{minipage}
+    \end{multicols}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[方法评价]{方法评价}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{方法评价}
+    \begin{itemize}
+    \item 不需要确定的函数形式
+    \item 犯第一类错误更少
+    \item 统计功效更高
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[后期计划]{后期计划}\label{subsec:3-3}
+\begin{frame}
+	\frametitle{后期计划}
+    \begin{itemize}
+    \item 对比研究
+    \item 在纵向数据上的应用
+    \end{itemize}
+\end{frame}
+
+
+
+\end{CJK}
+\end{document}

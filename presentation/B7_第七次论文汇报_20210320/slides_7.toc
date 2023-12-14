@@ -1,0 +1,33 @@
+\beamer@endinputifotherversion {3.14pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Introduction}{3}{0}{1}
+\beamer@sectionintoc {2}{Literature Review}{4}{0}{2}
+\beamer@sectionintoc {3}{The Model}{5}{0}{3}
+\beamer@subsectionintoc {3}{1}{Models}{5}{0}{3}
+\beamer@subsectionintoc {3}{2}{Models}{6}{0}{3}
+\beamer@subsectionintoc {3}{3}{Models}{7}{0}{3}
+\beamer@subsectionintoc {3}{4}{Likelihood Function}{8}{0}{3}
+\beamer@subsectionintoc {3}{5}{Likelihood Function(cont.)}{9}{0}{3}
+\beamer@subsectionintoc {3}{6}{Models}{10}{0}{3}
+\beamer@subsectionintoc {3}{7}{Likelihood Function}{11}{0}{3}
+\beamer@subsectionintoc {3}{8}{Likelihood Function}{12}{0}{3}
+\beamer@subsectionintoc {3}{9}{Hypothesis}{13}{0}{3}
+\beamer@subsectionintoc {3}{10}{Wald Test}{14}{0}{3}
+\beamer@subsectionintoc {3}{11}{LR Test}{15}{0}{3}
+\beamer@subsectionintoc {3}{12}{LR Test}{16}{0}{3}
+\beamer@subsectionintoc {3}{13}{Score Test}{17}{0}{3}
+\beamer@subsectionintoc {3}{14}{Score Test(cont.)}{18}{0}{3}
+\beamer@subsectionintoc {3}{15}{Score Test(cont.)}{19}{0}{3}
+\beamer@subsectionintoc {3}{16}{Score Test(cont.)}{20}{0}{3}
+\beamer@subsectionintoc {3}{17}{Score Test(cont.)}{21}{0}{3}
+\beamer@subsectionintoc {3}{18}{Score Test(cont.)}{22}{0}{3}
+\beamer@subsectionintoc {3}{19}{Score Test(cont.)}{23}{0}{3}
+\beamer@subsectionintoc {3}{20}{He Test}{24}{0}{3}
+\beamer@subsectionintoc {3}{21}{He Test}{25}{0}{3}
+\beamer@subsectionintoc {3}{22}{He Test}{26}{0}{3}
+\beamer@subsectionintoc {3}{23}{He Test}{27}{0}{3}
+\beamer@subsectionintoc {3}{24}{He Test}{28}{0}{3}
+\beamer@subsectionintoc {3}{25}{He Test}{29}{0}{3}
+\beamer@subsectionintoc {3}{26}{He Test}{30}{0}{3}
+\beamer@subsectionintoc {3}{27}{He Test}{31}{0}{3}
+\beamer@subsectionintoc {3}{28}{He Test(cont.)}{32}{0}{3}

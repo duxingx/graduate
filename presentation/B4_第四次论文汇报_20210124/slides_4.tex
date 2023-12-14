@@ -1,0 +1,208 @@
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \documentclass[table,CJK,mathserif,12pt]{beamer}% notheorems,
+    \include{background/background}
+    \title[A New Statistical Test for ZMP Model] % (optional, use only with long paper titles)
+    { \textsc{A New Statistical Test for ZMP Model} }
+    \author[杜兴兴、魏雅慧] % (optional, use only with lots of authors)
+    {\quad\\  \large  杜兴兴   魏雅慧 }
+    \institute[数学与统计学院] % (optional, but mostly needed)
+    {数学与统计学院}
+    %% 日期自动生成
+    \date{\scriptsize{\today} }%{{\the\year}年{\the\month}月{\the\day}日}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{document}
+
+    \begin{CJK}{GBK}{kai}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \begin{frame} % 封面
+      \vspace{0.5cm}
+      \titlepage
+      \hypertarget{beginning}{}
+    \end{frame}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \begin{frame}
+      \frametitle{\textsc{目录}} \vspace{-0.3cm}
+      \tableofcontents[hidesubsections]
+      % You might wish to add the option[pausesections,subsection]
+    \end{frame}
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+    \section[回顾]{回顾}\label{sec:1}
+    \subsection[模型回顾]{泊松模型和零膨胀泊松}
+    \begin{frame}
+    	\frametitle{模型设定}
+    	泊松模型：
+    	\begin{itemize}
+    		\item $p(y_i|\mu)=\frac{\mu^{y_i}\:*\:e^{-\mu}}{y_i!}$ , $y_i\geq0$
+    	\end{itemize}
+        泊松回归：
+        \begin{itemize}
+        \item $y_i|x_i\sim i.d.\:Piosson(\mu_i)$ , $log(\mu_i)=x_i^T\beta$
+        \item 当在零存在过多时，为零膨胀模型(ZIP)，由于膨胀和紧缩仅在正负号存在区别，我们在此仅讨论膨胀现象。
+        \end{itemize}
+    \end{frame}
+
+    %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[模型回顾]{泊松模型和零膨胀泊松}
+    \begin{frame}
+    	\frametitle{模型设定}
+        零膨胀泊松(ZIP)模型：
+        \begin{itemize}
+        \item 假设过多零的概率为$\omega$，则原分布的概率为1-$\omega$。
+          \item 混合概率分布为
+          \begin{equation}
+                    \left\{
+                    \begin{array}{cc}
+                        { P(Y_i=0)=\omega + (1-\omega)e^{-\lambda_i}} & { } \\
+                        {P(Y_i=y_i)=(1-\omega)\frac{e^{-\lambda_i}\lambda_i^{y_i}}{y_i!}} & {(y_i>0)}、
+                    \end{array}%
+                    \right.
+           \end{equation}%
+        \end{itemize}
+        零膨胀泊松回归：
+        \begin{itemize}
+            \item $\omega$ 为动态时，
+                \begin{itemize}
+                \item $y_i|x_i\sim i.d.\:\:ZIP(\omega_i,\mu_i)$ , $logit(\omega_i)=x_i^T\beta_1$ , $log(\mu_i)=v_i^T\beta_2$
+                \end{itemize}
+            \item $\omega$ 为常数时，
+                \begin{itemize}
+                \item $y_i|x_i\sim i.d.\:\:ZIP(\omega_i,\mu_i)$ , $\omega_i=c_i$ , $log(\mu_i)=v_i^T\beta_2$
+                 \end{itemize}
+        \end{itemize}
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsection[建立假设]{建立假设}
+    \begin{frame}
+        	\frametitle{建立假设}
+        	\begin{itemize}
+                \item 检验是否为零膨胀泊松（ZIP）：
+                    $$ H_0:\omega=0\:\:\:vs\:\:\:\omega>0 $$
+           \end{itemize}
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection[统计量回顾]{统计量回顾}
+    \begin{frame}
+    \frametitle{统计量回顾}
+       \begin{itemize}
+            \item Score统计量:
+            $$ S_{score} = \frac{\left\{ \sum_{i=1}^n { \left( \frac{I_{y_i=0}}{e^{-\hat{\lambda_i}}} -1 \right)} \right\} }{\left\{\sum_i \left( \frac{1}{e^{-\hat{\lambda_i}}} -1  \right) -\hat{\lambda}^T X [X^T diag(\hat{\lambda})X]^{-1} X^T \hat{\lambda}\right\}^{1/2}}  $$
+            $$ S_{score} \sim N(0,1)$$
+        \end{itemize}
+        \begin{itemize}
+            \item He统计量:
+            $$ S_{new} = \frac{\left\{ \sum_{i=1}^n { \left( I_{y_i=0}- e^{-\hat{\lambda_i}} \right)} \right\} }{\left\{\sum_i \left( e^{-\hat{\lambda_i}} \left( 1- e^{-\hat{\lambda_i}}  \right)  \right) -\hat{\lambda}^T X [X^T diag(\hat{\lambda})X]^{-1} X^T \hat{\lambda}\right\}^{1/2}}  $$
+            $$ S_{score} \sim N(0,1)$$
+        \end{itemize}
+   \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \subsection[统计量回顾]{统计量回顾}
+    \begin{frame}
+    \frametitle{统计量回顾}
+        \begin{itemize}
+
+            \item Piosson的对数似然函数：
+               \begin{itemize}
+               \begin{tiny}
+                   \item $l_1=\sum_{i=1}^{n} \log \left( \frac{\mu^{y_i}\:*\:e^{-\mu}}{y_i!}\right)$
+                   \end{tiny}
+               \end{itemize}
+            \item ZIP的对数似然函数：
+               \begin{itemize}
+                   \begin{tiny}
+                      \item  $ l_2= \sum_{i=1}^{n} \left[ r_{i}\log \left(\omega+\left(1-\omega \right)e^{-\mu_{i}} \right)+\left( 1-r_{i} \right)\log\left(\left(1-\omega \right)\left( \frac{\mu^{y_i}\:*\:e^{-\mu}}{y_i!} \right)\right) \right]$
+                   \end{tiny}
+               \end{itemize}
+
+            \item LR Test:
+                \begin{itemize}
+
+                     \item $S_{LR}=2[l_2(\hat{\omega},\hat{\beta_{\mu}})-l_1(0,\hat{\beta_{\mu}}')] \sim \chi_1^2$
+
+                \end{itemize}
+            \item Wald Test:
+            \begin{itemize}
+
+                \item $ S_{Wald}=\frac{\hat{\omega}}{\hat{\sigma_{\omega}}^2} \sim \chi_1^2$ 或 $Z_{Wald}=\frac{\hat{\omega}}{\hat{\omega}} \sim N(0,1)$
+
+            \end{itemize}
+
+        \end{itemize}
+   \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \section[随机模拟]{随机模拟}\label{sec:2}
+       \subsection[Poisson response]{Poisson response}
+       \frametitle{模拟设置}
+       \begin{itemize}
+            \item 检验是否为零膨胀泊松（ZIP）：
+                $$ H_0:\omega=0\:\:\:vs\:\:\:\omega>0 $$
+            \item 均值变动：$y\sim Poisson(\mu)$
+            \item 考虑四种情形：
+            \begin{itemize}
+                \item 无协变量，$\mu=c$
+                \item 协变量服从均匀分布， $\mu=exp(\alpha-1.4*x)$
+                \item 协变量服从正态分布， $\mu=exp(\alpha-x)$
+                \item 多个协变量， $\mu=exp(\alpha+0.5(x_{1}+x_{2}))$
+            \end{itemize}
+            \item 样本量：50，100，200，500
+            \item Monte Carlo(蒙特卡罗)样本量：100
+
+        \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[Poisson Response]{Poisson Response}
+    \begin{frame}
+    \frametitle{模拟介绍}
+        \begin{itemize}
+          \item 详情见R程序
+        	\begin{itemize}
+                \item R Code
+                \item Type Error I:p-p plot
+                \item Results
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsection[ZIP Response]{ZIP Response}
+       \frametitle{模拟设置}
+       \begin{itemize}
+            \item 均值变动：$y\sim Poisson(\mu)$
+            \item 考虑四种情形：
+            \begin{itemize}
+                \item 无协变量，$\mu=c$
+                \item 协变量服从均匀分布， $\mu=exp(\alpha-1.4*x)$
+                \item 协变量服从正态分布， $\mu=exp(\alpha-x)$
+                \item 多个协变量， $\mu=exp(\alpha+0.5(x_{1}+x_{2}))$
+            \end{itemize}
+            \item $\omega$变动：$y\sim ZIP(\mu, \omega)$
+            \item 考虑三种情形：
+            \begin{itemize}
+                \item $\omega=c$
+                \item $logit(\omega)=\alpha+x $
+                \item $\omega=c \lvert \sin(4 \pi x)\rvert$
+            \end{itemize}
+            \item 样本量：50，100，200，500
+            \item Monte Carlo(蒙特卡罗)样本量：100
+
+        \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \subsection[ZIP Response]{ZIP Response}\label{subsec:2-1}
+        \begin{frame}
+        \frametitle{模拟介绍}
+            \begin{itemize}
+            \item 详情见R程序
+            	\begin{itemize}
+                    \item R Code
+                    \item Type Error I:p-p plot
+                    \item Results
+                \end{itemize}
+            \end{itemize}
+        \end{frame}
+
+
+    \end{CJK}
+    \end{document}
+

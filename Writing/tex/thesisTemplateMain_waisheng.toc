@@ -1,0 +1,45 @@
+\contentsline {chapter}{摘要}{I}{Doc-Start}
+\contentsline {chapter}{ABSTRACT}{III}{Doc-Start}
+\contentsline {chapter}{\numberline {第\hspace {1pt}1\hspace {1pt}章\hspace {0.3em}}绪论}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}研究背景与问题的提出}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}国内外研究现状}{2}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}肾衰竭的研究}{3}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.2}生存分析的研究}{4}{subsection.1.2.2}
+\contentsline {section}{\numberline {1.3}研究内容与组织结构}{6}{section.1.3}
+\contentsline {chapter}{\numberline {第\hspace {1pt}2\hspace {1pt}章\hspace {0.3em}}生存数据与研究方法}{8}{chapter.2}
+\contentsline {section}{\numberline {2.1}生存分析基础}{8}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}生存数据}{8}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}生存函数}{9}{subsection.2.1.2}
+\contentsline {subsection}{\numberline {2.1.3}风险函数}{9}{subsection.2.1.3}
+\contentsline {subsection}{\numberline {2.1.4}参数估计}{10}{subsection.2.1.4}
+\contentsline {section}{\numberline {2.2}生存分析统计模型}{11}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Cox比例风险模型}{11}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Cox弹性网模型}{12}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}随机生存森林模型}{13}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}DeepSurv模型}{14}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}Cox-CC模型}{15}{subsection.2.2.5}
+\contentsline {subsection}{\numberline {2.2.6}Cox-Time模型}{15}{subsection.2.2.6}
+\contentsline {subsection}{\numberline {2.2.7}LogisticHarzad模型}{16}{subsection.2.2.7}
+\contentsline {section}{\numberline {2.3}模型评价指标}{17}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}一致性指数}{17}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}时间依赖一致性指数}{17}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}时间依赖ROC曲线}{18}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}BS评分}{18}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}IBS}{19}{subsection.2.3.5}
+\contentsline {chapter}{\numberline {第\hspace {1pt}3\hspace {1pt}章\hspace {0.3em}}数据来源与清洗}{20}{chapter.3}
+\contentsline {section}{\numberline {3.1}数据来源}{20}{section.3.1}
+\contentsline {section}{\numberline {3.2}指标体系构建}{22}{section.3.2}
+\contentsline {section}{\numberline {3.3}数据清洗}{28}{section.3.3}
+\contentsline {chapter}{\numberline {第\hspace {1pt}4\hspace {1pt}章\hspace {0.3em}}重症肾衰竭患者的生存分析}{32}{chapter.4}
+\contentsline {section}{\numberline {4.1}重症肾衰竭患者的描述性统计分析}{32}{section.4.1}
+\contentsline {section}{\numberline {4.2}重症肾衰竭患者的整体生存分析}{39}{section.4.2}
+\contentsline {section}{\numberline {4.3}生存分析统计模型的训练过程}{41}{section.4.3}
+\contentsline {section}{\numberline {4.4}基于评价指标的最优模型选择}{44}{section.4.4}
+\contentsline {section}{\numberline {4.5}基于Cox-ElasticNet模型的结果分析}{47}{section.4.5}
+\contentsline {chapter}{\numberline {第\hspace {1pt}5\hspace {1pt}章\hspace {0.3em}}总结及展望}{50}{chapter.5}
+\contentsline {section}{\numberline {5.1}总结}{50}{section.5.1}
+\contentsline {section}{\numberline {5.2}展望}{51}{section.5.2}
+\contentsline {chapter}{参考文献}{52}{section.5.2}
+\contentsline {chapter}{\numberline {附录\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces A\hspace {0.3em}}各变量的生存曲线K-M图}{56}{appendix.A}
+\contentsline {chapter}{\numberline {附录\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces B\hspace {0.3em}}数据提取核心SQL代码}{61}{appendix.B}
+\contentsline {chapter}{\numberline {附录\hspace {0.25em plus 0.125em minus 0.08em}\ignorespaces C\hspace {0.3em}}数据处理核心Python代码}{68}{appendix.C}

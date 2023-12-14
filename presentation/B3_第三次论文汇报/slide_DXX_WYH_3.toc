@@ -1,0 +1,11 @@
+\beamer@endinputifotherversion {3.14pt}
+\select@language {english}
+\beamer@sectionintoc {1}{appendix}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{score test推导}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{score test推导}{4}{0}{1}
+\beamer@subsectionintoc {1}{3}{score test推导}{5}{0}{1}
+\beamer@subsectionintoc {1}{4}{score test推导}{6}{0}{1}
+\beamer@subsectionintoc {1}{5}{score test推导}{7}{0}{1}
+\beamer@subsectionintoc {1}{6}{score test推导}{8}{0}{1}
+\beamer@subsectionintoc {1}{7}{score test推导}{9}{0}{1}
+\beamer@subsectionintoc {1}{8}{score test推导}{10}{0}{1}

@@ -1,0 +1,411 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[table,CJK,mathserif,12pt]{beamer}
+\include{background/background}
+\title[zero-inflated poisson regression models with right censored count data]
+{ \textsc{zero-inflated poisson regression models with right censored count data} }
+\author[Xingxing Du and Yahui Wei]
+{\quad\\  \large Xingxing Du and Yahui Wei}
+\institute[Southwest University]
+{Southwest University }
+\date{\scriptsize{\today} }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{CJK}{GBK}{kai}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} % 封面
+  \vspace{0.5cm}
+  \titlepage
+  \hypertarget{beginning}{}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{\textsc{目录}} \vspace{-0.3cm}
+  \tableofcontents[hidesubsections]
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[Introduction]{Introduction}
+\begin{frame}
+    \begin{itemize}
+
+        \item Censoring:
+            \begin{itemize}
+                \item whether the lower or upper bound had been passed and the value of the bound are available.
+            \end{itemize}
+        \item Truncation:
+            \begin{itemize}
+                \item a sample with all values outside the bounds entirely omitted, not even the count to those omitted were kept.
+           \end{itemize}
+        \item Zero-Inflated Poisson(ZIP) models with censored:
+            \begin{itemize}
+                \item count data are censored from above (right) or below (left) a specific point or a combination of them.
+                \item the number of zero counts are much greater than expected for the Poisson distribution.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+
+\section[Literature Review]{Literature Review}
+\begin{frame}
+    \begin{itemize}
+        \item There is a large body of literature on zero-inflated Poisson models:LR,Wald,Score test
+        \item Hua He et al.(2019) develop a new approach for testing inflated zero under the Poisson model.
+        \item Yi Tang et al.(2019) compare the new test with the Wald,score,and likelihood ratio tests.
+        \item Yuhan Zou et al.(2020)applied  the new approach for latent class in censored data due to detection limit.
+    \end{itemize}
+
+\end{frame}
+
+
+
+\section[The Model]{The Model}
+\subsection[Models]{Models}
+\begin{frame}
+    \begin{itemize}
+        \item Poisson Model:
+            $$P(Y_i=y_i)=\frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}$$
+        \item Poisson Regression:
+            $$y_i|x_i \sim i.d. Poisson(\mu_i),\:\:log(\mu_i)=x_i^T\beta$$
+        \item ZIP Model:
+            $$ P(Y_i=y_i)=\left\{
+                \begin{array}{cc}
+                    \omega+(1-\omega)e^{-\mu_i} & y_i=0 \\
+                    (1-\omega)\frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}  & y_i>0
+                \end{array}
+            \right. $$
+        \item ZIP Regression:
+            $$y_i|x_i \sim i.d.ZIP(\omega_i,\mu_i),\:\:logit(\omega_i)=\mu_i^T\beta_{\omega},\:log(\mu_i)=x^T_i\beta$$
+
+    \end{itemize}
+\end{frame}
+
+\subsection[Models(cont.)]{Models}
+\begin{frame}
+    \begin{itemize}
+        \item Right Censoring:
+           $$ Y_i=min\left\{y_i,L  \right\}= 
+               \left\{  
+                      \begin{array}{cc}
+                            L & ,y_i\ge L. \\
+                            y_i &  ,otherwise.
+                      \end{array}
+               \right.  $$
+            $$ P(Y_i=y_i)=\left\{
+                    \begin{array}{cc}
+                        P(Y_i\ge L) & ,y_i\ge L. \\
+                        P(Y_i= y_i) &  ,otherwise.
+                    \end{array}
+                \right. $$
+        \item Right-Censored Poisson Model:
+            $$ P(Y_i=y_i)=\left\{
+                \begin{array}{cc}
+                    \sum_{j=y_i}^{\infty}{P(y_i=j)} & ,y_i\ge L. \\
+                     \left( e^{-\mu_i}\right)^{r_i} *\left( \frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}\right)^{1-r_i} &  ,otherwise.
+                \end{array}
+            \right. $$
+        \item Censored Poisson Regression:
+            $$ y_i|x_i \sim CensorePoisson(\mu_i,L),\:\:log(\mu_i)=x_i^T\beta $$
+    \end{itemize}
+\end{frame}
+
+\subsection[Models(cont.)]{Models}
+\begin{frame}
+    \begin{itemize}
+        \item Right Censoring:
+           $$ Y_i=min\left\{y_i,L  \right\}=
+               \left\{
+                      \begin{array}{cc}
+                            L & ,y_i\ge L. \\
+                            y_i &  ,otherwise.
+                      \end{array}
+               \right.  $$
+            $$ P(Y_i=y_i)=\left\{
+                    \begin{array}{cc}
+                        P(Y_i\ge L) & ,y_i\ge L. \\
+                        P(Y_i= y_i) &  ,otherwise.
+                    \end{array}
+                \right. $$
+           \item Censored ZIP Model:
+               \begin{tiny}
+                $$ P(Y_i=y_i)=\left\{
+                    \begin{array}{cc}
+                        \sum_{j=y_i}^{\infty}{P(y_i=j)} & ,Y_i\ge y_i. \\
+                        \left( \omega+(1-\omega)e^{-\mu_i} \right)^{r_i} \left( (1-\omega)\frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}\right)^{1-r_i}  &  ,otherwise.
+                    \end{array}
+                \right. $$
+                \end{tiny}
+        \item Censored ZIP Regression:
+            $$ y_i|x_i \sim CZIP(\omega_i,\mu_i,L),\:\:logit(\omega_i)=\mu_i^T\beta_{\omega},\:log(\mu_i)=x_i^T\beta_{\mu} $$
+    \end{itemize}
+\end{frame}
+
+\subsection[Hypothesis]{Hypothesis}
+\begin{frame}
+    \begin{itemize}
+        \item $H_0:\:\:Y_i|x_i$ follows the censored Poisson model
+        \item $H_1:\:\:Y_i|x_i$ follows the censored ZIP model
+
+    \end{itemize}
+
+
+    $$H_0:\omega = 0\:\:\: vs.\:\:\:H_1:\omega > 0$$
+\end{frame}
+
+\subsection[Likelihood Function]{Likelihood Function}
+\begin{frame}
+    \begin{itemize}
+        \item define an indicator variable of zero occurs:
+        $$r_i = I_{(Y_i=0)}=\left\{ \begin{array}{cc}
+        1,&Y_i=0\\
+        0,&otherwise
+        \end{array}
+        \right.
+        $$
+    \end{itemize}
+    \begin{itemize}
+        \item define an indicator variable of censoring occurs:
+        $$d_i = I_{(Y_i\ge y_i)}=\left\{ \begin{array}{cc}
+        1,&Y_i\ge y_i\\
+        0,&otherwise
+        \end{array}
+        \right.
+        $$
+    \end{itemize}
+    \begin{itemize}\item for $Y_i \ge y_i$:
+        $$  Pr(Y_i\ge y_i)=\sum_{j=y_i}^{\infty}{P(y_i=j)}=1- \sum_{j=0}^{y_i-1}{P(y_i=j)}   $$
+    \end{itemize}
+\end{frame}
+
+\subsection[Likelihood Function(cont.)]{Likelihood Function(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item  Likelihood function of censored Poisson:
+            $$ L_1=\prod_{i=1}^n\left\{ \left[ \left( e^{-\mu_i}\right)^{r_i} \left( \frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}\right)^{1-r_i} \right]^{(1-d_i)} \left[  Pr(Y_i\ge y_i)\right]^{d_i} \right\} $$
+        \item Log-likelihood Function:
+            \begin{tiny}
+            $$ l_1=log(L_1)=\sum_{i=1}^n\left\{(1-d_i)log\left[-r_i\mu +(1-r_i)log\left(\frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}\right) \right]
+                + d_i log\left[ \sum_{j=y_i}^{\infty}{P(y_i=j)} \right] \right\}   $$
+            \end{tiny}
+    \end{itemize}
+\end{frame}
+
+\subsection[Likelihood Function(cont.)]{Likelihood Function(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item Likelihood function of censored zero-inflated Poisson model:
+            \begin{tiny}
+            $$
+            L_2 = \prod_{i=1}^n \left\{ \left[ Pr(Y_i\ge y_i)\right]^{d_i} \left[ \left( \omega+(1-\omega)e^{-\mu_i} \right)^{r_i} \left( (1-\omega)\frac{e^{-\mu_i}\mu_i^{y_i}}{y_i!}\right)^{1-r_i} \right]^{1-d_i} \right\}
+            $$
+            \end{tiny}
+        \item Log-likelihood Function:
+            \begin{tiny}
+            \begin{equation*}\begin{split}
+                 l_2=log(L_2)=&\sum_{i=1}^n {(1-d_i)\left[ r_i \left[ log{\omega+(1-\omega)e^{-\mu_i}}\right]
+                +(1-r_i)\left[ log(1-\omega)+y_i log(\mu_i)-log(y_i!)-\mu_i \right] \right]} \\
+                &+{d_i log\sum_{j=y_i}^{\infty}{Pr(Y_i=j)}}
+            \end{split}\end{equation*}
+            \end{tiny}
+    \end{itemize}
+\end{frame}
+
+
+\subsection[Wald Test]{Wald Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+        $$ \frac{\hat{\omega}}{\hat{\sigma}} \sim N(0,1) \:\:\:or\:\:\: \frac{\hat{\omega}^2}{\hat{\sigma}^2} \sim \chi(1)$$
+        \item method:
+            \begin{itemize}
+                \item $\omega$ can be obtained by the maximum likelihood function.
+                \item the variance of the MLE of $\omega$ can further be estimated by the fisher information matrix.
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection[Wald Test(cont.)]{Wald Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+    \item let.
+        $$ c_i=\sum_{j=y_i}^{\infty}{P(y_i=j)},\:\:\:\:\theta_i=\frac{\omega_i}{1-\omega_i}$$
+    \item then
+        $$ \frac{\partial{c_i}}{\partial{\beta}}=-\sum_{j=0}^{y_i-1}{\frac{\partial{Pr(Y_i=j)}}{\partial{\beta}}}
+        =-\sum_{j=0}^{y_i-1}{Pr(Y_i=j)(y_i-\mu_i)x_i} $$
+    \item solve the score equations:
+        \begin{tiny}
+        $$\frac{\partial{l_2}}{\partial{\beta}}=\sum_{i=1}^n \left\{(1-d_i)\left[ r_i\frac{-\theta_i^{-1}e^{-\mu_i}}{1+\theta_i e^{-\mu_i}}x_i\mu_i+(1-r_i)(y_i-\mu_i)x_i\right]+\frac{d_i}{c_i}\frac{\partial{c_i}}{\partial{\beta}} \right\}$$
+
+        $$\frac{\partial{l_2}}{\partial{\omega}}=\sum_{i=1}^n \left\{(1-d_i)\left[ r_i\frac{1-e^{-\mu_i}}{\theta_i e^{-\mu_i}}-(1-r_i)\right]\frac{\theta_i}{1+\theta_i}\right\} $$
+        \end{tiny}
+
+    \end{itemize}
+\end{frame}
+
+\subsection[LR Test]{LR Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+            $$ S_{LR}=2\left[ l_1(\hat{\omega},\hat{\beta})- l_2(0,\hat{\beta}) \right]\sim \chi^2 $$
+
+            \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Score Test]{Score Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+            $$ S_{Score}\sim N(0,1) $$
+
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item let
+            $$\theta_i=\frac{\omega_i}{1-\omega_i}$$
+        \item then
+            \begin{tiny}
+            \begin{equation*}\begin{split}
+                 l_2=&\sum_{i=1}^n {(1-d_i)\left[-\log(\theta_i+1)+ r_i log{\theta_i+e^{-\mu_i}}
+                -(1-r_i)\left[-\mu_i+ y_i log(\mu_i)-log(y_i!) \right] \right]} \\
+                &+{d_i log\sum_{j=y_i}^{\infty}{Pr(Y_i=j)}}
+            \end{split}\end{equation*}
+            \end{tiny}
+         \item and
+            \begin{tiny}
+            $$\frac{\partial{l_2}}{\partial{\beta}}=\sum_{i=1}^n \left\{(1-d_i)\left[ r_i\frac{-\theta_i^{-1}e^{-\mu_i}}{1+\theta_i e^{-\mu_i}}x_i^T\mu_i+(1-r_i)(y_i-\mu_i)x_i^T\right]+\frac{d_i}{c_i}\frac{\partial{c_i}}{\partial{\beta}} \right\}$$
+
+            $$\frac{\partial{l_2}}{\partial{\theta_i}}=\sum_{i=1}^n \left\{(1-d_i) \left[-\frac{1}{1+\theta_i}+\frac{r_i}{\theta_i+e^{-\mu_i}}  \right]\right\} $$
+
+        \end{tiny}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item when $$\theta_i=0 $$
+        \item then score equation are:
+       \begin{tiny}
+            $$\frac{\partial{l_2}}{\partial{\beta}}=\sum_{i=1}^n \left\{(1-d_i)\left[ -r_i(\mu_i+(1-r_i)(y_i-\mu_i))-\frac{d_ic_i}{1-c_i} \right]x_i^T \right\}$$
+
+            $$\frac{\partial{l_2}}{\partial{\theta_i}}=\sum_{i=1}^n \left\{(1-d_i)\frac{r_i-e^{-\mu_i}}{e^{-\mu_i}} \right\} $$
+        \end{tiny}
+       \item the variance of $\frac{\partial{l_2}}{\partial{\theta_i}}$ can be obtained from Fisher Information matrix
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[Score Test(cont.)]{Score Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+        \begin{small}
+        $$S_{Score}=\frac{\sum_{i=1}^n (1-c_i) \frac{r_i-p_i}{p_i} }{\left\{ \sum_{i=1}^n \left[ (1-c_i) \frac{1-p_i}{p_i} -(c_i\mu_i)^T X \left(diag(dU)\right)^{-1} X^T (c_i\mu_i) \right]  \right\}^{\frac{1}{2}}}$$
+        \end{small}
+             \begin{itemize}
+             \begin{tiny}
+               \item  $c_i=\sum_{j=0}^{y_i-1} P(Y_i= y_i) $
+               \item  $p_i=e^{-\mu_i}$
+               \item  $dU =X^T \left[  \sum_{i=1}^n \frac{c_i}{1-c_i} (y_i-c_i)^2 \right]X$
+               \end{tiny}
+             \end{itemize}
+        $$ S_{Score}\sim N(0,1) $$
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[He Test]{He Test}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+             $\sqrt{n} \left( \hat{s} - 0 \right) \to N(0,\tau^2) $
+            \item  $\tau^2$ 是矩阵$A^{-1}BA^{-T}$ 的$(1,1)$ 项
+            \item $ A(\gamma)=E\left[ \frac{\partial}{\partial\gamma}\Psi_i( Y_i ,\gamma) \right] $
+            \item $ B(\gamma)=Var(\Psi_i( Y_i ,\gamma) $
+
+        \item Estimation Equation(EE):
+         $$\psi _{1}=\frac{1}{n}\sum_{i=1}^{n}\left( r_{i}-p_{i}-s\right)  $$
+         $$\psi _{2}=\frac{1}{n}\sum_{i=1}^{n}\left[\frac{1-d_i-c_i}{1-c_i}(y_i-\mu_i)x_i^T \right]   $$
+
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection[He Test(cont.)]{He Test(cont.)}
+\begin{frame}
+    \begin{itemize}
+        \item statistics:
+        \begin{tiny}
+        $$S_{new}=\frac{\sum_{i=1}^n (1-c_i)(r_i-\hat{p_i}) }{\left\{ \sum_{i=1}^n \left[ (1-c_i)(1-\hat{p_i})  -(c_i\hat{p_i}\mu_i)^T X \left(diag(dU)\right)^{-1} X^T (c_i\hat{p_i}\mu_i) \right]  \right\}^{\frac{1}{2}}}$$
+        \end{tiny}
+        $$ S_{new}\sim N(0,1) $$
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \section[Simulations]{Simulations}
+       \subsection[CPoisson response]{CPoisson response}
+       \frametitle{模拟设置}
+       \begin{itemize}
+            \item 检验是否为零膨胀：
+                $$ H_0:\omega=0\:\:\:vs\:\:\:\omega>0 $$
+            \item L=5
+            \item 均值变动，考虑三种情形：
+            \begin{itemize}
+                \item 无协变量
+                \item 协变量服从均匀分布 
+                \item 协变量服从正态分布
+            \end{itemize}
+            \item 样本量：50，100，200，500
+            \item Monte Carlo(蒙特卡罗)样本量：100
+
+        \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[CPoisson Response]{CPoisson Response}
+    \begin{frame}
+    \frametitle{模拟介绍}
+        \begin{itemize}
+          \item 详情见R程序
+        	\begin{itemize}
+                \item R Code
+                \item Type Error I
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ \subsection[CZIP response]{CZIP response}
+       \frametitle{模拟设置}
+       \begin{itemize}
+            \item 检验是否为零膨胀：
+                $$ H_0:\omega=0\:\:\:vs\:\:\:\omega>0 $$
+            \item L=5
+            \item 均值变动，考虑三种情形：
+            \begin{itemize}
+                \item 无协变量
+                \item 协变量服从均匀分布
+                \item 协变量服从正态分布
+            \end{itemize}
+            \item 样本量：50，100，200，500
+            \item Monte Carlo(蒙特卡罗)样本量：100
+
+        \end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \subsection[CZIP Response]{CZIP Response}
+    \begin{frame}
+    \frametitle{模拟介绍}
+        \begin{itemize}
+          \item 详情见R程序
+        	\begin{itemize}
+                \item R Code
+                \item Power
+                \item Results
+            \end{itemize}
+        \end{itemize}
+    \end{frame}
+\end{CJK}
+\end{document}
+

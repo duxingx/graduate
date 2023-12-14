@@ -1,0 +1,201 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[table,CJK,mathserif,12pt]{beamer}% notheorems,
+\include{background/background}
+\title[A New Statistical Test for Tobit Model and ZMP Model] % (optional, use only with long paper titles)
+{ \textsc{A New Statistical Test for Tobit Model and ZMP Model} }
+\author[杜兴兴、魏雅慧] % (optional, use only with lots of authors)
+{\quad\\  \large  杜兴兴   魏雅慧 }
+\institute[数学与统计学院] % (optional, but mostly needed)
+{数学与统计学院}
+%% 日期自动生成
+\date{\scriptsize{\today} }%{{\the\year}年{\the\month}月{\the\day}日}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+\begin{CJK}{GBK}{kai}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} % 封面
+  \vspace{0.5cm}
+  \titlepage
+  \hypertarget{beginning}{}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+  \frametitle{\textsc{目录}} \vspace{-0.3cm}
+  \tableofcontents[hidesubsections]
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[appendix]{appendix}
+\subsection[score test推导]{score test推导}
+\begin{frame}%<beamer>
+    \frametitle{\textsc{模型设定}}
+    \begin{itemize}
+      \item ZIP统计模型：
+         \begin{equation}
+            \left\{
+            \begin{array}{cc}
+                { P(Y_i=0)=\omega + (1-\omega)e^{-\lambda_i}} & { } \\
+                {P(Y_i=y_i)=(1-\omega)\frac{e^{-\lambda_i}\lambda_i^{y_i}}{y_i!}} & {(y_i>0)}、
+            \end{array}%
+            \right.
+        \end{equation}%
+      \item 令：
+        \begin{itemize}
+        \item $\theta = \frac{\omega}{1-\omega}=\text{常数}  \:\:(-f(0)\le\theta<\inf)$
+        \item $ ln(\lambda_i) = X_i \beta $
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection[score test推导]{score test推导}
+\begin{frame}%<beamer>
+    \begin{itemize}
+        \item 示性函数:
+        \begin{tiny}
+        \begin{equation}
+            I_{(condition)}= \left\{
+            \begin{array}{cc}
+              {1} & {\text{if condition is True}} \\
+              {0} & {\text{if condition is False}}
+            \end{array}
+            \right.
+        \end{equation}
+        \end{tiny}
+      \item 对数似然：
+        \begin{tiny}
+         \begin{equation}
+            l(\lambda,\theta;y)=\sum_i\left\{-log(1+\theta)+I_{y_i=0}log(\theta+e^{-\lambda_i}) + +I_{y_i>0} \left[ -\lambda_i + y_i log(\lambda_i)-log(y_i!) \right]  \right\}
+        \end{equation}%
+        \end{tiny}
+     \item 偏导方程：
+        \begin{tiny}
+        $$ \frac{dl}{d\beta_r}=\sum_i\left\{ I_{(y_i=0)}\left( \frac{-e^{-\lambda_i}}{\theta+e^{-\lambda_i}} \right)\lambda_i x_{ir} + I_{y_i>0}(y_i-\lambda_i) x_{ir}  \right\}  \:\: r=1,2,..,p$$
+        $$ \frac{dl}{d\theta} = \sum_i \left\{ \frac{-1}{(1+\theta)} + I_{y_i=0} \left( \frac{1}{\theta + e^{-\lambda_i}} \right)  \right\} $$
+        \end{tiny}
+    \end{itemize}
+\end{frame}
+
+
+
+\subsection[score test推导]{score test推导}
+\begin{frame}%<beamer>
+    \begin{itemize}
+        \item ZIP的对数似然函数基础上构建得分向量：
+            $$ U(\beta,\theta) = \left[ 
+            \begin{array}{c}
+            \frac{\partial{l}}{\partial{\beta}} \\
+            \frac{\partial{l}}{\partial{\theta}}
+            \end{array}
+             \right] $$
+        \item Fisher信息矩阵：   
+            $$ J(\beta,\theta) = \left[ 
+            \begin{array}{cc}
+            \frac{\partial^2{l}}{\partial{\beta}\partial{\beta'}} & \frac{\partial^2{l}}{\partial{\beta}\partial{\theta}}  \\
+            \frac{\partial^2{l}}{\partial{\beta'}\partial{\theta}} & \frac{\partial^2{l}}{\partial{\theta}\partial{\theta}}  \\
+            \end{array}
+             \right]  $$
+      \item 在原假设成立下,根据Fisher信息矩阵构建Score检验统计量：
+        $$ S(\hat{\beta})=S(\hat{\beta},0)=U^T(\hat{\beta},0)[J(\hat{\beta},0)]^{-1}U(\hat{\beta,0}) \sim \chi^2_{(1)}$$
+    
+        
+    \end{itemize}
+\end{frame}
+
+
+
+\subsection[score test推导]{score test推导}
+\begin{frame}%<beamer>
+    \begin{itemize}
+        \item 所以在原假设条件下，$\theta=0$:
+        $$ \frac{dl}{d\theta}|_{\theta=0} = \sum_i\left\{ \frac{I_{(y_i=0)}}{e^{-\hat{\lambda}_i}}-1 \right\} $$
+        \item 计算得分向量得：
+            $$ U^T(\beta,0) = \left(  0,...,0,\sum_i\left\{ \frac{I_{(y_i=0)}}{e^{-\hat{\lambda}_i}}-1 \right\}           \right) $$
+       
+    \end{itemize}
+\end{frame}
+
+
+\subsection[score test推导]{score test推导}
+\begin{frame}%<beamer>
+    \begin{itemize}
+        \item 计算二阶偏导:
+        \begin{tiny}
+            \begin{equation}
+                \begin{array}{l}
+                \frac{d^2l(.)}{d\beta_r d\beta_s} = \sum_i \left\{ I_{y_i=0} \left( \frac{-e^{-\lambda_i}[(1-\lambda_i)\theta+e^{-\lambda_i}]}{[\theta+e^{-\lambda_i}]^2} \right) \lambda_i x_{ir} x_{is} -I_{(y_i>0)}\lambda_i x_ir x_is  \right\} \:r=1...p,s=1...p  \\    \\
+                \frac{d^2l(.)}{d\beta_r d\theta} = \sum_i \left\{ I_{y_i=0} \left( \frac{-e^{-\lambda_i}}{[\theta+e^{-\lambda_i}]^2} \right) \lambda_i x_{ir}   \right\} \:r=1...p                   \\  \\
+                 \frac{d^2l(.)}{d\theta^2} = \sum_i \left\{ \frac{1}{(1+\theta)^2}  - I_{y_i=0} \left( \frac{1}{[\theta+e^{-\lambda_i}]^2} \right)  \right\}                   \\
+                \end{array}                
+            \end{equation}
+        \end{tiny}
+        
+        \item 可以得到$J(\hat{\beta},0)$:
+            \begin{itemize}
+            \item $\hat{J}_{r,s}=\sum_i{\hat{\lambda}_i x_{ir} x_{is}} \:\: r=1...p,s=1...p$
+            \item $ \hat{J}_{r,p+1} = -\sum_i{\hat{\lambda_i}{x_ir}} \:\:r=1...p  $
+            \item $\hat{J}_{p+1,p+1} = \sum_i{\frac{1-e^{-\hat{\lambda_i}}}{e^{-\hat{\lambda_i}}}}$
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\subsection[score test推导]{score test推导}
+\begin{frame}%<beamer>
+    \begin{itemize}
+        \item $J(\hat{\beta},0)$矩阵分块得:
+        $$ J(\hat{\beta},0) = \left[
+        \begin{array}{cc}
+            \hat{J_{11}} & \hat{J_{12}} \\
+            \hat{J_{21}} & \hat{J_{22}} 
+        \end{array}  \right] $$
+        
+        \item $\hat{J_{11}}=X^Tdiag(\hat{\lambda}X) $
+        \item $\hat{J_{12}}=-X^T \hat{\lambda} $
+        \item $\hat{J_{21}}=-\hat{\lambda^T} X^T $
+        \item $\hat{J_{22}}=\sum_i \left( \frac{1}{e^{\hat{-\lambda_i}}} - 1 \right) $
+    \end{itemize}
+\end{frame}
+
+
+\subsection[score test推导]{score test推导}
+\begin{frame}%<beamer>
+    \begin{itemize}
+        \item $J(\hat{\beta},0)^{-1}$定义为C:
+        $$ J(\hat{\beta},0)^{-1} = C(\hat{\beta},0) = \left[
+        \begin{array}{cc}
+            {C_{11}} & {C_{12}} \\
+            {C_{21}} & {C_{22}}
+        \end{array}  \right] $$
+
+        \item 由于得分向量$U(\hat{\beta},0)$的结构只需要$C_{22}$即可：
+
+            $$ C_{22}^{-1} = \hat{J}_{22} - \hat{J}_{21} \hat{J}_{11}^{-1} \hat{J}_{12} $$
+            $$C_{22}^{-1} = \sum_i \left( \frac{1}{e^{-\hat{\lambda_i}}} -1  \right) -\hat{\lambda}^T X [X^T diag(\hat{\lambda})X]^{-1} X^T \hat{\lambda} $$
+      
+    \end{itemize}
+\end{frame}
+
+\subsection[score test推导]{score test推导}
+\begin{frame}%<beamer>
+    \begin{itemize}
+    
+        \item Score统计量最终形式为:
+        $$ S(\hat{\beta})=S(\hat{\beta},0)=U^T(\hat{\beta},0)[J(\hat{\beta},0)]^{-1}U(\hat{\beta,0}) \sim \chi^2_{(1)}$$
+        $$ S(\hat{\beta},0) = \frac{\left\{ \sum_{i=1}^n { \left( \frac{I_{y_i=0}}{e^{-\hat{\lambda_i}}} -1 \right)} \right\}^2  }{\sum_i \left( \frac{1}{e^{-\hat{\lambda_i}}} -1  \right) -\hat{\lambda}^T X [X^T diag(\hat{\lambda})X]^{-1} X^T \hat{\lambda}} $$
+        \item 可得：
+        $$ S_{score} = \frac{\left\{ \sum_{i=1}^n { \left( \frac{I_{y_i=0}}{e^{-\hat{\lambda_i}}} -1 \right)} \right\} }{\left\{\sum_i \left( \frac{1}{e^{-\hat{\lambda_i}}} -1  \right) -\hat{\lambda}^T X [X^T diag(\hat{\lambda})X]^{-1} X^T \hat{\lambda}\right\}^{1/2}}  $$
+        $$ S_{score} \sim N(0,1)$$
+    \end{itemize}
+\end{frame}
+
+
+\end{CJK}
+\end{document}

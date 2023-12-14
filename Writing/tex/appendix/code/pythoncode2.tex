@@ -1,0 +1,299 @@
+\chapter{模型建立核心Python代码}\label{codes}
+
+\begin{verbatim}
+
+dictdata = dataframe_from_pgsql("public", "dict_all")
+dictdata = dictdata.loc[dictdata.VariableType.values != "DateTime", :]
+
+
+# 编码前的数据
+encodedat = pd.read_csv(os.path.join(OUTPUT_FILE, "encodedat.csv"), index_col=0,parse_dates=["admittime"])
+encodedat = encodedat.set_index("admittime").sort_index()
+encodedat = encodedat.drop_duplicates(subset=["subject_id"],keep="first")
+encodedat = encodedat.drop(["hadm_id", "subject_id", "stay_id","icu_flag"], axis=1)
+encodedat = encodedat.rename(columns={"admitcustime": "duration", "death_flag": "event"})
+encodedat = encodedat.loc[
+            (encodedat["duration"] > 0) & (encodedat["age"] >= 18) & (encodedat["duration"] < 300), :]
+
+# 编码后的数据（包括one-hot、order等编码）
+decodedat = pd.read_csv(os.path.join(OUTPUT_FILE, "decodedat.csv"), index_col=0,parse_dates=["admittime"])
+decodedat = decodedat.set_index("admittime").sort_index()
+decodedat = decodedat.drop_duplicates(subset=["subject_id"],keep="first")
+decodedat = decodedat.drop(["hadm_id", "subject_id", "stay_id","icu_flag_1"], axis=1)
+decodedat = decodedat.rename(columns={"admitcustime": "duration", "death_flag": "event"})
+decodedat = decodedat.loc[
+            (decodedat["duration"] > 0) & (decodedat["age"] >= 18) & (decodedat["duration"] < 300), :]
+
+
+# 变量
+cols_standardize = load_variavle(os.path.join(OUTPUT_FILE, "cols_standardize.pkl"))  # 连续变量
+cols_categorical = load_variavle(os.path.join(OUTPUT_FILE, "cols_categorical.pkl"))  # 分类变量：有序变量（order）
+cols_leave = load_variavle(os.path.join(OUTPUT_FILE, "cols_leave.pkl"))  # 分类变量：经过one-hot编码后的变量
+cols_onehot = load_variavle(os.path.join(OUTPUT_FILE, "cols_onehot.pkl"))  # 分类变量：未经过one-hot编码的变量
+
+# 类型转换
+decodedat = decodedat.astype("float32")
+decodedat["event"] = decodedat["event"].astype("int32")
+
+# 复制一个可操作的dataframe
+encodedat1 = encodedat.copy()
+decodedat1 = decodedat.copy()  
+
+# 划分数据集
+
+def split_dat(df, frac=0.4):
+    df_test = df.sample(frac=frac)  # 提取测试集
+    df_train = df.drop(df_test.index)  # 剩余训练集
+    df_val = df_test.sample(frac=0.5)  # 提取验证集
+    df_test = df_test.drop(df_val.index)  # 剩余训练集
+    return df_train, df_val, df_test
+
+df_train_all, df_val_all, df_test_all = split_dat(decodedat1)
+
+log_print("原数据集大小：",decodedat1.shape)
+log_print("训练集大小：",df_train_all.shape)
+log_print("验证集大小：",df_val_all.shape)
+log_print("测试集大小：",df_test_all.shape)
+
+
+
+# 变量筛选
+
+# log-rank检验结果
+df_train2 = df_train_all.copy()
+
+for col in df_train_all.columns:
+    if col in cols_standardize:
+        df_train2[col] = df_train_all[col].apply(lambda x: "Low" if x < df_train_all[col].median() else "High")
+
+    elif col in cols_onehot:
+        if set(df_train2[col].unique().tolist()) <= set(["Missing",0,1]):
+            df_train2[col] = df_train_all[col].map({0:"No",1:"Yes"})
+            
+    elif set(df_train_all[col].unique()) <= set([1,2,3,4,5,0]) and set(df_train_all[col].unique()) != set([0,1]):
+        df_train2[col] = df_train2[col].map(groupmap)
+        
+    elif set(df_train_all[col].unique()) == set([0,1]) and col not in ["duration","event"]:
+        df_train2[col] = df_train2[col].map({0:"No",1:"Yes"})
+        
+    else:
+        df_train2[col] = df_train_all[col]
+
+logrankres = dict()
+p_value,test_stat,col_name=[],[],[]
+for col in df_train2.drop(["duration","event"],axis=1).columns:
+    logrank = multivariate_logrank_test(df_train2["duration"], df_train2[col], df_train2["event"])
+    p_value.append(logrank.p_value)
+    test_stat.append(logrank.test_statistic)
+    col_name.append(col)
+logrankres["变量名"]=col_name
+logrankres["统计量"]=test_stat
+logrankres["Log-Rank检验P值"]=p_value
+logrank_res = pd.DataFrame(logrankres).sort_values(by="Log-Rank检验P值")
+
+
+
+# 单变量Cox回归结果评分
+X,y =sksurv.datasets.get_x_y(df_train_all,attr_labels=["event","duration"],pos_label=1)
+def fit_and_score_features(X, y):
+    n_features = X.shape[1]
+    scores = np.empty(n_features)
+    m = CoxPHSurvivalAnalysis()
+    for j in range(n_features):
+        Xj = X[:, j:j+1]
+        m.fit(Xj, y)
+        scores[j] = m.score(Xj, y)
+    return scores
+
+scores = fit_and_score_features(X.values, y)
+coxvar_socre = pd.DataFrame({"变量名":X.columns,"Cox回归评分":scores}).sort_values(by="Cox回归评分",ascending=False)
+
+
+# 融合
+from functools  import reduce
+all_res = [coxvar_socre,logrank_res]
+final_results = reduce(lambda left, right: pd.merge(left,
+                                                   right,
+                                                   on='变量名',
+                                                   how='outer'),all_res)
+
+final_results = final_results.loc[(final_results["Log-Rank检验P值"]<0.001) & ((final_results["Cox回归评分"]>0.55)),:]
+final_results["统计量"] = final_results["统计量"].apply(lambda x: "%.2f" % x)
+final_results["Cox回归评分"] = final_results["Cox回归评分"].apply(lambda x: "%.2f" % x)
+selec_var = final_results["变量名"].values.tolist() + ["duration","event"]
+
+final_results2 = pd.merge(final_results,
+         dictdata[["RawDataColumns1","ChineseLabel2","ValueFlag"]],
+         left_on="变量名",
+         right_on="RawDataColumns1",
+        how="left")
+final_results2["中文变量名"] = final_results2["ChineseLabel2"]
+final_results2.loc[final_results2["变量名"].str.endswith("_min"),"中文变量名"] = final_results2.loc[final_results2["变量名"].str.endswith("_min"),"ChineseLabel2"] + "-最小值"
+final_results2.loc[final_results2["变量名"].str.endswith("_max"),"中文变量名"] = final_results2.loc[final_results2["变量名"].str.endswith("_max"),"ChineseLabel2"] + "-最大值"
+final_results2.loc[final_results2["变量名"].str.endswith("_mean"),"中文变量名"] = final_results2.loc[final_results2["变量名"].str.endswith("_mean"),"ChineseLabel2"] + "-平均值"
+final_results2.loc[final_results2["变量名"].str.endswith("_flag"),"中文变量名"] = final_results2.loc[final_results2["变量名"].str.endswith("_flag"),"ChineseLabel2"] + "-是/否"
+
+final_results2.to_csv(os.path.join(OUTPUT_FILE, "table_select_feature_variables.csv"),encoding="utf_8_sig")
+
+
+# 特征选择
+
+cols_leave2,cols_categorical2,cols_onehot2,cols_standardize2 = [],[],[],[]
+for col in selec_var:
+    if col in cols_leave:
+        cols_leave2.append(col)
+    elif col in cols_categorical:
+        cols_categorical2.append(col)
+    elif col in cols_onehot:
+        cols_onehot2.append(col)
+    elif col in cols_standardize:
+        cols_standardize2.append(col)
+        
+df_train = df_train_all[selec_var]
+df_val = df_val_all[selec_var]
+df_test = df_test_all[selec_var]
+
+
+log_print("所选特征：",selec_var)
+log_print("特征选择后-训练集大小：",df_train.shape)
+log_print("特征选择后-验证集大小：",df_val.shape)
+log_print("特征选择后-测试集大小：",df_test.shape)
+
+
+# 基本统计描述表
+
+# 分类变量
+death_dat = df_train2[selec_var].loc[df_train2["event"]==1,:]
+live_dat = df_train2[selec_var].loc[df_train2["event"]==0,:]
+p_value_dict = {}
+all_df = pd.DataFrame()
+for var in cols_leave2 + cols_categorical2:
+
+    death_fenbu = death_dat[var].value_counts().reset_index()
+    death_fenbu.rename(columns = {var:'死亡组'},inplace = True)
+    death_fenbu_zhanbi = death_dat[var].value_counts(normalize = True).reset_index()
+    death_fenbu_zhanbi.rename(columns = {var:'死亡率'},inplace = True)
+    
+    live_fenbu = live_dat[var].value_counts().reset_index()
+    live_fenbu.rename(columns = {var:'生存组'},inplace = True)
+    live_fenbu_zhanbi = live_dat[var].value_counts(normalize = True).reset_index()
+    live_fenbu_zhanbi.rename(columns = {var:'生存率'},inplace = True)
+    
+    for df in [death_fenbu_zhanbi,live_fenbu,live_fenbu_zhanbi]:
+        death_fenbu = pd.merge(death_fenbu,df,on = 'index',how = 'outer')
+    death_fenbu.rename(columns = {'index':'子类'},inplace = True)
+    death_fenbu['变量名'] = [var]*len(death_fenbu)
+    all_df = all_df.append(death_fenbu)
+    ks_test,p_value = ks_2samp(death_dat[var], live_dat[var])
+    p_value_dict[var] = p_value
+
+all_df['死亡率'] = all_df['死亡率'].apply(lambda x:'('+str(round(x*100,2))+'%'+')')
+all_df['生存率'] = all_df['生存率'].apply(lambda x:'('+str(round(x*100,2))+'%'+')')
+all_df['死亡组'] = all_df['死亡组'].apply(lambda x:str(np.rint(x)))
+all_df['生存组'] = all_df['生存组'].apply(lambda x:str(np.rint(x)))
+all_df['死亡组'] = all_df['死亡组']+all_df['死亡率']
+all_df['生存组'] = all_df['生存组']+all_df['生存率']
+
+all_df["死亡组"] = all_df["死亡组"].replace("nan(nan%)","0(0.00%)")
+
+all_df["生存组"] = all_df["生存组"].str.replace(r".0\(","(",regex=True)
+all_df["死亡组"] = all_df["死亡组"].str.replace(r".0\(","(",regex=True)
+
+all_df = all_df[["变量名","子类","生存组","死亡组"]]
+
+
+# 连续变量
+death_dat = df_train[selec_var].loc[df_train2["event"]==1,:]
+live_dat = df_train[selec_var].loc[df_train2["event"]==0,:]
+result_dict = {}
+for var in cols_standardize2:
+
+    death_mean = death_dat[var].mean()
+    death_std = death_dat[var].std()
+    live_mean = live_dat[var].mean()
+    live_std = live_dat[var].std()
+    
+    death_mean_std = "%.2f" % death_mean + "("+ "%.2f" % death_std+ ")"
+    live_mean_std = "%.2f" % live_mean + "("+ "%.2f" % live_std+ ")"
+    result_dict[var] = [death_mean_std,live_mean_std]
+lianxv_df = pd.DataFrame(result_dict).T.reset_index().rename(columns = {"index":"变量名",0:"生存组",1:"死亡组"})
+
+
+selec_val_info_tab = pd.concat([all_df,lianxv_df],axis=0)
+
+selec_val_info_tab2 = pd.merge(selec_val_info_tab,
+         dictdata,
+         left_on="变量名",
+         right_on="RawDataColumns1",
+        how="left")
+
+selec_val_info_tab2.to_csv(os.path.join(OUTPUT_FILE, "table_select_feature_desc.csv"),encoding="utf_8_sig")
+
+
+
+
+selec_val_info_tab2 = pd.merge(selec_val_info_tab,
+         dictdata,
+         left_on="变量名",
+         right_on="RawDataColumns1",
+        how="left")
+
+
+selec_val_info_tab2["中文变量名"] = selec_val_info_tab2["ChineseLabel2"]
+selec_val_info_tab2.loc[selec_val_info_tab2["变量名"].str.endswith("_min"),"中文变量名"] = selec_val_info_tab2.loc[selec_val_info_tab2["变量名"].str.endswith("_min"),"ChineseLabel2"] + "-最小值"
+selec_val_info_tab2.loc[selec_val_info_tab2["变量名"].str.endswith("_max"),"中文变量名"] = selec_val_info_tab2.loc[selec_val_info_tab2["变量名"].str.endswith("_max"),"ChineseLabel2"] + "-最大值"
+selec_val_info_tab2.loc[selec_val_info_tab2["变量名"].str.endswith("_mean"),"中文变量名"] = selec_val_info_tab2.loc[selec_val_info_tab2["变量名"].str.endswith("_mean"),"ChineseLabel2"] + "-平均值"
+selec_val_info_tab2.loc[selec_val_info_tab2["变量名"].str.endswith("_flag"),"中文变量名"] = selec_val_info_tab2.loc[selec_val_info_tab2["变量名"].str.endswith("_flag"),"ChineseLabel2"] + "-是/否"
+selec_val_info_tab2["子类"] = selec_val_info_tab2["子类"].map({"Yes":"是", "No":"否", "Low":"低", "Lower":"较低",  "Medium":"中", "Higher":"较高", "High":"高", "Missing":"缺失"})
+selec_val_info_tab2["子类2"] = "    "+selec_val_info_tab2["子类"]
+selec_val_info_tab3 = selec_val_info_tab2[["变量名","中文变量名","子类2","子类","生存组","死亡组"]]
+selec_val_info_tab3.to_csv(os.path.join(OUTPUT_FILE, "table_select_feature_desc.csv"),encoding="utf_8_sig")
+
+
+# 可视化绘图：整体生存函数与直方图
+def all_hist_KM_plot(encodedat1):
+    print("正在绘制生存时间直方图")
+
+    fig, ax = plt.subplots()
+
+    ax.hist(encodedat1.loc[encodedat1["event"] == 0, "duration"],color='b',alpha=0.6, bins=40, label='未发生院内死亡')
+    ax.hist(encodedat1.loc[encodedat1["event"] == 1, "duration"],color='r',alpha=0.6, bins=40, label='发生院内死亡')
+    ax.set_xlabel("频次")
+    ax.set_ylabel("时间(天)")
+    ax.legend(loc='upper right')
+    ax.autoscale(tight=True)
+    plt.savefig(os.path.join(OUTPUT_FILE, "plot_total_survival_time_hist.svg"), dpi=600, format='svg')
+    plt.savefig(os.path.join(OUTPUT_FILE, "plot_total_survival_time_hist.pdf"), dpi=600)
+
+    print("正在绘制生存时间KM估计-总体生存函数")
+    kmf = KaplanMeierFitter()
+    kmf.fit(encodedat1['duration'], event_observed=encodedat1['event'])
+    fig, ax = plt.subplots()
+    kmf.plot(show_censors=True, censor_styles={'ms': 2, 'marker': 'x'}, color='b')
+
+    plt.hlines(0.5, ls='--', color="r", xmin=0, xmax=kmf.median_survival_time_)
+    plt.vlines(kmf.median_survival_time_, ls='--', color="r", ymin=0, ymax=0.5, label='中位生存时间')
+    
+    ax.set_xlabel("时间(天)")
+    ax.set_ylabel("S(t)")
+    plt.legend(loc='upper right')
+    plt.legend(['删失数据', 'Kaplan-Meier估计', '置信区间',"中位生存时间"])
+    ax.autoscale(tight=True)
+    
+    plt.savefig(os.path.join(OUTPUT_FILE, "plot_total_survival_time_fuction_km.svg"), dpi=600, format='svg')
+    plt.savefig(os.path.join(OUTPUT_FILE, "plot_total_survival_time_fuction_km.pdf"), dpi=600)
+
+# 绘制整体生存曲线
+all_hist_KM_plot(df_train)
+
+
+
+
+
+
+
+
+
+\end{verbatim}
+
+

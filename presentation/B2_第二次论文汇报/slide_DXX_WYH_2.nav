@@ -1,0 +1,202 @@
+\beamer@endinputifotherversion {3.14pt}
+\headcommand {\slideentry {0}{0}{1}{1/1}{}{0}}
+\headcommand {\beamer@framepages {1}{1}}
+\headcommand {\slideentry {0}{0}{2}{2/2}{}{0}}
+\headcommand {\beamer@framepages {2}{2}}
+\headcommand {\sectionentry {1}{问题导向}{3}{问题导向}{0}}
+\headcommand {\beamer@sectionpages {1}{2}}
+\headcommand {\beamer@subsectionpages {1}{2}}
+\headcommand {\slideentry {1}{0}{3}{3/3}{}{0}}
+\headcommand {\beamer@framepages {3}{3}}
+\headcommand {\beamer@subsectionentry {0}{1}{1}{4}{截尾数据问题}}\headcommand {\beamer@subsectionpages {3}{3}}
+\headcommand {\slideentry {1}{1}{1}{4/4}{截尾数据问题}{0}}
+\headcommand {\beamer@framepages {4}{4}}
+\headcommand {\beamer@subsectionentry {0}{1}{2}{5}{潜在类数据问题}}\headcommand {\beamer@subsectionpages {4}{4}}
+\headcommand {\slideentry {1}{2}{1}{5/5}{潜在类数据问题}{0}}
+\headcommand {\beamer@framepages {5}{5}}
+\headcommand {\sectionentry {2}{文献综述}{6}{文献综述}{0}}
+\headcommand {\beamer@sectionpages {3}{5}}
+\headcommand {\beamer@subsectionpages {5}{5}}
+\headcommand {\slideentry {2}{0}{2}{6/6}{}{0}}
+\headcommand {\beamer@framepages {6}{6}}
+\headcommand {\beamer@subsectionentry {0}{2}{1}{7}{传统方法}}\headcommand {\beamer@subsectionpages {6}{6}}
+\headcommand {\slideentry {2}{1}{1}{7/7}{传统方法}{0}}
+\headcommand {\beamer@framepages {7}{7}}
+\headcommand {\beamer@subsectionentry {0}{2}{2}{8}{传统方法}}\headcommand {\beamer@subsectionpages {7}{7}}
+\headcommand {\slideentry {2}{2}{1}{8/8}{传统方法}{0}}
+\headcommand {\beamer@framepages {8}{8}}
+\headcommand {\beamer@subsectionentry {0}{2}{3}{9}{其它文献}}\headcommand {\beamer@subsectionpages {8}{8}}
+\headcommand {\slideentry {2}{3}{1}{9/9}{其它文献}{0}}
+\headcommand {\beamer@framepages {9}{9}}
+\headcommand {\beamer@subsectionentry {0}{2}{4}{10}{其它文献}}\headcommand {\beamer@subsectionpages {9}{9}}
+\headcommand {\slideentry {2}{4}{1}{10/10}{其它文献}{0}}
+\headcommand {\beamer@framepages {10}{10}}
+\headcommand {\sectionentry {3}{He Test}{11}{He Test}{0}}
+\headcommand {\beamer@sectionpages {6}{10}}
+\headcommand {\beamer@subsectionpages {10}{10}}
+\headcommand {\slideentry {3}{0}{2}{11/11}{}{0}}
+\headcommand {\beamer@framepages {11}{11}}
+\headcommand {\beamer@subsectionentry {0}{3}{1}{12}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {11}{11}}
+\headcommand {\slideentry {3}{1}{1}{12/12}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {12}{12}}
+\headcommand {\beamer@subsectionentry {0}{3}{2}{13}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {12}{12}}
+\headcommand {\slideentry {3}{2}{1}{13/13}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {13}{13}}
+\headcommand {\beamer@subsectionentry {0}{3}{3}{14}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {13}{13}}
+\headcommand {\slideentry {3}{3}{1}{14/14}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {14}{14}}
+\headcommand {\beamer@subsectionentry {0}{3}{4}{15}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {14}{14}}
+\headcommand {\slideentry {3}{4}{1}{15/15}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {15}{15}}
+\headcommand {\beamer@subsectionentry {0}{3}{5}{16}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {15}{15}}
+\headcommand {\slideentry {3}{5}{1}{16/16}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {16}{16}}
+\headcommand {\beamer@subsectionentry {0}{3}{6}{17}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {16}{16}}
+\headcommand {\slideentry {3}{6}{1}{17/18}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {17}{18}}
+\headcommand {\beamer@subsectionentry {0}{3}{7}{19}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {17}{18}}
+\headcommand {\slideentry {3}{7}{1}{19/19}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {19}{19}}
+\headcommand {\beamer@subsectionentry {0}{3}{8}{20}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {19}{19}}
+\headcommand {\slideentry {3}{8}{1}{20/20}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {20}{20}}
+\headcommand {\beamer@subsectionentry {0}{3}{9}{21}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {20}{20}}
+\headcommand {\slideentry {3}{9}{1}{21/21}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {21}{21}}
+\headcommand {\beamer@subsectionentry {0}{3}{10}{22}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {21}{21}}
+\headcommand {\slideentry {3}{10}{1}{22/22}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {22}{22}}
+\headcommand {\beamer@subsectionentry {0}{3}{11}{23}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {22}{22}}
+\headcommand {\slideentry {3}{11}{1}{23/23}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {23}{23}}
+\headcommand {\beamer@subsectionentry {0}{3}{12}{24}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {23}{23}}
+\headcommand {\slideentry {3}{12}{1}{24/24}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {24}{24}}
+\headcommand {\beamer@subsectionentry {0}{3}{13}{25}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {24}{24}}
+\headcommand {\slideentry {3}{13}{1}{25/25}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {25}{25}}
+\headcommand {\beamer@subsectionentry {0}{3}{14}{26}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {25}{25}}
+\headcommand {\slideentry {3}{14}{1}{26/26}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {26}{26}}
+\headcommand {\beamer@subsectionentry {0}{3}{15}{27}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {26}{26}}
+\headcommand {\slideentry {3}{15}{1}{27/27}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {27}{27}}
+\headcommand {\beamer@subsectionentry {0}{3}{16}{28}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {27}{27}}
+\headcommand {\slideentry {3}{16}{1}{28/28}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {28}{28}}
+\headcommand {\beamer@subsectionentry {0}{3}{17}{29}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {28}{28}}
+\headcommand {\slideentry {3}{17}{1}{29/29}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {29}{29}}
+\headcommand {\beamer@subsectionentry {0}{3}{18}{30}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {29}{29}}
+\headcommand {\slideentry {3}{18}{1}{30/30}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {30}{30}}
+\headcommand {\beamer@subsectionentry {0}{3}{19}{31}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {30}{30}}
+\headcommand {\slideentry {3}{19}{1}{31/31}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {31}{31}}
+\headcommand {\beamer@subsectionentry {0}{3}{20}{32}{Tobit模型与mTobit模型}}\headcommand {\beamer@subsectionpages {31}{31}}
+\headcommand {\slideentry {3}{20}{1}{32/32}{Tobit模型与mTobit模型}{0}}
+\headcommand {\beamer@framepages {32}{32}}
+\headcommand {\beamer@subsectionentry {0}{3}{21}{33}{泊松模型与零修改模型}}\headcommand {\beamer@subsectionpages {32}{32}}
+\headcommand {\slideentry {3}{21}{1}{33/33}{泊松模型与零修改模型}{0}}
+\headcommand {\beamer@framepages {33}{33}}
+\headcommand {\beamer@subsectionentry {0}{3}{22}{34}{泊松模型与零修改模型}}\headcommand {\beamer@subsectionpages {33}{33}}
+\headcommand {\slideentry {3}{22}{1}{34/34}{泊松模型与零修改模型}{0}}
+\headcommand {\beamer@framepages {34}{34}}
+\headcommand {\beamer@subsectionentry {0}{3}{23}{35}{泊松模型与零修改模型}}\headcommand {\beamer@subsectionpages {34}{34}}
+\headcommand {\slideentry {3}{23}{1}{35/35}{泊松模型与零修改模型}{0}}
+\headcommand {\beamer@framepages {35}{35}}
+\headcommand {\beamer@subsectionentry {0}{3}{24}{36}{泊松模型与零修改模型}}\headcommand {\beamer@subsectionpages {35}{35}}
+\headcommand {\slideentry {3}{24}{1}{36/36}{泊松模型与零修改模型}{0}}
+\headcommand {\beamer@framepages {36}{36}}
+\headcommand {\beamer@subsectionentry {0}{3}{25}{37}{泊松模型与零修改模型}}\headcommand {\beamer@subsectionpages {36}{36}}
+\headcommand {\slideentry {3}{25}{1}{37/37}{泊松模型与零修改模型}{0}}
+\headcommand {\beamer@framepages {37}{37}}
+\headcommand {\sectionentry {4}{随机模拟}{38}{随机模拟}{0}}
+\headcommand {\beamer@sectionpages {11}{37}}
+\headcommand {\beamer@subsectionpages {37}{37}}
+\headcommand {\slideentry {4}{0}{2}{38/38}{}{0}}
+\headcommand {\beamer@framepages {38}{38}}
+\headcommand {\beamer@subsectionentry {0}{4}{1}{39}{模拟设置}}\headcommand {\beamer@subsectionpages {38}{38}}
+\headcommand {\slideentry {4}{1}{1}{39/39}{模拟设置}{0}}
+\headcommand {\beamer@framepages {39}{39}}
+\headcommand {\beamer@subsectionentry {0}{4}{2}{40}{Tobit Response}}\headcommand {\beamer@subsectionpages {39}{39}}
+\headcommand {\slideentry {4}{2}{1}{40/40}{Tobit Response}{0}}
+\headcommand {\beamer@framepages {40}{40}}
+\headcommand {\beamer@subsectionentry {0}{4}{3}{41}{Tobit Response}}\headcommand {\beamer@subsectionpages {40}{40}}
+\headcommand {\slideentry {4}{3}{1}{41/41}{Tobit Response}{0}}
+\headcommand {\beamer@framepages {41}{41}}
+\headcommand {\beamer@subsectionentry {0}{4}{4}{42}{Tobit Response}}\headcommand {\beamer@subsectionpages {41}{41}}
+\headcommand {\slideentry {4}{4}{1}{42/42}{Tobit Response}{0}}
+\headcommand {\beamer@framepages {42}{42}}
+\headcommand {\beamer@subsectionentry {0}{4}{5}{43}{Tobit Response}}\headcommand {\beamer@subsectionpages {42}{42}}
+\headcommand {\slideentry {4}{5}{1}{43/43}{Tobit Response}{0}}
+\headcommand {\beamer@framepages {43}{43}}
+\headcommand {\beamer@subsectionentry {0}{4}{6}{44}{Tobit Response}}\headcommand {\beamer@subsectionpages {43}{43}}
+\headcommand {\slideentry {4}{6}{1}{44/44}{Tobit Response}{0}}
+\headcommand {\beamer@framepages {44}{44}}
+\headcommand {\beamer@subsectionentry {0}{4}{7}{45}{Tobit Response}}\headcommand {\beamer@subsectionpages {44}{44}}
+\headcommand {\slideentry {4}{7}{1}{45/45}{Tobit Response}{0}}
+\headcommand {\beamer@framepages {45}{45}}
+\headcommand {\beamer@subsectionentry {0}{4}{8}{46}{mTobit Response}}\headcommand {\beamer@subsectionpages {45}{45}}
+\headcommand {\slideentry {4}{8}{1}{46/46}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {46}{46}}
+\headcommand {\beamer@subsectionentry {0}{4}{9}{47}{mTobit Response}}\headcommand {\beamer@subsectionpages {46}{46}}
+\headcommand {\slideentry {4}{9}{1}{47/47}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {47}{47}}
+\headcommand {\beamer@subsectionentry {0}{4}{10}{48}{mTobit Response}}\headcommand {\beamer@subsectionpages {47}{47}}
+\headcommand {\slideentry {4}{10}{1}{48/48}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {48}{48}}
+\headcommand {\beamer@subsectionentry {0}{4}{11}{49}{mTobit Response}}\headcommand {\beamer@subsectionpages {48}{48}}
+\headcommand {\slideentry {4}{11}{1}{49/49}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {49}{49}}
+\headcommand {\beamer@subsectionentry {0}{4}{12}{50}{mTobit Response}}\headcommand {\beamer@subsectionpages {49}{49}}
+\headcommand {\slideentry {4}{12}{1}{50/50}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {50}{50}}
+\headcommand {\beamer@subsectionentry {0}{4}{13}{51}{mTobit Response}}\headcommand {\beamer@subsectionpages {50}{50}}
+\headcommand {\slideentry {4}{13}{1}{51/51}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {51}{51}}
+\headcommand {\beamer@subsectionentry {0}{4}{14}{52}{mTobit Response}}\headcommand {\beamer@subsectionpages {51}{51}}
+\headcommand {\slideentry {4}{14}{1}{52/52}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {52}{52}}
+\headcommand {\beamer@subsectionentry {0}{4}{15}{53}{mTobit Response}}\headcommand {\beamer@subsectionpages {52}{52}}
+\headcommand {\slideentry {4}{15}{1}{53/53}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {53}{53}}
+\headcommand {\beamer@subsectionentry {0}{4}{16}{54}{mTobit Response}}\headcommand {\beamer@subsectionpages {53}{53}}
+\headcommand {\slideentry {4}{16}{1}{54/54}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {54}{54}}
+\headcommand {\beamer@subsectionentry {0}{4}{17}{55}{mTobit Response}}\headcommand {\beamer@subsectionpages {54}{54}}
+\headcommand {\slideentry {4}{17}{1}{55/55}{mTobit Response}{0}}
+\headcommand {\beamer@framepages {55}{55}}
+\headcommand {\sectionentry {5}{案例研究}{56}{案例研究}{0}}
+\headcommand {\beamer@sectionpages {38}{55}}
+\headcommand {\beamer@subsectionpages {55}{55}}
+\headcommand {\slideentry {5}{0}{2}{56/56}{}{0}}
+\headcommand {\beamer@framepages {56}{56}}
+\headcommand {\beamer@subsectionentry {0}{5}{1}{57}{数据介绍}}\headcommand {\beamer@subsectionpages {56}{56}}
+\headcommand {\slideentry {5}{1}{1}{57/57}{数据介绍}{0}}
+\headcommand {\beamer@framepages {57}{57}}
+\headcommand {\beamer@subsectionentry {0}{5}{2}{58}{建立模型}}\headcommand {\beamer@subsectionpages {57}{57}}
+\headcommand {\slideentry {5}{2}{1}{58/58}{建立模型}{0}}
+\headcommand {\beamer@framepages {58}{58}}
+\headcommand {\beamer@subsectionentry {0}{5}{3}{59}{假设检验}}\headcommand {\beamer@subsectionpages {58}{58}}
+\headcommand {\slideentry {5}{3}{1}{59/59}{假设检验}{0}}
+\headcommand {\beamer@framepages {59}{59}}
+\headcommand {\beamer@subsectionentry {0}{5}{4}{60}{检验结果}}\headcommand {\beamer@subsectionpages {59}{59}}
+\headcommand {\slideentry {5}{4}{1}{60/60}{检验结果}{0}}
+\headcommand {\beamer@framepages {60}{60}}
+\headcommand {\sectionentry {6}{总结讨论}{61}{总结讨论}{0}}
+\headcommand {\beamer@sectionpages {56}{60}}
+\headcommand {\beamer@subsectionpages {60}{60}}
+\headcommand {\slideentry {6}{0}{2}{61/61}{}{0}}
+\headcommand {\beamer@framepages {61}{61}}
+\headcommand {\beamer@subsectionentry {0}{6}{1}{62}{方法评价}}\headcommand {\beamer@subsectionpages {61}{61}}
+\headcommand {\slideentry {6}{1}{1}{62/62}{方法评价}{0}}
+\headcommand {\beamer@framepages {62}{62}}
+\headcommand {\beamer@subsectionentry {0}{6}{2}{63}{后期计划}}\headcommand {\beamer@subsectionpages {62}{62}}
+\headcommand {\slideentry {6}{2}{1}{63/63}{后期计划}{0}}
+\headcommand {\beamer@framepages {63}{63}}
+\headcommand {\beamer@partpages {1}{63}}
+\headcommand {\beamer@subsectionpages {1}{63}}
+\headcommand {\beamer@sectionpages {1}{63}}
+\headcommand {\beamer@documentpages {63}}
+\headcommand {\def \inserttotalframenumber {62}}

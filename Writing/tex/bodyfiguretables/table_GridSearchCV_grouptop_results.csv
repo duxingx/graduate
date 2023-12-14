@@ -1,0 +1,5 @@
+﻿,Batchsize,Dropout,Lr,Model,NLayers,Nodes,param_optimizer,params,平均C-Index,C-Index标准差,rank_test_score
+80,256,0.2,0.1,deepsurv,3,"[16, 32]",<class 'torchtuples.optim.Adam'>,"{'batch_size': 256, 'dropout': 0.2, 'lr': 0.1, 'modelname': 'deepsurv', 'nlayers': 3, 'nodes': [16, 32], 'optimizer': <class 'torchtuples.optim.Adam'>}",0.85,0.03,1
+3,128,0.2,0.1,coxtime,1,"[16, 32]",<class 'torchtuples.optim.Adam'>,"{'batch_size': 128, 'dropout': 0.2, 'lr': 0.1, 'modelname': 'coxtime', 'nlayers': 1, 'nodes': [16, 32], 'optimizer': <class 'torchtuples.optim.Adam'>}",0.85,0.03,10
+0,128,0.2,0.1,coxcc,1,"[16, 32]",<class 'torchtuples.optim.Adam'>,"{'batch_size': 128, 'dropout': 0.2, 'lr': 0.1, 'modelname': 'coxcc', 'nlayers': 1, 'nodes': [16, 32], 'optimizer': <class 'torchtuples.optim.Adam'>}",0.85,0.02,16
+33,128,0.4,0.1,logistichazard,1,"[16, 32]",<class 'torchtuples.optim.Adam'>,"{'batch_size': 128, 'dropout': 0.4, 'lr': 0.1, 'modelname': 'logistichazard', 'nlayers': 1, 'nodes': [16, 32], 'optimizer': <class 'torchtuples.optim.Adam'>}",0.83,0.02,53
